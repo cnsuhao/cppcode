@@ -5,7 +5,7 @@
 //      Utah teapot.
 //
 
-const int NumTeapotPatches = 32;
+#define  NumTeapotPatches 32
 
 int indices[NumTeapotPatches][4][4] = {
     {

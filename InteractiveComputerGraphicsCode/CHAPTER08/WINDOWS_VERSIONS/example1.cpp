@@ -222,10 +222,10 @@ void
 menu( int option )
 {
     if ( option == Quit ) {
-	exit( EXIT_SUCCESS );
+		exit( EXIT_SUCCESS );
     }
     else {
-	Axis = option;
+		Axis = option;
     }
 }
 

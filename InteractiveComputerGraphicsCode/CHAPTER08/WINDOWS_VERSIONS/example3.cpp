@@ -47,7 +47,7 @@ class MatrixStack {
     ~MatrixStack()
 	{ delete[]_matrices; }
 
-    mat4& push( const mat4& m ) {
+    void push( const mat4& m ) {
         assert( _index + 1 < _size );
         _matrices[_index++] = m;
     }
@@ -140,11 +140,11 @@ void
 quad( int a, int b, int c, int d )
 {
     colors[Index] = vertex_colors[a]; points[Index] = vertices[a]; Index++;
-    colors[Index] = vertex_colors[a]; points[Index] = vertices[b]; Index++;
-    colors[Index] = vertex_colors[a]; points[Index] = vertices[c]; Index++;
+    colors[Index] = vertex_colors[b]; points[Index] = vertices[b]; Index++;
+    colors[Index] = vertex_colors[c]; points[Index] = vertices[c]; Index++;
     colors[Index] = vertex_colors[a]; points[Index] = vertices[a]; Index++;
-    colors[Index] = vertex_colors[a]; points[Index] = vertices[c]; Index++;
-    colors[Index] = vertex_colors[a]; points[Index] = vertices[d]; Index++;
+    colors[Index] = vertex_colors[c]; points[Index] = vertices[c]; Index++;
+    colors[Index] = vertex_colors[d]; points[Index] = vertices[d]; Index++;
 }
 
 void
@@ -345,6 +345,67 @@ display()
     glutSwapBuffers();
 }
 
+mat4 getJointTransformation(int angle)
+{
+	mat4 m4;
+	switch( angle ) {
+	case Torso:
+		m4 = RotateY( theta[Torso] );
+		break;
+
+	case Head1: case Head2:
+		m4 = Translate(0.0, TORSO_HEIGHT+0.5*HEAD_HEIGHT, 0.0) *
+			RotateX(theta[Head1]) *
+			RotateY(theta[Head2]) *
+			Translate(0.0, -0.5*HEAD_HEIGHT, 0.0);
+		break;
+
+	case LeftUpperArm:
+		m4 = Translate(-(TORSO_WIDTH+UPPER_ARM_WIDTH),
+			0.9*TORSO_HEIGHT, 0.0) *
+			RotateX(theta[LeftUpperArm]);
+		break;
+
+	case RightUpperArm:
+		m4 = Translate(TORSO_WIDTH+UPPER_ARM_WIDTH, 0.9*TORSO_HEIGHT, 0.0) *
+			RotateX(theta[RightUpperArm]);
+		break;
+
+	case RightUpperLeg:
+		m4 = Translate(TORSO_WIDTH+UPPER_LEG_WIDTH,
+			0.1*UPPER_LEG_HEIGHT, 0.0) *
+			RotateX(theta[RightUpperLeg]);
+		break;
+
+	case LeftUpperLeg:
+		m4 = Translate(-(TORSO_WIDTH+UPPER_LEG_WIDTH),
+			0.1*UPPER_LEG_HEIGHT, 0.0) *
+			RotateX(theta[LeftUpperLeg]);
+		break;
+
+	case LeftLowerArm:
+		m4 = Translate(0.0, UPPER_ARM_HEIGHT, 0.0) *
+			RotateX(theta[LeftLowerArm]);
+		break;
+
+	case LeftLowerLeg:
+		m4 = Translate(0.0, UPPER_LEG_HEIGHT, 0.0) *
+			RotateX(theta[LeftLowerLeg]);
+		break;
+
+	case RightLowerLeg:
+		m4 = Translate(0.0, UPPER_LEG_HEIGHT, 0.0) *
+			RotateX(theta[RightLowerLeg]);
+		break;
+
+	case RightLowerArm:
+		m4 = Translate(0.0, UPPER_ARM_HEIGHT, 0.0) *
+			RotateX(theta[RightLowerArm]);
+		break;
+	}
+	return m4;
+}
+
 //----------------------------------------------------------------------------
 
 void
@@ -361,76 +422,19 @@ mouse( int button, int state, int x, int y )
     }
 
     mvstack.push( model_view );
-    
-    switch( angle ) {
-	case Torso:
-	    nodes[Torso].transform =
-		RotateY( theta[Torso] );
-	    break;
-
-	case Head1: case Head2:
-	    nodes[Head].transform =
-		Translate(0.0, TORSO_HEIGHT+0.5*HEAD_HEIGHT, 0.0) *
-		RotateX(theta[Head1]) *
-		RotateY(theta[Head2]) *
-		Translate(0.0, -0.5*HEAD_HEIGHT, 0.0);
-	    break;
-
-	case LeftUpperArm:
-	    nodes[LeftUpperArm].transform = 
-		Translate(-(TORSO_WIDTH+UPPER_ARM_WIDTH),
-			  0.9*TORSO_HEIGHT, 0.0) *
-		RotateX(theta[LeftUpperArm]);
-	    break;
-
-	case RightUpperArm:
-	    nodes[RightUpperArm].transform = 
-		Translate(TORSO_WIDTH+UPPER_ARM_WIDTH, 0.9*TORSO_HEIGHT, 0.0) *
-		RotateX(theta[RightUpperArm]);
-	    break;
-
-	case RightUpperLeg:
-	    nodes[RightUpperLeg].transform = 
-		Translate(TORSO_WIDTH+UPPER_LEG_WIDTH,
-			  0.1*UPPER_LEG_HEIGHT, 0.0) *
-		RotateX(theta[RightUpperLeg]);
-	    break;
-
-	case LeftUpperLeg:
-	    nodes[LeftUpperLeg].transform = 
-		Translate(-(TORSO_WIDTH+UPPER_LEG_WIDTH),
-			  0.1*UPPER_LEG_HEIGHT, 0.0) *
-		RotateX(theta[LeftUpperLeg]);
-	    break;
-
-	case LeftLowerArm:
-	    nodes[LeftLowerArm].transform = 
-		Translate(0.0, UPPER_ARM_HEIGHT, 0.0) *
-		RotateX(theta[LeftLowerArm]);
-	    break;
-
-	case LeftLowerLeg:
-	    nodes[LeftLowerLeg].transform = 
-		Translate(0.0, UPPER_LEG_HEIGHT, 0.0) *
-		RotateX(theta[LeftLowerLeg]);
-	    break;
-
-	case RightLowerLeg:
-	    nodes[RightLowerLeg].transform =
-		Translate(0.0, UPPER_LEG_HEIGHT, 0.0) *
-		RotateX(theta[RightLowerLeg]);
-	    break;
-
-	case RightLowerArm:
-	    nodes[RightLowerArm].transform =
-		Translate(0.0, UPPER_ARM_HEIGHT, 0.0) *
-		RotateX(theta[RightLowerArm]);
-	    break;
+    if (angle == Head2)
+    {
+		nodes[Head1].transform = getJointTransformation(Head2);
+    } 
+    else
+    {
+		nodes[angle].transform = getJointTransformation(angle);
     }
-
-    model_view = mvstack.pop();
+    
+	model_view = mvstack.pop();
     glutPostRedisplay();
 }
+
 
 //----------------------------------------------------------------------------
 
@@ -477,48 +481,16 @@ reshape( int width, int height )
 void
 initNodes( void )
 {
-    mat4  m;
-    
-    m = RotateY( theta[Torso] );
-    nodes[Torso] = Node( m, torso, NULL, &nodes[Head1] );
-
-    m = Translate(0.0, TORSO_HEIGHT+0.5*HEAD_HEIGHT, 0.0) *
-	RotateX(theta[Head1]) *
-	RotateY(theta[Head2]);
-    nodes[Head1] = Node( m, head, &nodes[LeftUpperArm], NULL );
-
-    m = Translate(-(TORSO_WIDTH+UPPER_ARM_WIDTH), 0.9*TORSO_HEIGHT, 0.0) *
-	RotateX(theta[LeftUpperArm]);
-    nodes[LeftUpperArm] =
-	Node( m, left_upper_arm, &nodes[RightUpperArm], &nodes[LeftLowerArm] );
-
-    m = Translate(TORSO_WIDTH+UPPER_ARM_WIDTH, 0.9*TORSO_HEIGHT, 0.0) *
-	RotateX(theta[RightUpperArm]);
-    nodes[RightUpperArm] =
-	Node( m, right_upper_arm,
-	      &nodes[LeftUpperLeg], &nodes[RightLowerArm] );
-
-    m = Translate(-(TORSO_WIDTH+UPPER_LEG_WIDTH), 0.1*UPPER_LEG_HEIGHT, 0.0) *
-	RotateX(theta[LeftUpperLeg]);
-    nodes[LeftUpperLeg] =
-	Node( m, left_upper_leg, &nodes[RightUpperLeg], &nodes[LeftLowerLeg] );
-
-    m = Translate(TORSO_WIDTH+UPPER_LEG_WIDTH, 0.1*UPPER_LEG_HEIGHT, 0.0) *
-	RotateX(theta[RightUpperLeg]);
-    nodes[RightUpperLeg] =
-	Node( m, right_upper_leg, NULL, &nodes[RightLowerLeg] );
-
-    m = Translate(0.0, UPPER_ARM_HEIGHT, 0.0) * RotateX(theta[LeftLowerArm]);
-    nodes[LeftLowerArm] = Node( m, left_lower_arm, NULL, NULL );
-
-    m = Translate(0.0, UPPER_ARM_HEIGHT, 0.0) * RotateX(theta[RightLowerArm]);
-    nodes[RightLowerArm] = Node( m, right_lower_arm, NULL, NULL );
-
-    m = Translate(0.0, UPPER_LEG_HEIGHT, 0.0) * RotateX(theta[LeftLowerLeg]);
-    nodes[LeftLowerLeg] = Node( m, left_lower_leg, NULL, NULL );
-
-    m = Translate(0.0, UPPER_LEG_HEIGHT, 0.0) * RotateX(theta[RightLowerLeg]);
-    nodes[RightLowerLeg] = Node( m, right_lower_leg, NULL, NULL );
+    nodes[Torso] = Node( getJointTransformation(Torso), torso, NULL, &nodes[Head1] );
+    nodes[Head1] = Node( getJointTransformation(Head1), head, &nodes[LeftUpperArm], NULL );
+    nodes[LeftUpperArm] = Node( getJointTransformation(LeftUpperArm), left_upper_arm, &nodes[RightUpperArm], &nodes[LeftLowerArm] );
+    nodes[RightUpperArm] = Node( getJointTransformation(RightUpperArm), right_upper_arm, &nodes[LeftUpperLeg], &nodes[RightLowerArm] );
+    nodes[LeftUpperLeg] = Node( getJointTransformation(LeftUpperLeg), left_upper_leg, &nodes[RightUpperLeg], &nodes[LeftLowerLeg] );
+    nodes[RightUpperLeg] = Node( getJointTransformation(RightUpperLeg), right_upper_leg, NULL, &nodes[RightLowerLeg] );
+    nodes[LeftLowerArm] = Node( getJointTransformation(LeftLowerArm), left_lower_arm, NULL, NULL );
+    nodes[RightLowerArm] = Node( getJointTransformation(RightLowerArm), right_lower_arm, NULL, NULL );
+    nodes[LeftLowerLeg] = Node( getJointTransformation(LeftLowerLeg), left_lower_leg, NULL, NULL );
+    nodes[RightLowerLeg] = Node( getJointTransformation(RightLowerLeg), right_lower_leg, NULL, NULL );
 }
 
 //----------------------------------------------------------------------------
@@ -558,7 +530,7 @@ init( void )
     GLuint vColor = glGetAttribLocation( program, "vColor" );
     glEnableVertexAttribArray( vColor );
     glVertexAttribPointer( vColor, 4, GL_FLOAT, GL_FALSE, 0,
-			   BUFFER_OFFSET(points) );
+			   BUFFER_OFFSET(sizeof(points)) );
 
     ModelView = glGetUniformLocation( program, "ModelView" );
     Projection = glGetUniformLocation( program, "Projection" );

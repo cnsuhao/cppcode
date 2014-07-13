@@ -9,14 +9,11 @@ typedef GLfloat     point3[3];
 #include "vertices.h"
 #include "patches.h"
 
-const int NumTimesToSubdivide = 3;
-const int PatchesPerSubdivision = 4;
-const int NumQuadsPerPatch =
-    (int) pow( PatchesPerSubdivision, NumTimesToSubdivide );
-const int NumTriangles =
-    ( NumTeapotPatches * NumQuadsPerPatch * 2 /* triangles / quad */ );
-const int NumVertices =
-    ( NumTriangles * 3 /* vertices / triangle */ );
+#define NumTimesToSubdivide 3
+#define PatchesPerSubdivision 4
+#define NumQuadsPerPatch 1 * PatchesPerSubdivision * PatchesPerSubdivision * PatchesPerSubdivision
+#define NumTriangles ( NumTeapotPatches * NumQuadsPerPatch * 2 /* triangles / quad */ )
+#define NumVertices ( NumTriangles * 3 /* vertices / triangle */ )
 
 int     Index = 0;
 point4  points[NumVertices];
@@ -46,8 +43,10 @@ divide_curve( point4 c[4], point4 r[4], point4 l[4] )
     l[3] = r[0] = ( l[2] + r[1] ) / 2;
     
     for ( int i = 0; i < 4; ++i ) {
-	l[i].w = 1.0;
-	r[i].w = 1.0;
+		if (l[i].w != 1.0 || r[i].w != 1.0)
+		{
+			int a = 1;
+		}
     }
 }
 
@@ -118,17 +117,17 @@ void
 init( void )
 {
     for ( int n = 0; n < NumTeapotPatches; n++ ) {
-	point4  patch[4][4];
+		point4  patch[4][4];
 
-	// Initialize each patch's control point data
-	for ( int i = 0; i < 4; ++i ) {
-	    for ( int j = 0; j < 4; ++j ) {
-		point3& v = vertices[indices[n][i][j]];
-		patch[i][j] = point4( v[X], v[Y], v[Z], 1.0 );
-	    }
-	}
+		// Initialize each patch's control point data
+		for ( int i = 0; i < 4; ++i ) {
+			for ( int j = 0; j < 4; ++j ) {
+			point3& v = vertices[indices[n][i][j]];
+			patch[i][j] = point4( v[X], v[Y], v[Z], 1.0 );
+			}
+		}
 
-	// Subdivide the patch
+		// Subdivide the patch
         divide_patch( patch, NumTimesToSubdivide );
     }
 
