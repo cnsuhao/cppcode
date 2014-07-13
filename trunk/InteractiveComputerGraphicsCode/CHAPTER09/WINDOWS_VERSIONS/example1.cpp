@@ -69,24 +69,20 @@ bool repulsion = FALSE;          /* repulsion off */
 float coef = 1.0;                 /* perfectly elastic collisions */
 float d2[MAX_NUM_PARTICLES][MAX_NUM_PARTICLES];   /* array for interparticle distances */
 
-
 //----------------------------------------------------------------------------
 
 int Index = 0;
 
-void
-quad( int a, int b, int c, int d )
+void quad( int a, int b, int c, int d )
 {
-    colors[Index] = point_colors[0]; points[Index] = vertices[a]; Index++;
-    colors[Index] = point_colors[0]; points[Index] = vertices[b]; Index++;
-    colors[Index] = point_colors[0]; points[Index] = vertices[c]; Index++;
-    colors[Index] = point_colors[0]; points[Index] = vertices[d]; Index++;
+    point_colors[Index] = vertex_colors[a]; points[Index] = vertices[a]; Index++;
+    point_colors[Index] = vertex_colors[b]; points[Index] = vertices[b]; Index++;
+    point_colors[Index] = vertex_colors[c]; points[Index] = vertices[c]; Index++;
+    point_colors[Index] = vertex_colors[d]; points[Index] = vertices[d]; Index++;
 }
 
 //----------------------------------------------------------------------------
-
-void
-colorcube()
+void colorcube()
 {
     quad( 1, 0, 3, 2 );
     quad( 2, 3, 7, 6 );
@@ -96,26 +92,27 @@ colorcube()
     quad( 5, 4, 0, 1 );
 }
 
+void updateParticles(void)
+{
+	/* set up particles with random locations and velocities */
+	for (int i = 0; i < num_particles; i++ ) {
+		particles[i].mass = 1.0;
+		particles[i].color = i % NUM_COLORS;
+		for (int j = 0; j < 3; j++ ) {
+			particles[i].position[j] =
+				2.0 * ( ( float ) rand() / RAND_MAX ) - 1.0;
+			particles[i].velocity[j] =
+				speed * 2.0 * ( ( float ) rand() / RAND_MAX ) - 1.0;
+		}
+		particles[i].position[3] = 1.0;
+	}
+	glPointSize( point_size );
+}
+
 //----------------------------------------------------------------------------
-
-
-void
-init( void )
+void init( void )
 {
     colorcube();
-
-    /* set up particles with random locations and velocities */
-    for ( i = 0; i < num_particles; i++ ) {
-        particles[i].mass = 1.0;
-        particles[i].color = i % NUM_COLORS;
-        for ( j = 0; j < 3; j++ ) {
-            particles[i].position[j] =
-                2.0 * ( ( float ) rand() / RAND_MAX ) - 1.0;
-            particles[i].velocity[j] =
-                speed * 2.0 * ( ( float ) rand() / RAND_MAX ) - 1.0;
-        }
-        particles[i].position[3] = 1.0;
-    }
 
     // Create a vertex array object
     GLuint vao;
@@ -126,13 +123,13 @@ init( void )
     GLuint buffer;
     glGenBuffers( 1, &buffer );
     glBindBuffer( GL_ARRAY_BUFFER, buffer );
-    glBufferData( GL_ARRAY_BUFFER, sizeof(points) + sizeof(colors),
+    glBufferData( GL_ARRAY_BUFFER, sizeof(points) + sizeof(point_colors),
 		  NULL, GL_STATIC_DRAW );
     glBufferSubData( GL_ARRAY_BUFFER, 0, sizeof(points), points );
-    glBufferSubData( GL_ARRAY_BUFFER, sizeof(points), sizeof(colors), colors );
+    glBufferSubData( GL_ARRAY_BUFFER, sizeof(points), sizeof(point_colors), point_colors );
 
     // Load shaders and use the resulting shader program
-    GLuint program = initShader( "vshader91.glsl", "fshader91.glsl" );
+    GLuint program = InitShader( "vshader91.glsl", "fshader91.glsl" );
     glUseProgram( program );
 
     // set up vertex arrays
@@ -146,17 +143,25 @@ init( void )
     glVertexAttribPointer( vColor, 4, GL_FLOAT, GL_FALSE, 0,
 			   BUFFER_OFFSET(sizeof(points)) );
 
-    ModelView = glGetUniformLocation( program, "ModelView" );
-    Projection = glGetUniformLocation( program, "Projection" );
+    model_view_loc = glGetUniformLocation( program, "ModelView" );
+    projection_loc = glGetUniformLocation( program, "Projection" );
 
+	point4 eye = vec4( 1.5, 1.0, 1.0, 1.0 );
+	point4 at = vec4( 0.0, 0.0, 0.0, 1.0 );
+	vec4 up = vec4( 0.0, 1.0, 0.0, 1.0 );
+
+	projection = Ortho( -2.0, 2.0, -2.0, 2.0, -4.0, 4.0 );
+	model_view = LookAt( eye, at, up );
+
+	glUniformMatrix4fv( model_view_loc, 1, GL_TRUE, model_view );
+	glUniformMatrix4fv( projection_loc, 1, GL_TRUE, projection );
     glClearColor( 0.5, 0.5, 0.5, 1.0 );
-    glPointSize( point_size );
+
+	updateParticles();
 }
 
 //----------------------------------------------------------------------------
-
-float
-forces( int i, int j )
+float forces( int i, int j )
 {
     int k;
     float force = 0.0;
@@ -174,14 +179,10 @@ forces( int i, int j )
 }
 
 //----------------------------------------------------------------------------
-
-void
-collision( int n )
-
 /* tests for collisions against cube and reflect particles if necessary */
+void collision( int n )
 {
-    int
-        i;
+    int i;
     for ( i = 0; i < 3; i++ ) {
         if ( particles[n].position[i] >= 1.0 ) {
             particles[n].velocity[i] = -coef * particles[n].velocity[i];
@@ -197,16 +198,10 @@ collision( int n )
 }
 
 //----------------------------------------------------------------------------
-
-void
-idle( void )
+void idle( void )
 {
-    int
-        i,
-        j,
-        k;
-    float
-        dt;
+    int i, j, k;
+    float dt;
     present_time = glutGet( GLUT_ELAPSED_TIME );
     dt = 0.001 * ( present_time - last_time );
     for ( i = 0; i < num_particles; i++ ) {
@@ -233,9 +228,7 @@ idle( void )
 }
 
 //----------------------------------------------------------------------------
-
-void
-menu( int option )
+void menu( int option )
 {
     switch ( option ) {
 	case 1:
@@ -282,29 +275,27 @@ menu( int option )
             break;
     }
 
-    init();
+	updateParticles();
 
     glutPostRedisplay();
 }
 
 //----------------------------------------------------------------------------
-
-void
-display( void )
+void display( void )
 {
     glClear( GL_COLOR_BUFFER_BIT );
 
-    for ( i = 0; i < num_particles; i++ ) {
-        point_colors[i + 24] = colors[particles[i].color];
+    for (int i = 0; i < num_particles; i++ ) {
+        point_colors[i + 24] = point_colors[particles[i].color];
         // particles[i].position[3] = 1.0;
         points[i + 24] = particles[i].position;
     }
 
-	 glBufferSubData( GL_ARRAY_BUFFER, 0, sizeof(points), points );
-	 glBufferSubData( GL_ARRAY_BUFFER, sizeof(points), sizeof(point_colors), point_colors );
+    glBufferSubData( GL_ARRAY_BUFFER, 0, sizeof(points), points );
+    glBufferSubData( GL_ARRAY_BUFFER, sizeof(points), sizeof(point_colors), point_colors );
 
     glDrawArrays( GL_POINTS, 24, num_particles );
-    for ( i = 0; i < 6; i++ )
+    for (int i = 0; i < 6; i++ )
         glDrawArrays( GL_LINE_LOOP, i * 4, 4 );
     glutSwapBuffers();
 }
@@ -315,16 +306,7 @@ void
 reshape( int width, int height )
 {
     glViewport( 0, 0, width, height );
-    
-    point4 eye = vec4( 1.5, 1.0, 1.0, 1.0 );
-    point4 at = vec4( 0.0, 0.0, 0.0, 1.0 );
-    vec4 up = vec4( 0.0, 1.0, 0.0, 1.0 );
 
-    projection = ortho( -2.0, 2.0, -2.0, 2.0, -4.0, 4.0 );
-    model_view = lookat( eye, at, up );
-
-    glUniformMatrix4fv( ModelView, 1, GL_TRUE, model_view );
-    glUniformMatrix4fv( Projection, 1, GL_TRUE, projection );
 }
 
 //----------------------------------------------------------------------------

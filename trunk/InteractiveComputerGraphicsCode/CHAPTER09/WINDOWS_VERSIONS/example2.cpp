@@ -8,6 +8,7 @@
 #ifdef USER_INPUT
 // Include the C++ iostreams classes for use when collecting user input
 #include <iostream>
+using namespace std;
 #endif 
 
 #include "Angel.h"
@@ -42,7 +43,7 @@ float height = HEIGHT;          /* size of window in complex plane */
 float width = WIDTH;
 float cx = CENTERX;             /* center of window in complex plane */
 float cy = CENTERY;
-int max = MAX_ITER;             /* number of interations per point */
+int maxIter = MAX_ITER;             /* number of interations per point */
 
 int n = N;
 int m = M;
@@ -53,7 +54,7 @@ GLfloat image[N][M][3];
 
 void
 init( void )
-{
+{ 
 #ifdef USER_INPUT
     // Collect user input to initialize program parameters
     cout << "Enter the center X coordinate: ";
@@ -63,7 +64,7 @@ init( void )
     cout << "Enter the window's width: ";
     cin >> width;
     cout << "Enter the maximum number of iterations: ";
-    cin >> max;
+    cin >> maxIter;
 #endif
 
     for ( int i = 0; i < N; i++ )
@@ -72,15 +73,15 @@ init( void )
             float x = i * ( width / (n - 1) ) + cx - width / 2;
             float y = j * ( height / ( m - 1 ) ) + cy - height / 2;
 
-	    Complex c( 0.0, 0.0 );
-	    Complex p( x, y );
+			Complex c( 0.0, 0.0 );
+			Complex p( x, y );
 
-	    float  v;
-            for ( int k = 0; k < max; k++ ) {
-		// compute c = c^2 + p
-		c *= c;
-		c += p;
-		v = norm( c );
+			float  v;
+            for ( int k = 0; k < maxIter; k++ ) {
+				// compute c = c^2 + p
+				c *= c;
+				c += p;
+				v = norm( c );
                 if ( v > 4.0 )
                     break;      /* assume not in set if mag > 4 */
             }
@@ -91,10 +92,10 @@ init( void )
             if ( v > 1.0 )
                 v = 1.0;        /* clamp if > 1 */
             image[i][j][0] = v;
-            image[i][j][1] = Random();
+            // image[i][j][1] = Random();
             image[i][j][1] = 2.0 * sin( v ) - 1.0;
             image[i][j][2] = 1.0 - v;
-        }
+	}
 
     glActiveTexture( GL_TEXTURE0 );
     GLuint  texture;
@@ -118,12 +119,12 @@ init( void )
     glBindBuffer( GL_ARRAY_BUFFER, buffer );
 
     point4 points[6] = {
-	point4( 0.0, 0.0, 0.0, 1.0 ),
-	point4( 0.0, 1.0, 0.0, 1.0 ),
-	point4( 1.0, 1.0, 0.0, 1.0 ),
-	point4( 1.0, 1.0, 0.0, 1.0 ),
-	point4( 1.0, 0.0, 0.0, 1.0 ),
-	point4( 0.0, 0.0, 0.0, 1.0 )
+		point4( 0.0, 0.0, 0.0, 1.0 ),
+		point4( 0.0, 1.0, 0.0, 1.0 ),
+		point4( 1.0, 1.0, 0.0, 1.0 ),
+		point4( 1.0, 1.0, 0.0, 1.0 ),
+		point4( 1.0, 0.0, 0.0, 1.0 ),
+		point4( 0.0, 0.0, 0.0, 1.0 )
     };
 
     glBufferData( GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW );

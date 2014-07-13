@@ -47,7 +47,7 @@ class MatrixStack {
     ~MatrixStack()
 	{ delete[]_matrices; }
 
-    mat4& push( const mat4& m ) {
+    void push( const mat4& m ) {
         assert( _index + 1 < _size );
         _matrices[_index++] = m;
     }
@@ -122,11 +122,11 @@ void
 quad( int a, int b, int c, int d )
 {
     colors[Index] = vertex_colors[a]; points[Index] = vertices[a]; Index++;
-    colors[Index] = vertex_colors[a]; points[Index] = vertices[b]; Index++;
-    colors[Index] = vertex_colors[a]; points[Index] = vertices[c]; Index++;
+    colors[Index] = vertex_colors[b]; points[Index] = vertices[b]; Index++;
+    colors[Index] = vertex_colors[c]; points[Index] = vertices[c]; Index++;
     colors[Index] = vertex_colors[a]; points[Index] = vertices[a]; Index++;
-    colors[Index] = vertex_colors[a]; points[Index] = vertices[c]; Index++;
-    colors[Index] = vertex_colors[a]; points[Index] = vertices[d]; Index++;
+    colors[Index] = vertex_colors[c]; points[Index] = vertices[c]; Index++;
+    colors[Index] = vertex_colors[d]; points[Index] = vertices[d]; Index++;
 }
 
 void
@@ -463,7 +463,7 @@ init( void )
     GLuint vColor = glGetAttribLocation( program, "vColor" );
     glEnableVertexAttribArray( vColor );
     glVertexAttribPointer( vColor, 4, GL_FLOAT, GL_FALSE, 0,
-			   BUFFER_OFFSET(points) );
+			   BUFFER_OFFSET(sizeof(points)) );
 
     ModelView = glGetUniformLocation( program, "ModelView" );
     Projection = glGetUniformLocation( program, "Projection" );
