@@ -13,7 +13,6 @@ Contents:
    
    MyGUI Engine <engine/engine>
 
-
 Indices and tables
 ==================
 
