@@ -3,7 +3,7 @@ ScrollView
 
 *ScrollView*\ 封装了滚动区域的基本功能，继承关系如下:
 
-.. image:: ButterflyGraph-ScrollView.png
+.. image:: /images/ButterflyGraph-ScrollView.png
 
 *ScrollView*\ 的皮肤中至少需要三个控件，类型和名字如下::
 
