@@ -3,7 +3,7 @@ ScrollViewBase
 
 *ScrollViewBase*\ 代表滚动区域，继承关系如下:
 
-.. image:: ButterflyGraph-ScrollViewBase.png
+.. image:: /images/ButterflyGraph-ScrollViewBase.png
 
 *ScrollViewBase*\ 包含三个子控件，构成滚动区域::
 
