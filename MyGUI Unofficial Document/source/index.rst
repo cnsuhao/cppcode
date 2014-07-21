@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
    
    MyGUI Engine <engine/engine>
+   Editor <editor/editor>
 
 Indices and tables
 ==================
