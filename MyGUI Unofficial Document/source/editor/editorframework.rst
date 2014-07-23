@@ -9,3 +9,4 @@ Editor Framework
 	DataType和DataTypeManager <editorframework/datatype>
 	Data和DataManager <editorframework/data>
 	IExportSerializer <editorframework/iexportserializer>
+	CommandManager <editorframework/commandmanager>
