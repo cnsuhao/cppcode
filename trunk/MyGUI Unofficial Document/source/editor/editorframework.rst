@@ -10,3 +10,7 @@ Editor Framework
 	Data和DataManager <editorframework/data>
 	IExportSerializer <editorframework/iexportserializer>
 	CommandManager <editorframework/commandmanager>
+	ColourPanel <editorframework/colourpanel>
+	ColourManager <editorframework/ColourManager>
+	PropertyFieldColour <editorframework/PropertyFieldColour>
+	PropertyControl <editorframework/propertycontrol>
