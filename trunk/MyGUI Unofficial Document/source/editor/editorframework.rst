@@ -14,3 +14,4 @@ Editor Framework
 	ColourManager <editorframework/ColourManager>
 	PropertyFieldColour <editorframework/PropertyFieldColour>
 	PropertyControl <editorframework/propertycontrol>
+	IFactory、IFactoryItem和FactoryManager <editorframework/ifactory>
