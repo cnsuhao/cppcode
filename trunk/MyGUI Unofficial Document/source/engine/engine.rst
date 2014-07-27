@@ -6,3 +6,4 @@ MyGUI Engine
 
    ScrollViewBase <scrollviewbase>
    ScrollView <scrollview>
+   资源加载 <LoadResource>
