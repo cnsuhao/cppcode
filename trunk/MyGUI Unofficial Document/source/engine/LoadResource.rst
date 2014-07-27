@@ -14,12 +14,14 @@ ResourceManager
     bool load(const std::string& _file);
     bool _loadImplement(const std::string& _file, bool _match, const std::string& _type, const std::string& _instance);
 
-读取\ **xml**\ 文件时，根据属性\ **type**\ 的值查找\ ``MapLoadXmlDelegate mMapLoadXmlDelegate;``\ ，执行相应的加载函数，例如这两个函数::
+读取\ **xml**\ 文件时，根据结点\ **MyGUI**\ 的属性\ **type**\ 的值查找\ ``MapLoadXmlDelegate mMapLoadXmlDelegate;``\ ，
+执行相应的加载函数，例如这两个函数::
 
-    void loadFromXmlNode(xml::ElementPtr _node, const std::string& _file, Version _version);
+    void loadFromXmlNode(xml::ElementPtr _node, const std::string& _file, Version _version); //
     void _loadList(xml::ElementPtr _node, const std::string& _file, Version _version);
 
 这些函数大多通过调用\ *ISerializable*\ 中的函数\ ``virtual void deserialization(xml::ElementPtr _node, Version _version) { }``\ 加载资源。
+在\ ``loadFromXmlNode``\ 解析xml的过程中，根据Resource结点的属性type生成
 
 .. hint:: 查找\ ``LoadXmlDelegate& registerLoadXmlDelegate(const std::string& _key);``\ 的引用，结合\ :file:`Media/MyGUI_Media/MyGUI_Core.xml`\ 理解\ *ResourceManager*\ 的资源加载机制。
 
