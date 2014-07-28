@@ -8,6 +8,7 @@ Editor Framework
 	UndoManager <editorframework/undomanager>
 	DataType和DataTypeManager <editorframework/datatype>
 	Data和DataManager <editorframework/data>
+	Dialog和DialogManager <editorframework/Dialog>
 	IExportSerializer <editorframework/iexportserializer>
 	CommandManager <editorframework/commandmanager>
 	ColourPanel <editorframework/colourpanel>
