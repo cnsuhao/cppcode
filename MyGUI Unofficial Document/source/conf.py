@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# MyGUI Unofficial Document documentation build configuration file, created by
+# HeHe's Document documentation build configuration file, created by
 # sphinx-quickstart on Sun Jul 06 17:54:37 2014.
 #
 # This file is execfile()d with the current directory set to its
@@ -43,7 +43,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'MyGUI Unofficial Document'
+project = u'HeHe\'s Document'
 copyright = u'2014, Liang Chen'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -176,7 +176,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'MyGUIUnofficialDocumentdoc'
+htmlhelp_basename = 'HeHe\'sDocumentdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -196,7 +196,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'MyGUIUnofficialDocument.tex', u'MyGUI Unofficial Document Documentation',
+  ('index', 'HeHe\'sDocument.tex', u'HeHe\'s Documentation',
    u'Liang Chen', 'manual'),
 ]
 
@@ -226,7 +226,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'myguiunofficialdocument', u'MyGUI Unofficial Document Documentation',
+    ('index', 'hehe\'sdocument', u'HeHe\'s Documentation',
      [u'Liang Chen'], 1)
 ]
 
@@ -240,8 +240,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'MyGUIUnofficialDocument', u'MyGUI Unofficial Document Documentation',
-   u'Liang Chen', 'MyGUIUnofficialDocument', 'One line description of project.',
+  ('index', 'HeHe\'sDocument', u'HeHe\'s Documentation',
+   u'Liang Chen', 'HeHe\'sDocument', 'One line description of project.',
    'Miscellaneous'),
 ]
 
