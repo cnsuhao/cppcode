@@ -11,4 +11,4 @@ Contents:
 .. toctree::
    :maxdepth: 2
    
-   坑爹 <warnings/warnings>
+   Warnings <warnings/warnings>
