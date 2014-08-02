@@ -11,8 +11,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
    
-   MyGUI <MyGUI/index>
-   Unreal Engine 3 <UE3/index>
+   MyGUI <MyGUI/MyGUI>
+   Unreal Engine 3 <UE3/UE3>
    
 Indices and tables
 ==================
