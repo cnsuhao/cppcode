@@ -9,3 +9,4 @@
 	修改MyGUI后最好彻底重编NoahCore <RebuildNoahCore>
 	MyGUI_DelegateImplement.h中的问题 <delegatProblem>
 	MyTexturePacker <MyTexturePacker>
+	皮肤的状态 <SkinStates>
