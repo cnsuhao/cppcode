@@ -9,7 +9,7 @@ Welcome to HeHe's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    
    MyGUI <MyGUI/MyGUI>
    Unreal Engine 3 <UE3/UE3>
