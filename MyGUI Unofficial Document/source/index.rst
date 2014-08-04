@@ -13,6 +13,7 @@ Contents:
    
    MyGUI <MyGUI/MyGUI>
    Unreal Engine 3 <UE3/UE3>
+   ROG Game <ROG/ROG>
    
 Indices and tables
 ==================

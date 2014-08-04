@@ -1,5 +1,4 @@
-
-Unreal Engine 3 Documentation
+ROG Game Documentation
 =====================================================
 
 Contents:
