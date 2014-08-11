@@ -18,3 +18,4 @@ Editor Framework
 	IFactory、IFactoryItem和FactoryManager <editorframework/ifactory>
 	StateManager和StateController <editorframework/StateController>
 	SettingsManager <editorframework/SettingsManager>
+	HotKeyManager <editorframework/HotKeyManager>
