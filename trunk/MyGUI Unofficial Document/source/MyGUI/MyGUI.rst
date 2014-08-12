@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
    
    MyGUI Engine <engine/engine>
+   OgrePlatform <OgrePlatform/OgrePlatform>
    Common <Common/Common>
    Editor <editor/editor>
    注意事项 <tips/tips>
