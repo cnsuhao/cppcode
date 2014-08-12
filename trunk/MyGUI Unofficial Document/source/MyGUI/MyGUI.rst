@@ -12,5 +12,6 @@ Contents:
    :maxdepth: 2
    
    MyGUI Engine <engine/engine>
+   Common <Common/Common>
    Editor <editor/editor>
    注意事项 <tips/tips>
