@@ -21,7 +21,7 @@ ResourceManager
     void _loadList(xml::ElementPtr _node, const std::string& _file, Version _version);
 
 这些函数大多通过调用\ *ISerializable*\ 中的函数\ ``virtual void deserialization(xml::ElementPtr _node, Version _version) { }``\ 加载资源。
-在\ ``loadFromXmlNode``\ 解析xml的过程中，根据Resource结点的属性type生成
+在\ ``loadFromXmlNode``\ 执行过程中，根据\ *Resource*\ 结点的属性\ **type**\ 调用相应的函数解析\ **xml**\ 。
 
 .. hint:: 查找\ ``LoadXmlDelegate& registerLoadXmlDelegate(const std::string& _key);``\ 的引用，结合\ :file:`Media/MyGUI_Media/MyGUI_Core.xml`\ 理解\ *ResourceManager*\ 的资源加载机制。
 

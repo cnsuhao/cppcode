@@ -9,3 +9,4 @@ Contents:
 
     WidgetSelectorManager <LayoutEditor/WidgetSelectorManager>
     GridManager <LayoutEditor/GridManager>
+    WidgetCreatorManager <LayoutEditor/WidgetCreatorManager>
