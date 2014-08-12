@@ -9,3 +9,4 @@ MyGUI Engine
    资源加载 <LoadResource>
    LanguageManager <LanguageManager>
    MyGUI::IPointer <IPointer>
+   MyGUI::PointerManager <PointerManager>
