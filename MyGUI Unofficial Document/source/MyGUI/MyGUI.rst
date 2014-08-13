@@ -11,7 +11,6 @@ Contents:
 .. toctree::
    :maxdepth: 3
    
-   OgrePlatform <OgrePlatform/OgrePlatform>
    MyGUI Engine <engine/engine>
    OgrePlatform <OgrePlatform/OgrePlatform>
    Common <Common/Common>

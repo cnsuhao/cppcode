@@ -40,7 +40,7 @@ MyGUI::ITexture
 
 .. seealso:: 
 
-	:doc:`../OgrePlatform/OgreTexture`
+	:ref:`OgreTexture <OgrePlatform-OgreTexture>`
 		\ 
 
 

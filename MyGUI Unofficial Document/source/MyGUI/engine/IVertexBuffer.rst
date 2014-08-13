@@ -11,5 +11,5 @@ MyGUI::IVertexBuffer
 
 .. seealso:: 
 
-	:doc:`../OgrePlatform/OgreVertexBuffer`
+	:ref:`OgreVertexBuffer <OgrePlatform-OgreVertexBuffer>`
 		\ 
