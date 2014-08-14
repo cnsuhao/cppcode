@@ -7,3 +7,4 @@ Contents:
    :maxdepth: 2
    
    Warnings <warnings/warnings>
+   GM <GM>

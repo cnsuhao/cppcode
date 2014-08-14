@@ -49,7 +49,7 @@ SVN
 
 * 安装\ :file:`TortoiseSVN-1.8.7.25475-x64-svn-1.8.9.msi`\ ,\ **commandline tool**\ 最好也装上。
   
-.. image:: /images/svnsettings.png
+	.. image:: /images/svnsettings.png
 
 CMake
 -----
@@ -94,9 +94,6 @@ Redmine
 * 选择被指派的问题，如果已经完成，将\ **状态**\ 改为\ **Resolved**\ ，完成改为\ **100%**\ ，添加适当的说明，然后提交。
 
 .. image:: /images/RedmineCommit.png
-   :width: 1105
-   :height: 652
-   :scale: 75%
 
 ReviewBoard
 -----------
@@ -108,19 +105,13 @@ ReviewBoard
 	* Diff：选择我们生成的patch包。
 
 .. image:: /images/reviewboardnew.png
-   :width: 892
-   :height: 393
-   :scale: 75%
-   
+
 * **post-review Publish**\ 编辑页面
 	* Summary:：填写\ **post-review**\ 的标题，比如卡牌导出重构。 
 	* Description：填写\ **post-review**\ 的详细内容，比如卡牌导出重构。
 	* Reviewers：栏目下有两个选项\ **Groups**\ (输入\ **kukuhero**\ )和\ **People**\ (输入\ **Reviewer**\ 名字)，编辑完毕后点击\ **publish**\ 。
 
 .. image:: /images/reviewboardpublish.png 
-   :height: 397
-   :width: 1165
-   :scale: 75%
 
 RTX
 ---
@@ -148,7 +139,7 @@ SublimeText
 -----------
 
 * Check代码\ **http://code.taobao.org/svn/mystplugins/trunk**\ 到\ :file:`Sublime Text 2\Packages`
-* 注册\ **grepwin**\ : C:/Program Files/Sublime Text 2/sublime_text.exe %path%:%line%
+* 注册\ **grepwin**\ : C:/Program Files/Sublime Text 2/sublime_text.exe "%path%:%line%"
 * 检查\ **vim**\ 和\ **layouteditor**\ 的路径
 
 UnderStand
