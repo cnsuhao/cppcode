@@ -27,7 +27,7 @@ VS2010
 * 安装\ :file:`VS2010SP1dvd1.iso`
 * 输入cdkey: **YCFHQ 9DWCY DKV88 T2TMH G7BHP**
 
-.. image:: /images/vs2010register.png
+	.. image:: /images/vs2010register.png
 
 Visual Assist
 -------------
@@ -48,7 +48,7 @@ Incredibuild
 * 安装\ :file:`incredibuild5_0_crack.exe`
 * 设置ip: **10.235.2.50**
   
-.. image:: /images/IncredibuildSettings.png
+	.. image:: /images/IncredibuildSettings.png
 
 SVN
 ---
@@ -62,7 +62,7 @@ CMake
 
 * 安装\ :file:`cmake-2.8.12.1-win32-x86.exe`\ ,\ 按照下图设置:
 
-.. image:: /images/cmakesettings.png
+	.. image:: /images/cmakesettings.png
 
 .. note:: 使用CMake过程中遇到任何问题请\ **RTX**\ 找\ *陈亮(chenliang3)*\ 。
 
@@ -95,11 +95,11 @@ Redmine
 * 新员工需要注册，注册后在\ **RTX**\ 上找\ *范永泉(FanYongquan)*\ 审核通过
 * 登陆后，打开窗口左上角\ **我的工作台**\ ,查看自己的任务
 
-.. image:: /images/Redmine.png
+	.. image:: /images/Redmine.png
 
 * 选择被指派的问题，如果已经完成，将\ **状态**\ 改为\ **Resolved**\ ，完成改为\ **100%**\ ，添加适当的说明，然后提交。
 
-.. image:: /images/RedmineCommit.png
+	.. image:: /images/RedmineCommit.png
 
 ReviewBoard
 -----------
@@ -110,29 +110,29 @@ ReviewBoard
 	* Base Directory：用SVN生成patch包的相对路径,例如\ :file:`Client/Engine`
 	* Diff：选择我们生成的patch包。
 
-.. image:: /images/reviewboardnew.png
+	.. image:: /images/reviewboardnew.png
 
 * **post-review Publish**\ 编辑页面
 	* Summary:：填写\ **post-review**\ 的标题，比如卡牌导出重构。 
 	* Description：填写\ **post-review**\ 的详细内容，比如卡牌导出重构。
 	* Reviewers：栏目下有两个选项\ **Groups**\ (输入\ **kukuhero**\ )和\ **People**\ (输入\ **Reviewer**\ 名字)，编辑完毕后点击\ **publish**\ 。
 
-.. image:: /images/reviewboardpublish.png 
+	.. image:: /images/reviewboardpublish.png 
 
 RTX
 ---
 
-.. image:: /images/rtxsetting.png
+	.. image:: /images/rtxsetting.png
 
 FoxMail
 -------
 
-.. image:: /images/foxmailsettings.png
+	.. image:: /images/foxmailsettings.png
 
 Wifi
 ----
 
-.. image:: /images/Wifi.png
+	.. image:: /images/Wifi.png
 
 Vim
 ---
@@ -174,5 +174,5 @@ Windows
   
 * 关掉最大化、最小化窗口的动画效果
   
-.. image:: /images/WindowsSetting-MinMax.png
+	.. image:: /images/WindowsSetting-MinMax.png
 
