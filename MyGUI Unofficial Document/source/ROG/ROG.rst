@@ -6,5 +6,5 @@ Contents:
 .. toctree::
    :maxdepth: 2
    
-   Warnings <warnings/warnings>
+   Warnings <warnings>
    GM <GM>
