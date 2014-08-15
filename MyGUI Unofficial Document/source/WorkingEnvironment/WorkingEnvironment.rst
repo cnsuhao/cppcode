@@ -36,6 +36,12 @@ Visual Assist
 * 复制\ :file:`Visual+Assist+X+10.7.1949.0汉化破解补丁/*.dll`\ 到
   :file:`C:\Users\(系统用户名)\AppData\Local\Microsoft\VisualStudio\10.0\Extensions\Whole Tomato Software\Visual Assist X\10.7.1949.0`
 
+* **Tools->Options->Text Editor->File Extension**\ 中添加\ **.uc**
+
+    .. image:: /images/uc_extension.jpg
+
+* 下载运行\ :download:`UCForVa.reg`\ 。
+  
 Incredibuild
 ------------
 
