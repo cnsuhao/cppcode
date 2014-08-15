@@ -1,15 +1,15 @@
 OgrePlatform
 ============
 
-:file:`OgrePlatform`\ 文件夹下的源文件实现了\ :doc:`../engine/engine`\ 中的几个抽象类:
+:file:`OgrePlatform`\ 文件夹下的源文件实现了\ :doc:`../engine/engine`\ 中的五个抽象类:
 
-* *OgreDataManager*\ 实现了\ :doc:`../engine/DataManager`\ ，用于查找和加载资源
-* *OgreDataStream*\ 实现了\ :doc:`../engine/IDataStream`\ ,用于加载资源时读字节流
-* :ref:`OgreVertexBuffer <OgrePlatform-OgreVertexBuffer>`\ 实现了\ :doc:`../engine/IVertexBuffer`\ ，用于写顶点数据
-* :ref:`OgreTexture <OgrePlatform-OgreTexture>`\ 实现了\ :doc:`../engine/ITexture`
-* *OgreRTTexture*\ 实现了\ :doc:`../engine/IRenderTarget`\ ，将一个\ *Ogre::Texture*\ 作为渲染的目标，为它添加一个\ 
+* *OgreDataManager*\ 实现了\ :ref:`MyGUI::DataManager <myguiengine-DataManager>`\ ，用于查找和加载资源
+* *OgreDataStream*\ 实现了\ :ref:`MyGUI::IDataStream <myguiengine-IDataStream>`\ ,用于加载资源时读字节流
+* :ref:`OgreVertexBuffer <OgrePlatform-OgreVertexBuffer>`\ 实现了\ :ref:`MyGUI::IVertexBuffer <myguiengine-IVertexBuffer>`\ ，用于写顶点数据
+* :ref:`OgreTexture <OgrePlatform-OgreTexture>`\ 实现了\ :ref:`MyGUI::ITexture <myguiengine-ITexture>`
+* *OgreRTTexture*\ 实现了\ :ref:`MyGUI::IRenderTarget <myguiengine-IRenderTarget>`\ ，将一个\ *Ogre::Texture*\ 作为渲染的目标，为它添加一个\ 
   *ViewPort*\ ,并注册到\ *Ogre::RenderSystem*\ 。
-* :ref:`OgreRenderManager <OgrePlatform-OgreRenderManager>`\ 实现了\ :doc:`../engine/IRenderTarget`\ ，
+* :ref:`OgreRenderManager <OgrePlatform-OgreRenderManager>`\ 实现了\ :ref:`MyGUI::IRenderTarget <myguiengine-IRenderTarget>`\ ，
 
 
 类\ *OgrePlatform*\ 主要用于\ :doc:`../editor/editor`\ :
@@ -31,7 +31,7 @@ OgrePlatform
 OgreRenderManager
 ~~~~~~~~~~~~~~~~~
 
-*OgreRenderManager*\ 不仅是\ :doc:`../engine/IRenderTarget`\ 的子类:
+*OgreRenderManager*\ 不仅是\ :ref:`MyGUI::IRenderTarget <myguiengine-IRenderTarget>`\ 的子类:
 
 .. image:: /images/ButterflyGraph-OgreRenderManager.png
 
@@ -51,7 +51,7 @@ OgreRenderManager
 OgreTexture
 ~~~~~~~~~~~
 
-实现了\ :doc:`../engine/ITexture`\ ,同时还是\ *Ogre::ManualResourceLoader*\ 的子类::
+实现了\ :ref:`MyGUI::ITexture <myguiengine-ITexture>`\ ,同时还是\ *Ogre::ManualResourceLoader*\ 的子类::
 
 	//将MyGUI中的PixelFormat和TextureUsage转换为Ogre中的对应类型
 	static Ogre::TextureUsage convertUsage(TextureUsage _usage);
@@ -65,7 +65,7 @@ OgreTexture
 
 .. seealso:: 
 
-	:doc:`../engine/ITexture`
+	:ref:`MyGUI::ITexture <myguiengine-ITexture>`
 		\ 
 
 .. _OgrePlatform-OgreVertexBuffer:
@@ -73,7 +73,7 @@ OgreTexture
 OgreVertexBuffer
 ~~~~~~~~~~~~~~~~
 
-实现了\ :doc:`../engine/IVertexBuffer`\ ，存储顶点数据及其格式，用于后续的渲染:
+实现了\ :ref:`MyGUI::IVertexBuffer <myguiengine-IVertexBuffer>`\ ，存储顶点数据及其格式，用于后续的渲染:
 
 * ``Ogre::RenderOperation mRenderOperation;``\ :定义渲染的方式
 	* ``mRenderOperation.vertexData->vertexDeclaration``\ : 顶点数据的格式
