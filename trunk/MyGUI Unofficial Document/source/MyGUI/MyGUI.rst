@@ -15,4 +15,4 @@ Contents:
    OgrePlatform <OgrePlatform/OgrePlatform>
    Common <Common/Common>
    Editor <editor/editor>
-   注意事项 <tips/tips>
+   Tips <tips>
