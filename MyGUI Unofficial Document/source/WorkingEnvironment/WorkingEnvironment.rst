@@ -66,8 +66,6 @@ CMake
 
 .. note:: 使用CMake过程中遇到任何问题请\ **RTX**\ 找\ *陈亮(chenliang3)*\ 。
 
-
-
 项目代码
 --------
 
@@ -145,7 +143,7 @@ SublimeText
 -----------
 
 * Check代码\ **http://code.taobao.org/svn/mystplugins/trunk**\ 到\ :file:`Sublime Text 2\Packages`
-* 注册\ **grepwin**\ : C:/Program Files/Sublime Text 2/sublime_text.exe "%path%:%line%"
+* 注册\ **grepwin**\ : ``C:/Program Files/Sublime Text 2/sublime_text.exe "%path%:%line%"``
 * 检查\ **vim**\ 和\ **layouteditor**\ 的路径
 
 UnderStand

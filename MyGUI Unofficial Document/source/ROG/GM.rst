@@ -12,50 +12,29 @@ Commands
 ~~~~~~~~
 
 * 游戏内\ :kbd:`~`\ 键开启
-* :kbd:`|`\ 右边是缩写，参数的取值如下:
+* 下表中参数的取值如下:
 	* **[pos]**\ 是操作者的位置,1v1 为 0 1  3v3 为 0 1 2 3 4 5
 	* **[index]**\ 是单位的位置,0 - 主英雄 1 - 第一个护卫 2 - 第二个
 	* **[depleteid]** (1:粮食 2:金币 3:宝石)
 	* **[suit]** (1:太阳 2:月亮 3:星星)
 
-* addcard | ac [pos] [depleteid]
-    增加一张手牌
-
-* additem | ai [pos] [cardid]
-    增加一张道具
-
-* addequip | ae [pos] [cardid]
-    增加一张装备
-
-* refreshhero | rh
-    刷新备选英雄	
-
-* judgecardsuit | jcs [index] [suit]
-    设置判断花色
-
-* addhp | ah [pos] [index] [hp]	
-    增加血量
-
-* addattack | aa [pos] [index] [att]	
-    增加攻击
-
-* addrange | ar [pos] [index] [range]
-    增加范围
-
-* resetaction | ra [pos] [index]
-    刷新行动
-
-* resettime | rt [time]
-    重置行动时间，单位秒
-
-* createhero | ch [pos] [heroid]
-    召唤魂石
-
-* dismisshero | dh [pos] [heroid]
-    解散魂石
-
-* finishbattle | fb [force]
-    结束战斗 force 0 GOD胜利 1 失败 先手为GOD
+===================     =====================   =========================================
+命令|缩写               参数                    作用
+===================     =====================   =========================================
+addcard | ac            [pos] [depleteid]       增加一张手牌
+additem | ai            [pos] [cardid]          增加一张道具
+addequip | ae           [pos] [cardid]          增加一张装备
+refreshhero | rh                                刷新备选英雄	
+judgecardsuit | jcs     [index] [suit]          设置判断花色
+addhp | ah              [pos] [index] [hp]	加血量
+addattack | aa          [pos] [index] [att]	加攻击
+addrange | ar           [pos] [index] [range]   增加范围
+resetaction | ra        [pos] [index]           刷新行动
+resettime | rt          [time]                  重置行动时间，单位秒
+createhero | ch         [pos] [heroid]          召唤魂石
+dismisshero | dh        [pos] [heroid]          解散魂石
+finishbattle | fb       [force]                 结束战斗 force 0 GOD胜利 1 失败 先手为GOD
+===================     =====================   =========================================
 
 卡牌id对照表
 ~~~~~~~~~~~~
