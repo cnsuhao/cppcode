@@ -1,7 +1,7 @@
 OgrePlatform
 ============
 
-:file:`OgrePlatform`\ 文件夹下的源文件实现了\ :doc:`../engine/engine`\ 中的五个抽象类:
+:file:`OgrePlatform`\ 文件夹下的源文件实现了\ :doc:`../engine/engine`\ 中的五个\ :doc:`../engine/AbstractClasses`\ :
 
 * *OgreDataManager*\ 实现了\ :ref:`MyGUI::DataManager <myguiengine-DataManager>`\ ，用于查找和加载资源
 * *OgreDataStream*\ 实现了\ :ref:`MyGUI::IDataStream <myguiengine-IDataStream>`\ ,用于加载资源时读字节流
