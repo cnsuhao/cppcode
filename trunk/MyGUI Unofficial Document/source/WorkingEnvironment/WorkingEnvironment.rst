@@ -153,7 +153,7 @@ UnderStand
 * **General**\ 中关掉\ **splash-screen**
 * **User Interface->Windows**\ 中打开\ **Visit result in editor ...**
 * **Key Bindings**\ 中查找\ **Close**\ 改为\ **Ctrl+W, Ctrl+W**
-* **Editor**\ 中选中\ **Automactcally Reload ...**\ 和\ **Show Indent Guide**
+* **Editor**\ 中选中\ **Automactcally Reload ...**\ 和\ **Show Indent Guide**\ 取消\ **Expand/Collapse code snippet ...**
 
 Visual Studio
 -------------

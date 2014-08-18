@@ -1,3 +1,5 @@
+.. _engine-RenderStages:
+
 渲染的流程
 ==========
 
