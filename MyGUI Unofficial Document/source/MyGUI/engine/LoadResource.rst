@@ -34,3 +34,4 @@ IResource
 
 .. hint:: 以\ *ResourceLayout*\ 、\ *LayoutManager*\ 、\ :file:`Media/Tools/LayoutEditor/MainMenuControl.layout`\ 为例，理解资源加载过程。
 
+* *ResourceSkin*\ 中\ **状态名->BasisSkin->IStateInfo**\ ,而对应的\ **xml**\ 文件中数据的结构则是\ **BasisSkin->状态名->IStateInfo**\ 。

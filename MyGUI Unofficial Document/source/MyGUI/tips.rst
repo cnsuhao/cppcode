@@ -2,11 +2,6 @@
 Tips
 ====
 
-* MyGUI_DelegateImplement.h中的问题
-
-  ``MYGUI_C_MULTI_DELEGATE  MYGUI_TEMPLATE_ARGS& operator-=(IDelegate* _delegate)``\ 
-  没有直接erase，如果当前正在执行的代理执行一个删除再执行一个添加，有可能导致死循环。
-
 * 居中展开子控件可以制造类似开窗的感觉，方法是:
 
     * 把直接子控件的对齐方式设置为\ *HCenter Top*\ 、\ *HCenter Bottom*\ 或\ *HCenter VStretch*

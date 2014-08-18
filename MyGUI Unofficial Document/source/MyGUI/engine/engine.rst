@@ -1,6 +1,6 @@
-============
-MyGUI Engine
-============
+=============================
+MyGUI Engine\ :sup:`陈亮`
+=============================
 
 .. toctree::
 
@@ -11,3 +11,5 @@ MyGUI Engine
    光标 <IPointer>
    抽象类 <AbstractClasses>
    渲染的流程 <RenderStages>
+   Widget <Widget>
+   代理机制 <delegates>
