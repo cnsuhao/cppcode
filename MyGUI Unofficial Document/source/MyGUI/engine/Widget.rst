@@ -13,3 +13,60 @@ Widget
     * ``void SkinItem::_resortTexture()``\ 强制控件在下一轮\ :ref:`渲染 <engine-RenderStages>`\ 时刷新。
 
 * *UserData*\ 存储\ *Any*\ 和\ *MapString*\ 类型的数据。
+* *WidgetInput*\ 响应\ *InputManager*\ 通过下列函数注入的各种鼠标、键盘输入事件::
+
+		void _riseMouseLostFocus(Widget* _new);
+		void _riseMouseSetFocus(Widget* _old);
+		void _riseMouseDrag(int _left, int _top, MouseButton _id);
+		void _riseMouseMove(int _left, int _top);
+		void _riseMouseWheel(int _rel);
+		void _riseMouseButtonPressed(int _left, int _top, MouseButton _id);
+		void _riseMouseButtonReleased(int _left, int _top, MouseButton _id);
+		void _riseMouseButtonClick();
+		void _riseMouseButtonDoubleClick();
+		void _riseKeyLostFocus(Widget* _new);
+		void _riseKeySetFocus(Widget* _old);
+		void _riseKeyButtonPressed(KeyCode _key, Char _char);
+		void _riseKeyButtonReleased(KeyCode _key);
+		void _riseMouseChangeRootFocus(bool _focus);
+		void _riseKeyChangeRootFocus(bool _focus);
+
+		void _setRootMouseFocus(bool _value);
+		void _setRootKeyFocus(bool _value);
+  
+  通过下列函数响应这些事件::
+
+		virtual void onMouseLostFocus(Widget* _new);
+		virtual void onMouseSetFocus(Widget* _old);
+		virtual void onMouseDrag(int _left, int _top, MouseButton _id);
+		virtual void onMouseMove(int _left, int _top);
+		virtual void onMouseWheel(int _rel);
+		virtual void onMouseButtonPressed(int _left, int _top, MouseButton _id);
+		virtual void onMouseButtonReleased(int _left, int _top, MouseButton _id);
+		virtual void onMouseButtonClick();
+		virtual void onMouseButtonDoubleClick();
+		virtual void onKeyLostFocus(Widget* _new);
+		virtual void onKeySetFocus(Widget* _old);
+		virtual void onKeyButtonPressed(KeyCode _key, Char _char);
+		virtual void onKeyButtonReleased(KeyCode _key);
+		virtual void onMouseChangeRootFocus(bool _focus);
+		virtual void onKeyChangeRootFocus(bool _focus);
+
+  通过下列代理通知其他模块::
+
+		EventHandle_WidgetWidget eventMouseLostFocus;
+  		EventHandle_WidgetWidget eventMouseSetFocus;
+  		EventPairAddParameter<EventHandle_WidgetIntInt, EventHandle_WidgetIntIntButton> eventMouseDrag;
+  		EventHandle_WidgetIntInt eventMouseMove;
+  		EventHandle_WidgetInt eventMouseWheel;
+  		EventHandle_WidgetIntIntButton eventMouseButtonPressed;
+  		EventHandle_WidgetIntIntButton eventMouseButtonReleased;
+  		EventHandle_WidgetVoid eventMouseButtonClick;
+  		EventHandle_WidgetVoid eventMouseButtonDoubleClick;
+  		EventHandle_WidgetWidget eventKeyLostFocus;
+  		EventHandle_WidgetWidget eventKeySetFocus;
+  		EventHandle_WidgetKeyCodeChar eventKeyButtonPressed;
+  		EventHandle_WidgetKeyCode eventKeyButtonReleased;
+  		EventHandle_WidgetBool eventRootMouseChangeFocus;
+  		EventHandle_WidgetBool eventRootKeyChangeFocus;
+  		EventHandle_WidgetToolTip eventToolTip;
