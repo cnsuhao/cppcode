@@ -1,11 +1,10 @@
-=============================
+=========================
 MyGUI Engine\ :sup:`陈亮`
-=============================
+=========================
 
 .. toctree::
+   :maxdepth: 2
 
-   ScrollViewBase <scrollviewbase>
-   ScrollView <scrollview>
    资源加载 <LoadResource>
    多语言 <LanguageManager>
    光标 <IPointer>
@@ -13,3 +12,5 @@ MyGUI Engine\ :sup:`陈亮`
    渲染的流程 <RenderStages>
    Widget <Widget>
    代理机制 <delegates>
+   ScrollViewBase <scrollviewbase>
+   ScrollView <scrollview>
