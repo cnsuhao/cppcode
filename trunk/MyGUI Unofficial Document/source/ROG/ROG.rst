@@ -7,4 +7,4 @@ Contents:
    :maxdepth: 2
    
    Warnings <warnings>
-   GM <GM>
+   GM指令 <GM>

@@ -8,3 +8,4 @@ Editor
    Skin Editor <skineditor>
    Layout Editor <layouteditor>
    Image Editor <imageeditor>
+   注意事项 <tips>

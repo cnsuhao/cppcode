@@ -17,6 +17,7 @@ Contents:
    WorkingEnvironment <WorkingEnvironment/WorkingEnvironment>
    CMake <CMake/CMake>
    NSIS <NSIS>
+   Lua <Lua>
    
 Indices and tables
 ==================

@@ -267,3 +267,19 @@ Tips
         set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
     endif()
     set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG} CACHE STRING "" FORCE)
+
+* 下面这段代码在VS2008中管用，在VS2010中无效::
+  
+    install(TARGETS Example${index}
+          RUNTIME DESTINATION "debug" CONFIGURATIONS Debug
+          RUNTIME DESTINATION "release" CONFIGURATIONS Release  
+        )
+        
+  所以最好拆成两个::
+
+    install(TARGETS Example${index}
+          RUNTIME DESTINATION "debug" CONFIGURATIONS Debug
+        )
+    install(TARGETS Example${index}
+          RUNTIME DESTINATION "release" CONFIGURATIONS Release  
+        )

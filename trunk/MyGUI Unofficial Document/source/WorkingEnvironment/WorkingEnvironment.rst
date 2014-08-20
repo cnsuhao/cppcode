@@ -144,7 +144,11 @@ SublimeText
 
 * Check代码\ **http://code.taobao.org/svn/mystplugins/trunk**\ 到\ :file:`Sublime Text 2\Packages`
 * 注册\ **grepwin**\ : ``C:/Program Files/Sublime Text 2/sublime_text.exe "%path%:%line%"``
-* 检查\ **vim**\ 和\ **layouteditor**\ 的路径
+* 检查\ **Vim**\ 和\ **LayoutEditor**\ 的路径
+* 注册\ **LayoutEditor**\ : 
+
+  * Exe: ``C:/Program Files/Sublime Text 2/sublime_text.exe``
+  * Params: ``"${File}:${Line}"``
 
 UnderStand
 ----------
@@ -154,16 +158,34 @@ UnderStand
 * **User Interface->Windows**\ 中打开\ **Visit result in editor ...**
 * **Key Bindings**\ 中查找\ **Close**\ 改为\ **Ctrl+W, Ctrl+W**
 * **Editor**\ 中选中\ **Automactcally Reload ...**\ 和\ **Show Indent Guide**\ 取消\ **Expand/Collapse code snippet ...**
+* 在编辑器窗口中右键，选择\ **Soft Wrap**
 
 Visual Studio
 -------------
 
 * 字体设成\ **Consolas 13**\ 号
-* 自定义快捷键: **Window.CloseDocumentWindow -> Ctrl+W(Text Editor)**
+* 自定义快捷键: 
+
+  * **Window.CloseDocumentWindow -> Ctrl+W(Text Editor)**
+  * **Edit.IncreaseLineIndent -> Ctrl+](Text Editor)**
+  * **Edit.DecreaseLineIndent -> Ctrl+[(Text Editor)**
+
 * **Text Editor->C++**\ : 选中\ **Word Wrap**
 * **Tools->External Tools**\ :增加\ **Title:GVim Command:xxx/gvim.exe Arguments:-p --remote-tab-silent +$(CurLine) "$(ItemPath)"**\
   ，移动到第一位并添加到工具栏。
 * 安装\ :file:`Tvl.VisualStudio.FindInSolutionExplorer.vsix`\ 和\ :file:`ProPowerTools.vsix`\ ,\ **Environment->Extension Manager**\ 中取消更新检查。
+
+* 增加环境变量TRACKFILEACCESS= "false"可能有助于解决这个问题
+
+    .. image:: /images/VS2010-trackerror.png
+
+* 同时安装VS2008和VS2010，可能会出现下面的问题
+
+  * A电脑上装有VS2008和VS2010
+  * B电脑上仅装有VS2010
+  * A电脑上用VS2010在Debug模式下编译静态库xxx.lib
+  * B电脑上用VS2010编译可执行程序，链接xxx.lib，生成的exe无法执行，对应的manifest中会含有关联VS2008的异常信息。
+    
 
 Windows
 -------

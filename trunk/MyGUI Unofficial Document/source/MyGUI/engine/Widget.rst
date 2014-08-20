@@ -1,18 +1,25 @@
 Widget
 ======
 
-.. image:: /images/ButterflyGraph-Widget.png
+*Widget*\ 的继承关系如图:
+
+    .. image:: /images/ButterflyGraph-Widget.png
+
+父类
+----
 
 * *ICroppedRectangle*\ 存储控件的位置信息，其中\ ``IntRect mMargin;``\ 对应被父控件遮挡的部分。
 * *LayerItem*\ 存储的信息决定了控件被渲染的顺序，\ *SkinItem*\ 存储皮肤相关的信息。
-    * *LayerItem*\ 的\ ``VectorSubWidget mDrawItems;``\ 与\ *SkinItem*\ 的\ ``VectorSubWidget mSubSkinChild;``\ 
-      功能重复，都对应用\ **点九**\ 划分的各个区域，不过存储的都是\ *ISubWidget\**\ ，所以无所谓。
 
-      .. note::  *SkinItem*\ 更新这些\ *ISubWidget*\ 的状态，\ *LayerItem*\ 负责渲染它们。
+  * *LayerItem*\ 的\ ``VectorSubWidget mDrawItems;``\ 与\ *SkinItem*\ 的\ ``VectorSubWidget mSubSkinChild;``\ 
+    功能重复，都对应用\ **点九**\ 划分的各个区域，不过存储的都是\ *ISubWidget\**\ ，所以无所谓。
 
-    * ``void SkinItem::_resortTexture()``\ 强制控件在下一轮\ :ref:`渲染 <engine-RenderStages>`\ 时刷新。
+    .. note::  *SkinItem*\ 更新这些\ *ISubWidget*\ 的状态，\ *LayerItem*\ 负责渲染它们。
+
+  * ``void SkinItem::_resortTexture()``\ 强制控件在下一轮\ :ref:`渲染 <engine-RenderStages>`\ 时刷新。
 
 * *UserData*\ 存储\ *Any*\ 和\ *MapString*\ 类型的数据。
+
 * *WidgetInput*\ 响应\ *InputManager*\ 通过下列函数注入的各种鼠标、键盘输入事件::
 
 		void _riseMouseLostFocus(Widget* _new);
@@ -55,18 +62,45 @@ Widget
   通过下列代理通知其他模块::
 
 		EventHandle_WidgetWidget eventMouseLostFocus;
-  		EventHandle_WidgetWidget eventMouseSetFocus;
-  		EventPairAddParameter<EventHandle_WidgetIntInt, EventHandle_WidgetIntIntButton> eventMouseDrag;
-  		EventHandle_WidgetIntInt eventMouseMove;
-  		EventHandle_WidgetInt eventMouseWheel;
-  		EventHandle_WidgetIntIntButton eventMouseButtonPressed;
-  		EventHandle_WidgetIntIntButton eventMouseButtonReleased;
-  		EventHandle_WidgetVoid eventMouseButtonClick;
-  		EventHandle_WidgetVoid eventMouseButtonDoubleClick;
-  		EventHandle_WidgetWidget eventKeyLostFocus;
-  		EventHandle_WidgetWidget eventKeySetFocus;
-  		EventHandle_WidgetKeyCodeChar eventKeyButtonPressed;
-  		EventHandle_WidgetKeyCode eventKeyButtonReleased;
-  		EventHandle_WidgetBool eventRootMouseChangeFocus;
-  		EventHandle_WidgetBool eventRootKeyChangeFocus;
-  		EventHandle_WidgetToolTip eventToolTip;
+  	EventHandle_WidgetWidget eventMouseSetFocus;
+  	EventPairAddParameter<EventHandle_WidgetIntInt, EventHandle_WidgetIntIntButton> eventMouseDrag;
+  	EventHandle_WidgetIntInt eventMouseMove;
+  	EventHandle_WidgetInt eventMouseWheel;
+  	EventHandle_WidgetIntIntButton eventMouseButtonPressed;
+  	EventHandle_WidgetIntIntButton eventMouseButtonReleased;
+  	EventHandle_WidgetVoid eventMouseButtonClick;
+  	EventHandle_WidgetVoid eventMouseButtonDoubleClick;
+  	EventHandle_WidgetWidget eventKeyLostFocus;
+  	EventHandle_WidgetWidget eventKeySetFocus;
+  	EventHandle_WidgetKeyCodeChar eventKeyButtonPressed;
+  	EventHandle_WidgetKeyCode eventKeyButtonReleased;
+  	EventHandle_WidgetBool eventRootMouseChangeFocus;
+  	EventHandle_WidgetBool eventRootKeyChangeFocus;
+  	EventHandle_WidgetToolTip eventToolTip;
+
+Self
+----
+
+* *Widget*\ 中主要包括两类信息:
+  
+  * 基本属性(\ ``bool mEnabled; bool mInheritsEnabled; bool mInheritsVisible; float mAlpha;``\ 等等)
+  * 父子关系:
+    
+    * ``Widget* mParent;`` //父控件
+    * ``VectorWidgetPtr mWidgetChild;`` //子控件
+    * ``VectorWidgetPtr mWidgetChildSkin;`` //皮肤中的子控件
+    * ``Widget* mWidgetClient;`` //皮肤中名为\ **Client**\ 的子控件
+
+* *Widget*\ 的皮肤参数有两种:
+  
+  * *ResourceSkin*\ :真正的皮肤,作为\ ``void SkinItem::_createSkinItem(ResourceSkin* _info)``\ 的参数
+  * *ResourceLayout*\ :一棵控件树，根结点的控件名必须为\ **Root**\ 。将\ *ResourceLayout*\ 作为控件的皮肤参数时:
+ 
+    * 根据\ **Root**\ 的\ **skin**\ 属性，获得对应的\ *ResourceSkin*\ 作为当前控件的皮肤。
+    * 生成\ **Root**\ 的子控件，加入到\ ``VectorWidgetPtr mWidgetChildSkin;``\ 中。
+
+* *Widget*\ 主要通过\ ``Widget* Widget::baseCreateWidget(WidgetStyle _style, const std::string& _type, const std::string& _skin, const IntCoord& _coord, Align _align, const std::string& _layer, const std::string& _name, bool _template)``\ 生成子控件:
+
+  * 如果是皮肤中的子控件，塞到\ ``VectorWidgetPtr mWidgetChildSkin;``\ 中
+  * 如果是普通的子控件，而且\ ``Widget* mWidgetClient;``\ 不空，则通过\ ``mWidgetClient->baseCreateWidget(_style, _type, _skin, _coord, _align, _layer, _name, _template);``\ 递归生成子控件。
+  * 其他情况，生成子控件后，塞到\ ``VectorWidgetPtr mWidgetChild;``\ 中
