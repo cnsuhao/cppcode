@@ -20,7 +20,9 @@ Widget
 
 * *UserData*\ 存储\ *Any*\ 和\ *MapString*\ 类型的数据。
 
-* *WidgetInput*\ 响应\ *InputManager*\ 通过下列函数注入的各种鼠标、键盘输入事件::
+.. _myguiengine-WidgetInput:
+
+* *WidgetInput*\ 响应 :ref:`MyGUI::InputManager <myguiengine-InputManager>` 通过下列函数注入的各种鼠标、键盘输入事件::
 
 		void _riseMouseLostFocus(Widget* _new);
 		void _riseMouseSetFocus(Widget* _old);
@@ -104,3 +106,11 @@ Self
   * 如果是皮肤中的子控件，塞到\ ``VectorWidgetPtr mWidgetChildSkin;``\ 中
   * 如果是普通的子控件，而且\ ``Widget* mWidgetClient;``\ 不空，则通过\ ``mWidgetClient->baseCreateWidget(_style, _type, _skin, _coord, _align, _layer, _name, _template);``\ 递归生成子控件。
   * 其他情况，生成子控件后，塞到\ ``VectorWidgetPtr mWidgetChild;``\ 中
+    
+WidgetManager
+-------------
+
+* 创建、删除 *Widget*
+* 删除 *Widget* 时，通知所有 *IUnlinkWidget* ,因为它们可能存储指向这个 *Widget* 的指针。 *IUnlinkWidget* 的子类包括:
+  
+  .. image:: /images/ButterflyGraph-IUnlinkWidget.png
