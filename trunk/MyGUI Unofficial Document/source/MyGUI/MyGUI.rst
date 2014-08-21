@@ -15,4 +15,4 @@ Contents:
    MyGUI Engine <engine/engine>
    Common <Common/Common>
    Editor <editor/editor>
-   Tips <tips>
+   HowTo <HowTo>

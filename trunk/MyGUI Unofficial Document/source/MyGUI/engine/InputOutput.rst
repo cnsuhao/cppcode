@@ -1,5 +1,5 @@
-光标
-----
+输入输出
+--------
 
 MyGUI::IPointer
 ===============
@@ -21,6 +21,8 @@ MyGUI::IPointer
 
 .. hint:: :file:`Media/MyGUI_Media/MyGUI_Pointers.xml`
 
+.. _myguiengine-PointerManager:
+
 MyGUI::PointerManager
 =====================
 
@@ -35,5 +37,24 @@ MyGUI::PointerManager
 
 .. seealso::
 
-    :doc:`/MyGUI/Common/PointerManager`
+    :ref:`input::PointerManager <input-PointerManager>`
         \ 
+
+.. _myguiengine-InputManager:
+
+MyGUI::InputManager
+===================
+
+*MyGUI::InputManager* 根据外部输入的鼠标、键盘事件，结合UI中的控件的信息，产生各种事件，通知相关的控件。
+
+* 鼠标、键盘事件主要包括::
+  
+    bool injectMouseMove(int _absx, int _absy, int _absz);
+    bool injectMousePress(int _absx, int _absy, MouseButton _id);
+    bool injectMouseRelease(int _absx, int _absy, MouseButton _id);
+    bool injectKeyPress(KeyCode _key, Char _text = 0);
+    bool injectKeyRelease(KeyCode _key);
+
+* 关联的控件主要通过 ``LayerManager::getInstance().getWidgetFromPoint(_absx, _absy);`` 获得。
+
+* 通过 :ref:`MyGUI:WidgetInput <myguiengine-WidgetInput>` 通知控件。
