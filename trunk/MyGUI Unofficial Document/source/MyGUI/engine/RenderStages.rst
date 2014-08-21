@@ -32,4 +32,15 @@
 * ``virtual void ISubWidget::doRender(RenderItem* _render)``
 * ``virtual void IRenderTarget::doRender(IVertexBuffer* _buffer, ITexture* _texture, size_t _count)``
 
-  ISubWidget根据\ :ref:`ITexture <myguiengine-ITexture>`\ 将顶点数据写入\ :ref:`IVertexBuffer <myguiengine-IVertexBuffer>`\ ，\ :ref:`IRenderTarget <myguiengine-IRenderTarget>`\ 调用引擎的接口渲染这些数据。  
+  ISubWidget根据\ :ref:`ITexture <myguiengine-ITexture>`\ 将顶点数据写入\ :ref:`IVertexBuffer <myguiengine-IVertexBuffer>`\ ，\ :ref:`IRenderTarget <myguiengine-IRenderTarget>`\ 调用引擎的接口渲染这些数据。
+
+ISubWidget
+----------
+
+*ISubWidget* 对应九宫格中的一个区域，存储一些顶点数据，是渲染的最小单位。
+
+* ``virtual void doRender(RenderItem* _render) = 0;`` 将顶点数据写到 ``_render`` 中。
+
+* ``virtual void _updateView() { }`` 根据 ``Align mAlign;`` 调整自己的位置和大小。
+
+.. image:: /images/ButterflyGraph-ISubWidget.png
