@@ -12,5 +12,6 @@ MyGUI Engine\ :sup:`陈亮`
    渲染的流程 <RenderStages>
    Widget <Widget>
    代理机制 <delegates>
+   创建对象 <CreateObject>
    ScrollViewBase <scrollviewbase>
    ScrollView <scrollview>
