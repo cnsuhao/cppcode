@@ -155,7 +155,8 @@ UnderStand
 
 * **General**\ 和\ **Editor**\ 中字体设成\ **Consolas 13**\ 号
 * **General**\ 中关掉\ **splash-screen**
-* **User Interface->Windows**\ 中打开\ **Visit result in editor ...**
+* **User Interface**\ 中开启\ **Visit result in editor ...**
+* **User Interface->Windows**\ 中打开\ **Use Most Recently Used ...**
 * **Key Bindings**\ 中查找\ **Close**\ 改为\ **Ctrl+W, Ctrl+W**
 * **Editor**\ 中选中\ **Automactcally Reload ...**\ 和\ **Show Indent Guide**\ 取消\ **Expand/Collapse code snippet ...**
 * 在编辑器窗口中右键，选择\ **Soft Wrap**
