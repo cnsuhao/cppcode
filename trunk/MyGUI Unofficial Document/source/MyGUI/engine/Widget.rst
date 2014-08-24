@@ -96,6 +96,9 @@ Self
 * *Widget*\ 的皮肤参数有两种:
   
   * *ResourceSkin*\ :真正的皮肤,作为\ ``void SkinItem::_createSkinItem(ResourceSkin* _info)``\ 的参数
+
+    .. note:: *ResourceSkin* 通过 ``ResourceSkin* SkinManager::getByName(const std::string& _name) const`` 查找。
+  
   * *ResourceLayout*\ :一棵控件树，根结点的控件名必须为\ **Root**\ 。将\ *ResourceLayout*\ 作为控件的皮肤参数时:
  
     * 根据\ **Root**\ 的\ **skin**\ 属性，获得对应的\ *ResourceSkin*\ 作为当前控件的皮肤。

@@ -1,8 +1,8 @@
 输入输出
---------
+========
 
 MyGUI::IPointer
-===============
+---------------
 
 *IPointer*\ 对应光标，定义了两个接口:
 
@@ -21,10 +21,10 @@ MyGUI::IPointer
 
 .. hint:: :file:`Media/MyGUI_Media/MyGUI_Pointers.xml`
 
-.. _myguiengine-PointerManager:
+ .. _myguiengine-PointerManager:
 
 MyGUI::PointerManager
-=====================
+---------------------
 
 *PointerManager*\ 负责管理光标的状态:
 
@@ -43,7 +43,7 @@ MyGUI::PointerManager
 .. _myguiengine-InputManager:
 
 MyGUI::InputManager
-===================
+-------------------
 
 *MyGUI::InputManager* 根据外部输入的鼠标、键盘事件，结合UI中的控件的信息，产生各种事件，通知相关的控件。
 
@@ -58,3 +58,14 @@ MyGUI::InputManager
 * 关联的控件主要通过 ``LayerManager::getInstance().getWidgetFromPoint(_absx, _absy);`` 获得。
 
 * 通过 :ref:`MyGUI:WidgetInput <myguiengine-WidgetInput>` 通知控件。
+  
+MyGUI::LogManager
+-----------------
+
+写日志的调用关系如下:
+
+.. image:: /images/ButterflyGraph-log.png
+
+* *ILogListener* 执行实际的写日志操作
+* ``LogSource`` 中的 ``ILogFilter* mFilter;`` 根据 **Level** 过滤日志
+  
