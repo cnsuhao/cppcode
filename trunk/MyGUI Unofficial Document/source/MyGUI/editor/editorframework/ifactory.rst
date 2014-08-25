@@ -1,9 +1,9 @@
-======================================
-IFactory、IFactoryItem和FactoryManager
-======================================
-
-IFactory
 ========
+创建对象
+========
+
+components::IFactory
+====================
 
     模板类\ *FactoryTemplate*\ 是\ *IFactory*\ 的子类，实现了接口\ ``virtual IFactoryItem* CreateItem()``，通过以下两种方式使用:
 
@@ -16,17 +16,15 @@ IFactory
         相比\ *FACTORY_ITEM*\ ，\ *FACTORY_ITEM_ATTRIBUTE*\ 会检查\ **type**\ 是否已经被注册过。\ *FACTORY_ITEM*\ 只在
         ``void ComponentFactory::Initialise()``\ 中使用，不必担心重复。
 
-
-
-IFactoryItem
-============
+components::IFactoryItem
+========================
 
     *IFactoryItem*\ 攘括了各个Editor中所有需要动态生成的元素，继承关系如下:
         
-.. image:: /images/ButterflyGraph-IFactoryItem.png
+    .. image:: /images/ButterflyGraph-IFactoryItem.png
 
-FactoryManager
-==============
+components::FactoryManager
+==========================
     *FactoryManager*\ 负责管理所有\ *IFactory*\ ，通过\ ``template <typename Type>Type* CreateItem(const std::string& _factoryName)``
     创建新的\ *IFactoryItem*\ 。
     

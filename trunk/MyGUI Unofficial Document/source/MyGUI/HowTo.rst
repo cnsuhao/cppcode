@@ -2,6 +2,12 @@
 HowTo
 =====
 
+* 配置编辑器
+  
+  * 添加\ :file:`Build/Win32/Asserts/UI/Common`\ 到\ *SkinEditor*\ , \ *LayoutEditor*\ 和\ *ImageEditor*\ 的\ **Settings->Folders**
+  
+  * 添加各种\ :file:`images.xml`\ 到\ *LayoutEditor*\ 的\ **Settings->Resources**
+  
 * 居中展开子控件可以制造类似开窗的感觉，方法是:
 
   * 把直接子控件的对齐方式设置为\ *HCenter Top*\ 、\ *HCenter Bottom*\ 或\ *HCenter VStretch*
@@ -45,11 +51,9 @@ HowTo
 * 在\ *SkinEditor*\ 中配置皮肤的状态时，最好把能配的都配上。
   如果用到了某个状态而没有相应的配置，皮肤的状态就会停留在上一个状态，而且没有任何提示。
 
-* 字体的设置
-  
-  * 字体的大小(单位为像素)由以下两个属性决定::
+* 字体的大小(单位为像素)由以下两个属性决定::
 
-      <Property key="Size" value="24"/> 
-      <Property key="Resolution" value="50"/> 
+    <Property key="Size" value="24"/> 
+    <Property key="Resolution" value="50"/> 
 
-    等于 **Size \* Resolution / 72**
+  等于 **Size \* Resolution / 72**

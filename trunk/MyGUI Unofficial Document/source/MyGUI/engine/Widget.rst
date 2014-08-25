@@ -1,3 +1,5 @@
+.. _myguiengine-Widget:
+
 Widget
 ======
 
@@ -117,3 +119,53 @@ WidgetManager
 * 删除 *Widget* 时，通知所有 *IUnlinkWidget* ,因为它们可能存储指向这个 *Widget* 的指针。 *IUnlinkWidget* 的子类包括:
   
   .. image:: /images/ButterflyGraph-IUnlinkWidget.png
+
+子类
+----
+
+ScrollView
+~~~~~~~~~~
+
+*ScrollView*\ 封装了滚动区域的基本功能，继承关系如下:
+
+.. image:: /images/ButterflyGraph-ScrollView.png
+
+*ScrollView*\ 的皮肤中至少需要三个控件，类型和名字如下::
+
+  type="Widget" name="Client" // 显示区域
+  type="ScrollBar" name="VScroll" // 垂直滚动条
+  type="ScrollBar" name="HScroll" // 水平滚动条
+
+*ScrollView*\ 中的\ **mRealClient**\ 就是所谓的\ **Canvas**\ ，在LayoutEditor中为ScrollView添加的子控件会成为\ **mRealClient**\ 的子控件。
+
+*ScrollView*\ 响应以下事件::
+
+    //用滚轮移动mRealClient
+    mRealClient->eventMouseWheel
+
+    //拖拽mRealClient
+    mRealClient->eventMouseDrag
+    mRealClient->eventMouseButtonPressed
+    mRealClient->eventMouseButtonReleased
+
+    //响应滚动条的位置变化
+    mHScroll->eventScrollChangePosition
+    mVScroll->eventScrollChangePosition
+
+ScrollViewBase
+~~~~~~~~~~~~~~
+
+*ScrollViewBase*\ 代表滚动区域，继承关系如下:
+
+.. image:: /images/ButterflyGraph-ScrollViewBase.png
+
+*ScrollViewBase*\ 包含三个子控件，构成滚动区域::
+
+  ScrollBar* mVScroll; // 垂直滚动条
+  ScrollBar* mHScroll; // 水平滚动条
+  Widget* mClient; // 显示区域
+
+*ScrollViewBase*\ 主要通过以下两个函数更新滚动区域的状态::
+
+  void updateScrollSize(); // 更新滚动条是否可见，调整三个子控件的大小；这个函数中的代码比较冗余。
+  void updateScrollPosition(); // 更新Content的显示位置和滚动条的位置，当Content的宽度或高度小于显示区域时，显示位置会受到对齐方式的影响。
