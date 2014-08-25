@@ -1,6 +1,6 @@
-=================
-IExportSerializer
-=================
+========
+输入输出
+========
 
 *SkinEditor*\ 、\ *ImageEditor*\ 、\ *FontEditor*\ 用\ *IExportSerializer*\ 读写数据，类继承关系如图:
 

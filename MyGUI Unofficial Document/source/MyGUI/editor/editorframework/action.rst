@@ -1,6 +1,5 @@
-=====================
-Action和ActionManager
-=====================
+动作
+----
 
 *Action*\ 和\ *ActionManager*\ 用于SkinEditor、ImageEditor、FontEditor，提供的接口包括::
 
@@ -8,7 +7,7 @@ Action和ActionManager
 	Merge相关的接口 //ActionManager可以将连续两个同类型的Action合并为一个Action
 
 
-*Action*\ 的继承关系:
+*Action*\ 是 **Redo** 和 **Undo** 的最小单位，继承关系如下:
 
 
 .. image:: /images/ButterflyGraph-Action.png
