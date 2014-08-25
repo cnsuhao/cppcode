@@ -1,9 +1,9 @@
 颜色
 ----
 
-=============
-ColourManager
-=============
+====================
+tools::ColourManager
+====================
 
 *ColourManager*\ 用于设置背景颜色、矩形选择框颜色，对应\ *LayoutEditor*\ 、\ *FontEditor*\ 、
 \ *ImageEditor*\ 、\ *SkinEditor*\ 中的\ **Colours**\ 菜单。
@@ -26,10 +26,12 @@ ColourManager
 * ImageEditor: :file:`ie_user_settings.xml`
 * SkinEditor: :file:`se_user_settings.xml`
 * FontEditor: :file:`fe_user_settings.xml`
-  
-===========
-ColourPanel
-===========
+
+.. _tools_ColourPanel:
+
+==================
+tools::ColourPanel
+==================
 
 *ColourPanel*\ 对应编辑器中的调色板，layout文件是\ :file:`ColourPanel.layout`\ 。
 
@@ -47,4 +49,4 @@ ColourPanel
 
 .. image:: /images/ButterflyGraph-updateFromColour.png
 
-*ColourPanel*\ 与\ :doc:`ColourManager`\ 、\ :doc:`PropertyFieldColour`\ 有比较密切的关系。
+*ColourPanel*\ 与\ *ColourManager*\ 、\ :ref:`PropertyFieldColour <tools_PropertyFieldColour>`\ 有比较密切的关系。
