@@ -13,5 +13,5 @@ GridManager
 指定任意值\ ``_value``\ 和取值模式\ ``_line``\ ,\ ``int GridManager::toGrid(int _value, GridLine _line) const``\
 返回符合要求的网格的值。
 
-.. hint:: 在\ :doc:`../layouteditor`\ 中使用方向键移动控件，结合\ :file:`Media/Tools/LayoutEditor/Settings/Settings.xml`\ 理解
+.. hint:: 在\ :doc:`layouteditor`\ 中使用方向键移动控件，结合\ :file:`Media/Tools/LayoutEditor/Settings/Settings.xml`\ 理解
 	*GridManager*\ 的作用。
