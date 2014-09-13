@@ -28,7 +28,12 @@ import os
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = ['sphinxcontrib.exceltable', 'sphinxcontrib.images']
+
+images_config = {
+    "backend":"LightBox2",
+    "default_image_width":"256px"
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
