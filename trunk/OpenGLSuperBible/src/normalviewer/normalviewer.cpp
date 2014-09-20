@@ -135,7 +135,7 @@ class sb6mrender_app : public sb6::application
             "                                                                   \n"
             "void main(void)                                                    \n"
             "{                                                                  \n"
-            "    color = vec4(1.0) * abs(normalize(fs_in.normal).z);            \n"
+            "    color = fs_in.color * abs(normalize(fs_in.normal).z);            \n"
             "}                                                                  \n"
         };
 
@@ -162,7 +162,7 @@ class sb6mrender_app : public sb6::application
         proj_location = glGetUniformLocation(program, "proj_matrix");
         normal_length_location = glGetUniformLocation(program, "normal_length");
 
-        object.load("media/objects/bunny_1k.sbm");
+        object.load("../media/objects/bunny_1k.sbm");
 
         // glEnable(GL_CULL_FACE);
         //glCullFace(GL_FRONT);

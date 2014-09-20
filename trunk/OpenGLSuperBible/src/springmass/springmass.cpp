@@ -243,7 +243,7 @@ private:
         GLuint fs;
         char buffer[1024];
 
-        vs = sb6::shader::load("media/shaders/springmass/update.vs.glsl", GL_VERTEX_SHADER);
+        vs = sb6::shader::load("../media/shaders/springmass/update.vs.glsl", GL_VERTEX_SHADER);
 
         if (m_update_program)
             glDeleteProgram(m_update_program);
@@ -265,8 +265,8 @@ private:
 
         glDeleteShader(vs);
 
-        vs = sb6::shader::load("media/shaders/springmass/render.vs.glsl", GL_VERTEX_SHADER);
-        fs = sb6::shader::load("media/shaders/springmass/render.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/springmass/render.vs.glsl", GL_VERTEX_SHADER);
+        fs = sb6::shader::load("../media/shaders/springmass/render.fs.glsl", GL_FRAGMENT_SHADER);
 
         if (m_render_program)
             glDeleteProgram(m_render_program);

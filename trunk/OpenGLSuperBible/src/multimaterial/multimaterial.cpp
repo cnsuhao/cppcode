@@ -465,23 +465,23 @@ void multimaterial_app::load_shaders()
 {
     GLuint shaders[4];
 
-    shaders[0] = sb6::shader::load("media/shaders/multimaterial/simpleuniforms.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/multimaterial/simpleuniforms.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/multimaterial/simpleuniforms.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/multimaterial/simpleuniforms.fs.glsl", GL_FRAGMENT_SHADER);
 
     simple_uniform_program = sb6::program::link_from_shaders(shaders, 2, true);
 
     uniforms.simple_uniforms.mv_location = glGetUniformLocation(simple_uniform_program, "mv_matrix");
     uniforms.simple_uniforms.proj_location = glGetUniformLocation(simple_uniform_program, "proj_matrix");
 
-    shaders[0] = sb6::shader::load("media/shaders/multimaterial/ubo-plus-uniform.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/multimaterial/ubo-plus-uniform.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/multimaterial/ubo-plus-uniform.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/multimaterial/ubo-plus-uniform.fs.glsl", GL_FRAGMENT_SHADER);
 
     ubo_plus_uniform_program = sb6::program::link_from_shaders(shaders, 2, true);
 
     uniforms.ubo_plus_uniform.transform_index = glGetUniformLocation(ubo_plus_uniform_program, "transform_index");
 
-    shaders[0] = sb6::shader::load("media/shaders/multimaterial/ubo-plus-base-instance.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/multimaterial/ubo-plus-base-instance.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/multimaterial/ubo-plus-base-instance.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/multimaterial/ubo-plus-base-instance.fs.glsl", GL_FRAGMENT_SHADER);
 
     ubo_plus_base_instance_program = sb6::program::link_from_shaders(shaders, 2, true);
 }

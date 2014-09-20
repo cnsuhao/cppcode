@@ -156,8 +156,8 @@ public:
 
         program_fans = glCreateProgram();
 
-        vs = sb6::shader::load("media/shaders/gsquads/quadsasfans.vs.glsl", GL_VERTEX_SHADER);
-        fs = sb6::shader::load("media/shaders/gsquads/quadsasfans.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/gsquads/quadsasfans.vs.glsl", GL_VERTEX_SHADER);
+        fs = sb6::shader::load("../media/shaders/gsquads/quadsasfans.fs.glsl", GL_FRAGMENT_SHADER);
 
         glAttachShader(program_fans, vs);
         glAttachShader(program_fans, fs);
@@ -170,9 +170,9 @@ public:
         glDeleteShader(vs);
         glDeleteShader(fs);
 
-        vs = sb6::shader::load("media/shaders/gsquads/quadsaslinesadj.vs.glsl", GL_VERTEX_SHADER);
-        gs = sb6::shader::load("media/shaders/gsquads/quadsaslinesadj.gs.glsl", GL_GEOMETRY_SHADER);
-        fs = sb6::shader::load("media/shaders/gsquads/quadsaslinesadj.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/gsquads/quadsaslinesadj.vs.glsl", GL_VERTEX_SHADER);
+        gs = sb6::shader::load("../media/shaders/gsquads/quadsaslinesadj.gs.glsl", GL_GEOMETRY_SHADER);
+        fs = sb6::shader::load("../media/shaders/gsquads/quadsaslinesadj.fs.glsl", GL_FRAGMENT_SHADER);
 
         if (program_linesadjacency)
             glDeleteProgram(program_linesadjacency);

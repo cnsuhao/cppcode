@@ -61,9 +61,9 @@ public:
 
         glEnable(GL_CULL_FACE);
 
-        tex_displacement = sb6::ktx::file::load("media/textures/terragen1.ktx");
+        tex_displacement = sb6::ktx::file::load("../media/textures/terragen1.ktx");
         glActiveTexture(GL_TEXTURE1);
-        tex_color = sb6::ktx::file::load("media/textures/terragen_color.ktx");
+        tex_color = sb6::ktx::file::load("../media/textures/terragen_color.ktx");
     }
 
     virtual void render(double currentTime)
@@ -170,10 +170,10 @@ void dispmap_app::load_shaders()
     if (program)
         glDeleteProgram(program);
 
-    GLuint vs = sb6::shader::load("media/shaders/dispmap/dispmap.vs.glsl", GL_VERTEX_SHADER);
-    GLuint tcs = sb6::shader::load("media/shaders/dispmap/dispmap.tcs.glsl", GL_TESS_CONTROL_SHADER);
-    GLuint tes = sb6::shader::load("media/shaders/dispmap/dispmap.tes.glsl", GL_TESS_EVALUATION_SHADER);
-    GLuint fs = sb6::shader::load("media/shaders/dispmap/dispmap.fs.glsl", GL_FRAGMENT_SHADER);
+    GLuint vs = sb6::shader::load("../media/shaders/dispmap/dispmap.vs.glsl", GL_VERTEX_SHADER);
+    GLuint tcs = sb6::shader::load("../media/shaders/dispmap/dispmap.tcs.glsl", GL_TESS_CONTROL_SHADER);
+    GLuint tes = sb6::shader::load("../media/shaders/dispmap/dispmap.tes.glsl", GL_TESS_EVALUATION_SHADER);
+    GLuint fs = sb6::shader::load("../media/shaders/dispmap/dispmap.fs.glsl", GL_FRAGMENT_SHADER);
 
     program = glCreateProgram();
 

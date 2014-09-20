@@ -76,11 +76,11 @@ void bumpmapping_app::startup()
     load_shaders();
 
     glActiveTexture(GL_TEXTURE0);
-    textures.color = sb6::ktx::file::load("media/textures/ladybug_co.ktx");
+    textures.color = sb6::ktx::file::load("../media/textures/ladybug_co.ktx");
     glActiveTexture(GL_TEXTURE1);
-    textures.normals = sb6::ktx::file::load("media/textures/ladybug_nm.ktx");
+    textures.normals = sb6::ktx::file::load("../media/textures/ladybug_nm.ktx");
 
-    object.load("media/objects/ladybug.sbm");
+    object.load("../media/objects/ladybug.sbm");
 }
 
 void bumpmapping_app::render(double currentTime)
@@ -191,8 +191,8 @@ void bumpmapping_app::load_shaders()
     GLuint vs;
     GLuint fs;
 
-    vs = sb6::shader::load("media/shaders/bumpmapping/bumpmapping.vs.glsl", GL_VERTEX_SHADER);
-    fs = sb6::shader::load("media/shaders/bumpmapping/bumpmapping.fs.glsl", GL_FRAGMENT_SHADER);
+    vs = sb6::shader::load("../media/shaders/bumpmapping/bumpmapping.vs.glsl", GL_VERTEX_SHADER);
+    fs = sb6::shader::load("../media/shaders/bumpmapping/bumpmapping.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (program)
         glDeleteProgram(program);

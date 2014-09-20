@@ -87,7 +87,7 @@ void prefixsum2d_app::startup()
 
     glGenTextures(3, images);
 
-    images[0] = sb6::ktx::file::load("media/textures/salad-gray.ktx");
+    images[0] = sb6::ktx::file::load("../media/textures/salad-gray.ktx");
 
     for (i = 1; i < 3; i++)
     {
@@ -145,7 +145,7 @@ void prefixsum2d_app::onKey(int key, int action)
 
 void prefixsum2d_app::load_shaders()
 {
-    GLuint cs = sb6::shader::load("media/shaders/prefixsum2d/prefixsum2d.cs.glsl", GL_COMPUTE_SHADER);
+    GLuint cs = sb6::shader::load("../media/shaders/prefixsum2d/prefixsum2d.cs.glsl", GL_COMPUTE_SHADER);
 
     if (prefix_sum_prog)
         glDeleteProgram(prefix_sum_prog);
@@ -157,8 +157,8 @@ void prefixsum2d_app::load_shaders()
         GLuint  fs;
     } show_image_shaders;
 
-    show_image_shaders.vs = sb6::shader::load("media/shaders/prefixsum2d/showimage.vs.glsl", GL_VERTEX_SHADER);
-    show_image_shaders.fs = sb6::shader::load("media/shaders/prefixsum2d/showimage.fs.glsl", GL_FRAGMENT_SHADER);
+    show_image_shaders.vs = sb6::shader::load("../media/shaders/prefixsum2d/showimage.vs.glsl", GL_VERTEX_SHADER);
+    show_image_shaders.fs = sb6::shader::load("../media/shaders/prefixsum2d/showimage.fs.glsl", GL_FRAGMENT_SHADER);
 
     show_image_prog = sb6::program::link_from_shaders(&show_image_shaders.vs, 2, true);
 }

@@ -85,8 +85,8 @@ void subroutines_app::load_shaders()
 {
     GLuint shaders[2];
 
-    shaders[0] = sb6::shader::load("media/shaders/subroutines/subroutines.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/subroutines/subroutines.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/subroutines/subroutines.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/subroutines/subroutines.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (render_program)
         glDeleteProgram(render_program);

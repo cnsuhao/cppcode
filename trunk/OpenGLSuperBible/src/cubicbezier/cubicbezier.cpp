@@ -219,10 +219,10 @@ void cubicbezier_app::load_shaders()
 
     GLuint shaders[4];
 
-    shaders[0] = sb6::shader::load("media/shaders/cubicbezier/cubicbezier.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/cubicbezier/cubicbezier.tcs.glsl", GL_TESS_CONTROL_SHADER);
-    shaders[2] = sb6::shader::load("media/shaders/cubicbezier/cubicbezier.tes.glsl", GL_TESS_EVALUATION_SHADER);
-    shaders[3] = sb6::shader::load("media/shaders/cubicbezier/cubicbezier.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/cubicbezier/cubicbezier.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/cubicbezier/cubicbezier.tcs.glsl", GL_TESS_CONTROL_SHADER);
+    shaders[2] = sb6::shader::load("../media/shaders/cubicbezier/cubicbezier.tes.glsl", GL_TESS_EVALUATION_SHADER);
+    shaders[3] = sb6::shader::load("../media/shaders/cubicbezier/cubicbezier.fs.glsl", GL_FRAGMENT_SHADER);
 
     tess_program = sb6::program::link_from_shaders(shaders, 4, true);
 
@@ -233,8 +233,8 @@ void cubicbezier_app::load_shaders()
     if (draw_cp_program)
         glDeleteProgram(draw_cp_program);
 
-    shaders[0] = sb6::shader::load("media/shaders/cubicbezier/draw-control-points.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/cubicbezier/draw-control-points.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/cubicbezier/draw-control-points.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/cubicbezier/draw-control-points.fs.glsl", GL_FRAGMENT_SHADER);
 
     draw_cp_program = sb6::program::link_from_shaders(shaders, 2, true);
 

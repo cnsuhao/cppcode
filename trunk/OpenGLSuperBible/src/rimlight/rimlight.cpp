@@ -55,7 +55,7 @@ protected:
     {
         loadShaders();
 
-        object.load("media/objects/dragon.sbm");
+        object.load("../media/objects/dragon.sbm");
 
         glEnable(GL_CULL_FACE);
         //glCullFace(GL_FRONT);
@@ -156,8 +156,8 @@ protected:
         GLuint vs;
         GLuint fs;
 
-        vs = sb6::shader::load("media/shaders/rimlight/render.vs.glsl", GL_VERTEX_SHADER);
-        fs = sb6::shader::load("media/shaders/rimlight/render.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/rimlight/render.vs.glsl", GL_VERTEX_SHADER);
+        fs = sb6::shader::load("../media/shaders/rimlight/render.fs.glsl", GL_FRAGMENT_SHADER);
 
         if (program != 0)
             glDeleteProgram(program);

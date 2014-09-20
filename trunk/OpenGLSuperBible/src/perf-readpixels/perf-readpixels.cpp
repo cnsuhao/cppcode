@@ -85,7 +85,7 @@ protected:
 
 void perf_readpixels_app::startup()
 {
-    object.load("media/objects/dragon.sbm");
+    object.load("../media/objects/dragon.sbm");
 
     load_shaders();
 
@@ -207,8 +207,8 @@ void perf_readpixels_app::load_shaders()
 
     GLuint shaders[] =
     {
-        sb6::shader::load("media/shaders/perftest/render.vs.glsl", GL_VERTEX_SHADER),
-        sb6::shader::load("media/shaders/perftest/render.fs.glsl", GL_FRAGMENT_SHADER)
+        sb6::shader::load("../media/shaders/perftest/render.vs.glsl", GL_VERTEX_SHADER),
+        sb6::shader::load("../media/shaders/perftest/render.fs.glsl", GL_FRAGMENT_SHADER)
     };
 
     render_program = sb6::program::link_from_shaders(shaders, 2, true);

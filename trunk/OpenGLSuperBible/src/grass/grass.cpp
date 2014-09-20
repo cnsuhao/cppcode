@@ -187,13 +187,13 @@ public:
         uniforms.mvpMatrix = glGetUniformLocation(grass_program, "mvpMatrix");
 
         glActiveTexture(GL_TEXTURE1);
-        tex_grass_length = sb6::ktx::file::load("media/textures/grass_length.ktx");
+        tex_grass_length = sb6::ktx::file::load("../media/textures/grass_length.ktx");
         glActiveTexture(GL_TEXTURE2);
-        tex_grass_orientation = sb6::ktx::file::load("media/textures/grass_orientation.ktx");
+        tex_grass_orientation = sb6::ktx::file::load("../media/textures/grass_orientation.ktx");
         glActiveTexture(GL_TEXTURE3);
-        tex_grass_color = sb6::ktx::file::load("media/textures/grass_color.ktx");
+        tex_grass_color = sb6::ktx::file::load("../media/textures/grass_color.ktx");
         glActiveTexture(GL_TEXTURE4);
-        tex_grass_bend = sb6::ktx::file::load("media/textures/grass_bend.ktx");
+        tex_grass_bend = sb6::ktx::file::load("../media/textures/grass_bend.ktx");
     }
 
     void shutdown(void)

@@ -116,10 +116,10 @@ void shadowmapping_app::startup()
 
     static const char * const object_names[] =
     {
-        "media/objects/dragon.sbm",
-        "media/objects/sphere.sbm",
-        "media/objects/cube.sbm",
-        "media/objects/torus.sbm"
+        "../media/objects/dragon.sbm",
+        "../media/objects/sphere.sbm",
+        "../media/objects/cube.sbm",
+        "../media/objects/torus.sbm"
     };
 
     for (i = 0; i < OBJECT_COUNT; i++)
@@ -316,8 +316,8 @@ void shadowmapping_app::load_shaders()
     GLuint vs;
     GLuint fs;
 
-    vs = sb6::shader::load("media/shaders/shadowmapping/shadowmapping-light.vs.glsl", GL_VERTEX_SHADER);
-    fs = sb6::shader::load("media/shaders/shadowmapping/shadowmapping-light.fs.glsl", GL_FRAGMENT_SHADER);
+    vs = sb6::shader::load("../media/shaders/shadowmapping/shadowmapping-light.vs.glsl", GL_VERTEX_SHADER);
+    fs = sb6::shader::load("../media/shaders/shadowmapping/shadowmapping-light.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (light_program)
         glDeleteProgram(light_program);
@@ -332,8 +332,8 @@ void shadowmapping_app::load_shaders()
 
     uniforms.light.mvp = glGetUniformLocation(light_program, "mvp");
 
-    vs = sb6::shader::load("media/shaders/shadowmapping/shadowmapping-camera.vs.glsl", GL_VERTEX_SHADER);
-    fs = sb6::shader::load("media/shaders/shadowmapping/shadowmapping-camera.fs.glsl", GL_FRAGMENT_SHADER);
+    vs = sb6::shader::load("../media/shaders/shadowmapping/shadowmapping-camera.vs.glsl", GL_VERTEX_SHADER);
+    fs = sb6::shader::load("../media/shaders/shadowmapping/shadowmapping-camera.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (light_program)
         glDeleteProgram(view_program);
@@ -356,8 +356,8 @@ void shadowmapping_app::load_shaders()
 
     show_light_depth_program = glCreateProgram();
 
-    vs = sb6::shader::load("media/shaders/shadowmapping/shadowmapping-light-view.vs.glsl", GL_VERTEX_SHADER);
-    fs = sb6::shader::load("media/shaders/shadowmapping/shadowmapping-light-view.fs.glsl", GL_FRAGMENT_SHADER);
+    vs = sb6::shader::load("../media/shaders/shadowmapping/shadowmapping-light-view.vs.glsl", GL_VERTEX_SHADER);
+    fs = sb6::shader::load("../media/shaders/shadowmapping/shadowmapping-light-view.fs.glsl", GL_FRAGMENT_SHADER);
 
     glAttachShader(show_light_depth_program, vs);
     glAttachShader(show_light_depth_program, fs);

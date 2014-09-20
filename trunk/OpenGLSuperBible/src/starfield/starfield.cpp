@@ -127,7 +127,7 @@ class starfield_app : public sb6::application
         uniforms.time = glGetUniformLocation(render_prog, "time");
         uniforms.proj_matrix = glGetUniformLocation(render_prog, "proj_matrix");
 
-        star_texture = sb6::ktx::file::load("media/textures/star.ktx");
+        star_texture = sb6::ktx::file::load("../media/textures/star.ktx");
 
         glGenVertexArrays(1, &star_vao);
         glBindVertexArray(star_vao);

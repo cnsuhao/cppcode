@@ -69,7 +69,7 @@ public:
 
         load_shaders();
 
-        obj.load("media/objects/torus.sbm");
+        obj.load("../media/objects/torus.sbm");
 
         glGenBuffers(1, &transform_ubo);
         glBindBuffer(GL_UNIFORM_BUFFER, transform_ubo);
@@ -192,8 +192,8 @@ public:
 
         program_showlayers = glCreateProgram();
 
-        vs = sb6::shader::load("media/shaders/gslayers/showlayers.vs.glsl", GL_VERTEX_SHADER);
-        fs = sb6::shader::load("media/shaders/gslayers/showlayers.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/gslayers/showlayers.vs.glsl", GL_VERTEX_SHADER);
+        fs = sb6::shader::load("../media/shaders/gslayers/showlayers.fs.glsl", GL_FRAGMENT_SHADER);
 
         glAttachShader(program_showlayers, vs);
         glAttachShader(program_showlayers, fs);
@@ -203,9 +203,9 @@ public:
         glDeleteShader(vs);
         glDeleteShader(fs);
 
-        vs = sb6::shader::load("media/shaders/gslayers/gslayers.vs.glsl", GL_VERTEX_SHADER);
-        gs = sb6::shader::load("media/shaders/gslayers/gslayers.gs.glsl", GL_GEOMETRY_SHADER);
-        fs = sb6::shader::load("media/shaders/gslayers/gslayers.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/gslayers/gslayers.vs.glsl", GL_VERTEX_SHADER);
+        gs = sb6::shader::load("../media/shaders/gslayers/gslayers.gs.glsl", GL_GEOMETRY_SHADER);
+        fs = sb6::shader::load("../media/shaders/gslayers/gslayers.fs.glsl", GL_FRAGMENT_SHADER);
 
         if (program_gslayers)
             glDeleteProgram(program_gslayers);

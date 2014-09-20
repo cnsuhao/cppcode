@@ -98,7 +98,7 @@ class sb6mrender_app : public sb6::application
         mv_location = glGetUniformLocation(program, "mv_matrix");
         proj_location = glGetUniformLocation(program, "proj_matrix");
 
-        object.load("media/objects/bunny_1k.sbm");
+        object.load("../media/objects/bunny_1k.sbm");
 
         glEnable(GL_CULL_FACE);
         //glCullFace(GL_FRONT);

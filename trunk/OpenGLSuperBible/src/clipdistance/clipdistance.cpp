@@ -69,7 +69,7 @@ protected:
 
 void clipdistance_app::startup()
 {
-    object.load("media/objects/dragon.sbm");
+    object.load("../media/objects/dragon.sbm");
 
     load_shaders();
 }
@@ -103,11 +103,18 @@ void clipdistance_app::render(double currentTime)
                             vmath::translate(0.0f, -4.0f, 0.0f);
 
     vmath::mat4 plane_matrix = vmath::rotate(f * 6.0f, 1.0f, 0.0f, 0.0f) *
-                               vmath::rotate(f * 7.3f, 0.0f, 1.0f, 0.0f);
+        vmath::rotate(f * 7.3f, 0.0f, 1.0f, 0.0f);
+
+    //vmath::mat4 plane_matrix = vmath::rotate(f * 7.3f, 0.0f, 1.0f, 0.0f);
+
+    //vmath::mat4 plane_matrix = vmath::rotate(f * 6.0f, 1.0f, 0.0f, 0.0f);
 
     vmath::vec4 plane = plane_matrix[0];
     plane[3] = 0.0f;
     plane = vmath::normalize(plane);
+    float x = plane[0];
+    float y = plane[1];
+    float z = plane[2];
 
     vmath::vec4 clip_sphere = vmath::vec4(sinf(f * 0.7f) * 3.0f, cosf(f * 1.9f) * 3.0f, sinf(f * 0.1f) * 3.0f, cosf(f * 1.7f) + 2.5f);
 
@@ -118,7 +125,7 @@ void clipdistance_app::render(double currentTime)
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CLIP_DISTANCE0);
-    glEnable(GL_CLIP_DISTANCE1);
+    //glEnable(GL_CLIP_DISTANCE1);
 
     object.render();
 }
@@ -130,8 +137,8 @@ void clipdistance_app::load_shaders()
 
     GLuint shaders[] =
     {
-        sb6::shader::load("media/shaders/clipdistance/render.vs.glsl", GL_VERTEX_SHADER),
-        sb6::shader::load("media/shaders/clipdistance/render.fs.glsl", GL_FRAGMENT_SHADER)
+        sb6::shader::load("../media/shaders/clipdistance/render.vs.glsl", GL_VERTEX_SHADER),
+        sb6::shader::load("../media/shaders/clipdistance/render.fs.glsl", GL_FRAGMENT_SHADER)
     };
 
     render_program = sb6::program::link_from_shaders(shaders, 2, true);

@@ -49,7 +49,7 @@ protected:
 
     virtual void startup()
     {
-#define B 0x00, 0x00, 0x00, 0x00
+#define B 0x00, 0x00, 0x00, 0xFF
 #define W 0xFF, 0xFF, 0xFF, 0xFF
         static const GLubyte tex_data[] =
         {
@@ -80,9 +80,9 @@ protected:
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-        tex_object[1] = sb6::ktx::file::load("media/textures/pattern1.ktx");
+        tex_object[1] = sb6::ktx::file::load("../media/textures/pattern1.ktx");
 
-        object.load("media/objects/torus_nrms_tc.sbm");
+        object.load("../media/objects/torus_nrms_tc.sbm");
 
         load_shaders();
 
@@ -128,8 +128,8 @@ protected:
 
         GLuint vs, fs;
 
-        vs = sb6::shader::load("media/shaders/simpletexcoords/render.vs.glsl", GL_VERTEX_SHADER);
-        fs = sb6::shader::load("media/shaders/simpletexcoords/render.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/simpletexcoords/render.vs.glsl", GL_VERTEX_SHADER);
+        fs = sb6::shader::load("../media/shaders/simpletexcoords/render.fs.glsl", GL_FRAGMENT_SHADER);
 
         render_prog = glCreateProgram();
         glAttachShader(render_prog, vs);
