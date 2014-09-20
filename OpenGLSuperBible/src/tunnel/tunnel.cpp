@@ -63,6 +63,7 @@ class tunnel_app : public sb6::application
             "}                                                                      \n"
         };
 
+
         static const char * fs_source[] =
         {
             "#version 420 core                                                      \n"
@@ -112,9 +113,9 @@ class tunnel_app : public sb6::application
         glGenVertexArrays(1, &render_vao);
         glBindVertexArray(render_vao);
 
-        tex_wall = sb6::ktx::file::load("media/textures/brick.ktx");
-        tex_ceiling = sb6::ktx::file::load("media/textures/ceiling.ktx");
-        tex_floor = sb6::ktx::file::load("media/textures/floor.ktx");
+        tex_wall = sb6::ktx::file::load("../media/textures/brick.ktx");
+        tex_ceiling = sb6::ktx::file::load("../media/textures/ceiling.ktx");
+        tex_floor = sb6::ktx::file::load("../media/textures/floor.ktx");
 
         int i;
         GLuint textures[] = { tex_floor, tex_wall, tex_ceiling };
@@ -126,7 +127,7 @@ class tunnel_app : public sb6::application
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         }
 
-        glBindVertexArray(render_vao);
+        //glBindVertexArray(render_vao);
     }
 
     void render(double currentTime)
@@ -141,7 +142,7 @@ class tunnel_app : public sb6::application
 
         vmath::mat4 proj_matrix = vmath::perspective(60.0f,
                                                      (float)info.windowWidth / (float)info.windowHeight,
-                                                     0.1f, 100.0f);
+                                                     0.1f, 5.0f);
 
         glUniform1f(uniforms.offset, t * 0.003f);
 

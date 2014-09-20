@@ -126,8 +126,8 @@ public:
 
         prog_noise = glCreateProgram();
 
-        vs = sb6::shader::load("media/shaders/noise/noise.vs.glsl", GL_VERTEX_SHADER);
-        fs = sb6::shader::load("media/shaders/noise/noise.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/noise/noise.vs.glsl", GL_VERTEX_SHADER);
+        fs = sb6::shader::load("../media/shaders/noise/noise.fs.glsl", GL_FRAGMENT_SHADER);
 
         glAttachShader(prog_noise, vs);
         glAttachShader(prog_noise, fs);

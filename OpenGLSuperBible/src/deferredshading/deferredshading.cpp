@@ -87,9 +87,9 @@ protected:
         glGenVertexArrays(1, &fs_quad_vao);
         glBindVertexArray(fs_quad_vao);
 
-        object.load("media/objects/ladybug.sbm");
-        tex_nm = sb6::ktx::file::load("media/textures/ladybug_nm.ktx");
-        tex_diffuse = sb6::ktx::file::load("media/textures/ladybug_co.ktx");
+        object.load("../media/objects/ladybug.sbm");
+        tex_nm = sb6::ktx::file::load("../media/textures/ladybug_nm.ktx");
+        tex_diffuse = sb6::ktx::file::load("../media/textures/ladybug_co.ktx");
 
         load_shaders();
 
@@ -243,8 +243,8 @@ protected:
             glDeleteProgram(light_program);
             GLuint vs, fs;
 
-        vs = sb6::shader::load("media/shaders/deferredshading/render.vs.glsl", GL_VERTEX_SHADER);
-        fs = sb6::shader::load("media/shaders/deferredshading/render.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/deferredshading/render.vs.glsl", GL_VERTEX_SHADER);
+        fs = sb6::shader::load("../media/shaders/deferredshading/render.fs.glsl", GL_FRAGMENT_SHADER);
 
         render_program = glCreateProgram();
         glAttachShader(render_program, vs);
@@ -254,8 +254,8 @@ protected:
         glDeleteShader(vs);
         glDeleteShader(fs);
 
-        vs = sb6::shader::load("media/shaders/deferredshading/render-nm.vs.glsl", GL_VERTEX_SHADER);
-        fs = sb6::shader::load("media/shaders/deferredshading/render-nm.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/deferredshading/render-nm.vs.glsl", GL_VERTEX_SHADER);
+        fs = sb6::shader::load("../media/shaders/deferredshading/render-nm.fs.glsl", GL_FRAGMENT_SHADER);
 
         render_program_nm = glCreateProgram();
         glAttachShader(render_program_nm, vs);
@@ -265,8 +265,8 @@ protected:
         glDeleteShader(vs);
         glDeleteShader(fs);
 
-        vs = sb6::shader::load("media/shaders/deferredshading/light.vs.glsl", GL_VERTEX_SHADER);
-        fs = sb6::shader::load("media/shaders/deferredshading/light.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/deferredshading/light.vs.glsl", GL_VERTEX_SHADER);
+        fs = sb6::shader::load("../media/shaders/deferredshading/light.fs.glsl", GL_FRAGMENT_SHADER);
 
         light_program = glCreateProgram();
         glAttachShader(light_program, vs);
@@ -275,7 +275,7 @@ protected:
 
         glDeleteShader(fs);
 
-        fs = sb6::shader::load("media/shaders/deferredshading/render-vis.fs.glsl", GL_FRAGMENT_SHADER);
+        fs = sb6::shader::load("../media/shaders/deferredshading/render-vis.fs.glsl", GL_FRAGMENT_SHADER);
 
         vis_program = glCreateProgram();
         glAttachShader(vis_program, vs);

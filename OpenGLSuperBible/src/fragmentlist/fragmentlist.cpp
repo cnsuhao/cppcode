@@ -95,7 +95,7 @@ void fragmentlist_app::startup()
     glBindBuffer(GL_UNIFORM_BUFFER, uniforms_buffer);
     glBufferData(GL_UNIFORM_BUFFER, sizeof(uniforms_block), NULL, GL_DYNAMIC_DRAW);
 
-    object.load("media/objects/dragon.sbm");
+    object.load("../media/objects/dragon.sbm");
 
     glGenBuffers(1, &fragment_buffer);
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, fragment_buffer);
@@ -184,16 +184,16 @@ void fragmentlist_app::load_shaders()
 {
     GLuint  shaders[2];
 
-    shaders[0] = sb6::shader::load("media/shaders/fragmentlist/clear.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/fragmentlist/clear.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/fragmentlist/clear.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/fragmentlist/clear.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (clear_program)
         glDeleteProgram(clear_program);
 
     clear_program = sb6::program::link_from_shaders(shaders, 2, true);
 
-    shaders[0] = sb6::shader::load("media/shaders/fragmentlist/append.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/fragmentlist/append.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/fragmentlist/append.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/fragmentlist/append.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (append_program)
         glDeleteProgram(append_program);
@@ -202,8 +202,8 @@ void fragmentlist_app::load_shaders()
 
     uniforms.mvp = glGetUniformLocation(append_program, "mvp");
 
-    shaders[0] = sb6::shader::load("media/shaders/fragmentlist/resolve.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/fragmentlist/resolve.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/fragmentlist/resolve.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/fragmentlist/resolve.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (resolve_program)
         glDeleteProgram(resolve_program);

@@ -44,8 +44,8 @@ class gsculling_app : public sb6::application
             "#version 410 core                                                                       \n"
             "                                                                                        \n"
             "// Incoming per vertex... position and normal                                           \n"
-            "in vec4 vVertex;                                                                        \n"
-            "in vec3 vNormal;                                                                        \n"
+            "layout (location = 0) in vec4 vVertex;                            \n"
+            "layout (location = 1) in vec3 vNormal;                              \n"
             "                                                                                        \n"
             "out Vertex                                                                              \n"
             "{                                                                                       \n"
@@ -105,7 +105,7 @@ class gsculling_app : public sb6::application
             "    vec3 ac = gl_in[2].gl_Position.xyz - gl_in[0].gl_Position.xyz;      \n"
             "    vec3 normal = normalize(cross(ab, ac));                             \n"
             "    vec3 transformed_normal = (mat3(mvMatrix) * normal);                \n"
-            "    vec4 worldspace = /* mvMatrix * */ gl_in[0].gl_Position;            \n"
+            "    vec4 worldspace =  mvMatrix * gl_in[0].gl_Position;            \n"
             "    vec3 vt = normalize(viewpoint - worldspace.xyz);                    \n"
             "                                                                        \n"
             "    if (dot(normal, vt) > 0.0) {                                        \n"
@@ -160,7 +160,7 @@ class gsculling_app : public sb6::application
         mvp_location = glGetUniformLocation(program, "mvpMatrix");
         viewpoint_location = glGetUniformLocation(program, "viewpoint");
 
-        object.load("media/objects/bunny_1k.sbm");
+        object.load("../media/objects/bunny_1k.sbm");
 
         glDisable(GL_CULL_FACE);
 
@@ -185,8 +185,8 @@ class gsculling_app : public sb6::application
                                                      0.1f,
                                                      1000.0f);
         vmath::mat4 mv_matrix = vmath::translate(0.0f, 0.0f, -1.5f)/* *
-                                vmath::rotate((float)currentTime * 5.0f, 0.0f, 1.0f, 0.0f) *
-                                vmath::rotate((float)currentTime * 100.0f, 1.0f, 0.0f, 0.0f)*/;
+                                                                   vmath::rotate((float)currentTime * 5.0f, 0.0f, 1.0f, 0.0f) *
+                                                                   vmath::rotate((float)currentTime * 100.0f, 1.0f, 0.0f, 0.0f)*/;
 
         glUniformMatrix4fv(mvp_location, 1, GL_FALSE, proj_matrix * mv_matrix);
 

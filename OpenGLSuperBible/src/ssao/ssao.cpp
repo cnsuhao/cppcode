@@ -161,8 +161,8 @@ void ssao_app::startup()
     glGenVertexArrays(1, &quad_vao);
     glBindVertexArray(quad_vao);
 
-    object.load("media/objects/dragon.sbm");
-    cube.load("media/objects/cube.sbm");
+    object.load("../media/objects/dragon.sbm");
+    cube.load("../media/objects/cube.sbm");
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
@@ -273,8 +273,8 @@ void ssao_app::load_shaders()
 {
     GLuint shaders[2];
 
-    shaders[0] = sb6::shader::load("media/shaders/ssao/render.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/ssao/render.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/ssao/render.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/ssao/render.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (render_program)
         glDeleteProgram(render_program);
@@ -285,8 +285,8 @@ void ssao_app::load_shaders()
     uniforms.render.proj_matrix = glGetUniformLocation(render_program, "proj_matrix");
     uniforms.render.shading_level = glGetUniformLocation(render_program, "shading_level");
 
-    shaders[0] = sb6::shader::load("media/shaders/ssao/ssao.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/ssao/ssao.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/ssao/ssao.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/ssao/ssao.fs.glsl", GL_FRAGMENT_SHADER);
 
     ssao_program = sb6::program::link_from_shaders(shaders, 2, true);
 

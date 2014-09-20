@@ -49,7 +49,7 @@ protected:
     virtual void startup()
     {
         glActiveTexture(GL_TEXTURE0);
-        tex_envmap = sb6::ktx::file::load("media/textures/envmaps/mountains3d.ktx");
+        tex_envmap = sb6::ktx::file::load("../media/textures/envmaps/mountains3d.ktx");
 
         glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -58,9 +58,9 @@ protected:
         glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
         glActiveTexture(GL_TEXTURE1);
-        tex_glossmap = sb6::ktx::file::load("media/textures/pattern1.ktx");
+        tex_glossmap = sb6::ktx::file::load("../media/textures/pattern1.ktx");
 
-        object.load("media/objects/torus_nrms_tc.sbm");
+        object.load("../media/objects/torus_nrms_tc.sbm");
 
         load_shaders();
 
@@ -111,8 +111,8 @@ protected:
 
         GLuint vs, fs;
 
-        vs = sb6::shader::load("media/shaders/perpixelgloss/perpixelgloss.vs.glsl", GL_VERTEX_SHADER);
-        fs = sb6::shader::load("media/shaders/perpixelgloss/perpixelgloss.fs.glsl", GL_FRAGMENT_SHADER);
+        vs = sb6::shader::load("../media/shaders/perpixelgloss/perpixelgloss.vs.glsl", GL_VERTEX_SHADER);
+        fs = sb6::shader::load("../media/shaders/perpixelgloss/perpixelgloss.fs.glsl", GL_FRAGMENT_SHADER);
 
         render_prog = glCreateProgram();
         glAttachShader(render_prog, vs);

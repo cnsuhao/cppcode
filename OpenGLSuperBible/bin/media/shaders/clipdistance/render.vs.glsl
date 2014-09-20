@@ -48,7 +48,7 @@ void main(void)
 
     // Write clip distances
     gl_ClipDistance[0] = dot(position, clip_plane);
-    gl_ClipDistance[1] = length(position.xyz / position.w - clip_sphere.xyz) - clip_sphere.w;
+    // gl_ClipDistance[1] = length(position.xyz / position.w - clip_sphere.xyz) - clip_sphere.w;
 
     // Calculate the clip-space position of each vertex
     gl_Position = proj_matrix * P;

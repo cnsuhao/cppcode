@@ -95,7 +95,7 @@ void phonglighting_app::startup()
     glBindBuffer(GL_UNIFORM_BUFFER, uniforms_buffer);
     glBufferData(GL_UNIFORM_BUFFER, sizeof(uniforms_block), NULL, GL_DYNAMIC_DRAW);
 
-    object.load("media/objects/sphere.sbm");
+    object.load("../media/objects/sphere.sbm");
 
     glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
@@ -208,8 +208,8 @@ void phonglighting_app::load_shaders()
     GLuint vs;
     GLuint fs;
 
-    vs = sb6::shader::load("media/shaders/phonglighting/per-fragment-phong.vs.glsl", GL_VERTEX_SHADER);
-    fs = sb6::shader::load("media/shaders/phonglighting/per-fragment-phong.fs.glsl", GL_FRAGMENT_SHADER);
+    vs = sb6::shader::load("../media/shaders/phonglighting/per-fragment-phong.vs.glsl", GL_VERTEX_SHADER);
+    fs = sb6::shader::load("../media/shaders/phonglighting/per-fragment-phong.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (per_fragment_program)
         glDeleteProgram(per_fragment_program);
@@ -223,8 +223,8 @@ void phonglighting_app::load_shaders()
     uniforms[0].specular_albedo = glGetUniformLocation(per_fragment_program, "specular_albedo");
     uniforms[0].specular_power = glGetUniformLocation(per_fragment_program, "specular_power");
 
-    vs = sb6::shader::load("media/shaders/phonglighting/per-vertex-phong.vs.glsl", GL_VERTEX_SHADER);
-    fs = sb6::shader::load("media/shaders/phonglighting/per-vertex-phong.fs.glsl", GL_FRAGMENT_SHADER);
+    vs = sb6::shader::load("../media/shaders/phonglighting/per-vertex-phong.vs.glsl", GL_VERTEX_SHADER);
+    fs = sb6::shader::load("../media/shaders/phonglighting/per-vertex-phong.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (per_vertex_program)
         glDeleteProgram(per_vertex_program);

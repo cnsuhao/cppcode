@@ -113,11 +113,11 @@ void shadowmapping_app::startup()
 
     static const char * const object_names[] =
     {
-        "media/objects/dragon.sbm",
-        "media/objects/sphere.sbm",
-        "media/objects/cube.sbm",
-        "media/objects/cube.sbm",
-        "media/objects/cube.sbm",
+        "../media/objects/dragon.sbm",
+        "../media/objects/sphere.sbm",
+        "../media/objects/cube.sbm",
+        "../media/objects/cube.sbm",
+        "../media/objects/cube.sbm",
     };
 
     static const vmath::vec4 object_colors[] =
@@ -307,8 +307,8 @@ void shadowmapping_app::load_shaders()
 {
     GLuint shaders[4];
 
-    shaders[0] = sb6::shader::load("media/shaders/dof/render.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/dof/render.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/dof/render.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/dof/render.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (view_program)
         glDeleteProgram(view_program);
@@ -320,8 +320,8 @@ void shadowmapping_app::load_shaders()
     uniforms.view.full_shading = glGetUniformLocation(view_program, "full_shading");
     uniforms.view.diffuse_albedo = glGetUniformLocation(view_program, "diffuse_albedo");
 
-    shaders[0] = sb6::shader::load("media/shaders/dof/display.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/dof/display.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/dof/display.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/dof/display.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (display_program)
         glDeleteProgram(display_program);
@@ -331,7 +331,7 @@ void shadowmapping_app::load_shaders()
     uniforms.dof.focal_distance = glGetUniformLocation(display_program, "focal_distance");
     uniforms.dof.focal_depth = glGetUniformLocation(display_program, "focal_depth");
 
-    shaders[0] = sb6::shader::load("media/shaders/dof/gensat.cs.glsl", GL_COMPUTE_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/dof/gensat.cs.glsl", GL_COMPUTE_SHADER);
 
     if (filter_program)
         glDeleteProgram(filter_program);

@@ -216,14 +216,14 @@ public:
             GLuint cs;
         } shaders;
 
-        shaders.cs = sb6::shader::load("media/shaders/flocking/flocking.cs.glsl", GL_COMPUTE_SHADER);
+        shaders.cs = sb6::shader::load("../media/shaders/flocking/flocking.cs.glsl", GL_COMPUTE_SHADER);
 
         flock_update_program = sb6::program::link_from_shaders(&shaders.cs, 1, true);
 
         uniforms.update.goal = glGetUniformLocation(flock_update_program, "goal");
 
-        shaders.vs = sb6::shader::load("media/shaders/flocking/render.vs.glsl", GL_VERTEX_SHADER);
-        shaders.fs = sb6::shader::load("media/shaders/flocking/render.fs.glsl", GL_FRAGMENT_SHADER);
+        shaders.vs = sb6::shader::load("../media/shaders/flocking/render.vs.glsl", GL_VERTEX_SHADER);
+        shaders.fs = sb6::shader::load("../media/shaders/flocking/render.fs.glsl", GL_FRAGMENT_SHADER);
 
         flock_render_program = sb6::program::link_from_shaders(&shaders.vs, 2, true);
 

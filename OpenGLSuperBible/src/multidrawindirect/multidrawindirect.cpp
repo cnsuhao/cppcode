@@ -102,7 +102,7 @@ void multidrawindirect_app::startup()
 
     load_shaders();
 
-    object.load("media/objects/asteroids.sbm");
+    object.load("../media/objects/asteroids.sbm");
 
     glGenBuffers(1, &indirect_draw_buffer);
     glBindBuffer(GL_DRAW_INDIRECT_BUFFER, indirect_draw_buffer);
@@ -221,8 +221,8 @@ void multidrawindirect_app::load_shaders()
 {
     GLuint shaders[2];
 
-    shaders[0] = sb6::shader::load("media/shaders/multidrawindirect/render.vs.glsl", GL_VERTEX_SHADER);
-    shaders[1] = sb6::shader::load("media/shaders/multidrawindirect/render.fs.glsl", GL_FRAGMENT_SHADER);
+    shaders[0] = sb6::shader::load("../media/shaders/multidrawindirect/render.vs.glsl", GL_VERTEX_SHADER);
+    shaders[1] = sb6::shader::load("../media/shaders/multidrawindirect/render.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (render_program)
         glDeleteProgram(render_program);

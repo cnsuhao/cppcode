@@ -33,6 +33,7 @@ static unsigned int seed = 0x13371337;
 static inline float random_float()
 {
     float res;
+
     unsigned int tmp;
 
     seed *= 16807;
@@ -99,6 +100,7 @@ class alienrain_app : public sb6::application
             "    gl_Position = vec4(pos.x + droplet[alien_index].x_offset,          \n"
             "                       pos.y + droplet[alien_index].y_offset,          \n"
             "                       0.5, 1.0);                                      \n"
+            "    //vs_out.alien = alien_index;                                   \n"
             "    vs_out.alien = alien_index % 64;                                   \n"
             "}                                                                      \n"
         };
@@ -148,7 +150,7 @@ class alienrain_app : public sb6::application
         glGenVertexArrays(1, &render_vao);
         glBindVertexArray(render_vao);
 
-        tex_alien_array = sb6::ktx::file::load("media/textures/aliens.ktx");
+        tex_alien_array = sb6::ktx::file::load("../media/textures/aliens.ktx");
         glBindTexture(GL_TEXTURE_2D_ARRAY, tex_alien_array);
         glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 

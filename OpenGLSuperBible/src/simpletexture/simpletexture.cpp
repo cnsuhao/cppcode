@@ -56,17 +56,19 @@ static const char * vs_source[] =
     "}                                                                              \n"
 };
 
+
 static const char * fs_source[] =
 {
     "#version 430 core                                                              \n"
     "                                                                               \n"
-    "uniform sampler2D s;                                                           \n"
+    "uniform sampler2D hehe;                                                           \n"
     "                                                                               \n"
     "out vec4 color;                                                                \n"
     "                                                                               \n"
     "void main(void)                                                                \n"
     "{                                                                              \n"
-    "    color = texture(s, gl_FragCoord.xy / textureSize(s, 0));                   \n"
+    "    //color = texture(hehe, gl_FragCoord.xy / textureSize(hehe, 0));                   \n"
+    "    color = texelFetch(hehe, ivec2(gl_FragCoord.xy), 0);                   \n"
     "}                                                                              \n"
 };
 

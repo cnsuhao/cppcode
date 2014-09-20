@@ -141,7 +141,7 @@ class sb6mrender_app : public sb6::application
         proj_location = glGetUniformLocation(program, "proj_matrix");
         explode_factor_location = glGetUniformLocation(program, "explode_factor");
 
-        object.load("media/objects/bunny_1k.sbm");
+        object.load("../media/objects/bunny_1k.sbm");
 
         // glEnable(GL_CULL_FACE);
         //glCullFace(GL_FRONT);

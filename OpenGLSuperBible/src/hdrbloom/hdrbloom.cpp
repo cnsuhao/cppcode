@@ -128,7 +128,7 @@ public:
         glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 
-        object.load("media/objects/sphere.sbm");
+        object.load("../media/objects/sphere.sbm");
 
         glGenBuffers(1, &ubo_transform);
         glBindBuffer(GL_UNIFORM_BUFFER, ubo_transform);
@@ -330,8 +330,8 @@ public:
         if (program_render)
             glDeleteProgram(program_render);
 
-        shaders.vs = sb6::shader::load("media/shaders/hdrbloom/hdrbloom-scene.vs.glsl", GL_VERTEX_SHADER);
-        shaders.fs = sb6::shader::load("media/shaders/hdrbloom/hdrbloom-scene.fs.glsl", GL_FRAGMENT_SHADER);
+        shaders.vs = sb6::shader::load("../media/shaders/hdrbloom/hdrbloom-scene.vs.glsl", GL_VERTEX_SHADER);
+        shaders.fs = sb6::shader::load("../media/shaders/hdrbloom/hdrbloom-scene.fs.glsl", GL_FRAGMENT_SHADER);
         program_render = sb6::program::link_from_shaders(&shaders.vs, 2, true);
 
         uniforms.scene.bloom_thresh_min = glGetUniformLocation(program_render, "bloom_thresh_min");
@@ -340,15 +340,15 @@ public:
         if (program_filter)
             glDeleteProgram(program_filter);
 
-        shaders.vs = sb6::shader::load("media/shaders/hdrbloom/hdrbloom-filter.vs.glsl", GL_VERTEX_SHADER);
-        shaders.fs = sb6::shader::load("media/shaders/hdrbloom/hdrbloom-filter.fs.glsl", GL_FRAGMENT_SHADER);
+        shaders.vs = sb6::shader::load("../media/shaders/hdrbloom/hdrbloom-filter.vs.glsl", GL_VERTEX_SHADER);
+        shaders.fs = sb6::shader::load("../media/shaders/hdrbloom/hdrbloom-filter.fs.glsl", GL_FRAGMENT_SHADER);
         program_filter = sb6::program::link_from_shaders(&shaders.vs, 2, true);
 
         if (program_resolve)
             glDeleteProgram(program_resolve);
 
-        shaders.vs = sb6::shader::load("media/shaders/hdrbloom/hdrbloom-resolve.vs.glsl", GL_VERTEX_SHADER);
-        shaders.fs = sb6::shader::load("media/shaders/hdrbloom/hdrbloom-resolve.fs.glsl", GL_FRAGMENT_SHADER);
+        shaders.vs = sb6::shader::load("../media/shaders/hdrbloom/hdrbloom-resolve.vs.glsl", GL_VERTEX_SHADER);
+        shaders.fs = sb6::shader::load("../media/shaders/hdrbloom/hdrbloom-resolve.fs.glsl", GL_FRAGMENT_SHADER);
         program_resolve = sb6::program::link_from_shaders(&shaders.vs, 2, true);
 
         uniforms.resolve.exposure = glGetUniformLocation(program_resolve, "exposure");

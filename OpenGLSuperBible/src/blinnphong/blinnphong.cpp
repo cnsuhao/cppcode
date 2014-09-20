@@ -90,7 +90,7 @@ void blinnphong_app::startup()
     glBindBuffer(GL_UNIFORM_BUFFER, uniforms_buffer);
     glBufferData(GL_UNIFORM_BUFFER, sizeof(uniforms_block), NULL, GL_DYNAMIC_DRAW);
 
-    object.load("media/objects/sphere.sbm");
+    object.load("../media/objects/sphere.sbm");
 
     glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
@@ -200,8 +200,8 @@ void blinnphong_app::load_shaders()
     GLuint vs;
     GLuint fs;
 
-    vs = sb6::shader::load("media/shaders/blinnphong/blinnphong.vs.glsl", GL_VERTEX_SHADER);
-    fs = sb6::shader::load("media/shaders/blinnphong/blinnphong.fs.glsl", GL_FRAGMENT_SHADER);
+    vs = sb6::shader::load("../media/shaders/blinnphong/blinnphong.vs.glsl", GL_VERTEX_SHADER);
+    fs = sb6::shader::load("../media/shaders/blinnphong/blinnphong.fs.glsl", GL_FRAGMENT_SHADER);
 
     if (per_fragment_program)
         glDeleteProgram(per_fragment_program);
