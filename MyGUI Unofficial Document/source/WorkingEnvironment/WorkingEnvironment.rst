@@ -181,6 +181,7 @@ Visual Studio
   * **Edit.DecreaseLineIndent -> Ctrl+[(Text Editor)**
 
 * **Text Editor->C++**\ : 选中\ **Word Wrap**
+* **Text Editor->C++->Tabs**\ : 选中\ **Insert Spaces**
 * **Tools->External Tools**\ :增加\ **Title:GVim Command:xxx/gvim.exe Arguments:-p --remote-tab-silent +$(CurLine) "$(ItemPath)"**\
   ，移动到第一位并添加到工具栏。
 * 安装\ :file:`Tvl.VisualStudio.FindInSolutionExplorer.vsix`\ 和\ :file:`ProPowerTools.vsix`\ ,\ **Environment->Extension Manager**\ 中取消更新检查。
@@ -203,6 +204,19 @@ Windows
 * 任务栏属性:\ **从不合并**
   
 * 关掉最大化、最小化窗口的动画效果
+* 关掉Aero Peek
   
 	.. image:: /images/WindowsSetting-MinMax.png
 
+
+配置翻墙工具
+------------
+
+#. 安装chrome
+#. 控制面板-->internet选项-->连接-->局域网设置-->代理服务器
+#. 勾选"为LAN使用代理服务器", 填入地址: ``10.235.2.212``  端口: ``8763``
+#. 打开chrome, 进入网上应用商店, 搜索 **switchysharp** , 安装蓝色图标的 **proxy switchysharp**
+#. 打开 **switchysharp** 选项-->导入导出-->从文件恢复, 选择 :download:`SwitchyOptions.bak`
+#. 选择规则切换-->立即更新列表(如不成功 多试几次)
+#. 控制面板-->internet选项-->连接-->局域网设置-->代理服务器
+#. 取消选中"为LAN使用代理服务器"

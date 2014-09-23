@@ -114,6 +114,9 @@ MyGUI::ITexture
 *ITextureInvalidateListener*\ 是\ *MyGUI::Canvas*\ 的父类，定义了一个接口\ ``virtual void textureInvalidate(ITexture* _texture) = 0;``\ ,
 用于刷新\ *ITexture*\ 。
 
+.. warning:: ``MyGUI::texture_utility::getTextureSize`` 会缓存上一次运行的结果，因此改变一个 *ITexture* 时最好清理一下缓存。
+
+
 .. seealso:: 
 
     :ref:`OgreTexture <OgrePlatform-OgreTexture>`

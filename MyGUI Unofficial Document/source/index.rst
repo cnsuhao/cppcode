@@ -18,6 +18,7 @@ Contents:
    CMake <CMake/CMake>
    NSIS <NSIS>
    Lua <Lua>
+   NoteBook <NoteBook/NoteBook>
    
 Indices and tables
 ==================

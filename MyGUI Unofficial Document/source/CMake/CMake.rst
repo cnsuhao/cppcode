@@ -283,3 +283,5 @@ Tips
     install(TARGETS Example${index}
           RUNTIME DESTINATION "release" CONFIGURATIONS Release  
         )
+
+* 在VS2010中执行Install时，可能会出现没有复制文件的问题，重启一下VS好像就好了。
