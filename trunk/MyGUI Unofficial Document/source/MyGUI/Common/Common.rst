@@ -7,3 +7,4 @@ Contents:
    :maxdepth: 2
    
    BaseManager <BaseManager>
+   BaseLayout <BaseLayout>

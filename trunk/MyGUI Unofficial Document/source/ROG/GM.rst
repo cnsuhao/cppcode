@@ -26,8 +26,8 @@ additem | ai            [pos] [cardid]          增加一张道具
 addequip | ae           [pos] [cardid]          增加一张装备
 refreshhero | rh                                刷新备选英雄	
 judgecardsuit | jcs     [index] [suit]          设置判断花色
-addhp | ah              [pos] [index] [hp]	加血量
-addattack | aa          [pos] [index] [att]	加攻击
+addhp | ah              [pos] [index] [hp]	    加血量
+addattack | aa          [pos] [index] [att]	    加攻击
 addrange | ar           [pos] [index] [range]   增加范围
 resetaction | ra        [pos] [index]           刷新行动
 resettime | rt          [time]                  重置行动时间，单位秒
