@@ -19,6 +19,7 @@ Contents:
    NSIS <NSIS>
    Lua <Lua>
    NoteBook <NoteBook/NoteBook>
+   使用Sphinx <Sphinx>
    
 Indices and tables
 ==================

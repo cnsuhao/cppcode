@@ -182,7 +182,7 @@ Visual Studio
 
 * **Text Editor->C++**\ : 选中\ **Word Wrap**
 * **Text Editor->C++->Tabs**\ : 选中\ **Insert Spaces**
-* **Tools->External Tools**\ :增加\ **Title:GVim Command:xxx/gvim.exe Arguments:-p --remote-tab-silent +$(CurLine) "$(ItemPath)"**\
+* **Tools->External Tools**\ :增加 ``Title:SublimeText Command: C:/Program Files/Sublime Text 2/sublime_text.exe "$(ItemPath):$(CurLine)"`` 
   ，移动到第一位并添加到工具栏。
 * 安装\ :file:`Tvl.VisualStudio.FindInSolutionExplorer.vsix`\ 和\ :file:`ProPowerTools.vsix`\ ,\ **Environment->Extension Manager**\ 中取消更新检查。
 
