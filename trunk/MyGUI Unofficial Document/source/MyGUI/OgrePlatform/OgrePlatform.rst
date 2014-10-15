@@ -33,7 +33,7 @@ OgreRenderManager
 
 *OgreRenderManager*\ 不仅是\ :ref:`MyGUI::IRenderTarget <myguiengine-IRenderTarget>`\ 的子类:
 
-.. thumbnail:: /images/ButterflyGraph-OgreRenderManager.png
+.. image:: /images/ButterflyGraph-OgreRenderManager.png
 
 
 *OgreRenderManager*\ 主要包括以下接口:
