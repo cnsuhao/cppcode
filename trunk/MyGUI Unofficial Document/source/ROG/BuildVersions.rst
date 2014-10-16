@@ -61,5 +61,14 @@ Android版本构建
 UnrealFrontend
 ~~~~~~~~~~~~~~
 
-#. 启动 :file:`Client/Binaries/UnrealFrontend.exe`
-#. 使用adb devices查看Android设备状态
+启动 :file:`Client/Binaries/UnrealFrontend.exe`
+
+* PC版
+    
+    在 **Profiles** 中选择 **ROGGamePC** ，执行 **Start** ,完成后执行 **Package Game** ,生成的安装包 :file:`Client/ROGInstall-ROG.exe`
+
+* IOS版
+  
+* Android版
+
+    * 使用adb devices查看Android设备状态

@@ -7,6 +7,7 @@ Contents:
    :maxdepth: 2
    
    Warnings <warnings>
-   Settings <Settings>
+   常用设置 <Settings>
    GM指令 <GM>
    版本构建 <BuildVersions>
+   美术资源 <ArtResource>
