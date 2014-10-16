@@ -19,7 +19,7 @@ Contents:
    NSIS <NSIS>
    Lua <Lua>
    NoteBook <NoteBook/NoteBook>
-   使用Sphinx <Sphinx>
+   使用Sphinx的注意事项 <Sphinx>
    
 Indices and tables
 ==================

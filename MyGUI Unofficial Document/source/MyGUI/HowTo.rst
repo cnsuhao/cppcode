@@ -53,3 +53,18 @@ HowTo
       <Property key="Resolution" value="50"/> 
 
     等于 **Size \* Resolution / 72**
+
+* 使用带text区域的皮肤时，必须设置字体才能让文字显示出来。
+  
+* 编辑器打包
+
+  * 复制以下三个文件夹到同一个文件夹下:
+
+    * :file:`Build/Win32/Asserts/UI/Common`
+    * :file:`NoahSDK/Noah3rdparty/MyGUI/Media`
+    * :file:`NoahSDK/Noah3rdparty/MyGUI/VS2010OnOgre/bin/release`
+      
+  * 编辑 :file:`release` 下的以下配置文件，相关的参数改成相对路径
+    
+    * :file:`le_user_settings.xml` :file:`se_user_settings.xml` :file:`ie_user_settings.xml` 中的 **AdditionalPath.List**
+    * :file:`resources.xml` 中的各个 **Path**
