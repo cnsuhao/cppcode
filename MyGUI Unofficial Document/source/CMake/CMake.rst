@@ -285,3 +285,7 @@ Tips
         )
 
 * 在VS2010中执行Install时，可能会出现没有复制文件的问题，重启一下VS好像就好了。
+  
+* CMake 不喜欢带空格的路径, 如果 CMAKE_CURRENT_SOURCE_DIR 是 :file:`C:\Program Files (x86)` ，这一行代码就会报错。
+  
+  ``set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake;${CMAKE_MODULE_PATH}")``

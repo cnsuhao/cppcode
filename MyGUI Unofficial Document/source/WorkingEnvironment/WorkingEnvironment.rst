@@ -137,14 +137,17 @@ Wifi
 Vim
 ---
 
+* 安装到D盘
 * Check代码\ **http://code.taobao.org/svn/vimsettings/trunk**\ 到\ :file:`Vim/vimfiles`
-* 注释中带\ **mswin**\ 的行，增加一行\ ``source $VIM/vimfiles/vimrc.vim``
+* 注释中带\ **mswin**\ 的行，增加一行\ ``source $VIM/vimsettings/vimrc.vim``
 * 执行\ :file:`Vim/vimfiles/TabEditWithVim.reg`
+* 把  :file:`Vim` 添加到收藏夹
 
 SublimeText
 -----------
 
-* Check代码\ **http://code.taobao.org/svn/mystplugins/trunk**\ 到\ :file:`Sublime Text 2\Packages`
+* 安装  `Package Control <https://sublime.wbond.net/installation>`_
+* Check代码\ ``http://code.taobao.org/svn/sublimetextsettings/trunk``\ 到\ :file:`Sublime Text 3\Packages\User`
 * 注册\ **grepwin**\ : ``C:/Program Files/Sublime Text 2/sublime_text.exe "%path%:%line%"``
 * 检查\ **Vim**\ 和\ **LayoutEditor**\ 的路径
 * 注册\ **LayoutEditor**\ : 
@@ -157,10 +160,6 @@ SublimeText
 
 UnderStand
 ----------
-
-* Package Control ::
-  
-	import urllib2,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')
 
 * **General**\ 和\ **Editor**\ 中字体设成\ **Consolas 13**\ 号
 * **General**\ 中关掉\ **splash-screen**
@@ -228,3 +227,8 @@ Windows
 #. 输出png图片并复制到系统剪贴板
 #. 快捷方式右键->属性->高级，勾选 **用管理员身份运行**
 #. 启动界面勾选 **启动程序时不再显示本窗口**
+   
+有道词典
+--------
+
+划词翻译功能与 ClipCube 、 Vim 、 MobaXterm 冲突，最好不用。

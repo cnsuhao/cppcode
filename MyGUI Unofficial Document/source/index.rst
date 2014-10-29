@@ -21,6 +21,7 @@ Contents:
    NoteBook <NoteBook/NoteBook>
    使用Sphinx的注意事项 <Sphinx>
    ReviewBoard <ReviewBoard>
+   Jenkins <Jenkins>
    
 Indices and tables
 ==================
