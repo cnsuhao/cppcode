@@ -24,7 +24,7 @@ Mac 编译机
 Android开发工具
 ~~~~~~~~~~~~~~~
 
-#. 新建文件夹 :file:`X:\\Android`
+#. 新建文件夹 :file:`X:\\\Android`
 #. 从ftp上下载下列工具,解压到 :file:`X:\\Android` ::
 
     ftp://king1@ftp.xsjme.com/tools/share/酷酷英雄项目工作/常用软件/android-ndk-r9-windows-x86.zip
@@ -52,6 +52,14 @@ Android开发工具
 
 .. seealso::
     https://udn.unrealengine.com/docs/ue3/INT/Platforms/iOS/GettingStarted/Licensees/index.html#DebuggingonaMac
+
+InHouse版
+--------
+
+* 编辑 :file:`Client\\ROGGame\\Build\\IPhone\\ROGGameOverrides.plist` ,将 ``com.xishanju.relicsofgods`` 改成 ``cn.com.xishanju.relicsofgods``
+* 登陆: 10.235.2.222 用户名: fanyongquan 密码: fandiy123
+* 执行: ``/usr/bin/scp /Users/fanyongquan/Tools/UE3/Builds/XIAWENTAO-PC/Dev/KuKuHero/Client/Binaries/IPhone/ROGGame-IPhone/Release/Distro_ROGGame-IPhone-Release.ipa root@www.xsjme.com:/usr/share/nginx/html/roggame/roggame.ipa``
+
 
 Android版本构建
 ~~~~~~~~~~~~~~~
