@@ -196,6 +196,7 @@ Visual Studio
   * A电脑上用VS2010在Debug模式下编译静态库xxx.lib
   * B电脑上用VS2010编译可执行程序，链接xxx.lib，生成的exe无法执行，对应的manifest中会含有关联VS2008的异常信息。
     
+* 调试代码的时候，经常出现无法查看 string 的问题，解决方法是修改 VS 目录下的 autoexp.dat 文件,把 ``$e._BUF_SIZE`` 替换成 ``sizeof($e._Bx._Buf)/sizeof(char)``, 参考 `https://connect.microsoft.com/VisualStudio/feedback/details/677683/std-string-incorrectly-displayed-in-debugger`_
 
 Windows
 -------

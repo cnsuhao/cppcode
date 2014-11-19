@@ -68,3 +68,5 @@ HowTo
     
     * :file:`le_user_settings.xml` :file:`se_user_settings.xml` :file:`ie_user_settings.xml` 中的 **AdditionalPath.List**
     * :file:`resources.xml` 中的各个 **Path**
+      
+* xml 文件中特殊符号应该用 `htmlcodes <http://www.ascii.cl/htmlcodes.htm>`_ 的表示方法，``MyGUI::xml::utility::convert_from_xml`` 和 ``MyGUI::xml::utility::convert_to_xml`` 处理这些特殊字符。
