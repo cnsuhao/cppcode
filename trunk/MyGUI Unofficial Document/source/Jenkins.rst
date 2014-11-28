@@ -11,6 +11,7 @@ Jenkins
 * Windows 默认不支持多用户同时登陆，需要安装 :file:`UniversalTermsrvPatch-x64.exe`
 * 在控制面板的远程设置中开启远程登陆；客户端用 mstsc.exe ；登陆名不要用IP，用服务器的计算机名
 
+
 安装配置
 --------
 
