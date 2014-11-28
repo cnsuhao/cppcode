@@ -54,7 +54,7 @@ Android开发工具
     https://udn.unrealengine.com/docs/ue3/INT/Platforms/iOS/GettingStarted/Licensees/index.html#DebuggingonaMac
 
 InHouse版
---------
+----------
 
 * 编辑 :file:`Client\\ROGGame\\Build\\IPhone\\ROGGameOverrides.plist` ,将 ``com.xishanju.relicsofgods`` 改成 ``cn.com.xishanju.relicsofgods``
 * 登陆: 10.235.2.222 用户名: fanyongquan 密码: fandiy123
