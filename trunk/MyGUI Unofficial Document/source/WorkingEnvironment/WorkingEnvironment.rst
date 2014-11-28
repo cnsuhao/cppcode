@@ -148,11 +148,11 @@ SublimeText
 
 * 安装  `Package Control <https://sublime.wbond.net/installation>`_
 * Check代码\ ``http://code.taobao.org/svn/sublimetextsettings/trunk``\ 到\ :file:`Sublime Text 3\Packages\User`
-* 注册\ **grepwin**\ : ``C:/Program Files/Sublime Text 2/sublime_text.exe "%path%:%line%"``
+* 注册\ **grepwin**\ : ``C:/Program Files/Sublime Text 3/sublime_text.exe "%path%:%line%"``
 * 检查\ **Vim**\ 和\ **LayoutEditor**\ 的路径
 * 注册\ **LayoutEditor**\ : 
 
-  * Exe: ``C:/Program Files/Sublime Text 2/sublime_text.exe``
+  * Exe: ``C:/Program Files/Sublime Text 3/sublime_text.exe``
   * Params: ``"${File}:${Line}"``
 
 * 使用 :kbd:`Ctrl+P` 查找文件有时候会出现异常，把 :file:`.sublime-workspace` 文件删掉就好了。
@@ -196,7 +196,7 @@ Visual Studio
   * A电脑上用VS2010在Debug模式下编译静态库xxx.lib
   * B电脑上用VS2010编译可执行程序，链接xxx.lib，生成的exe无法执行，对应的manifest中会含有关联VS2008的异常信息。
     
-* 调试代码的时候，经常出现无法查看 string 的问题，解决方法是修改 VS 目录下的 autoexp.dat 文件,把 ``$e._BUF_SIZE`` 替换成 ``sizeof($e._Bx._Buf)/sizeof(char)``, 参考 `https://connect.microsoft.com/VisualStudio/feedback/details/677683/std-string-incorrectly-displayed-in-debugger`_
+* 调试代码的时候，经常出现无法查看 string 的问题，解决方法是修改 VS 目录下的 autoexp.dat 文件,把 ``$e._BUF_SIZE`` 替换成 ``sizeof($e._Bx._Buf)/sizeof(char)``, 参考 https://connect.microsoft.com/VisualStudio/feedback/details/677683/std-string-incorrectly-displayed-in-debugger
 
 Windows
 -------
@@ -232,4 +232,4 @@ Windows
 有道词典
 --------
 
-划词翻译功能与 ClipCube 、 Vim 、 MobaXterm 冲突，最好不用。
+划词翻译功能与 ClipCube 、 Vim 、 MobaXterm 冲突，不用的时候最好关闭。
