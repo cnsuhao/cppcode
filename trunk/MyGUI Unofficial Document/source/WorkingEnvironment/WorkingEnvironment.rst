@@ -29,7 +29,7 @@ VS2010
 * 安装\ :file:`VS2010SP1dvd1.iso`
 * 输入cdkey: **YCFHQ 9DWCY DKV88 T2TMH G7BHP**
 
-	.. image:: /images/vs2010register.png
+.. image:: /images/vs2010register.png
 
 Visual Assist
 -------------
@@ -139,7 +139,7 @@ Vim
 
 * 安装到D盘
 * Check代码\ **http://code.taobao.org/svn/vimsettings/trunk**\ 到\ :file:`Vim/vimfiles`
-* 注释中带\ **mswin**\ 的行，增加一行\ ``source $VIM/vimsettings/vimrc.vim``
+* 注释中带\ **mswin**\ 的行，增加一行\ ``source $VIM/vimfiles/vimrc.vim``
 * 执行\ :file:`Vim/vimfiles/TabEditWithVim.reg`
 * 把  :file:`Vim` 添加到收藏夹
 
