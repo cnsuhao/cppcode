@@ -29,6 +29,19 @@ ENDIF(APPLE)
 set(COMMON_LIBS ${COMMON_LIBS} ${EXTRA_LIBS})
 
 add_library(sb6
+include/arcball.h
+include/GL/gl3w.h
+include/GL/glcorearb.h
+include/GL/glext.h
+include/GL/glxext.h
+include/GL/wglext.h
+include/object.h
+include/sb6.h
+include/sb6ext.h
+include/sb6ktx.h
+include/sb6mfile.h
+include/shader.h
+include/vmath.h
 src/sb6/sb6.cpp
 src/sb6/sb6ktx.cpp
 src/sb6/sb6object.cpp

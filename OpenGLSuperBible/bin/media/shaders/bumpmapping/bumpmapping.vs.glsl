@@ -1,4 +1,4 @@
-#version 410 core
+#version 420 core
 
 layout (location = 0) in vec4 position;
 layout (location = 1) in vec3 normal;
@@ -28,7 +28,6 @@ void main(void)
 
     // Calculate normal (N) and tangent (T) vectors in view space from
     // incoming object space vectors.
-    vec3 V = P.xyz;
     vec3 N = normalize(mat3(mv_matrix) * normal);
     vec3 T = normalize(mat3(mv_matrix) * tangent);
     // Calculate the bitangent vector (B) from the normal and tangent
@@ -43,7 +42,7 @@ void main(void)
     // The view vector is the vector from the point of interest to the
     // viewer, which in view space is simply the negative of the position.
     // Calculate that and multiply it by the TBN matrix.
-    V = -P.xyz;
+    vec3 V = -P.xyz;
     vs_out.eyeDir = normalize(vec3(dot(V, T), dot(V, B), dot(V, N)));
 
     // Pass the texture coordinate through unmodified so that the fragment
