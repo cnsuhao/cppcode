@@ -1,6 +1,6 @@
 #version 420 core
 
-layout (binding = 0) uniform sampler3D tex_envmap;
+layout (binding = 0) uniform sampler2DArray tex_envmap;
 layout (binding = 1) uniform sampler2D tex_glossmap;
 
 in VS_OUT

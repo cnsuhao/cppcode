@@ -335,7 +335,7 @@ void shadowmapping_app::load_shaders()
     vs = sb6::shader::load("../media/shaders/shadowmapping/shadowmapping-camera.vs.glsl", GL_VERTEX_SHADER);
     fs = sb6::shader::load("../media/shaders/shadowmapping/shadowmapping-camera.fs.glsl", GL_FRAGMENT_SHADER);
 
-    if (light_program)
+    if (view_program)
         glDeleteProgram(view_program);
 
     view_program = glCreateProgram();

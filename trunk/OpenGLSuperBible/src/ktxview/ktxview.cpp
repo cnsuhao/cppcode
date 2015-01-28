@@ -67,7 +67,7 @@ static const char * fs_source[] =
     "                                                                               \n"
     "void main(void)                                                                \n"
     "{                                                                              \n"
-    "    color = texture(s, gl_FragCoord.xy / textureSize(s, 0)) * exposure;                   \n"
+    "    color = texture(s, gl_FragCoord.xy/ textureSize(s, 0)) * exposure;                   \n"
     "}                                                                              \n"
 };
 
@@ -130,7 +130,7 @@ public:
 
         glUseProgram(program);
         glViewport(0, 0, info.windowWidth, info.windowHeight);
-        glUniform1f(0, (float)(sin(t) * 16.0 + 16.0));
+        glUniform1f(glGetUniformLocation(program, "exposure"), (float)(sin(t) * 16.0 + 16.0));
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
 

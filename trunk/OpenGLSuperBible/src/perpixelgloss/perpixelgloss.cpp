@@ -49,13 +49,9 @@ protected:
     virtual void startup()
     {
         glActiveTexture(GL_TEXTURE0);
-        tex_envmap = sb6::ktx::file::load("../media/textures/envmaps/mountains3d.ktx");
+        tex_envmap = sb6::ktx::file::load("../media/textures/aliens.ktx");
 
-        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
         glActiveTexture(GL_TEXTURE1);
         tex_glossmap = sb6::ktx::file::load("../media/textures/pattern1.ktx");
@@ -77,7 +73,7 @@ protected:
         glClearBufferfv(GL_DEPTH, 0, ones);
 
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_3D, tex_envmap);
+        glBindTexture(GL_TEXTURE_2D_ARRAY, tex_envmap);
 
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, tex_glossmap);

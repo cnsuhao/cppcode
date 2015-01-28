@@ -29,7 +29,7 @@
 #include <shader.h>
 
 #define MANY_OBJECTS 1
-#undef MANY_OBJECTS
+//#undef MANY_OBJECTS
 
 class phonglighting_app : public sb6::application
 {
@@ -115,11 +115,11 @@ void phonglighting_app::render(double currentTime)
     glClearBufferfv(GL_COLOR, 0, gray);
     glClearBufferfv(GL_DEPTH, 0, ones);
 
-    /*
+
     vmath::mat4 model_matrix = vmath::rotate((float)currentTime * 14.5f, 0.0f, 1.0f, 0.0f) *
-                               vmath::rotate(180.0f, 0.0f, 0.0f, 1.0f) *
-                               vmath::rotate(20.0f, 1.0f, 0.0f, 0.0f);
-                               */
+        vmath::rotate(180.0f, 0.0f, 0.0f, 1.0f) *
+        vmath::rotate(20.0f, 1.0f, 0.0f, 0.0f);
+
 
     vmath::vec3 view_position = vmath::vec3(0.0f, 0.0f, 50.0f);
     vmath::mat4 view_matrix = vmath::lookat(view_position,
@@ -169,7 +169,8 @@ void phonglighting_app::render(double currentTime)
                                                                 sizeof(uniforms_block),
                                                                 GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
 
-    vmath::mat4 model_matrix = vmath::scale(7.0f);
+    //vmath::mat4 model_matrix = vmath::scale(7.0f);
+    model_matrix *= vmath::scale(7.0f);
 
     block->mv_matrix = view_matrix * model_matrix;
     block->view_matrix = view_matrix;
