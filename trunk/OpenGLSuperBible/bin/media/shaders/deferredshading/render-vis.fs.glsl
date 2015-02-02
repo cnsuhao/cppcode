@@ -63,7 +63,7 @@ vec4 vis_fragment(fragment_info_t fragment)
             result = vec4(fragment.color, 1.0);
             break;
         case 4:
-            result = vec4(fragment.specular_power,
+            result = vec4(fragment.specular_power / 200.0,
                           float(fragment.material_id & 15) / 15.0,
                           float(fragment.material_id / 16) / 15.0,
                           1.0);

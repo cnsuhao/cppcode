@@ -43,6 +43,7 @@ public:
         : render_program_nm(0),
           render_program(0),
           light_program(0),
+          vis_program(0),
           use_nm(true),
           paused(false),
           vis_mode(VIS_OFF)
@@ -237,11 +238,10 @@ protected:
 
     void load_shaders()
     {
+        GLuint vs, fs;
+
         if (render_program)
             glDeleteProgram(render_program);
-        if (light_program)
-            glDeleteProgram(light_program);
-            GLuint vs, fs;
 
         vs = sb6::shader::load("../media/shaders/deferredshading/render.vs.glsl", GL_VERTEX_SHADER);
         fs = sb6::shader::load("../media/shaders/deferredshading/render.fs.glsl", GL_FRAGMENT_SHADER);
@@ -254,6 +254,9 @@ protected:
         glDeleteShader(vs);
         glDeleteShader(fs);
 
+        if (render_program_nm)
+            glDeleteProgram(render_program_nm);
+
         vs = sb6::shader::load("../media/shaders/deferredshading/render-nm.vs.glsl", GL_VERTEX_SHADER);
         fs = sb6::shader::load("../media/shaders/deferredshading/render-nm.fs.glsl", GL_FRAGMENT_SHADER);
 
@@ -265,15 +268,21 @@ protected:
         glDeleteShader(vs);
         glDeleteShader(fs);
 
+        if (light_program)
+            glDeleteProgram(light_program);
         vs = sb6::shader::load("../media/shaders/deferredshading/light.vs.glsl", GL_VERTEX_SHADER);
         fs = sb6::shader::load("../media/shaders/deferredshading/light.fs.glsl", GL_FRAGMENT_SHADER);
-
+   
         light_program = glCreateProgram();
         glAttachShader(light_program, vs);
         glAttachShader(light_program, fs);
         glLinkProgram(light_program);
 
+        glDeleteShader(vs);
         glDeleteShader(fs);
+
+        if (vis_program)
+            glDeleteProgram(vis_program);
 
         fs = sb6::shader::load("../media/shaders/deferredshading/render-vis.fs.glsl", GL_FRAGMENT_SHADER);
 

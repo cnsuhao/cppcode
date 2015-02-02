@@ -28,7 +28,7 @@ void main(void)
     gl_Position = projection_matrix * mv_matrix * position;
     vs_out.ws_coords = (model_matrix[gl_InstanceID] * position).xyz;
     vs_out.normal = mat3(model_matrix[gl_InstanceID]) * normal;
-    vs_out.tangent = tangent;
+    vs_out.tangent = mat3(model_matrix[gl_InstanceID]) * tangent;
     vs_out.texcoord0 = texcoord0;
     vs_out.material_id = uint(gl_InstanceID);
 }

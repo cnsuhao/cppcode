@@ -78,7 +78,7 @@ void main(void)
             // Step in the right direction
             f += r;
             // Step _towards_ viewer reduces z
-            z -= dir.z * f;
+            z -= dir.z * f * ssao_radius;
 
             // Read depth from current fragment
             float their_depth =
@@ -88,7 +88,7 @@ void main(void)
             // Calculate a weighting (d) for this fragment's
             // contribution to occlusion
             float d = abs(their_depth - my_depth);
-            d *= d;
+            // d *= d;
 
             // If we're obscured, accumulate occlusion
             if ((z - their_depth) > 0.0)
