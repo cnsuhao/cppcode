@@ -236,9 +236,9 @@ private:
 
         glGenTextures(1, &palette_texture);
         glBindTexture(GL_TEXTURE_1D, palette_texture);
-        glTexStorage1D(GL_TEXTURE_1D, 8, GL_RGB8, 256);
+        glTexStorage1D(GL_TEXTURE_1D, 1, GL_RGB8, 256);
         glTexSubImage1D(GL_TEXTURE_1D, 0, 0, 256, GL_RGB, GL_UNSIGNED_BYTE, palette);
-        glGenerateMipmap(GL_TEXTURE_1D);
+        //glGenerateMipmap(GL_TEXTURE_1D);
     }
 
     virtual void render(double currentTime)
