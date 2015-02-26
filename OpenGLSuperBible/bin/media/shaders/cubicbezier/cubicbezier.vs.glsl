@@ -1,4 +1,4 @@
-#version 410 core
+#version 420 core
 
 in vec4 position;
 uniform mat4 mv_matrix;
