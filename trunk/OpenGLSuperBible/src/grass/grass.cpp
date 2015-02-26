@@ -100,7 +100,7 @@ static const char * grass_vs_source[] =
     "                                                                                                            \n"
     "    // float bend_factor = float(random(number2, 7) & 0x3FF) / 1024.0;                                      \n"
     "    float bend_factor = texture(bend_texture, texcoord).r * 2.0;                                            \n"
-    "    float bend_amount = cos(vVertex.y);                                                                     \n"
+    "    float bend_amount = sin(vVertex.y/2.0);                                                                     \n"
     "                                                                                                            \n"
     "    float angle = texture(orientation_texture, texcoord).r * 2.0 * 3.141592;                                \n"
     "    mat4 rot = construct_rotation_matrix(angle);                                                            \n"
