@@ -117,8 +117,6 @@ extern
 unsigned int load(const char * filename, unsigned int tex)
 {
     FILE * fp;
-    GLuint temp = 0;
-    GLuint retval = 0;
     header h;
     size_t data_start, data_end;
     unsigned char * data;
@@ -211,7 +209,6 @@ unsigned int load(const char * filename, unsigned int tex)
         goto fail_header;
     }
 
-    temp = tex;
     if (tex == 0)
     {
         glGenTextures(1, &tex);
@@ -296,8 +293,6 @@ unsigned int load(const char * filename, unsigned int tex)
         glGenerateMipmap(target);
     }
 
-    retval = tex;
-
 fail_target:
     delete [] data;
 
@@ -305,7 +300,7 @@ fail_header:;
 fail_read:;
     fclose(fp);
 
-    return retval;
+    return tex;
 }
 
 bool save(const char * filename, unsigned int target, unsigned int tex)
