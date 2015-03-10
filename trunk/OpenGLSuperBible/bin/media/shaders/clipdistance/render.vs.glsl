@@ -46,8 +46,14 @@ void main(void)
     // Calculate view vector
     vs_out.V = -P.xyz;
 
+    vec4 view_plane = mv_matrix * clip_plane;
+    if (view_plane.z < 0)
+    {
+        view_plane.z *= -1;
+    }
+
     // Write clip distances
-    gl_ClipDistance[0] = dot(position, clip_plane);
+    gl_ClipDistance[0] = dot(position * vec4(1.0, 1.0, 1.0, -1.0), view_plane);
     // gl_ClipDistance[1] = length(position.xyz / position.w - clip_sphere.xyz) - clip_sphere.w;
 
     // Calculate the clip-space position of each vertex
