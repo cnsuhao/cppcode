@@ -112,9 +112,6 @@ void clipdistance_app::render(double currentTime)
     vmath::vec4 plane = plane_matrix[0];
     plane[3] = 0.0f;
     plane = vmath::normalize(plane);
-    float x = plane[0];
-    float y = plane[1];
-    float z = plane[2];
 
     vmath::vec4 clip_sphere = vmath::vec4(sinf(f * 0.7f) * 3.0f, cosf(f * 1.9f) * 3.0f, sinf(f * 0.1f) * 3.0f, cosf(f * 1.7f) + 2.5f);
 

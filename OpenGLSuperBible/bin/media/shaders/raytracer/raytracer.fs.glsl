@@ -36,17 +36,17 @@ layout (std140, binding = 1) uniform SPHERES
 
 layout (std140, binding = 2) uniform PLANES
 {
-    vec4        P[128];
+    vec4        P[6];
 };
 
 layout (std140, binding = 3) uniform LIGHTS
 {
-    light       L[120];
+    light       L[128];
 } lights;
 
-uniform int num_spheres = 7;
+uniform int num_spheres = 8;
 uniform int num_planes = 6;
-uniform int num_lights = 5;
+uniform int num_lights = 8;
 
 float intersect_ray_sphere(ray R,
                            sphere S,

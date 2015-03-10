@@ -282,7 +282,7 @@ void raytracer_app::render(double currentTime)
     glUnmapBuffer(GL_UNIFORM_BUFFER);
 
     glBindBufferBase(GL_UNIFORM_BUFFER, 2, plane_buffer);
-    plane * p = (plane *)glMapBufferRange(GL_UNIFORM_BUFFER, 0, 128 * sizeof(plane), GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
+    plane * p = (plane *)glMapBufferRange(GL_UNIFORM_BUFFER, 0, 6 * sizeof(plane), GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
 
     //for (i = 0; i < 1; i++)
     {
