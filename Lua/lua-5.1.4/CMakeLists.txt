@@ -1,5 +1,5 @@
 # Copyright (C) 2007-2011 LuaDist.
-# Created by Peter Drahoš, Peter Kapec
+# Created by Peter Draho, Peter Kapec
 # Redistribution and use of this file is allowed according to the terms of the MIT license.
 # For details see the COPYRIGHT file distributed with LuaDist.
 # Please note that the package source code is licensed under its own license.
@@ -51,6 +51,9 @@ if ( WIN32 AND NOT CYGWIN )
   string ( REPLACE "/" ${LUA_DIRSEP} LUA_CDIR "${LUA_CDIR}" )
   string ( REPLACE "/" ${LUA_DIRSEP} LUA_PATH_DEFAULT "${LUA_PATH_DEFAULT}" )
   string ( REPLACE "/" ${LUA_DIRSEP} LUA_CPATH_DEFAULT "${LUA_CPATH_DEFAULT}" )
+  SET(CMAKE_INSTALL_PREFIX
+        "${lua_BINARY_DIR}/sdk" CACHE PATH "Lua install prefix" FORCE
+      )
 else ()
   # Posix systems (incl. Cygwin)
   option ( LUA_USE_POSIX "Use POSIX functionality." ON )
