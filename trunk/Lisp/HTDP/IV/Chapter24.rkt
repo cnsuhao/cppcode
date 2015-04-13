@@ -16,7 +16,7 @@
       (symbol? s)))
 ; S-expr -> BSL-expr
 ; creates representation of a BSL expression for s (if possible)
-(define (parse s)
+(define (parse s da)
   (local (; S-expr -> BSL-expr
           (define (parse s)
             (cond
@@ -44,7 +44,7 @@
             (cond
               [(number? s) s]
               [(string? s) (error "strings not allowed")]
-              [(symbol? s) (error "symbols not allowed")])))
+              [(symbol? s) (lookup-con da s)])))
     (parse s)))
 
 (define (subst s x v)
@@ -83,11 +83,42 @@
     (if (numeric? s) (eval s)
         (error "have unkonwn var"))))
 
-(eval-variable `(+ (* 2 11) 3))
+(define (lookup-con da x)
+  (cond [(empty? da) (error "have unkonwn var")]
+        [else
+         (local ((define head (first da)))
+           (if (symbol=? (first head) x) (second head)
+               (lookup-con (rest da) x)))]))
 
-
-
-
+(define hehe `((x 1) (y 2) (z 3)))
+ 
+(define-struct def [name para body])
+; see exercise 293
+ 
+;{S-expr} -> (tech "BSL-fun-def")
+; creates representation of a BSL definition for s (if possible)
+(define (def-parse s)
+  (local (; S-expr -> BSL-fun-def
+          (define (def-parse s)
+            (cond
+              [(atom? s) (error WRONG)]
+              [else
+               (if (and (= (length s) 3) (eq? (first s) 'define))
+                   (head-parse (second s) (parse (third s) hehe))
+                   (error WRONG))]))
+          ; S-expr BSL-expr -> BSL-fun-def
+          (define (head-parse s body)
+            (cond
+              [(atom? s) (error WRONG)]
+              [else
+               (if (not (= (length s) 2))
+                   (error WRONG)
+                   (local ((define name (first s))
+                           (define para (second s)))
+                     (if (and (symbol? name) (symbol? para))
+                         (make-def name para body)
+                         (error WRONG))))])))
+    (def-parse s)))
 
 
 
