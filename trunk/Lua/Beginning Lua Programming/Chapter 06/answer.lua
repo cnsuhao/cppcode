@@ -12,4 +12,4 @@ function Answer(Question)
   return Res
 end
 
-print(Answer("this statement is false"))
+print(Answer("everything"))

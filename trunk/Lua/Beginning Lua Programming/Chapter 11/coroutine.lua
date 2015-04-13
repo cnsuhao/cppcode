@@ -8,12 +8,12 @@ local function Average()
   end
 end
 
-local CoAve = coroutine.create(Average)
-local Code, Str = coroutine.resume(CoAve)
+local CoA = coroutine.create(Average)
+local Code, Str = coroutine.resume(CoA)
 if Code then
   io.write(Str, "\n")
-  local Ave = coroutine.wrap(Average)
-  io.write(Ave(), "\n\n")
+  local CoBFunc = coroutine.wrap(Average)
+  io.write(CoBFunc(), "\n\n")
   io.write("Val A  Sum A  Ave A    Val B  Sum B  Ave B\n")
   io.write("-----  -----  -----    -----  -----  -----\n")
   math.random() -- On some systems that shall remain nameless, the
@@ -22,10 +22,10 @@ if Code then
   for J = 1, 6 do
     local Code, ValA, SumA, AveA, ValB, SumB, AveB
     ValA = math.random(0, 100)
-    Code, SumA, AveA = coroutine.resume(CoAve, ValA)
+    Code, SumA, AveA = coroutine.resume(CoA, ValA)
     if Code then
       ValB = math.random(0, 100)
-      SumB, AveB = Ave(ValB)
+      SumB, AveB = CoBFunc(ValB)
       io.write(string.format("%5d  %5d  %5.2f    %5d  %5d  %5.2f\n",
         ValA, SumA, AveA, ValB, SumB, AveB))
     end

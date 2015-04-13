@@ -2,7 +2,8 @@ Tm = os.clock()
 for J = 1, 1e6 do
   Tbl = {}
 end
-io.write("Loop: ", os.clock() - Tm, " sec\n")local Count = 1e7
+io.write("Loop: ", os.clock() - Tm, " sec\n")
+local Count = 1e7
 local Tbl = {}
 local Tm = os.clock()
 for J = 1, Count do

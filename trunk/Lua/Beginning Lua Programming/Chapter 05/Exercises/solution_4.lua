@@ -14,3 +14,4 @@ function ExprInterp()
     Line = io.read()
   end
 end
+ExprInterp()

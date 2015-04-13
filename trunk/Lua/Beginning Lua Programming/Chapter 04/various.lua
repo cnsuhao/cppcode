@@ -84,22 +84,25 @@ function MakeGetAndInc(N)
   return {Get = Get, Inc = Inc}
 end
 
+
 -- The following version of MakeGetAndInc returns an object
 -- that can be used with the colon syntax: "A:Get()"
 do -- Local scope for Get and Inc.
   -- Returns Obj.N:
-  local function Get(Obj)
-    return Obj.N
-  end
-
-  -- Increments Obj.N by M:
-  local function Inc(Obj, M)
-    Obj.N = Obj.N + M
-  end
 
   -- Creates an object:
   function MakeGetAndInc(N)
-    return {N = N, Get = Get, Inc = Inc}
+    local result = {N = N}
+    
+    function result:Get()
+      return self.N
+    end
+
+    -- Increments Obj.N by M:
+    function result:Inc(M)
+      self.N = self.N + M
+    end
+    return result
   end
 end
 
@@ -146,6 +149,9 @@ function MakePrinter(...)
   end
 end
 
+
+
+
 -- Returns a function that prints MakePrinter's arguments;
 -- does handle nils properly:
 function MakePrinter(...)
@@ -186,6 +192,7 @@ function ShallowCopy(Src)
   return Dest
 end
 
+
 -- Makes a deep copy of a table.  Doesn't properly handle
 -- duplicate subtables.
 function DeepCopy(Src)
@@ -197,6 +204,8 @@ function DeepCopy(Src)
   end
   return Dest
 end
+
+
 
 -- Makes a deep copy of a table.  This version of DeepCopy
 -- properly handles duplicate subtables, including cycles.
@@ -223,6 +232,15 @@ function DeepCopy(Src, Seen)
   end
   return Dest
 end
+
+local hehe = {}
+hehe[1] = {}
+hehe[2] = hehe[1]
+local nimei = DeepCopy(hehe)
+print(hehe[1])
+print(hehe[2])
+print(nimei[1])
+print(nimei[2])
 
 -- The table illustrated in Figure 4-7:
 Figure4_7 = {Person = {

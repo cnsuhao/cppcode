@@ -11,7 +11,7 @@ local function Multitask()
   end
 
   local function LclContinue() -- Simulate check for user cancellation
-    return math.random(12) > 1
+    return math.random(12) > 4
   end
 
   local WorkA = coroutine.create(function () LclWork('A', 2) end)

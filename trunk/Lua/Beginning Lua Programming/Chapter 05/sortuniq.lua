@@ -48,4 +48,4 @@ function Main(InFilename, OutFilename)
   OutHnd:close()
 end
 
-Main(...)
+Main("testin.txt")

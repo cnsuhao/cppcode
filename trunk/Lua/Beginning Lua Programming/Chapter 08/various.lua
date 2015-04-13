@@ -28,6 +28,13 @@ do
   function MakeSpliceArr(Arr)
     return setmetatable(Arr, SpliceMeta)
   end
+
+  A = MakeSpliceArr{"alpha", "bravo", "charlie"}
+  B = MakeSpliceArr{"x-ray", "yankee", "zulu"}
+  C = A .. B
+  for I, Elem in ipairs(C) do
+    print(I, Elem)
+  end
 end
 
 do

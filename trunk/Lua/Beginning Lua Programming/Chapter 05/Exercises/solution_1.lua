@@ -6,3 +6,7 @@ function StrToArr(Str)
   end
   return Ret
 end
+
+for k,v in pairs(StrToArr("hehenimei")) do
+    print(k,v)
+end
