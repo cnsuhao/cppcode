@@ -46,4 +46,4 @@ for J = 1, 2 do
     io.write("Error opening ", FileStr, " for writing\n")
   end
 end
-os.remove(FileStr)
+-- os.remove(FileStr)

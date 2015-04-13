@@ -26,7 +26,6 @@ function Print(...)
   end
   io.write("\n")
 end
-
 -- Returns Str without any whitespace or separators, or nil
 -- if Str doesn't satisfy a simple validity test:
 function ValidateCreditCard(Str)
@@ -55,7 +54,6 @@ TestStrs = {
 function TrimRight(Str)
   return (string.gsub(Str, "%s+$", ""))
 end
-
 -- Trims trailing whitespace (avoiding the backtracking done
 -- by the previous version):
 function TrimRight(Str)

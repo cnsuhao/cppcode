@@ -51,20 +51,11 @@ end
 
 -- Returns a string representation of self:
 function Methods:ToString()
-  -- Convert the parts of self to the left and to the right
-  -- of self.Pos to strings:
-  local LeftPart = table.concat(self, ", ", 1, self.Pos - 1)
-  local RightPart = table.concat(self, ", ", self.Pos, #self)
-  -- Only put a separator between them if neither is the
-  -- empty string:
-  local Sep
-  if LeftPart == "" or RightPart == "" then
-    Sep = ""
-  else
-    Sep = ", "
+  local hehe = {}
+  for k,v in self:Elems() do
+    table.insert(hehe, v)
   end
-  -- RightPart's first element is self.Pos, so put it first:
-  return RightPart .. Sep .. LeftPart
+  return table.concat(hehe, ", ")
 end
 
 -- Returns an iterator that iterates through all self's
@@ -74,22 +65,19 @@ function Methods:Elems()
     -- needs to return
 
   return function()
-    local Ret
     if IterPos then
+      IterPos = OneMod(IterPos + 1, #self)
       if IterPos ~= self.Pos then
-        Ret = self[IterPos]
+        return IterPos, self[IterPos]
       else
-        -- Back at the beginning; do nothing (which ends the
-        -- loop by returning nil).
+        return nil
       end
     else
       -- At the beginning: initialize IterPos:
       IterPos = self.Pos
-      Ret = self[IterPos] -- If the ring is empty, this'll
+      return IterPos, self[IterPos] -- If the ring is empty, this'll
         -- end the loop by returning nil.
     end
-    IterPos = OneMod(IterPos + 1, #self)
-    return Ret
   end
 end
 
@@ -109,3 +97,21 @@ function MakeRing(Ring)
   end
   return Ring
 end
+
+R = MakeRing{"the", "time", "has", "come"}
+print(R:ToString())
+print(R:Pop())
+R:Push("today")
+print(R:ToString())
+R:RotateL()
+print(R:ToString())
+print(R:Pop(), R:Pop(), R:Pop())
+R:Push("here")
+print(R:ToString(), R:Size())
+R:Push("tomorrow")
+R:Push("gone")
+print(R:ToString())
+R:RotateR()
+print(R:ToString())
+R:RotateR()
+print(R:ToString())

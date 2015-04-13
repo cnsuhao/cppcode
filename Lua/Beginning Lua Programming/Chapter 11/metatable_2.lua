@@ -41,7 +41,8 @@ Wnd.Title = "Title 2"
 Str = Wnd.Title
 io.write("2 ", Str, "\n")
 rawset(Wnd, "Title", "Title 3")
-Str = rawget(Wnd, "Title")
+-- Str = rawget(Wnd, "Title")
+Str = Wnd.Title
 io.write("3 ", Str, "\n")
 Wnd.Title = "Title 4" -- No metamethod
 Str = Wnd.Title -- No metamethod

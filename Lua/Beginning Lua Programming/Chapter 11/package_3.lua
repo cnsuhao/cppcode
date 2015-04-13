@@ -21,6 +21,11 @@ package.loaded.b = {Str = "Module b."}
 local function Report(ModStr)
   io.write('package.loaded["', ModStr, '"] = ',
     tostring(package.loaded[ModStr]), '\n')
+  if (package.loaded[ModStr]) then
+      for i,v in pairs(package.loaded[ModStr]) do
+          print(i,v)
+      end
+  end
 end
 
 Report("a")

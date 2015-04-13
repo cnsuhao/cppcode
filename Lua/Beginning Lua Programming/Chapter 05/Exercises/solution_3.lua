@@ -11,3 +11,6 @@ function DictCmp(A, B)
     return A < B
   end
 end
+Names = {"Defoe", "Deforest", "Degas", "de Forest"}
+table.sort(Names)
+for _, Name in ipairs(Names) do print(Name) end

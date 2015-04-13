@@ -47,7 +47,7 @@ static int LclStackLook(
   STACKOP(lua_insert(L, -3));
   STACKOP(lua_pushvalue(L, 2));
   STACKOP(lua_pop(L, 1));
-  return 3;
+  return 5;
 } // LclStackLook
 
 /* * */

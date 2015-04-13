@@ -10,3 +10,5 @@ function Sprint(...)
   end
   return table.concat(Args, "\t") .. "\n"
 end
+
+print(Sprint(1,2,3,false, "hehe"))

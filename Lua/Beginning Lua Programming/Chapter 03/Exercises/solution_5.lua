@@ -8,3 +8,6 @@ function MakeDotter(N)
     return Str .. Dots
   end
 end
+
+local dotter = MakeDotter(4)
+print(dotter("hehe"))

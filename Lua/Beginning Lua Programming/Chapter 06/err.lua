@@ -1,6 +1,6 @@
 function C()
   print("C 1")
-  print(1 + nil)
+  -- print(1 + nil)
   print("C 2")
 end
 

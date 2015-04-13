@@ -69,3 +69,5 @@ function Test()
 
   OuterFnc()
 end
+
+Test()

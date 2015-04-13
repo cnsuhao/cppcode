@@ -6,3 +6,5 @@ function Interpolate(Str)
       return tostring(getfenv()[Ident])
     end))
 end
+Where, Who, What ="in xanadu", "kubla khan", "a stately pleasure-dome"
+print(Interpolate("$Where did $Who\n$What decree"))

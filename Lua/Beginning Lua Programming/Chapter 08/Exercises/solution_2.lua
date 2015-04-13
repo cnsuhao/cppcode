@@ -20,3 +20,12 @@ function Protect(Tbl)
   -- convenience):
   return setmetatable(Tbl, ProtectMeta)
 end
+
+local hehe = {1,2,3,4,5}
+Protect(hehe)
+Protect(hehe)
+
+-- for i,v in ipairs(nimei) do
+--   print(i,v)
+-- end
+-- nimei[1] = 1
