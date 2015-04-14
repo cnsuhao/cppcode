@@ -16,7 +16,7 @@
       (symbol? s)))
 ; S-expr -> BSL-expr
 ; creates representation of a BSL expression for s (if possible)
-(define (parse s da)
+(define (parse s)
   (local (; S-expr -> BSL-expr
           (define (parse s)
             (cond
@@ -41,11 +41,20 @@
           
           ; Atom -> BSL-expr 
           (define (parse-atom s)
-            (cond
-              [(number? s) s]
-              [(string? s) (error "strings not allowed")]
-              [(symbol? s) (lookup-con da s)])))
+            (if (or (number? s) (symbol? s)) s
+                (error "strings not allowed"))))
     (parse s)))
+(define (eval-bool-expression bs)
+  (if (atom? bs) 
+      (cond [(symbol=? bs `true) true]
+            [(symbol=? bs `false) false]
+            [else (error "wrong bool expression")])
+      (local ((define op (first bs)))
+        (if (not (symbol? op)) (error "wrong bool expression")
+            (cond [(symbol=? op `and) (andmap eval-bool-expression (rest bs))]
+                  [(symbol=? op `or) (ormap eval-bool-expression (rest bs))]
+                  [(symbol=? op `not) (not (eval-bool-expression (second bs)))]
+                  [else (error "wrong bool expression")])))))
 
 (define (subst s x v)
   (local
@@ -66,9 +75,7 @@
              [(number? sa) #t]
              [else #f]))
      (define (numeric?-sl sl)
-       (cond [(empty? sl) #t]
-             [else (and (numeric? (first sl))
-                        (numeric?-sl (rest sl)))])))
+       (andmap numeric? sl)))
     (cond
       [(atom? s) (numeric?-atom s)]
       [else (numeric?-sl s)])))
@@ -83,13 +90,37 @@
     (if (numeric? s) (eval s)
         (error "have unkonwn var"))))
 
+(define (eval-variable* e da)
+  (local ((define (subst* s da)
+            (cond [(empty? da) s]
+                  [else (local ((define as (first da)))
+                          (subst (subst* s (rest da)) (first as) (second as)))]))
+          (define e-sub (subst* e da)))
+    (if (numeric? e-sub) (eval-variable e-sub)
+        (error "have unkonwn var"))))
+
+
 (define (lookup-con da x)
   (cond [(empty? da) (error "have unkonwn var")]
         [else
          (local ((define head (first da)))
            (if (symbol=? (first head) x) (second head)
                (lookup-con (rest da) x)))]))
-
+(define (eval-var-lookup s da)
+  (local
+    ((define (eval-atom sa)
+       (cond [(number? sa) sa]
+             [else (lookup-con da sa)]))
+     (define (eval-sl sv)
+       (local ((define left (eval-var-lookup (second sv) da))
+               (define right (eval-var-lookup (third sv) da)))
+         (cond
+           [(symbol=? (first sv) `+) (+ left right)]
+           [(symbol=? (first sv) `*) (* left right)]))))
+    (cond
+      [(atom? s) (eval-atom s)]
+      [else (eval-sl s)])))
+  
 (define hehe `((x 1) (y 2) (z 3)))
  
 (define-struct def [name para body])
