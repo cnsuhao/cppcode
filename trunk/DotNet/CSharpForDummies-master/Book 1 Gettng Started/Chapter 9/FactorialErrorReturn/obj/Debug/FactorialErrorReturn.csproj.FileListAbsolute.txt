@@ -1,0 +1,8 @@
+C:\Users\Bill\Desktop\SampleCode\1-9\FactorialErrorReturn\bin\Debug\FactorialErrorReturn.exe
+C:\Users\Bill\Desktop\SampleCode\1-9\FactorialErrorReturn\bin\Debug\FactorialErrorReturn.pdb
+C:\Users\Bill\Desktop\SampleCode\1-9\FactorialErrorReturn\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\1-9\FactorialErrorReturn\obj\Debug\FactorialErrorReturn.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\1-9\FactorialErrorReturn\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-9\FactorialErrorReturn\obj\Debug\ResGen.write.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-9\FactorialErrorReturn\obj\Debug\FactorialErrorReturn.exe
+C:\Users\Bill\Desktop\SampleCode\1-9\FactorialErrorReturn\obj\Debug\FactorialErrorReturn.pdb

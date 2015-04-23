@@ -1,0 +1,12 @@
+﻿<Window x:Class="Chapter2.Layouts.DockPanelSample" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="DockPanel" Height="300" Width="300">
+	<Grid>
+		<DockPanel LastChildFill="True">
+			<Button DockPanel.Dock="Left" Content="Far Left" />
+			<Button DockPanel.Dock="Left" Content="Near Left" />
+			<Button DockPanel.Dock="Top" Content="Top" />
+			<Button DockPanel.Dock="Bottom" Content="Bottom" />
+			<Button Content="Fill" />
+			<Button Content="Fill More" />
+		</DockPanel>
+	</Grid>
+</Window>

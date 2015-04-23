@@ -1,0 +1,7 @@
+C:\Users\Bill\Desktop\SampleCode\2-10\InternalLimitsAccess\bin\Debug\InternalLimitsAccess.exe
+C:\Users\Bill\Desktop\SampleCode\2-10\InternalLimitsAccess\bin\Debug\InternalLimitsAccess.pdb
+C:\Users\Bill\Desktop\SampleCode\2-10\InternalLimitsAccess\bin\Debug\CIAAssembly.dll
+C:\Users\Bill\Desktop\SampleCode\2-10\InternalLimitsAccess\bin\Debug\CIAAssembly.pdb
+C:\Users\Bill\Desktop\SampleCode\2-10\InternalLimitsAccess\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-10\InternalLimitsAccess\obj\Debug\InternalLimitsAccess.exe
+C:\Users\Bill\Desktop\SampleCode\2-10\InternalLimitsAccess\obj\Debug\InternalLimitsAccess.pdb

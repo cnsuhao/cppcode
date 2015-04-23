@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtectedInternalLimitsAccess", "ProtectedInternalLimitsAccess.csproj", "{A839F73D-C46D-484C-BDDB-275F725974C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnotherAssembly", "AnotherAssembly\AnotherAssembly.csproj", "{DA0FFB77-1341-4A73-97AE-38C39327A64E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainBankAccountAssembly", "MainBankAccountAssembly\MainBankAccountAssembly.csproj", "{6C249882-6C2C-4FE6-B909-445A6CD476A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A839F73D-C46D-484C-BDDB-275F725974C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A839F73D-C46D-484C-BDDB-275F725974C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A839F73D-C46D-484C-BDDB-275F725974C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A839F73D-C46D-484C-BDDB-275F725974C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA0FFB77-1341-4A73-97AE-38C39327A64E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA0FFB77-1341-4A73-97AE-38C39327A64E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA0FFB77-1341-4A73-97AE-38C39327A64E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA0FFB77-1341-4A73-97AE-38C39327A64E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C249882-6C2C-4FE6-B909-445A6CD476A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C249882-6C2C-4FE6-B909-445A6CD476A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C249882-6C2C-4FE6-B909-445A6CD476A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C249882-6C2C-4FE6-B909-445A6CD476A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

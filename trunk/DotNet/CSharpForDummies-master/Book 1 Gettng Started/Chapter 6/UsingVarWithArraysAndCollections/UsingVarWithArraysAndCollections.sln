@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingVarWithArraysAndCollections", "UsingVarWithArraysAndCollections.csproj", "{0FDCC273-81CC-48DC-9001-F1426EB69DCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FDCC273-81CC-48DC-9001-F1426EB69DCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FDCC273-81CC-48DC-9001-F1426EB69DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FDCC273-81CC-48DC-9001-F1426EB69DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FDCC273-81CC-48DC-9001-F1426EB69DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

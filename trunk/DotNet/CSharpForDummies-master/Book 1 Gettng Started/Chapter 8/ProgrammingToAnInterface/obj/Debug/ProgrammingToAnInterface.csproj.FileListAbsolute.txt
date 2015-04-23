@@ -1,0 +1,8 @@
+C:\Users\Bill\Desktop\SampleCode\1-8\ProgrammingToAnInterface\bin\Debug\IPackage.exe
+C:\Users\Bill\Desktop\SampleCode\1-8\ProgrammingToAnInterface\bin\Debug\IPackage.pdb
+C:\Users\Bill\Desktop\SampleCode\1-8\ProgrammingToAnInterface\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\1-8\ProgrammingToAnInterface\obj\Debug\IPackage.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\1-8\ProgrammingToAnInterface\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-8\ProgrammingToAnInterface\obj\Debug\ResGen.write.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-8\ProgrammingToAnInterface\obj\Debug\IPackage.exe
+C:\Users\Bill\Desktop\SampleCode\1-8\ProgrammingToAnInterface\obj\Debug\IPackage.pdb

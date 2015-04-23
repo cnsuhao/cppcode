@@ -1,0 +1,16 @@
+﻿<Window x:Class="Chapter2.Layouts.StackPanelSample" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Stack Panel - Vertical" Height="200" Width="300">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<StackPanel Name="pnlStack" Grid.Row="0">
+			<Button Content="A Button" />
+			<Button Content="Another Button" />
+			<TextBlock Text="This is a text block" />
+			<Button Content="Short" />
+			<Button Content="Really Long Button Label" />
+		</StackPanel>
+		<Button Name="cmdOrientation" Width="Auto" HorizontalAlignment="Left" Grid.Row="1" Content="Set Horizontal" Click="cmdOrientation_Click" />
+	</Grid>
+</Window>

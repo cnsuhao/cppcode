@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccountWithMultipleConstructors", "BankAccountWithMultipleConstructors.csproj", "{7784B6A1-F627-4E96-B604-FFA8CF7527CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7784B6A1-F627-4E96-B604-FFA8CF7527CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7784B6A1-F627-4E96-B604-FFA8CF7527CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7784B6A1-F627-4E96-B604-FFA8CF7527CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7784B6A1-F627-4E96-B604-FFA8CF7527CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

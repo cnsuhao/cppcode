@@ -1,0 +1,8 @@
+C:\Users\Bill\Desktop\SampleCode\2-4\PassObject\bin\Debug\PassObject.exe
+C:\Users\Bill\Desktop\SampleCode\2-4\PassObject\bin\Debug\PassObject.pdb
+C:\Users\Bill\Desktop\SampleCode\2-4\PassObject\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-4\PassObject\obj\Debug\PassObject.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\2-4\PassObject\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\2-4\PassObject\obj\Debug\ResGen.write.1.tlog
+C:\Users\Bill\Desktop\SampleCode\2-4\PassObject\obj\Debug\PassObject.exe
+C:\Users\Bill\Desktop\SampleCode\2-4\PassObject\obj\Debug\PassObject.pdb

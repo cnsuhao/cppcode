@@ -1,0 +1,48 @@
+﻿<Window x:Class="Chapter2.Controls.BasicInputControls"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Basic Input Controls" Height="393" Width="321">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Margin="5,0" HorizontalAlignment="Right" Content="Text Box:"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="5,0" HorizontalAlignment="Stretch" Text="Some Text"/>
+        <Label Grid.Row="1" Grid.Column="0" Margin="5,0" HorizontalAlignment="Right" Content="Password Box:"/>
+        <PasswordBox Grid.Row="1" Grid.Column="1" Margin="5,0" HorizontalAlignment="Stretch" PasswordChar="X" Password="Some Text"/>
+        <Label Grid.Row="2" Grid.Column="0" Margin="5,0" HorizontalAlignment="Right" Content="Check Box:"/>
+<CheckBox Grid.Row="2" Grid.Column="1" Margin="5,0" IsChecked="True"
+          HorizontalAlignment="Left" VerticalAlignment="Center" Content="True"/>
+<CheckBox Grid.Row="2" Grid.Column="1" Margin="5,0" IsChecked="False"
+          HorizontalAlignment="Center" VerticalAlignment="Center" Content="False"/>
+<CheckBox Grid.Row="2" Grid.Column="1" Margin="5,0" IsChecked="{x:Null}"
+          HorizontalAlignment="Right" VerticalAlignment="Center" Content="Null"/>
+        <Label Grid.Row="3" Grid.Column="0" Margin="5,0" HorizontalAlignment="Right" Content="Radio Button:"/>
+<RadioButton Grid.Row="3" Grid.Column="1" Margin="5,0" GroupName="RBSample" IsChecked="True"
+          HorizontalAlignment="Left" VerticalAlignment="Center" Content="Red"/>
+<RadioButton Grid.Row="3" Grid.Column="1" Margin="5,0" GroupName="RBSample" 
+          HorizontalAlignment="Center" VerticalAlignment="Center" Content="White"/>
+<RadioButton Grid.Row="3" Grid.Column="1" Margin="5,0" GroupName="RBSample"
+          HorizontalAlignment="Right" VerticalAlignment="Center" Content="Blue"/>
+        <Label Grid.Row="4" Grid.Column="0" Margin="5,0" HorizontalAlignment="Right" Content="Slider:"/>
+        <Slider Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" Interval="1" Minimum="1" Maximum="10"
+                IsSnapToTickEnabled="True" TickPlacement="BottomRight" TickFrequency="1"/> 
+        <Label Grid.Row="5" Grid.Column="0" Margin="5,0" HorizontalAlignment="Right" Content="Date Picker:"/>
+        <DatePicker Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch"  /> 
+        <Label Grid.Row="6" Grid.Column="0" Margin="5,0" HorizontalAlignment="Right" Content="Calendar:"/>
+        <Calendar Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch"  /> 
+        <Label Grid.Row="7" Grid.Column="0" Margin="5,0" HorizontalAlignment="Right" Content="Button:"/>
+        <Button Grid.Row="7" Grid.Column="1" Content="Click Me" Click="Button_Click"/> 
+    </Grid>
+</Window>

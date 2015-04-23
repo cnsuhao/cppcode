@@ -1,0 +1,8 @@
+C:\Users\Bill\Desktop\SampleCode\2-4\InvokeMethod\bin\Debug\InvokeMethod.exe
+C:\Users\Bill\Desktop\SampleCode\2-4\InvokeMethod\bin\Debug\InvokeMethod.pdb
+C:\Users\Bill\Desktop\SampleCode\2-4\InvokeMethod\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-4\InvokeMethod\obj\Debug\InvokeMethod.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\2-4\InvokeMethod\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\2-4\InvokeMethod\obj\Debug\ResGen.write.1.tlog
+C:\Users\Bill\Desktop\SampleCode\2-4\InvokeMethod\obj\Debug\InvokeMethod.exe
+C:\Users\Bill\Desktop\SampleCode\2-4\InvokeMethod\obj\Debug\InvokeMethod.pdb

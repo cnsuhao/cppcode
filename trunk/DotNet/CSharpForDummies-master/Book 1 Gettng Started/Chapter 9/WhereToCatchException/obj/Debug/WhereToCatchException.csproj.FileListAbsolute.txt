@@ -1,0 +1,5 @@
+C:\Users\Bill\Desktop\SampleCode\1-9\WhereToCatchException\bin\Debug\WhereToCatchException.exe
+C:\Users\Bill\Desktop\SampleCode\1-9\WhereToCatchException\bin\Debug\WhereToCatchException.pdb
+C:\Users\Bill\Desktop\SampleCode\1-9\WhereToCatchException\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\1-9\WhereToCatchException\obj\Debug\WhereToCatchException.exe
+C:\Users\Bill\Desktop\SampleCode\1-9\WhereToCatchException\obj\Debug\WhereToCatchException.pdb

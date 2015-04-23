@@ -1,0 +1,25 @@
+﻿<Window x:Class="Chapter2.ControlSamples"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Controls" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <Button HorizontalAlignment="Stretch" Content="The Image Control" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="ImageControl"/>
+            <Button HorizontalAlignment="Stretch" Content="The TextBlock and Label Controls" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="TextBlockControl"/>
+            <Button HorizontalAlignment="Stretch" Content="The Progress Bar Control" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="ProgressBarControl"/>
+            <Button HorizontalAlignment="Stretch" Content="Basic Input Controls" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="InputControls"/>
+            <Button HorizontalAlignment="Stretch" Content="The ComboBox Control" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="ComboBoxControl"/>
+            <Button HorizontalAlignment="Stretch" Content="The ListBox Control" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="ListBoxControl"/>
+            <Button HorizontalAlignment="Stretch" Content="The TreeView Controls" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="TreeViewControl"/>
+            <Button HorizontalAlignment="Stretch" Content="The Datagrid Control" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="DataGridControls"/>
+        </StackPanel>
+    </Grid>
+</Window>

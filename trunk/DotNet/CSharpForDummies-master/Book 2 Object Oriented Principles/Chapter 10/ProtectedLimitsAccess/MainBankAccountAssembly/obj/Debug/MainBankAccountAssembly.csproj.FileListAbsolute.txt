@@ -1,0 +1,5 @@
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedLimitsAccess\MainBankAccountAssembly\bin\Debug\MainBankAccountAssembly.dll
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedLimitsAccess\MainBankAccountAssembly\bin\Debug\MainBankAccountAssembly.pdb
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedLimitsAccess\MainBankAccountAssembly\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedLimitsAccess\MainBankAccountAssembly\obj\Debug\MainBankAccountAssembly.dll
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedLimitsAccess\MainBankAccountAssembly\obj\Debug\MainBankAccountAssembly.pdb

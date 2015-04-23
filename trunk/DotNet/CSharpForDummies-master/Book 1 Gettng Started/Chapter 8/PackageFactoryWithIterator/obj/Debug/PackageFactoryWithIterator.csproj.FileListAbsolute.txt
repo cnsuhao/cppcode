@@ -1,0 +1,8 @@
+C:\Users\Bill\Desktop\SampleCode\1-8\PackageFactoryWithIterator\bin\Debug\PackageFactoryWithIterator.exe
+C:\Users\Bill\Desktop\SampleCode\1-8\PackageFactoryWithIterator\bin\Debug\PackageFactoryWithIterator.pdb
+C:\Users\Bill\Desktop\SampleCode\1-8\PackageFactoryWithIterator\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\1-8\PackageFactoryWithIterator\obj\Debug\PackageFactoryWithIterator.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\1-8\PackageFactoryWithIterator\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-8\PackageFactoryWithIterator\obj\Debug\ResGen.write.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-8\PackageFactoryWithIterator\obj\Debug\PackageFactoryWithIterator.exe
+C:\Users\Bill\Desktop\SampleCode\1-8\PackageFactoryWithIterator\obj\Debug\PackageFactoryWithIterator.pdb

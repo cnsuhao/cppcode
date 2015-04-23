@@ -1,0 +1,5 @@
+C:\Users\Bill\Desktop\SampleCode\2-10\ClassLibrary\bin\Debug\ClassLibrary.dll
+C:\Users\Bill\Desktop\SampleCode\2-10\ClassLibrary\bin\Debug\ClassLibrary.pdb
+C:\Users\Bill\Desktop\SampleCode\2-10\ClassLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-10\ClassLibrary\obj\Debug\ClassLibrary.dll
+C:\Users\Bill\Desktop\SampleCode\2-10\ClassLibrary\obj\Debug\ClassLibrary.pdb

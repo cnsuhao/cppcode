@@ -1,0 +1,10 @@
+﻿<Window x:Class="Chapter2.Controls.DataGridControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Data Grid Control" Height="300" Width="400">
+    <Grid>
+        <DataGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                  AutoGenerateColumns="True" ItemsSource="{Binding People}">
+        </DataGrid>
+    </Grid>
+</Window>

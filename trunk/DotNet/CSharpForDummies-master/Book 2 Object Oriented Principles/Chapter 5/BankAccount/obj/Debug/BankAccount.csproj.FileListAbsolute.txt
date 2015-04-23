@@ -1,0 +1,4 @@
+C:\Users\Bill\Desktop\SampleCode\2-5\BankAccount\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-5\BankAccount\obj\Debug\BankAccount.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\2-5\BankAccount\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\2-5\BankAccount\obj\Debug\ResGen.write.1.tlog

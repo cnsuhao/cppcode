@@ -1,0 +1,8 @@
+C:\Users\Bill\Desktop\SampleCode\2-6\InheritingAConstructor\bin\Debug\InheritingAConstructor.exe
+C:\Users\Bill\Desktop\SampleCode\2-6\InheritingAConstructor\bin\Debug\InheritingAConstructor.pdb
+C:\Users\Bill\Desktop\SampleCode\2-6\InheritingAConstructor\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-6\InheritingAConstructor\obj\Debug\InheritingAConstructor.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\2-6\InheritingAConstructor\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\2-6\InheritingAConstructor\obj\Debug\ResGen.write.1.tlog
+C:\Users\Bill\Desktop\SampleCode\2-6\InheritingAConstructor\obj\Debug\InheritingAConstructor.exe
+C:\Users\Bill\Desktop\SampleCode\2-6\InheritingAConstructor\obj\Debug\InheritingAConstructor.pdb

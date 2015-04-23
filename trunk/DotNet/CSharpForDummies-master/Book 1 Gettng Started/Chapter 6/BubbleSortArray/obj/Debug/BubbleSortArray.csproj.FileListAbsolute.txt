@@ -1,0 +1,5 @@
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\BubbleSortArray\bin\Debug\BubbleSortArray.exe
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\BubbleSortArray\bin\Debug\BubbleSortArray.pdb
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\BubbleSortArray\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\BubbleSortArray\obj\Debug\BubbleSortArray.exe
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\BubbleSortArray\obj\Debug\BubbleSortArray.pdb

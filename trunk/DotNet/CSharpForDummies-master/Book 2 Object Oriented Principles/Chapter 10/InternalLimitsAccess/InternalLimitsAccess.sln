@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalLimitsAccess", "InternalLimitsAccess.csproj", "{013ECB12-CF58-485C-AD2C-AD0B7202A6D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIAAssembly", "CIAAssembly\CIAAssembly.csproj", "{45889AD2-F199-4528-985D-553FEB50D41D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{013ECB12-CF58-485C-AD2C-AD0B7202A6D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013ECB12-CF58-485C-AD2C-AD0B7202A6D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013ECB12-CF58-485C-AD2C-AD0B7202A6D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013ECB12-CF58-485C-AD2C-AD0B7202A6D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45889AD2-F199-4528-985D-553FEB50D41D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45889AD2-F199-4528-985D-553FEB50D41D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45889AD2-F199-4528-985D-553FEB50D41D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45889AD2-F199-4528-985D-553FEB50D41D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,5 @@
+C:\Users\Bill\Desktop\SampleCode\2-5\ObjectInitializers\bin\Debug\ObjectInitializers.exe
+C:\Users\Bill\Desktop\SampleCode\2-5\ObjectInitializers\bin\Debug\ObjectInitializers.pdb
+C:\Users\Bill\Desktop\SampleCode\2-5\ObjectInitializers\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-5\ObjectInitializers\obj\Debug\ObjectInitializers.exe
+C:\Users\Bill\Desktop\SampleCode\2-5\ObjectInitializers\obj\Debug\ObjectInitializers.pdb

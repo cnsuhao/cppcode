@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtectedLimitsAccess", "ProtectedLimitsAccess.csproj", "{2BF0306B-FC39-4A0F-8B36-71816AFE0448}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnotherAssembly", "AnotherAssembly\AnotherAssembly.csproj", "{3359FCEB-B3D1-49DC-A331-1439165C9433}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainBankAccountAssembly", "MainBankAccountAssembly\MainBankAccountAssembly.csproj", "{8D10631F-1174-40B0-91D4-28CB94C46EB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BF0306B-FC39-4A0F-8B36-71816AFE0448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF0306B-FC39-4A0F-8B36-71816AFE0448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF0306B-FC39-4A0F-8B36-71816AFE0448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF0306B-FC39-4A0F-8B36-71816AFE0448}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3359FCEB-B3D1-49DC-A331-1439165C9433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3359FCEB-B3D1-49DC-A331-1439165C9433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3359FCEB-B3D1-49DC-A331-1439165C9433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3359FCEB-B3D1-49DC-A331-1439165C9433}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D10631F-1174-40B0-91D4-28CB94C46EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D10631F-1174-40B0-91D4-28CB94C46EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D10631F-1174-40B0-91D4-28CB94C46EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D10631F-1174-40B0-91D4-28CB94C46EB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
