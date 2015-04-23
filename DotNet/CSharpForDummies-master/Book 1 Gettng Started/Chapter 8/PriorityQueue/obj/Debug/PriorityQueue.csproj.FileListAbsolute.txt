@@ -1,0 +1,8 @@
+C:\Users\Bill\Desktop\SampleCode\1-8\PriorityQueue\bin\Debug\PriorityQueue.exe
+C:\Users\Bill\Desktop\SampleCode\1-8\PriorityQueue\bin\Debug\PriorityQueue.pdb
+C:\Users\Bill\Desktop\SampleCode\1-8\PriorityQueue\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\1-8\PriorityQueue\obj\Debug\PriorityQueue.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\1-8\PriorityQueue\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-8\PriorityQueue\obj\Debug\ResGen.write.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-8\PriorityQueue\obj\Debug\PriorityQueue.exe
+C:\Users\Bill\Desktop\SampleCode\1-8\PriorityQueue\obj\Debug\PriorityQueue.pdb

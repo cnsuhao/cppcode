@@ -1,0 +1,8 @@
+C:\Users\Bill\Desktop\SampleCode\2-4\ReferencingThisExplicitly\bin\Debug\RefrerencingThisExplicitly.exe
+C:\Users\Bill\Desktop\SampleCode\2-4\ReferencingThisExplicitly\bin\Debug\RefrerencingThisExplicitly.pdb
+C:\Users\Bill\Desktop\SampleCode\2-4\ReferencingThisExplicitly\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-4\ReferencingThisExplicitly\obj\Debug\RefrerencingThisExplicitly.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\2-4\ReferencingThisExplicitly\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\2-4\ReferencingThisExplicitly\obj\Debug\ResGen.write.1.tlog
+C:\Users\Bill\Desktop\SampleCode\2-4\ReferencingThisExplicitly\obj\Debug\RefrerencingThisExplicitly.exe
+C:\Users\Bill\Desktop\SampleCode\2-4\ReferencingThisExplicitly\obj\Debug\RefrerencingThisExplicitly.pdb

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemonstrateCustomConstructor", "DemonstrateCustomConstructor.csproj", "{32735882-50D4-4845-8522-F2F7FEFA5FDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32735882-50D4-4845-8522-F2F7FEFA5FDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32735882-50D4-4845-8522-F2F7FEFA5FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32735882-50D4-4845-8522-F2F7FEFA5FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32735882-50D4-4845-8522-F2F7FEFA5FDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+C:\Users\Bill\Desktop\SampleCode\1-7\IndexerGeneric\bin\Debug\Indexer.exe
+C:\Users\Bill\Desktop\SampleCode\1-7\IndexerGeneric\bin\Debug\Indexer.pdb
+C:\Users\Bill\Desktop\SampleCode\1-7\IndexerGeneric\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\1-7\IndexerGeneric\obj\Debug\Indexer.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\1-7\IndexerGeneric\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-7\IndexerGeneric\obj\Debug\ResGen.write.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-7\IndexerGeneric\obj\Debug\Indexer.exe
+C:\Users\Bill\Desktop\SampleCode\1-7\IndexerGeneric\obj\Debug\Indexer.pdb

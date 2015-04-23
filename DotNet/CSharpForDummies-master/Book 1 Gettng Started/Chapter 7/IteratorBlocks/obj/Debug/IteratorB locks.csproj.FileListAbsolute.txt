@@ -1,0 +1,5 @@
+C:\Users\Bill\Desktop\SampleCode\1-7\IteratorBlocks\bin\Debug\IteratorB locks.exe
+C:\Users\Bill\Desktop\SampleCode\1-7\IteratorBlocks\bin\Debug\IteratorB locks.pdb
+C:\Users\Bill\Desktop\SampleCode\1-7\IteratorBlocks\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\1-7\IteratorBlocks\obj\Debug\IteratorB locks.exe
+C:\Users\Bill\Desktop\SampleCode\1-7\IteratorBlocks\obj\Debug\IteratorB locks.pdb

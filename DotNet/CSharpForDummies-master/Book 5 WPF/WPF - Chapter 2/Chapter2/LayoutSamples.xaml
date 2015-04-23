@@ -1,0 +1,27 @@
+﻿<Window x:Class="Chapter2.LayoutSamples"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WPF Layouts Samples" Height="288" Width="245">
+    <Grid>
+        <StackPanel>
+            <Button HorizontalAlignment="Stretch" Content="The Stack Panel" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="StackPanelSample"/>
+            <Button HorizontalAlignment="Stretch" Content="The Wrap Panel" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="WrapPanelSample"/>
+            <Button HorizontalAlignment="Stretch" Content="The Dock Panel" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="DockPanelSample"/>
+            <Button HorizontalAlignment="Stretch" Content="The Canvas" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="CanvasSample"/>
+            <Button HorizontalAlignment="Stretch" Content="The Uniform Grid" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="UniformGridSample"/>
+            <Button HorizontalAlignment="Stretch" Content="The Grid" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="GridSample"/>
+            <Button HorizontalAlignment="Stretch" Content="The Grid With Spans" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="GridSpans"/>
+            <Button HorizontalAlignment="Stretch" Content="The Grid With Shared Size Groups" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="SharedSizeGroups"/>
+            <Button HorizontalAlignment="Stretch" Content="The Simple Data Entry Window" Margin="0,3"
+                    Command="{Binding Path=LaunchWindowCmd}" CommandParameter="SimpleDataEntry"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="BindingSample3.RedX"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="50">
+    
+        <Canvas Width="44.625" Height="45.9394">
+            
+            <Path x:Name="Line1Path" Width="44.625" Height="44.375" 
+                  Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Fill="#FFDE0909" 
+                  Data="F1 M 0,3.5L 3.5,0L 44.625,41L 42.125,44.375"/>
+            
+            <Path x:Name="Line2Path" Width="43.5772" Height="45.3813" 
+                  Canvas.Left="0.201177" Canvas.Top="0.55809" Stretch="Fill" 
+                  Fill="#FFDE0909" Data="F1 M 3.7719,45.9394L 0.201177,
+                  42.5115L 40.353,0.55809L 43.7784,2.98867"/>
+            
+        </Canvas>
+</UserControl>

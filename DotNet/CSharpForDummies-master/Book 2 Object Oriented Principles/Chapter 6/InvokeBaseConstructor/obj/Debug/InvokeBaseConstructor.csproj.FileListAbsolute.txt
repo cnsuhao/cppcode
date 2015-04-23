@@ -1,0 +1,8 @@
+C:\Users\Bill\Desktop\SampleCode\2-6\InvokeBaseConstructor\bin\Debug\InvokeBaseConstructor.exe
+C:\Users\Bill\Desktop\SampleCode\2-6\InvokeBaseConstructor\bin\Debug\InvokeBaseConstructor.pdb
+C:\Users\Bill\Desktop\SampleCode\2-6\InvokeBaseConstructor\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-6\InvokeBaseConstructor\obj\Debug\InvokeBaseConstructor.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\2-6\InvokeBaseConstructor\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\2-6\InvokeBaseConstructor\obj\Debug\ResGen.write.1.tlog
+C:\Users\Bill\Desktop\SampleCode\2-6\InvokeBaseConstructor\obj\Debug\InvokeBaseConstructor.exe
+C:\Users\Bill\Desktop\SampleCode\2-6\InvokeBaseConstructor\obj\Debug\InvokeBaseConstructor.pdb

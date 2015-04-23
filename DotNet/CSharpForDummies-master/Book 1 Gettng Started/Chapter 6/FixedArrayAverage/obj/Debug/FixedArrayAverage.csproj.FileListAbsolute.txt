@@ -1,0 +1,8 @@
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\FixedArrayAverage\bin\Debug\FixedArrayAverage.exe
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\FixedArrayAverage\bin\Debug\FixedArrayAverage.pdb
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\FixedArrayAverage\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\FixedArrayAverage\obj\Debug\FixedArrayAverage.Properties.Resources.resources
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\FixedArrayAverage\obj\Debug\ResGen.read.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\FixedArrayAverage\obj\Debug\ResGen.write.1.tlog
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\FixedArrayAverage\obj\Debug\FixedArrayAverage.exe
+C:\Users\Bill\Desktop\SampleCode\1-6\191088 ch05 code\FixedArrayAverage\obj\Debug\FixedArrayAverage.pdb

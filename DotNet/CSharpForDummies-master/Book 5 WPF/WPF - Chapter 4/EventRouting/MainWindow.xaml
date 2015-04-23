@@ -1,0 +1,27 @@
+﻿<Window x:Class="EventRouting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"
+        x:Name="Window"
+        KeyDown="Generic_KeyDown"
+        PreviewKeyDown="Generic_PreviewKeyDown">
+    <Grid x:Name="Grid" KeyDown="Generic_KeyDown" 
+          PreviewKeyDown="Generic_PreviewKeyDown">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <StackPanel x:Name="StackPanel" Grid.Column="0" Grid.Row="0"
+                    KeyDown="Generic_KeyDown" PreviewKeyDown="Generic_PreviewKeyDown" >
+            
+            <TextBox x:Name="TextBox" Height="25" Width="300" Margin="0,0,0,25" 
+                     KeyDown="Generic_KeyDown" PreviewKeyDown="Generic_PreviewKeyDown" />
+            
+        </StackPanel>
+        
+        
+    </Grid>
+</Window>

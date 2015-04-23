@@ -1,0 +1,32 @@
+﻿<Window x:Class="Chapter2.Controls.TreeViewControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TreeView" Height="300" Width="300">
+    <Grid>
+<TreeView Name="myTreeViewEvent" >
+    <TreeViewItem Header="Employee1" IsSelected="True">
+        <TreeViewItem Header="Jesper Aaberg"/>
+        <TreeViewItem Header="Employee Number">
+            <TreeViewItem Header="12345"/>
+        </TreeViewItem>
+        <TreeViewItem Header="Work Days">
+            <TreeViewItem Header="Monday"/>
+            <TreeViewItem Header="Tuesday"/>
+            <TreeViewItem Header="Thursday"/>
+        </TreeViewItem>
+    </TreeViewItem>
+    <TreeViewItem Header="Employee2">
+        <TreeViewItem Header="Dominik Paiha"/>
+        <TreeViewItem Header="Employee Number">
+            <TreeViewItem Header="98765"/>
+        </TreeViewItem>
+        <TreeViewItem Header="Work Days">
+            <TreeViewItem Header="Tuesday"/>
+            <TreeViewItem Header="Wednesday"/>
+            <TreeViewItem Header="Friday"/>
+        </TreeViewItem>
+    </TreeViewItem>
+</TreeView>
+
+    </Grid>
+</Window>

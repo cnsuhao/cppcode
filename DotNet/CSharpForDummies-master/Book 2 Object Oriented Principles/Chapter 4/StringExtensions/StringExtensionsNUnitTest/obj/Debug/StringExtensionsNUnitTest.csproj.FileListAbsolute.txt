@@ -1,0 +1,1 @@
+C:\Users\Bill\Desktop\SampleCode\2-4\StringExtensions\StringExtensionsNUnitTest\obj\Debug\ResolveAssemblyReference.cache

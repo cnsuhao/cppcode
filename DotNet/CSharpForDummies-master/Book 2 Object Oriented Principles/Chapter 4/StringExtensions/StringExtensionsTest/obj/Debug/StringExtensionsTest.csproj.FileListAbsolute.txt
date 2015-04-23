@@ -1,0 +1,7 @@
+C:\Users\Bill\Desktop\SampleCode\2-4\StringExtensions\StringExtensionsTest\bin\Debug\StringExtensionsTest.dll
+C:\Users\Bill\Desktop\SampleCode\2-4\StringExtensions\StringExtensionsTest\bin\Debug\StringExtensionsTest.pdb
+C:\Users\Bill\Desktop\SampleCode\2-4\StringExtensions\StringExtensionsTest\bin\Debug\StringExtensionsLib.dll
+C:\Users\Bill\Desktop\SampleCode\2-4\StringExtensions\StringExtensionsTest\bin\Debug\StringExtensionsLib.pdb
+C:\Users\Bill\Desktop\SampleCode\2-4\StringExtensions\StringExtensionsTest\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-4\StringExtensions\StringExtensionsTest\obj\Debug\StringExtensionsTest.dll
+C:\Users\Bill\Desktop\SampleCode\2-4\StringExtensions\StringExtensionsTest\obj\Debug\StringExtensionsTest.pdb

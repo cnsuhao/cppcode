@@ -1,0 +1,59 @@
+﻿<Window x:Class="Chapter2.Layouts.SimpleDataEntry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Simple Data Entry" Height="216" Width="300">
+	<Grid Background="FloralWhite">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="10" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+		<Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Content="Name" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
+			<Label.LayoutTransform>
+				<RotateTransform Angle="-90" />
+			</Label.LayoutTransform>
+		</Label>
+		<Label Grid.Row="0" Grid.Column="1" Content="First:" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" />
+		<TextBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" />
+		<Label Grid.Row="1" Grid.Column="1" Content="Last:" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" />
+		<TextBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" />
+		<Label Grid.Row="2" Grid.Column="1" Content="Address:" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" />
+		<TextBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" />
+		<Label Grid.Row="3" Grid.Column="1" Content="City:" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" />
+		<TextBox Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" />
+		<Button Grid.Row="3" Grid.Column="3" Content="Lookup" Margin="3,0,3,0" />
+		<Label Grid.Row="4" Grid.Column="1" Content="State:" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" />
+		<Grid Grid.Row="4" Grid.Column="2">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="2*" />
+			</Grid.ColumnDefinitions>
+			<TextBox Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" />
+			<Label Grid.Row="0" Grid.Column="1" Content="Zip:" HorizontalAlignment="Right" />
+			<TextBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" />
+		</Grid>
+		<Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			<Button Grid.Row="0" Grid.Column="1" Content="Save" Margin="3,0" />
+			<Button Grid.Column="2" Content="Close" Margin="3,0" />
+		</Grid>
+	</Grid>
+</Window>

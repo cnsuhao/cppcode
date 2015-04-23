@@ -1,0 +1,5 @@
+C:\Users\Bill\Desktop\SampleCode\1-9\LettingExceptionGoBy\bin\Debug\LettingExceptionGoBy.exe
+C:\Users\Bill\Desktop\SampleCode\1-9\LettingExceptionGoBy\bin\Debug\LettingExceptionGoBy.pdb
+C:\Users\Bill\Desktop\SampleCode\1-9\LettingExceptionGoBy\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\1-9\LettingExceptionGoBy\obj\Debug\LettingExceptionGoBy.exe
+C:\Users\Bill\Desktop\SampleCode\1-9\LettingExceptionGoBy\obj\Debug\LettingExceptionGoBy.pdb

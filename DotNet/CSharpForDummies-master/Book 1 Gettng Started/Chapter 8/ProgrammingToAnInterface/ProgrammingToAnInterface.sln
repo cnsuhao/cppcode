@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingToAnInterface", "ProgrammingToAnInterface.csproj", "{BAD2B47B-7B0C-4885-BC17-DAF0B0283811}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAD2B47B-7B0C-4885-BC17-DAF0B0283811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD2B47B-7B0C-4885-BC17-DAF0B0283811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD2B47B-7B0C-4885-BC17-DAF0B0283811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD2B47B-7B0C-4885-BC17-DAF0B0283811}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

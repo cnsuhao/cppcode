@@ -1,0 +1,5 @@
+C:\Users\Bill\Desktop\SampleCode\1-8\GenericDelegateExample\bin\Debug\GenericDelegateExample.exe
+C:\Users\Bill\Desktop\SampleCode\1-8\GenericDelegateExample\bin\Debug\GenericDelegateExample.pdb
+C:\Users\Bill\Desktop\SampleCode\1-8\GenericDelegateExample\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\1-8\GenericDelegateExample\obj\Debug\GenericDelegateExample.exe
+C:\Users\Bill\Desktop\SampleCode\1-8\GenericDelegateExample\obj\Debug\GenericDelegateExample.pdb

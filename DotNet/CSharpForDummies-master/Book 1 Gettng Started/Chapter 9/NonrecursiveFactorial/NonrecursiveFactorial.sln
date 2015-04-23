@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7915B6C8-051F-456A-86FA-C2D7EBD6E1D4}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		NonrecursiveFactorial.vsmdi = NonrecursiveFactorial.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NonrecursiveFactorial", "NonrecursiveFactorial.csproj", "{46A92D17-E248-4D21-B168-B41FD101EB23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorialTest", "FactorialTest\FactorialTest.csproj", "{ABDF1947-1A44-4129-A73B-6E17B0477F84}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = NonrecursiveFactorial.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46A92D17-E248-4D21-B168-B41FD101EB23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A92D17-E248-4D21-B168-B41FD101EB23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A92D17-E248-4D21-B168-B41FD101EB23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A92D17-E248-4D21-B168-B41FD101EB23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABDF1947-1A44-4129-A73B-6E17B0477F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABDF1947-1A44-4129-A73B-6E17B0477F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABDF1947-1A44-4129-A73B-6E17B0477F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABDF1947-1A44-4129-A73B-6E17B0477F84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

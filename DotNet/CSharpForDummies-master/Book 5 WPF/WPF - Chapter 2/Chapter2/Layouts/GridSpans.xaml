@@ -1,0 +1,26 @@
+﻿<Window x:Class="Chapter2.Layouts.GridSpans" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Grid" Height="200" Width="200">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="3*" />
+			<RowDefinition Height="5*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<TextBlock Text="0,0 - 0,1" />
+		</Border>
+		<Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<TextBlock Text="1,0 - 2,1" />
+		</Border>
+		<Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<TextBlock Text="1,1" />
+		</Border>
+		<Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<TextBlock Text="2,1" />
+		</Border>
+
+	</Grid>
+</Window>

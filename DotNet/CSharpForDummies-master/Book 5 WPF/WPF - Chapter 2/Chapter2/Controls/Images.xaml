@@ -1,0 +1,18 @@
+﻿<Window x:Class="Chapter2.Controls.Images"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Images" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0" Grid.Column="0" Width="256" >
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="256" UriSource="/Images/1460_PaintPalette_256x256.png"/>
+            </Image.Source>
+        </Image>
+    </Grid>
+</Window>

@@ -1,0 +1,9 @@
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedInternalLimitsAccess\bin\Debug\ProtectedInternalLimitsAccess.exe
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedInternalLimitsAccess\bin\Debug\ProtectedInternalLimitsAccess.pdb
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedInternalLimitsAccess\bin\Debug\AnotherAssembly.dll
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedInternalLimitsAccess\bin\Debug\MainBankAccountAssembly.dll
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedInternalLimitsAccess\bin\Debug\AnotherAssembly.pdb
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedInternalLimitsAccess\bin\Debug\MainBankAccountAssembly.pdb
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedInternalLimitsAccess\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedInternalLimitsAccess\obj\Debug\ProtectedInternalLimitsAccess.exe
+C:\Users\Bill\Desktop\SampleCode\2-10\ProtectedInternalLimitsAccess\obj\Debug\ProtectedInternalLimitsAccess.pdb
