@@ -2591,8 +2591,20 @@ int cmake::Run(const std::vector<std::string>& args, bool noconfigure)
     {
     return ret;
     }
+
   this->SetStartDirectory(oldstartdir.c_str());
   this->SetStartOutputDirectory(oldstartoutputdir.c_str());
+
+#if defined(CMAKE_HAVE_VS_GENERATORS)
+  if(!this->CheckStampList.empty() && !this->VSSolutionFile.empty() && this->GlobalGenerator)
+  {
+      cmSystemTools::Message(
+          "Build files has be regenerated correctly.  "
+          "Reload project files.");
+      return -1;
+  }
+#endif
+
 
   return ret;
 }
