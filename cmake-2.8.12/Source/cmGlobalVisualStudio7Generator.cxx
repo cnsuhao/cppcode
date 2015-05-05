@@ -211,10 +211,10 @@ void cmGlobalVisualStudio7Generator::Generate()
   this->OutputSLNFile();
   // If any solution or project files changed during the generation,
   // tell Visual Studio to reload them...
-  if(!cmSystemTools::GetErrorOccuredFlag())
-    {
-    this->CallVisualStudioMacro(MacroReload);
-    }
+  //if(!cmSystemTools::GetErrorOccuredFlag())
+  //  {
+  //  this->CallVisualStudioMacro(MacroReload);
+  //  }
 }
 
 void cmGlobalVisualStudio7Generator

@@ -2600,7 +2600,7 @@ int cmake::Run(const std::vector<std::string>& args, bool noconfigure)
   {
       cmSystemTools::Message(
           "Build files has be regenerated correctly.  "
-          "Reload project files.");
+          "Reload Solution and Start Build Again!!!");
       return -1;
   }
 #endif
