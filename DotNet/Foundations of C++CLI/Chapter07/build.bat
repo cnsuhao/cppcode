@@ -1,0 +1,17 @@
+cl /clr async_delegates.cpp
+cl /clr complex.cpp
+cl /clr complex2.cpp
+cl /clr declaring_properties.cpp
+cl /clr delegate_invocation_list.cpp
+cl /clr delegate_operators.cpp
+cl /clr delegate_with_exceptions.cpp
+cl /clr eventargs.cpp
+cl /clr events.cpp
+cl /clr events_custom.cpp
+cl /clr events_custom2.cpp
+cl /clr explicit_conversion.cpp
+cl /clr periodic_table2.cpp
+cl /clr properties_indexed1.cpp
+cl /clr properties_indexed2.cpp
+cl /clr property_accessor_delegate.cpp
+cl /clr sender_receiver.cpp
