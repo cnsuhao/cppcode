@@ -9,7 +9,7 @@ ref class Derived : Base {} ;
 int main()
 {
 
-Base^ b = gcnew Base();
+Base^ b = gcnew Derived();
 Derived^ d = gcnew Derived();
 // using safe_cast
 try
@@ -18,14 +18,14 @@ try
 }
 catch (InvalidCastException^ e)
 {
-    // handle error
+    Console::WriteLine("handle error");
 }
 
 // using dynamic cast
 d = dynamic_cast<Derived^>(b);
 if (d == nullptr)
 {
-    // handle error
+    Console::WriteLine("nullptr");
 }
  
 }
