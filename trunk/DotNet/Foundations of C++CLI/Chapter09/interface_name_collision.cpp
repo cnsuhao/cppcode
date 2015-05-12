@@ -17,4 +17,8 @@ int main()
 {
    R^ r = gcnew R();
    r->f();  // R::f() implements both I1's f and I2's f
+   I1^ i1 = r;
+   I2^ i2 = r;
+   i1->f();
+   i2->f();
 }
