@@ -83,5 +83,6 @@ int main()
         "Porcelain Berry", nullptr, SunEnum::PartShade, WaterEnum::Medium,
         4);
 
-   Deserialize();
+    Plant^ p = Deserialize();
+    Console::WriteLine(p->Genus);
 }
