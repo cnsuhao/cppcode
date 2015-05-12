@@ -16,6 +16,6 @@ try
 }
 catch( Exception^ exception)
 {
-      // code to handle the exception
+      Console::WriteLine("code to handle the exception");
 }
 }

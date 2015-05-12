@@ -1,0 +1,13 @@
+cl /clr appdomain_execute_assembly.cpp
+cl /clr custom_attributes2.cpp
+cl /clr exception.cpp
+cl /clr exceptions_ctor.cpp
+cl /clr exceptions_custom.cpp
+cl /clr exception_properties.cpp
+cl /clr finally_block.cpp
+cl /clr multiple_finally_blocks.cpp
+cl /clr obsolete.cpp
+cl /clr:safe reflection2.cpp
+cl /clr reflection_general.cpp
+cl /clr serialization.cpp
+cl /clr throw_string.cpp
