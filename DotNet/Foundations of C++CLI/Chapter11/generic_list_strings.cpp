@@ -2,9 +2,6 @@
 using namespace System;
 using namespace System::Collections::Generic;
 
-using namespace System;
-using namespace System::Collections::Generic;
-
 // ListNode represents a single element in a linked list.
 generic <typename T> ref struct ListNode
 {
