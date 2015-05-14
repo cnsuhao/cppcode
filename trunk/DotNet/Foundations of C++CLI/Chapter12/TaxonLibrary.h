@@ -93,7 +93,7 @@ public ref class Trees
            ++generic_iter1)
       {
          SpeciesMap1::generic_value val = *generic_iter1;
-         Console::WriteLine("{0} {1}", generic_iter1->first->Name, generic_iter1->second->Name);
+         Console::WriteLine("{0} {1}", val->first->Name, val->second->Name);
       }
    }
 

@@ -32,6 +32,20 @@ void reverse2(vector<int>% vec)
    }
 }
 
+template <typename T>
+void reverse3(vector<T>% vec)
+{
+   vector<T>::iterator iter = vec.begin();
+   vector<T>::reverse_iterator reverse_iter = vec.rbegin();
+
+   for (int i = 0; i < vec.size() / 2; ++iter, ++reverse_iter, ++i)
+   {
+      int temp = *reverse_iter;
+      *reverse_iter = *iter;
+      *iter = temp;
+   }
+}
+
 void printall(vector<int>% vec)
 {
    vector<int>::iterator iter = vec.begin();
@@ -51,7 +65,7 @@ int main()
    }
 
    printall(v);
-   reverse1(v);
+   reverse3(v);
    printall(v);
 
 }
