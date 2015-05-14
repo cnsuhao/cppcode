@@ -47,6 +47,7 @@ public value struct Card
          {
          case 1: // Ace
             s->Append("A");
+            break;
          case 11: // Jack
             s->Append("J");
             break;

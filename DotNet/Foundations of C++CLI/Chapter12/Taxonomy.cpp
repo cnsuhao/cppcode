@@ -10,6 +10,6 @@ int main(array<System::String ^> ^args)
    trees->Add(gcnew Genus("Quercus"), gcnew Species("garryana"));
    trees->Add(gcnew Genus("Pseudotsuga"), gcnew Species("menziesii"));
    // print, using normal STL/CLR iterators
-   trees->PrintAll();
+   trees->PrintAllGeneric();
    return 0;
 }

@@ -14,8 +14,8 @@ void Reverse(CollectionType collection)
    int n = collection->Count;
    for (int i = 0; i < n; i++)
    {
-      ItemType temp = collection->default[n - i];
-      collection->RemoveAt(n - i);
+      ItemType temp = collection->default[n - 1 - i];
+      collection->RemoveAt(n - 1 - i);
       collection->Add(temp);
    }
 
