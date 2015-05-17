@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Java Code from Concrete Abstractions</title>
+</head>
+<body>
+<h1>Java Code from Concrete Abstractions</h1>
+
+This web page provides Java code excerpted from and/or designed for use
+with chapter 15 of <a
+href="/~max/concrete-abstractions.html"><cite>Concrete Abstractions: An
+Introduction to Computer Science Using Scheme</cite></a>, by <a
+href="/~max/">Max Hailperin</a>, <a
+href="/~kaiser/">Barbara Kaiser</a>, and <a
+href="/~karl/">Karl Knight</a>.  Note that
+you will need a <a href="http://java.sun.com">Java 1.1 or later</a> system to
+use this code.  For the applets, we also have provided versions you
+can directly try out, if your web browser supports Java 1.1 or later.
+
+<h2>The CompuDuds program</h2>
+
+<ul>
+<li><a href="Chinos.java"><code>Chinos.java</code></a>
+<li><a href="CompuDuds.java"><code>CompuDuds.java</code></a>
+<li><a href="Item.java"><code>Item.java</code></a>
+<li><a href="ItemList.java"><code>ItemList.java</code></a>
+<li><a href="OxfordShirt.java"><code>OxfordShirt.java</code></a>
+</ul>
+
+<h2>The Puzzle applet</h2>
+
+<ul>
+<li>Try the applet out
+(provided your browser supports Java 1.1)
+<ul>
+<li><a href="sample-applets/puzzle-original/">original version</a>
+<li><a href="sample-applets/puzzle-with-initialize/">version with
+initialize button</a>
+<li><a href="sample-applets/puzzle-final/">final version (of those
+given in book)</a>
+</ul>
+<li><a href="InitializeActionListener.java"><code>InitializeActionListener.java</code></a>
+<li><a href="PoltergeistActionListener.java"><code>PoltergeistActionListener.java</code></a>
+<li><a href="PoltergeistItemListener.java"><code>PoltergeistItemListener.java</code></a>
+<li><code>PoltergeistThread.java</code>
+<ul>
+<li><a href="PoltergeistThread.java">version 1</a>
+<li><a href="PoltergeistThread-version2.java">version 2</a>
+<li><a href="PoltergeistThread-version3.java">version 3</a>
+<li><a
+href="PoltergeistThread-version4.java">version 4</a>
+</ul>
+<li><code>Puzzle.java</code>
+<ul>
+<li><a href="Puzzle.java">version 1</a>
+<li><a href="Puzzle-version2.java">version 2</a>
+<li><a href="Puzzle-version3.java">version 3</a>
+<li><a href="Puzzle-version4.java">version 4</a>
+<li><a href="Puzzle-version5.java">version 5</a>
+<li><a href="Puzzle-version6.java">version 6</a>
+</ul>
+<li><a href="TileActionListener.java"><code>TileActionListener.java</code></a>
+<li><a href="puzzle-html.txt"><code>puzzle.html</code></a>
+</ul>
+
+<h2>The Compounder applet</h2>
+
+<ul>
+<li><a href="sample-applets/compounder/">Try the applet out</a>
+(provided your browser supports Java 1.1)
+<li><a href="Compounder.java"><code>Compounder.java</code></a>
+<li><a href="CompoundingThread.java"><code>CompoundingThread.java</code></a>
+<li><a href="FormattedField.java"><code>FormattedField.java</code></a>
+<li><a href="InitialAmountField.java"><code>InitialAmountField.java</code></a>
+<li><a href="InterestRateField.java"><code>InterestRateField.java</code></a>
+</ul>
+
+<hr>
+For more information, see <a href="../">the parent web page</a>, or contact <A HREF="/~max/">Max Hailperin</A>:
+<address>
+Email: <a href="mailto: max@gustavus.edu">max@gustavus.edu</a><br>
+<A HREF="/Academics/mcs/">Mathematics and Computer Science Department</A><br>
+<A HREF="/">Gustavus Adolphus College</A><br>
+800 W. College Avenue<br> 
+St. Peter, MN 56082<br>
+USA</address>
+</body>
+</html>

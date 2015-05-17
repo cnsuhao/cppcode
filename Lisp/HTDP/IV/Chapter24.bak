@@ -4,7 +4,6 @@
 (require 2htdp/image)
 (require 2htdp/batch-io)
 (require 2htdp/universe)
-(require racket/trace)
 
 (define WRONG "wrong kind of S-expression")
 
@@ -71,12 +70,14 @@
 
 (define (numeric? s)
   (local
-    ((define (numeric?-op sa)
-       (and (symbol? sa) (or (symbol=? sa `+) (symbol=? sa `*))))
+    ((define (numeric?-atom sa)
+       (cond [(symbol? sa) (or (symbol=? sa `+) (symbol=? sa `*))]
+             [(number? sa) #t]
+             [else #f]))
      (define (numeric?-sl sl)
-       (and (numeric?-op (first sl)) (andmap numeric? (rest sl)))))
+       (andmap numeric? sl)))
     (cond
-      [(atom? s) (number? s)]
+      [(atom? s) (numeric?-atom s)]
       [else (numeric?-sl s)])))
 
 (define (eval-variable s)
@@ -96,7 +97,7 @@
                           (subst (subst* s (rest da)) (first as) (second as)))]))
           (define e-sub (subst* e da)))
     (if (numeric? e-sub) (eval-variable e-sub)
-        (error "have unkonwn var"))))   
+        (error "have unkonwn var"))))
 
 
 (define (lookup-con da x)
@@ -123,54 +124,19 @@
 (define hehe `((x 1) (y 2) (z 3)))
  
 (define-struct def [name para body])
-
-(define (lookup-def da f)
-  (local ((define result (search-def da f)))
-    (if (eq? result false) (error "can't find function" f) result)))
-
-(define (search-def da f)
-  (if (empty? da) false
-      (local ((define first-func (first da)))
-        (if (symbol=? (def-name first-func) f) first-func (lookup-def (rest da) f)))))
-
-
 ; see exercise 293
-
-(define (eval-function func arg da-f da-v)
-  (eval-function* (def-body func) da-f (cons (list (def-para func) arg) da-v)))
-
-(define (eval-atom a da-v)
-  (cond [(symbol? a) (lookup-con da-v a)]
-        [else a]))
  
-(define (eval+* op left right)
-  (cond [(symbol=? op `+) (+ left right)]
-        [(symbol=? op `*) (* left right)]))
-
-(define (eval-function* exp da-f da-v)
-  (if (atom? exp) (eval-atom exp da-v)
-      (local ((define op (first exp)))
-        (cond [(or (symbol=? op `+) (symbol=? op `*))
-               (eval+* op (eval-function* (second exp) da-f da-v) 
-                       (eval-function* (third exp) da-f da-v))]
-              [else      
-               (local ((define func (lookup-def da-f op))
-                       (define arg (eval-function* (second exp) da-f da-v)))
-                 (eval-function func arg da-f da-v))]))))
-(trace eval-function*)
-
-
 ;{S-expr} -> (tech "BSL-fun-def")
 ; creates representation of a BSL definition for s (if possible)
 (define (def-parse s)
   (local (; S-expr -> BSL-fun-def
           (define (def-parse s)
             (cond
-              [(atom? s) (error s " is a atom!")]
+              [(atom? s) (error WRONG)]
               [else
                (if (and (= (length s) 3) (eq? (first s) 'define))
-                   (head-parse (second s) (third s))
-                   (error s " wrong"))]))
+                   (head-parse (second s) (parse (third s) hehe))
+                   (error WRONG))]))
           ; S-expr BSL-expr -> BSL-fun-def
           (define (head-parse s body)
             (cond
@@ -185,41 +151,14 @@
                          (error WRONG))))])))
     (def-parse s)))
 
-(define (def-try-parse s)
-  (local (; S-expr -> BSL-fun-def
-          (define (def-parse s)
-            (cond
-              [(atom? s) #f]
-              [else
-               (if (and (= (length s) 3) (eq? (first s) 'define))
-                   (head-parse (second s) (third s))
-                   #f)]))
-          ; S-expr BSL-expr -> BSL-fun-def
-          (define (head-parse s body)
-            (cond
-              [(atom? s) #f]
-              [else
-               (if (not (= (length s) 2))
-                   #f
-                   (local ((define name (first s))
-                           (define para (second s)))
-                     (if (and (symbol? name) (symbol? para))
-                         (make-def name para body)
-                         #f)))])))
-    (def-parse s)))
 
-(define (myparse s-exp da-f da-v)
-  (if (empty? s-exp) #t
-      (local ((define defOrF (def-try-parse (first s-exp))))
-        (if (def? defOrF) 
-            (myparse (rest s-exp) (cons defOrF da-f) da-v)
-            (eval-function* (first s-exp) da-f da-v)))))
-(trace myparse)
-(myparse
-    `((define (f x) (+ 3 x))
-      (define (g y) (f (* 2 y)))
-      (define (h v) (+ (f v) (g v)))
-      (h 2)) empty empty)
+
+
+
+
+
+
+
 
 
 
