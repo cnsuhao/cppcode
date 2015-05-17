@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Schemes for Concrete Abstractions</title>
+</head>
+<body>
+<h1>Scheme Implementations for Use with Concrete Abstractions</h1>
+
+This web page provides guidance on using specific Scheme
+implementations  with <a
+href="/~max/concrete-abstractions.html"><cite>Concrete Abstractions: An
+Introduction to Computer Science Using Scheme</cite></a>, by <a
+href="/~max/">Max Hailperin</a>, <a
+href="/~kaiser/">Barbara Kaiser</a>, and <a
+href="/~karl/">Karl Knight</a>.
+
+<p>Our provision of information about
+these implementations does not imply that others can't be used equally
+well.  We hope to add information about other implementations, and
+would appreciate any help that others can provide.
+
+<ul>
+<li><a href="drscheme/">DrRacket (formerly DrScheme)</a>
+<li>EdScheme <a href="edscheme/win/">for Windows</a> and <a
+href="edscheme/mac/">for the Macintosh</a>
+<li><a href="gambit/">Gambit</a>
+<li><a href="mit-scheme/">MIT-Scheme</a>
+<li><a href="chez-scheme/">(Petite) Chez Scheme</a>
+<li><a href="other/">hints for using other Schemes</a>
+</ul>
+
+<hr>
+For more information, see <a href="../">the parent web page</a>, or contact <A HREF="/~max/">Max Hailperin</A>:
+<address>
+Email: <a href="mailto: max@gustavus.edu">max@gustavus.edu</a><br>
+<A HREF="/Academics/mcs/">Mathematics and Computer Science Department</A><br>
+<A HREF="/">Gustavus Adolphus College</A><br>
+800 W. College Avenue<br> 
+St. Peter, MN 56082<br>
+USA</address>
+Revision 1.4 as of 2010/06/08 22:26:11
+</body>
+</html>

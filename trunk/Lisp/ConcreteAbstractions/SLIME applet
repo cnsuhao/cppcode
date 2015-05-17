@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd">
+<HTML><HEAD>
+<TITLE>SLIME applet</TITLE>
+</HEAD>
+<BODY>
+<H2>Super Lean Instruction Machine Emulator</H2>
+
+To use the emulator, type (or paste) your code into the area below and
+hit the "Load" button that appears below it.  Two new windows will
+then appear on your screen for SLIME: the main SLIME window, showing
+the registers, instruction memory, data memory, etc., and a smaller
+"console" window that is used when your SLIM program reads input from
+the user or writes output.  Your program, from the area below, will
+have been loaded into the instruction memory.  If your program has
+syntax errors, a window will appear listing them.<P>
+
+Next, using the controls on the main SLIME window, press "Start" to
+start your program, or "Step" to execute a single instruction.  If a
+run-time error occurs, the <TT><FONT COLOR="#007F00">OK</FONT></TT>
+indicator will change to <TT><FONT
+COLOR="#FF0000">Exception</FONT></TT> and the status line will show
+the exception.  You can click on the indicator to clear the exception.
+("Reset" will do so as well.)<P>
+
+When your program reads input, you will need to type it in the text
+field near the bottom of the console window.<p>
+
+If you change the program in the area below and want to load the
+changed version into SLIME's instruction memory, you can press the
+"Load" button on the main SLIME window.  Or, if you press the
+"Quit" button, the SLIME window will disappear, and the "Load" button
+below will once again become active, allowing you to restart SLIME and
+load a new program in.<p>
+
+<APPLET CODE="EDU.gac.mgritter.SLIME.SLIME" CODEBASE="classes" archive="SLIME.jar" WIDTH="500" HEIGHT="400">
+</APPLET>
+
+<H3>Example Programs</H3>
+<ul>
+<li><a href="examples/count-to-ten.slim">count-to-ten</a>
+<li><a href="examples/write-larger.slim">write-larger</a>
+<li><a href="examples/iterative-factorial.slim">iterative-factorial</a>
+<li><a href="examples/two-factorials.slim">two-factorials</a>
+<li><a href="examples/double-factorial.slim">double-factorial</a>
+<li><a href="examples/recursive-factorial.slim">recursive-factorial</a>
+</ul>
+
+<h3>If Copy and Paste Doesn't Work</h3>
+<p>This is apparently a known problem in recent browser plugins.  See <a href="https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java">this explanation and fix from Kyle Hatlestad</a>.  Alternatively, see the next section for how to run SLIME outside a browser.</p>
+
+<h3>Running SLIME as a Standalone Application</h3>
+<p>You can download <a href="classes/SLIME.jar">SLIME.jar</a> and run it as a standalone application. On many systems, you just need to double-click the SLIME.jar file.  Alternatively, you can use a shell command like this:</p>
+<pre>
+   java -jar SLIME.jar
+</pre>
+<p>The "Load" button in this version of SLIME lets you select a file from which to load the assembly code.  Alternatively, you can give the filename as an extra command-line argument, as in this example:</p>
+<pre>
+   java -jar SLIME.jar mySLIMcode.asm
+</pre>
+
+<hr>
+For more information, see <a href="../">the parent web page</a>, or contact <A HREF="/~max/">Max Hailperin</A>:
+<address>
+Email: <a href="mailto: max@gustavus.edu">max@gustavus.edu</a><br>
+<A HREF="/Academics/mcs/">Mathematics and Computer Science Department</A><br>
+<A HREF="/">Gustavus Adolphus College</A><br>
+800 W. College Avenue<br> 
+St. Peter, MN 56082<br>
+USA</address>
+<hr>
+SLIME was written by Mark Gritter.  Thanks, Mark.
+</body>
+</html>
