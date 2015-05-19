@@ -7,7 +7,7 @@
 using namespace System;
 using namespace msclr::interop;
 
-enum class MessageBoxTypeEnum
+public enum class MessageBoxTypeEnum
 {
   OK, OKCANCEL, ABORTRETRYIGNORE,
   YESNOCANCEL, YESNO,
