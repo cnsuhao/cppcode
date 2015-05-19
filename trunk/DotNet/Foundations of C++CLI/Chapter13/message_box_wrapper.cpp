@@ -5,7 +5,7 @@
 
 using namespace System;
 
-enum class MessageBoxTypeEnum
+public enum class MessageBoxTypeEnum
 {
   OK, OKCANCEL, ABORTRETRYIGNORE,
   YESNOCANCEL, YESNO,

@@ -17,6 +17,10 @@ ref class R
      {
         Console::WriteLine("destructor");
      }
+     !R()
+     {
+        Console::WriteLine("finalizer");
+     }
     
 };
 
