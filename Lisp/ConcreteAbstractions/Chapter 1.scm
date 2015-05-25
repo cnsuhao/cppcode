@@ -4,43 +4,46 @@
 ;; by the authors. Full text is available for free at
 ;; http://www.gustavus.edu/+max/concrete-abstractions.html
 
+(require (lib "fungraph.ss" "concabs"))
+(require (lib "oops.ss" "concabs"))
+(load "quilting.scm")
 ;; Chapter 1: Computer Science and Programming
 
 ;; 1.1  What's It All About?
 
 ;; 1.2  Programming in Scheme
 
-12
-;Value: 12
-
--7
-;Value: -7
-
-1/3
-;Value: 1/3
-
-3.1415927
-;Value: 3.1415927
-
-sqrt
-;Value: #<procedure>
-
-+
-;Value: #<procedure>
-
-(sqrt 9)
-;Value: 3
-
-(+ 3 6)
-;Value: 9
-
-(sqrt (+ 3 6))
-;Value: 3
-
-(/ (+ (* (- 17 14)
-         5)
-      6)
-   7)
+;12
+;;Value: 12
+;
+;-7
+;;Value: -7
+;
+;1/3
+;;Value: 1/3
+;
+;3.1415927
+;;Value: 3.1415927
+;
+;sqrt
+;;Value: #<procedure>
+;
+;+
+;;Value: #<procedure>
+;
+;(sqrt 9)
+;;Value: 3
+;
+;(+ 3 6)
+;;Value: 9
+;
+;(sqrt (+ 3 6))
+;;Value: 3
+;
+;(/ (+ (* (- 17 14)
+;         5)
+;      6)
+;   7)
 
 (define ark-volume (* (* 300 50) 30))
 
