@@ -91,24 +91,79 @@
       (left bintree?)
       (right bintree?)))
 
-  ;;   > (bintree-to-list
-  ;;       (interior-node
-  ;;         'a
-  ;;         (leaf-node 3)
-  ;;         (leaf-node 4)))
-  ;;   (interior-node a (leaf-node 3) (leaf-node 4)))
+  (define bintree-to-list
+    (lambda (bt)
+      (cases bintree bt
+        (leaf-node (n) `(leaf-node ,n))
+        (interior-node (key left right)
+                       `(interior-node ,key 
+                                       ,(bintree-to-list left)
+                                       ,(bintree-to-list right))))))
+  (equal??
+   (bintree-to-list
+    (interior-node
+     'a
+     (leaf-node 3)
+     (leaf-node 4)))
+   '(interior-node a (leaf-node 3) (leaf-node 4)))
 
-  ;;   > (define tree-1
-  ;;       (interior-node 'foo (leaf-node 2) (leaf-node 3)))
-  ;;   > (define tree-2
-  ;;       (interior-node 'bar (leaf-node -1) tree-1))
-  ;;   > (define tree-3
-  ;;       (interior-node 'baz tree-2 (leaf-node 1)))
-  ;;   > (max-interior tree-2)
-  ;;   foo
-  ;;   > (max-interior tree-3)
-  ;;   baz
-
+  (define-datatype env-exp env-exp?
+    (empty-env)
+    (extend-env (var symbol?)
+                (val scheme-value?)
+                (saved-env env-exp?)))
+  (define scheme-value? (lambda (s) #t))
+  
+  (define-datatype bt-sum bt-sum?
+    (leaf-n (sum number?))
+    (inter-sum (sum number?)
+               (key-max symbol?)
+               (sum-max number?)))
+  (define max-interior
+    (lambda (bt)
+      (cases bintree bt
+        (leaf-node (num) (leaf-n num))
+        (interior-node 
+         (key left right)
+         (let ((bt-sum-left (max-interior left))
+               (bt-sum-right (max-interior right)))
+           (cases bt-sum bt-sum-left
+             (leaf-n (sum-l)
+                     (cases bt-sum bt-sum-right
+                       (leaf-n (sum-r)
+                               (inter-sum (+ sum-l sum-r) key (+ sum-l sum-r)))
+                       (inter-sum (sum-r key-max-r sum-max-r)
+                                  (let ((new-sum (+ sum-l sum-r)))
+                                    (if (> new-sum sum-max-r)
+                                        (inter-sum new-sum key new-sum)
+                                        (inter-sum new-sum key-max-r sum-max-r))))))
+             (inter-sum (sum-l key-max-l sum-max-l)
+                        (cases bt-sum bt-sum-right
+                          (leaf-n (sum-r)
+                                  (let ((new-sum (+ sum-l sum-r)))
+                                    (if (> new-sum sum-max-l)
+                                      (inter-sum new-sum key new-sum)
+                                      (inter-sum new-sum key-max-l sum-max-l))))
+                          (inter-sum (sum-r key-max-r sum-max-r)
+                                     (let ((new-sum (+ sum-l sum-r)))
+                                       (cond [(and (< new-sum sum-max-r) 
+                                                   (< sum-max-l sum-max-r))
+                                              (inter-sum new-sum key-max-r sum-max-r)]
+                                             [(and (< new-sum sum-max-l) 
+                                                   (< sum-max-r sum-max-l))
+                                              (inter-sum new-sum key-max-l sum-max-l)]
+                                             [else
+                                              (inter-sum new-sum key new-sum)])))))))))))
+          
+  (define tree-1
+    (interior-node 'foo (leaf-node 2) (leaf-node 3)))
+  (define tree-2
+    (interior-node 'bar (leaf-node -1) tree-1))
+  (define tree-3
+    (interior-node 'baz tree-2 (leaf-node 1)))
+  (write (max-interior tree-2))
+  (write (max-interior tree-3))
+    
   (eopl:printf "unit tests completed successfully.~%")
 
   )
