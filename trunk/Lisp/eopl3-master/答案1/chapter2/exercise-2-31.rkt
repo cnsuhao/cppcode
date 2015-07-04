@@ -39,3 +39,4 @@
                  (eopl:error 'parse-expression
                              "Expected integer or -, got ~s" prefix-exp))))
         (eopl:error 'parse-expression "Not a prefix list: ~s" prefix-exps))))
+(write (parse-expression '(- - 3 2 - 4 - 12 7)))

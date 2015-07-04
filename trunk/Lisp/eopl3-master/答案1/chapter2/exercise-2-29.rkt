@@ -22,7 +22,7 @@
            (var-exp datum))
           ((pair? datum)
            (if (eqv? (car datum) 'lambda)
-               (lambda-exp (cadr datum)
+               (lambda-exp (map parse-expression (cadr datum))
                            (parse-expression (caddr datum)))
                (app-exp (parse-expression (car datum))
                         (map parse-expression (cdr datum)))))
