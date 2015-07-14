@@ -1,6 +1,6 @@
 // Ex8_15.cpp : main project file.
 // Overloading operators in the value class, Length
-#include "stdafx.h"
+
 using namespace System;
 
 value class Length
