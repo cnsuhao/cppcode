@@ -5,7 +5,7 @@ using namespace System;
 int main(array<System::String ^> ^args)
 {
    int apples, oranges;                   // Declare two integer variables
-   INT32 fruit;                             // ...then another one
+   Int32 fruit;                             // ...then another one
 
    apples = 5; oranges = 6;                 // Set initial values
    fruit = apples + oranges;                // Get the total fruit
