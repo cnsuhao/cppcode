@@ -1,7 +1,6 @@
 // Ex6_12.cpp : main project file.
 // A CLR calculator supporting parentheses
 
-#include "stdafx.h"
 #include <cstdlib>                          // For exit()
 
 using namespace System;

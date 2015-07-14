@@ -1,8 +1,6 @@
 // Ex6_11.cpp : main project file.
 // Defining and using generic functions
 
-#include "stdafx.h"
-
 using namespace System;
 
 // Generic function to find the maximum element in an array

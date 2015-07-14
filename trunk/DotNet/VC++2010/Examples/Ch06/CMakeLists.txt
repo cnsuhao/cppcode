@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 2.6.2)
+
+project(Ch06)
+include(../../../clr.cmake)
+
+add_executable_clr(Ex6_01 Ex6_01.cpp)
+add_executable_clr(Ex6_02 Ex6_02.cpp)
+add_executable_clr(Ex6_03 Ex6_03.cpp)
+add_executable_clr(Ex6_04 Ex6_04.cpp)
+add_executable_clr(Ex6_05 Ex6_05.cpp)
+add_executable_clr(Ex6_06 Ex6_06.cpp)
+add_executable_clr(Ex6_07 Ex6_07.cpp)
+add_executable_clr(Ex6_08 Ex6_08.cpp)
+add_executable_clr(Ex6_09 Ex6_09.cpp)
+add_executable_clr(Ex6_10 Ex6_10.cpp)
+add_executable_clr(Ex6_10Extended Ex6_10Extended.cpp)
+add_executable_clr(Ex6_11 Ex6_11.cpp)
+add_executable_clr(Ex6_12 Ex6_12.cpp)
