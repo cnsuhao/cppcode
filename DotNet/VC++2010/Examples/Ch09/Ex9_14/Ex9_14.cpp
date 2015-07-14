@@ -1,7 +1,7 @@
 // Ex9_14.cpp : main project file.
 // Using a nested class to define a stack
 
-#include "stdafx.h"
+
 #include "Box.h"                  // For Box and Container
 #include "GlassBox.h"             // For GlassBox (and Box and Container)
 #include "Stack.h"                // For the stack class with nested struct Item 

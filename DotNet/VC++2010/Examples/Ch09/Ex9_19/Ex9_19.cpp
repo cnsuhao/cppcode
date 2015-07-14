@@ -1,6 +1,6 @@
 // Ex9_19.cpp : main project file.
 // Defining, triggering and handling events.
-#include "stdafx.h"
+
 
 using namespace System;
 

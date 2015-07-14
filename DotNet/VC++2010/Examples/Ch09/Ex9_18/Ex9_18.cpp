@@ -1,7 +1,7 @@
 // Ex9_18.cpp : main project file.
 // Using an unbound delegate
 
-#include "stdafx.h"
+
 
 using namespace System;
 
