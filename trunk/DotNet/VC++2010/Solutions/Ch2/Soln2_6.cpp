@@ -1,6 +1,6 @@
 // Soln2_6.cpp : main project file.
 
-#include "stdafx.h"
+
 
 using namespace System;
 // Define the enumeration at global scope
