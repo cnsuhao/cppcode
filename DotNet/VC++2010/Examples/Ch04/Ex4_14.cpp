@@ -1,7 +1,6 @@
 // Ex4_14.cpp : main project file.
 // Sorting an array of keys(the names) and an array of objects(the weights)
 
-#include "stdafx.h"
 
 using namespace System;
 

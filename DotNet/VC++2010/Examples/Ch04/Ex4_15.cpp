@@ -1,8 +1,6 @@
 // Ex4_15.cpp : main project file.
 // Searching an array
 
-#include "stdafx.h"
-
 using namespace System;
 
 int main(array<System::String ^> ^args)

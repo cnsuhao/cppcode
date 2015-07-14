@@ -1,8 +1,6 @@
 // Ex4_18.cpp : main project file.
 // Creating a custom format string
 
-#include "stdafx.h"
-
 using namespace System;
 
 int main(array<System::String ^> ^args)
