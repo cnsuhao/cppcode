@@ -1,7 +1,7 @@
 // Ex9_22.cpp : main project file.
 // Using generic collection classes
 
-#include "stdafx.h"
+
 
 using namespace System;
 using namespace System::Collections::Generic;    // For generic collections

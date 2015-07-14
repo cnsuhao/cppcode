@@ -1,7 +1,7 @@
 // Ex9_16.cpp : main project file.
 // Using a class library in a separate assembly
 
-#include "stdafx.h"
+
 #include "GlassBox.h"
 #using <Ex9_16lib.dll>
 

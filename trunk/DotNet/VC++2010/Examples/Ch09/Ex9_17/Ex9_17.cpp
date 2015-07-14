@@ -1,7 +1,7 @@
 // Ex9_17.cpp : main project file.
 // Creating and calling delegates
 
-#include "stdafx.h"
+
 
 using namespace System;
 

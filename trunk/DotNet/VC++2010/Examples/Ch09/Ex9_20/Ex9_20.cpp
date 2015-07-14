@@ -1,7 +1,7 @@
 // Ex9_20.cpp : main project file.
 // Finalizers and destructors
 
-#include "stdafx.h"
+
 
 using namespace System;
 

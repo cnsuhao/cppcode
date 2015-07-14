@@ -1,6 +1,6 @@
 // Ex9_15.cpp : main project file.
 // Implementing an interface class
-#include "stdafx.h"
+
 #include "Box.h"                       // For Box and IContainer
 #include "GlassBox.h"                  // For GlassBox (and Box and IContainer)
 #include "Stack.h"                     // For the stack class with nested struct Item 
