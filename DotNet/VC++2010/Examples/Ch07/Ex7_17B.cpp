@@ -3,7 +3,7 @@
 // With set indexed property capability added
 // and named indexed property
 
-#include "stdafx.h"
+
  
 using namespace System;
 

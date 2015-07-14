@@ -1,8 +1,6 @@
 // Ex7_14A.cpp : main project file.
 // Overriding ToString()
 
-#include "stdafx.h"
-
 using namespace System;
 
 // Class representing a height

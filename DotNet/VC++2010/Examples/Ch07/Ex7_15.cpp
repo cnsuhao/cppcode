@@ -1,7 +1,7 @@
 // Ex7_15.cpp : main project file.
 // Using the Box reference class type
 
-#include "stdafx.h"
+
 
 using namespace System;
 

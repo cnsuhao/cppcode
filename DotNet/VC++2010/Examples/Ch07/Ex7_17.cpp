@@ -1,7 +1,7 @@
 // Ex7_17.cpp : main project file.
 // Defining and using default indexed properties
 
-#include "stdafx.h"
+
 
 using namespace System;
 
