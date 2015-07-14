@@ -1,6 +1,6 @@
 // Ex10_17.cpp
 // Storing ref class objects in a double-ended queue
-#include "stdafx.h"
+
 #include "Person.h"
 #include <cliext/deque>
 #include <cliext/algorithm>

@@ -1,5 +1,5 @@
 // Ex10_18.cpp  Storing value class objects in a list
-#include "stdafx.h"
+
 #include <cliext/list>
 
 using namespace System;
