@@ -1,6 +1,6 @@
 // Ex10_19.cpp
 // Storing phone numbers in a map
-#include "stdafx.h"
+
 #include "Person.h"
 #include <cliext/map>
 

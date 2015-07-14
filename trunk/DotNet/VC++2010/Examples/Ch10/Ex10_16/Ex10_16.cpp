@@ -1,6 +1,6 @@
 // Ex10_16.cpp
 // Storing handles in a vector
-#include "stdafx.h"
+
 #include "Person.h"
 #include <cliext/vector>
 
