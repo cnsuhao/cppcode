@@ -1,7 +1,5 @@
 // Soln4_4.cpp : main project file.
 
-#include "stdafx.h"
-
 using namespace System;
 /*
  This uses an array of bool values to record which data values
