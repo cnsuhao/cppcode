@@ -1,8 +1,6 @@
 // Ex3_16.cpp : main project file.
 // Testing key presses in a loop.
 
-#include "stdafx.h"
-
 using namespace System;
 
 int main(array<System::String ^> ^args)
