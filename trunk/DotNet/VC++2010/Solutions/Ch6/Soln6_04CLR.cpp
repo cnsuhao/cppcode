@@ -3,7 +3,7 @@
 
 // Exponentiation requires just one extra else if in the term() function..
 
-#include "stdafx.h"
+
 #include <cstdlib>                                            // For exit()
 
 using namespace System;
