@@ -1,8 +1,6 @@
 // Ex5_17.cpp : main project file.
 // Receiving multiple command line arguments.
 
-#include "stdafx.h"
-
 using namespace System;
 
 int main(array<System::String ^> ^args)
