@@ -1,7 +1,7 @@
 // Soln3_6.cpp : main project file.
 // Analyzing a string using a for each loop
 
-#include "stdafx.h"
+
 
 using namespace System;
 
