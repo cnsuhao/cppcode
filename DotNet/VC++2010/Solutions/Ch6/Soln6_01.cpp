@@ -17,7 +17,7 @@ int ascVal(size_t i, const char* p)
 int main()
 {
    char* str = "a bunch of bananas";
-   int (*fp) (int, const char*);
+   int (*fp) (size_t, const char*);
 
    fp = ascVal;
    for(size_t n = 0 ; n<strlen(str) ; n++)

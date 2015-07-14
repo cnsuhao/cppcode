@@ -16,7 +16,7 @@
 // variable is set to point to the beginning of the substring before expr() is called to evaluate
 // the substring. It is then restored to its previous value after the value of the subexpression is returned.
 
-#include "stdafx.h"
+
 #include <cstdlib>                                            // For exit()
 
 using namespace System;
