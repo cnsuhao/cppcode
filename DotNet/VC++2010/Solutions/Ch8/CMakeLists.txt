@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 2.6.2)
+
+project(Soln8)
+include(../../../clr.cmake)
+
+add_executable_clr(Soln8_01 Soln8_01.cpp)
+add_executable_clr(Soln8_02 Soln8_02.cpp)
+add_executable_clr(Soln8_03 Soln8_03.cpp)
+add_executable_clr(Soln8_04 Soln8_04.cpp)
+add_executable_clr(Soln8_05 Soln8_05.cpp)
+add_executable_clr(Soln8_06 Soln8_06.cpp)
+add_executable_clr(Soln8_07 Soln8_07.cpp)
+add_executable_clr(Soln8_08 Soln8_08.cpp)
+add_executable_clr(Soln8_09 Soln8_09.cpp)
+add_executable_clr(Soln8_10 Soln8_10.cpp)
