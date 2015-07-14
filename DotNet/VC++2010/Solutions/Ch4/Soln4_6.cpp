@@ -1,7 +1,5 @@
 // Soln4_6.cpp : main project file.
 
-#include "stdafx.h"
-
 using namespace System;
 // This tests strings for being palindromes by extracting just the letters 
 // from each string and assembling them into a new string as lowercase.
