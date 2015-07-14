@@ -7,7 +7,7 @@
   as part of the character count.
 */
 
-#include "stdafx.h"
+
 
 using namespace System;
 
