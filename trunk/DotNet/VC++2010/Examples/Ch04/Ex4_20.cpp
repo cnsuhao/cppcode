@@ -1,8 +1,6 @@
 // Ex4_20.cpp : main project file.
 // Creating and using interior pointers
 
-#include "stdafx.h"
-
 using namespace System;
 
 int main(array<System::String ^> ^args)

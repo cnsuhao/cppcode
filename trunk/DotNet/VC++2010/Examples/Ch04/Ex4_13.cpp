@@ -1,7 +1,5 @@
 // Ex4_13.cpp : main project file.
 // Using a CLR array
-#include "stdafx.h"
-
 using namespace System;
 
 int main(array<System::String ^> ^args)

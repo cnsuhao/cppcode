@@ -1,8 +1,6 @@
 // Ex4_17.cpp : main project file.
 // Using an array of arrays
 
-#include "stdafx.h"
-
 using namespace System;
 
 int main(array<System::String ^> ^args)
