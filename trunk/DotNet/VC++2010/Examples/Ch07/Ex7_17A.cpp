@@ -2,7 +2,7 @@
 // Defining and using default indexed properties
 // With set indexed property capability for the default indexed property
 // and a named indexed property to return initials
-#include "stdafx.h"
+
 
 using namespace System;
 

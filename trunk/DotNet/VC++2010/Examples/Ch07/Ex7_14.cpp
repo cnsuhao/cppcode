@@ -1,8 +1,6 @@
 // Ex7_14.cpp : main project file.
 // Defining and using a value class type
 
-#include "stdafx.h"
-
 using namespace System;
 
 // Class representing a height

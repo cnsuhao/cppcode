@@ -1,7 +1,7 @@
 // Ex7_16.cpp : main project file.
 // Using scalar properties
 
-#include "stdafx.h"
+
 
 using namespace System;
 
