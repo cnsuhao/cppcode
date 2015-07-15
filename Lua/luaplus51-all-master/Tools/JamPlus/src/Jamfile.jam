@@ -1,0 +1,562 @@
+#
+# Jamfile to build Jam (a make(1)-like program)
+#
+# There are no user-serviceable parts in this file.
+#
+# Put executables in platform-specific  subdirectory.
+
+IncludeModule copyfile ;
+
+if $(VMS) 		{ LOCATE_TARGET ?= [.binvms] ; }
+else if $(MAC) 	{ LOCATE_TARGET ?= ":bin.mac" ; }
+else 			{ LOCATE_TARGET ?= bin.$(OSFULL[1]:L)/$(CONFIG) ; }
+
+DEPCACHE.standard ?= $(LOCATE_TARGET)/.depcache ;
+DEPCACHE ?= standard ;
+
+# Leave generated source in current directory; it would be nice to use
+# these lines below to build the source into the platform-specific
+# directory, but getting scan.c to include the right jambase.h is
+# hard: with ""'s, it always gets the bootstrap version; with <>'s,
+# it won't find the bootstrap version.
+
+SEARCH_SOURCE ?= $(LOCATE_TARGET) $(DOT) ;
+LOCATE_SOURCE ?= $(LOCATE_TARGET) ;
+
+#
+# We have some different files for UNIX, VMS, and NT.
+#
+
+if $(NT) 	{ code = execunix.c filent.c pathunix.c ; }
+else if $(MINGW) { code = execunix.c filent.c pathunix.c ; }
+else if $(OS2)	{ code = execunix.c fileos2.c pathunix.c ; }
+else if $(VMS) 	{ code = execvms.c filevms.c pathvms.c ; }
+else if $(MAC)	{ code = execmac.c filemac.c pathmac.c ; }
+else 		{ code = execunix.c fileunix.c pathunix.c ; }
+
+# For jam profiling/debugging.
+
+#if $(PROFILE)
+#{
+#	CCFLAGS += -pg ;
+#	LINKFLAGS += -pg ;
+#	LOCATE_TARGET = $(LOCATE_TARGET)/pg ;
+#}
+
+if $(DEBUG)
+{
+#	if $(OS) != NT {
+#	    CCFLAGS += -g ;
+#	    LINKFLAGS += -g ;
+#	}
+	LOCATE_TARGET = $(LOCATE_TARGET)-g ;
+#	OPTIM = ;
+}
+
+# Do we know yacc?
+
+if $(YACC) 	{ code += jamgram.y ; }
+else            { code += jamgram.c ; }
+
+### LOCAL CHANGE
+#
+ALL_OPTIONS = ;
+
+rule Option
+{
+    LOCAL_DEFINES += $(1) ;
+
+    if $(2) = yes {
+        local match = [ MATCH "^OPT_(.*)$" : $(1) ] ;
+        if ! $(match) {
+            EXIT "Invalid option $(1)" ;
+        }
+        local match2 = [ MATCH "^(.*)_EXT$" : $(match) ] ;
+        if $(match2) {
+            match = $(match2) ;
+        }
+        ALL_OPTIONS += $(match) ;
+    }
+}
+
+rule Join1
+{
+    local list = $(1) ;
+    local accum = $(2) ;
+    if $(list) {
+        return [ Join1 $(list[2-]) : "$(list[1]):$(accum)" ] ;
+    } else {
+        return $(accum) ;
+    }
+}
+
+rule Join
+{
+    local list = $(1) ;
+    if $(list) {
+        return [ Join1 $(list[2-]) : $(list[1]) ] ;
+    } else {
+        return "" ;
+    }
+}
+
+# Improvements grabbed from //guest/craig_mcpheeters/jam/src/ and
+# //guest/matt_armstrong/... from the Perforce public depot (some
+# heavily modified).  The list below is in alphabetical order.
+Option OPT_ACTION_MAXTARGETS_EXT ;
+Option OPT_ACTIONS_DUMP_TEXT_EXT ;
+Option OPT_ACTIONS_WAIT_FIX ;
+Option OPT_BUILTIN_GROUPBYVAR_EXT ;
+Option OPT_BUILTIN_MATH_EXT ;
+Option OPT_BUILTIN_MD5CACHE_EXT ;
+Option OPT_BUILTIN_MD5_EXT : yes ;
+Option OPT_BUILTIN_NEEDS_EXT ;
+Option OPT_BUILTIN_PUTENV_EXT ;
+Option OPT_BUILTIN_SPLIT_EXT ;
+Option OPT_BUILTIN_SUBST_EXT ;
+Option OPT_CIRCULAR_GENERATED_HEADER_FIX ;
+Option OPT_CLEAN_GLOBS_EXT ;
+if $(OS) = NT
+{
+	Option OPT_BUILTIN_W32_GETREG_EXT : yes ;
+	Option OPT_BUILTIN_W32_GETREG64_EXT : yes ;
+	Option OPT_BUILTIN_W32_SHORTNAME_EXT : yes ;
+}
+Option OPT_DEBUG_MAKE1_LOG_EXT ;
+Option OPT_DEBUG_MAKE_PRINT_TARGET_NAME ;
+Option OPT_DEBUG_MEM_TOTALS_EXT ;
+Option OPT_EXPAND_BINDING_EXT ;
+Option OPT_EXPAND_ESCAPE_PATH_EXT ;
+Option OPT_EXPAND_FILEGLOB_EXT ;
+Option OPT_EXPAND_INCLUDES_EXCLUDES_EXT ;
+Option OPT_EXPAND_LITERALS_EXT ;
+Option OPT_EXPAND_RULE_NAMES_EXT : yes ;
+Option OPT_EXPORT_JOBNUM_EXT ;
+Option OPT_FIND_BAD_SEMICOLON_USAGE_EXT ;
+Option OPT_FIX_NOTFILE_NEWESTFIRST ;
+Option OPT_FIX_NT_ARSCAN_LEAK ;
+Option OPT_FIX_TEMPFILE_CRASH ;
+Option OPT_FIX_UPDATED ;
+Option OPT_GRAPH_DEBUG_EXT ;
+Option OPT_HDRPIPE_EXT ;
+Option OPT_HDRRULE_BOUNDNAME_ARG_EXT : yes ;
+Option OPT_HEADER_CACHE_EXT ;
+Option OPT_IMPROVED_MEMUSE_EXT ;
+Option OPT_IMPROVED_PATIENCE_EXT ;
+Option OPT_IMPROVED_PROGRESS_EXT ;
+Option OPT_IMPROVED_WARNINGS_EXT ;
+Option OPT_IMPROVE_DEBUG_COMPILE_EXT ;
+Option OPT_IMPROVE_DEBUG_LEVEL_HELP_EXT ;
+Option OPT_IMPROVE_JOBS_SETTING_EXT ;
+Option OPT_INTERRUPT_FIX ;
+Option OPT_JAMFILE_BOUNDNAME_EXT ;
+Option OPT_JOB_SLOT_EXT ;
+Option OPT_LINE_FILTER_SUPPORT ;
+Option OPT_LOAD_MISSING_RULE_EXT ;
+Option OPT_MINUS_EQUALS_EXT ;
+Option OPT_MULTIPASS_EXT ;
+Option OPT_NOCARE_NODES_EXT ;
+Option OPT_NODELETE_READONLY ;
+Option OPT_PATCHED_VERSION_VAR_EXT ;
+Option OPT_PATH_BINDING_EXT ;
+#Option OPT_PERCENT_DONE_EXT ;
+Option OPT_PIECEMEAL_PUNT_EXT ;
+Option OPT_PRINT_TOTAL_TIME_EXT ;
+Option OPT_REMOVE_EMPTY_DIRS_EXT ;
+Option OPT_RESPONSE_FILES : yes ;
+Option OPT_ROOT_PATHS_AS_ABSOLUTE_EXT ;
+Option OPT_SCAN_SUBDIR_NOTIFY_EXT ;
+Option OPT_SCRIPTS_PASSTHROUGH_EXT ;
+Option OPT_SEMAPHORE : yes ;
+Option OPT_SERIAL_OUTPUT_EXT ;
+Option OPT_SETCWD_SETTING_EXT ;
+Option OPT_SET_JAMCOMMANDLINETARGETS_EXT ;
+Option OPT_SET_JAMPROCESSPATH_EXT ;
+Option OPT_SLASH_MODIFIERS_EXT ;
+Option OPT_TIMESTAMP_IMMEDIATE_PARENT_CHECK_EXT ;
+Option OPT_TIMESTAMP_EXTENDED_PARENT_CHECK_EXT2 ;
+Option OPT_UPDATED_CHILD_FIX ;
+Option OPT_VAR_CWD_EXT : yes ;
+Option OPT_BUILTIN_LUA_SUPPORT_EXT ;
+
+
+local options = [ Join $(ALL_OPTIONS) ] ;
+LOCAL_DEFINES += JAM_OPTIONS=$(options) ;
+
+C.RuntimeType * : static ;
+
+if $(OS) = NT {
+	C.Defines * : NT ;
+
+	# Reserve 5 megs for the stack.  The default of 1 meg is too
+	# small for the pathalogically recursive make1c()<->make1d()
+	# relationship when coupled with targets with large numbers of
+	# actions (as can happen with piecemeal Clean targets).
+	C.LinkFlags jam : /STACK:5242880 ;
+
+	C.LinkPrebuiltLibraries jam : advapi32 ;
+}
+else if $(UNIX)
+{
+	CC ?= gcc ;
+	LINK ?= gcc ;
+#	if ! $(DEBUG) {
+#		OPTIM = -O3 -fomit-frame-pointer -fstrength-reduce ;
+#	}
+#	CCFLAGS += -Wall ;
+
+	if $(OS) != LINUX {
+		#“C.LinkPrebuiltLibraries jam : stdc++-static ;
+	} else {
+		C.LinkFlags jam : -Wl,--no-as-needed -ldl ;
+	}
+}
+else
+{
+	EXIT "Not configured for non-UNIX non-Windows targets" ;
+}
+if $(OS) = MACOSX
+{
+	C.LinkFlags jam : -framework CoreFoundation -framework CoreServices ;
+}
+if $(CONFIG) = debug {
+    C.Defines * : DEBUG_J ;
+}
+C.Defines * : $(LOCAL_DEFINES) ;
+C.Defines * : YYSTACKSIZE=5000 ;
+
+if $(UNIX) && $(PURE) {
+    LOCATE_TARGET = $(LOCATE_TARGET)/pure ;
+    C.Defines * : PURE ;
+    LINK = /usr/local/bin/purify cc ;
+}
+if $(NT) && $(PURE) {
+    LOCATE_TARGET = $(LOCATE_TARGET)-pure ;
+    C.Defines * : PURE ;
+}
+#
+### LOCAL CHANGE
+
+#
+# Build the jamgram.y from the jamgram.yy
+# yyacc is a slippery script that makes grammars a little
+# easier to read/maintain.
+#
+
+if $(YACC) && $(SUFEXE) = ""
+{
+	GenFile jamgram.y jamgramtab.h : yyacc jamgram.yy ;
+}
+
+### LOCAL CHANGE
+#
+# These files contain locally developed improvements.
+#
+code += w32_getreg.c w32_shortname.c ;
+code += fileglob.c ;
+if OPT_BUILTIN_MD5_EXT in $(LOCAL_DEFINES) {
+code += md5c.c ;
+}
+if OPT_IMPROVED_PROGRESS_EXT in $(LOCAL_DEFINES) {
+code += progress.c ;
+}
+if OPT_IMPROVED_MEMUSE_EXT in $(LOCAL_DEFINES) {
+code += mempool.c ;
+}
+# code primarily not written locally, but grabbed from the net
+code += hcache.c tmpunix.c ;
+#
+### LOCAL CHANGE
+#
+# How to build the compiled in jambase.
+#
+
+rule GenFile PARENT : TARGET : COMMAND : DEPS
+{
+	local _t = [ C.GristFiles $(PARENT) : $(TARGET) ] ;
+	local _s = $(COMMAND) ;
+
+	Depends $(_t) : $(_s[1]) $(COMMAND[2-]) ;
+	GenFile1 $(_t) : $(_s[1]) $(COMMAND[2-]) ;
+	Clean clean : $(_t) ;
+}
+
+rule GenFile1
+{
+	MakeLocate $(<) : $(LOCATE_SOURCE) ;
+	SEARCH on $(>) = $(SEARCH_SOURCE) ;
+}
+
+actions GenFile1
+{
+	"$(>[1])" "$(<)" "$(>[2-])"
+}
+
+if $(CONFIG) in release releaseltcg {
+	C.OutputPostfix * : ;
+}
+
+mkjambase.exe = [ C.Application mkjambase : mkjambase.c ] ;
+
+if $(VMS)
+{
+	CC = cxx ;
+	LINK = cxxlink ;
+	CCFLAGS += /define=VMS ;
+}
+
+#
+# The guts of the Jamfile: how to build Jam
+#
+
+local BIN_PATH = ../bin/$(PLATFORM) ;
+GenFile jam : jambase-j.c : $(mkjambase.exe) Jambase-j ;
+C.LinkLibraries jam : libjam ;
+C.OutputPath jam : $(BIN_PATH) ;
+C.Application jam : jam.c jambase-j.c ;
+
+C.Library libjam :
+		    buffer.c builtins.c command.c compile.c $(code) expand.c
+		    glob.c hash.c headers.c lists.c luagsub.c luasupport.c make.c make1.c
+		    newstr.c option.c parse.c regexp.c rules.c scan.c
+		    search.c timestamp.c variable.c ;
+
+
+local file ;
+for file in [ Glob $(OS:L) : *.* : 0 ]
+{
+	CopyFile all : $(BIN_PATH)/$(file) : $(OS:L)/$(file) ;
+}
+
+if $(LUA_BIN)
+{
+	ActiveTarget "lua" ;
+	Depends all : $(C.ACTIVE_TOOLCHAIN_TARGET) ;
+	NotFile $(C.ACTIVE_TOOLCHAIN_TARGET) ;
+
+	local LUA_SRCS ;
+	if $(OS) = NT
+	{
+		LUA_SRCS =
+				lua/copas.lua
+				lua/coxpcall.lua
+				lua/expand.lua
+				lua/getopt.lua
+				lua/lanes.lua
+				lua/ospath.lua
+				lua/osprocess.lua
+				lua/plist.lua
+				lua/socket.lua
+				lua/ssl.lua
+				lua/xavante.lua
+				lua/xmlize.lua
+				lua/socket/http.lua
+				lua/socket/url.lua
+				lua/lxp/lom.lua
+				lua/xavante/encoding.lua
+				lua/xavante/filehandler.lua
+				lua/xavante/httpd.lua
+				lua/xavante/mime.lua
+				lua/xavante/patternhandler.lua
+				lua/xavante/redirecthandler.lua
+				lua/xavante/urlhandler.lua
+				lua/xavante/vhostshandler.lua
+		;
+
+		if $(CONFIG) = debug
+		{
+			LUA_SRCS +=
+				lua.debug.exe
+				lua52_debug.dll
+				lua-tilde.debug.dll
+				modules/cjson.debug.dll
+				modules/ffi.debug.dll
+				modules/filefind.debug.dll
+				modules/lanes/core.debug.dll
+				modules/socket/core.debug.dll
+				modules/lfs.debug.dll
+				modules/lxp.debug.dll
+				modules/md5.debug.dll
+				modules/ospath.debug.dll
+				modules/osprocess.debug.dll
+				modules/prettydump.debug.dll
+				modules/ssl.debug.dll
+				modules/struct.debug.dll
+				modules/uuid.debug.dll
+				modules/ziparchive.debug.dll
+			;
+		}
+		else
+		{
+			LUA_SRCS +=
+				lua.exe
+				lua52.dll
+				lua-tilde.dll
+				modules/socket/core.dll
+				modules/cjson.dll
+				modules/ffi.dll
+				modules/filefind.dll
+				modules/lanes/core.dll
+				modules/lfs.dll
+				modules/lxp.dll
+				modules/md5.dll
+				modules/ospath.dll
+				modules/osprocess.dll
+				modules/prettydump.dll
+				modules/ssl.dll
+				modules/struct.dll
+				modules/uuid.dll
+				modules/ziparchive.dll
+			;
+		}
+	}
+	else
+	{
+		local MODULE_EXT ;
+		switch $(OS)
+		{
+			case MACOSX : MODULE_EXT = dylib ;
+			case LINUX : MODULE_EXT = so ;
+		}
+
+		LUA_SRCS =
+				share/lua/5.2/copas.lua
+				share/lua/5.2/coxpcall.lua
+				share/lua/5.2/expand.lua
+				share/lua/5.2/getopt.lua
+				share/lua/5.2/lanes.lua
+				share/lua/5.2/ospath.lua
+				share/lua/5.2/osprocess.lua
+				share/lua/5.2/plist.lua
+				share/lua/5.2/socket.lua
+				share/lua/5.2/ssl.lua
+				share/lua/5.2/xavante.lua
+				share/lua/5.2/xmlize.lua
+				share/lua/5.2/socket/http.lua
+				share/lua/5.2/socket/url.lua
+				share/lua/5.2/lxp/lom.lua
+				share/lua/5.2/xavante/encoding.lua
+				share/lua/5.2/xavante/filehandler.lua
+				share/lua/5.2/xavante/httpd.lua
+				share/lua/5.2/xavante/mime.lua
+				share/lua/5.2/xavante/patternhandler.lua
+				share/lua/5.2/xavante/redirecthandler.lua
+				share/lua/5.2/xavante/urlhandler.lua
+				share/lua/5.2/xavante/vhostshandler.lua
+		;
+
+		if $(CONFIG) = debug
+		{
+			LUA_SRCS +=
+				lua.debug
+				liblua52_debug.so
+				lib/lua/5.2/cjson.debug.$(MODULE_EXT)
+				lib/lua/5.2/ffi.debug.$(MODULE_EXT)
+				lib/lua/5.2/filefind.debug.$(MODULE_EXT)
+				lib/lua/5.2/lanes/core.debug.$(MODULE_EXT)
+				lib/lua/5.2/socket/core.debug.$(MODULE_EXT)
+				lib/lua/5.2/lfs.debug.$(MODULE_EXT)
+				lib/lua/5.2/lxp.debug.$(MODULE_EXT)
+				lib/lua/5.2/md5.debug.$(MODULE_EXT)
+				lib/lua/5.2/ospath.debug.$(MODULE_EXT)
+				lib/lua/5.2/osprocess.debug.$(MODULE_EXT)
+				lib/lua/5.2/prettydump.debug.$(MODULE_EXT)
+				lib/lua/5.2/ssl.debug.$(MODULE_EXT)
+				lib/lua/5.2/struct.debug.$(MODULE_EXT)
+				lib/lua/5.2/uuid.debug.$(MODULE_EXT)
+				lib/lua/5.2/ziparchive.debug.$(MODULE_EXT)
+			;
+		}
+		else
+		{
+			LUA_SRCS +=
+				lua
+				liblua52.so
+				lib/lua/5.2/cjson.$(MODULE_EXT)
+				lib/lua/5.2/ffi.$(MODULE_EXT)
+				lib/lua/5.2/filefind.$(MODULE_EXT)
+				lib/lua/5.2/lanes/core.$(MODULE_EXT)
+				lib/lua/5.2/socket/core.$(MODULE_EXT)
+				lib/lua/5.2/lfs.$(MODULE_EXT)
+				lib/lua/5.2/lxp.$(MODULE_EXT)
+				lib/lua/5.2/md5.$(MODULE_EXT)
+				lib/lua/5.2/ospath.$(MODULE_EXT)
+				lib/lua/5.2/osprocess.$(MODULE_EXT)
+				lib/lua/5.2/prettydump.$(MODULE_EXT)
+				lib/lua/5.2/ssl.$(MODULE_EXT)
+				lib/lua/5.2/struct.$(MODULE_EXT)
+				lib/lua/5.2/uuid.$(MODULE_EXT)
+				lib/lua/5.2/ziparchive.$(MODULE_EXT)
+			;
+		}
+	}
+
+	local file ;
+	for file in $(LUA_SRCS)
+	{
+		CopyFile $(C.ACTIVE_TOOLCHAIN_TARGET) : $(BIN_PATH)/lua/$(file) : $(LUA_BIN)/$(file) ;
+	}
+}
+
+#if $(BINDIR) 	{ InstallBin $(BINDIR) : jam ; }
+
+#
+# Distribution making from here on out.
+#
+
+ALLSOURCE =
+	Build.com Build.mpw Jam.html Jambase Jambase.html Jamfile
+	Jamfile.html Makefile Porting README RELNOTES builtins.c builtins.h
+	command.c command.h compile.c compile.h execcmd.h execmac.c
+	execunix.c execvms.c expand.c expand.h filemac.c filent.c
+	fileos2.c filesys.h fileunix.c filevms.c glob.c hash.c hash.h
+	headers.c headers.h jam.c jam.h jambase.c jambase.h jamgram.c
+	jamgram.h jamgram.y jamgram.yy jamgramtab.h lists.c lists.h
+	make.c make.h make1.c mkjambase.c newstr.c newstr.h option.c
+	option.h parse.c parse.h patchlevel.h pathmac.c pathsys.h
+	pathunix.c pathvms.c regexp.c regexp.h rules.c rules.h scan.c
+	scan.h search.c search.h timestamp.c timestamp.h variable.c
+	variable.h yyacc ;
+
+### LOCAL CHANGE
+#
+ALLSOURCE += LOCAL_DIFFERENCES.txt ;
+#
+### LOCAL CHANGE
+rule Ball
+{
+	NotFile balls ;
+	Depends balls : $(<) ;
+
+	DEPENDS $(<) : $(>) ;
+
+	switch $(<)
+	{
+	case *.tar : Tar $(<) : $(>) ;
+	case *.shar : Shar $(<) : $(>) ;
+	case *.zip : Zip $(<) : $(>) ;
+	}
+}
+
+VERSION = jam-2.5 ;
+
+actions Tar
+{
+	ln -s . $(VERSION)
+	tar cvhf $(<) $(VERSION)/$(>)
+	rm $(VERSION)
+}
+
+actions Shar
+{
+	shar $(>) > $(<)
+}
+
+actions Zip
+{
+	zip $(<) $(>)
+}
+
+Ball $(VERSION).shar : $(ALLSOURCE) ;
+Ball $(VERSION).tar : $(ALLSOURCE) ;
+Ball $(VERSION).zip : $(ALLSOURCE) ;

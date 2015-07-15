@@ -1,0 +1,24 @@
+SubDir TOP ;
+
+C.ActiveTarget simple ;
+
+C.OutputPostfixClear ;
+
+local SRCS =
+        main.m
+;
+
+C.ios.LinkFrameworks : Foundation UIKit ;
+
+C.ios.BundleInfo : displayname : simple ;
+C.ios.BundleInfo : bundleversion : 1.0 ;
+C.ios.BundleInfo : uistatusbarhidden : true ;
+
+C.ios.ProvisionFile : test.mobileprovision ;
+C.ios.CodeSign : "iPhone Developer" : "ios_development.cer:AppleIncRootCertificate.cer:AppleWWDRCA.cer:my_key.key:" ;
+
+C.Application : $(SRCS) : bundle ;
+
+C.ios.Archive simple : $(ALL_LOCATE_TARGET)/package ;
+C.ios.WebServer simple ;
+

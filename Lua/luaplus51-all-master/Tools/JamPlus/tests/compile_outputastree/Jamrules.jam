@@ -1,0 +1,9 @@
+C.CompileOptions outputastree ;
+
+rule ProjectSubDir PROJECT_NAME
+{
+	LocateTarget $(PROJECT_NAME) : $(SUBDIR)/obj/$(PLATFORM)/$(CONFIG) ;
+	C.OutputPath $(PROJECT_NAME) : $(SUBDIR)/lib/$(PLATFORM)/$(CONFIG) ;
+	C.OutputPostfix $(PROJECT_NAME) : ;
+}
+

@@ -1,0 +1,273 @@
+/*! \page lua_support Lua Support
+
+\section lua_support_overview Overview
+
+JamPlus has built in Lua support, provided through a minimal distribution of LuaPlus (http://luaplus.org/).  Lua scripts may be run during the \ref operation_parsing and during the \ref operation_updating.
+
+Any LuaBinaries capable module can run in the LuaPlus environment. Just drop the binary in the <tt>bin/PLATFORM/LuaPlus/modules/</tt> directory or alter the <tt>package.path</tt> or <tt>package.cpath</tt>
+
+The scripts located in <tt>bin/scripts/</tt> are written in Lua, although they are executed external to the Jam executable.
+
+
+
+<hr>
+\section lua_support_rules Using Lua during the Parsing Phase
+
+There are two rules for execution of Lua script available for use during the rule parsing phase of JamPlus.  They are \ref rule_LuaString and \ref rule_LuaFile.
+
+\subsection rule_LuaString rule LuaString LUA_SCRIPT
+\addindex rule_LuaString
+
+\htmlonly <blockquote> \endhtmlonly
+
+Executes \c LUA_SCRIPT, returning any results back to the caller.
+
+\param LUA_SCRIPT Syntactically correct Lua script embedded in a string.  Only the first string list item is executed.
+\return If the Lua script doesn't return any values, the return value is an empty list.  If the Lua script does return values, the return values are transformed to a Jam string list.  Nested tables are collapsed.
+
+\htmlonly </blockquote> \endhtmlonly
+
+
+
+
+
+\subsection rule_LuaFile rule LuaFile LUA_FILENAME
+\addindex rule_LuaFile
+
+\htmlonly <blockquote> \endhtmlonly
+
+Executes \c LUA_FILENAME, returning any results back to the caller.
+
+\param LUA_FILENAME The filename of the Lua script to run.
+\return If the Lua script doesn't return any values, the return value is an empty list.  If the Lua script does return values, the return values are transformed to a Jam string list.  Nested tables are collapsed.
+
+\htmlonly </blockquote> \endhtmlonly
+
+
+
+
+
+
+
+<hr>
+\section lua_support_actions Using Lua in Actions
+
+Using the new <tt>lua</tt> modifier for an action, Lua script can be run in a thread within the Jam process.
+
+\htmlonly <blockquote> \endhtmlonly
+\code
+actions lua RunLuaScript
+{
+    osprocess = require 'osprocess'
+    osprocess.sleep($(SLEEP))
+    print($(TEXT))
+}
+\endcode
+\htmlonly </blockquote> \endhtmlonly
+
+
+
+
+
+<hr>
+\section lua_support_jam Accessing Jam from Lua
+
+Within a Lua script, it is possible to access Jam variables and execute Jam rules.
+
+\subsection lua_jam_action function jam_action(ACTION_NAME, ACTION_TEXT [, FLAGS])
+\addindex lua_jam_action
+
+\htmlonly <blockquote> \endhtmlonly
+
+Creates an action to be executed by Jam called \c ACTION_NAME made up of \c ACTION_TEXT.  If written in the Jam language, the equivalent would be:
+
+\htmlonly <blockquote> \endhtmlonly
+\code
+jam_action(ACTION_NAME, ACTION_TEXT)
+
+is equivalent to:
+
+actions ACTION_NAME
+{
+    ACTION_TEXT
+}
+\endcode
+\htmlonly </blockquote> \endhtmlonly
+
+If \c FLAGS is specified as a table, those flags are applied to the action and have direct correspondence to action modifiers specified in a Jam action.
+
+\htmlonly <blockquote> \endhtmlonly
+\code
+jam_action(ACTION_NAME, ACTION_TEXT, { updated = true, together = true })
+
+is equivalent to:
+
+actions updated together ACTION_NAME
+{
+    ACTION_TEXT
+}
+\endcode
+\htmlonly </blockquote> \endhtmlonly
+
+\param ACTION_NAME The name of any valid Jam action.
+\param ACTION_TEXT Text representing the commands to be executed by the shell.
+\param FLAGS (optional) If specifed, \c FLAGS must be a table of action modifiers containing one or more of the following: <tt>bind = { 'various', 'target', 'names' }</tt>, <tt>existing = true</tt>,<tt>ignore = true</tt>, <tt>lua = true</tt>,<tt>maxline = true</tt>, <tt>maxresponse = true</tt>, <tt>piecemeal = true</tt>, <tt>quietly = true</tt>, <tt>removeemptydirs = true</tt>, <tt>response = true</tt>, <tt>screenoutput = true</tt>, <tt>together = true</tt>, <tt>updated = true</tt>
+
+\htmlonly </blockquote> \endhtmlonly
+
+
+
+
+
+\subsection lua_jam_evaluaterule function jam_evaluaterule(RULE_NAME [, PARAMETERS])
+\addindex lua_jam_evaluaterule
+
+\htmlonly <blockquote> \endhtmlonly
+
+Executes rule \c RULE_NAME using any optional \c PARAMETERS specified.  Returns the result as a Lua table.
+
+\param RULE_NAME The name of any valid Jam rule.
+\param PARAMETERS (optional) If specifed, the \c PARAMETERS are collapsed into a Jam string list and passed to the rule.
+\return If the Jam rule doesn't return any values, the return value is \c nil.  If the Jam rule does return values, the return values are transformed to a Lua array of strings.
+
+\htmlonly </blockquote> \endhtmlonly
+
+
+
+
+
+\subsection lua_jam_expand function jam_expand(TEXT_TO_EXPAND)
+\addindex lua_jam_expand
+
+\htmlonly <blockquote> \endhtmlonly
+
+Expands \c TEXT_TO_EXPAND according to Jam rules.  \c TEXT_TO_EXPAND must use the \$() or \@() expansion forms described elsewhere.
+
+\param TEXT_TO_EXPAND The text to expand.
+\return Returns the expanded text.
+
+\htmlonly </blockquote> \endhtmlonly
+
+
+
+
+
+\subsection lua_jam_getvar function jam_getvar([ TARGET_NAME, ] VARIABLE_NAME)
+\addindex lua_jam_getvar
+
+\htmlonly <blockquote> \endhtmlonly
+
+Retrieves \c VARIABLE_NAME from the active Jam globals and returns it as a table of strings.
+
+If \c TARGET_NAME is specified, \c VARIABLE_NAME is retrieved as if an <tt>on TARGET_NAME</tt> had been issued in Jam.
+
+\param TARGET_NAME (optional) The target to make active to retrieve \c VARIABLE_NAME from.
+\param VARIABLE_NAME The Jam variable to retrieve.
+\return All strings within the \c VARIABLE_NAME string are returned as a Lua array of strings.
+
+\htmlonly </blockquote> \endhtmlonly
+
+
+
+
+
+
+\subsection lua_jam_parse function jam_parse(TEXT_TO_PARSE)
+\addindex lua_jam_parse
+
+\htmlonly <blockquote> \endhtmlonly
+
+Parses \c TEXT_TO_PARSE as if it existed in a Jamfile.
+
+\param TEXT_TO_PARSE Jam source code to be parsed and executed by Jam immediately.
+
+\htmlonly </blockquote> \endhtmlonly
+
+
+
+
+
+
+\subsection lua_jam_print function jam_print(TEXT_TO_PRINT)
+\addindex lua_jam_print
+
+\htmlonly <blockquote> \endhtmlonly
+
+Prints \c TEXT_TO_PRINT to the standard output stream.
+
+\param TEXT_TO_PRINT The text to print.
+
+\htmlonly </blockquote> \endhtmlonly
+
+
+
+
+
+
+\subsection lua_jam_setvar function jam_setvar([ TARGET_NAME, ] VARIABLE_NAME, VALUE)
+\addindex lua_jam_setvar
+
+\htmlonly <blockquote> \endhtmlonly
+
+Sets \c VALUE into the active Jam global \c VARIABLE_NAME.  \c VALUE can be a boolean, number, string, or table.  Nested tables are collapsed.
+
+If \c TARGET_NAME is specified, \c VALUE is set into \c VARIABLE_NAME as if an <tt>VARIABLE_NAME on TARGET_NAME</tt> had been issued in Jam.
+
+\param TARGET_NAME (optional) The target to make active to set \c VARIABLE_NAME into.
+\param VARIABLE_NAME The Jam variable to set.
+
+\htmlonly </blockquote> \endhtmlonly
+
+
+
+
+
+
+<hr>
+\section lua_support_examples Examples
+
+\htmlonly <blockquote> \endhtmlonly
+\code
+# Hello
+LuaString "print('Hello')" ;
+
+# 10 hi false
+Echo [ LuaString "return { 10, 'hi', false }" ] ;
+
+# 5.suf hello.suf true.suf
+var = [ LuaString "return { 5, 'hello', true }" ] ;
+Echo $(var:S=.suf) ;
+
+#------------------------------------------------------------------------------
+# Hello world!
+var = Hello world! ;
+Echo [ LuaString "return jam_getvar('var')" ] ;
+
+# Hi everyone
+LuaString "jam_setvar('var', 'Hi everyone')" ;
+Echo $(var) ;
+
+# Hi everyone
+Echo [ LuaString "return jam_getvar('var')" ] ;
+
+#------------------------------------------------------------------------------
+# The Variable Contents
+MyVariable on mytarget = The Variable Contents ;
+Echo [ LuaString "return jam_getvar('mytarget', 'MyVariable')" ] ;
+
+# **hello**
+LuaString "jam_setvar('mytarget', 'MyVariable', '**hello**')" ;
+Echo [ LuaString "return jam_getvar('mytarget', 'MyVariable')" ] ;
+
+rule ReturnList INPUT
+{
+    return **$(INPUT)** ;
+}
+
+# **MyStuff** **YourStuff**
+Echo [ LuaString "return jam_evaluaterule('ReturnList', { 'MyStuff', 'YourStuff' })" ] ;
+\endcode
+\htmlonly </blockquote> \endhtmlonly
+
+
+*/

@@ -1,0 +1,22 @@
+if $(NT) {
+
+	actions Anyway
+	{
+		copy /b file.dat+file.txt test.zip
+	}
+
+} else {
+
+	actions Anyway
+	{
+		cat file.dat file.txt > test.zip
+	}
+
+}
+
+Depends all : test.zip ;
+Depends test.zip : file.dat ;
+
+Clean clean : test.zip file.dat ;
+
+Anyway test.zip : file.dat ;

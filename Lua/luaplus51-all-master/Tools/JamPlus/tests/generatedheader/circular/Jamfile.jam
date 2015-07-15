@@ -1,0 +1,16 @@
+rule SleepThenTouch
+{
+    Clean clean : $(<) ;
+}
+
+actions lua SleepThenTouch
+{
+    require 'osprocess'.sleep(5)
+	print([[Writing $(<)]])
+    local file = io.open([[$(<)]], 'wb')
+	print(file)
+	file:close()
+}
+
+SleepThenTouch [ C.GristFiles foo : generated.h ] ;
+C.Library foo : sourceA.c sourceB.c ;

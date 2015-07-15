@@ -1,0 +1,82 @@
+SubDir TOP ;
+
+#C.BatchCompileGroupSize * : 1 ;
+
+actions WriteFile
+{
+	^^($(1)|$(CONTENTS))
+}
+
+rule CopyRule TARGET : SOURCE
+{
+    Depends all : $(TARGET) : $(SOURCE) ;
+	Clean clean : $(TARGET) ;
+    CopyAction $(TARGET) : $(SOURCE) ;
+}
+
+actions CopyAction
+{
+    $(CP) $(2) $(1)
+}
+
+PASS_NUM ?= 1 ;
+
+local main.cpp = [ C.GristFiles test : main.cpp ] ;
+local foo.cpp = [ C.GristFiles test : foo.cpp ] ;
+local foo.h = [ C.GristFiles test : foo.h ] ;
+
+if $(PASS_NUM) = 1
+{
+    Echo Pass 1 ;
+
+    CONTENTS on $(main.cpp) = "#include \"foo.h\"
+
+int main()
+{
+    foo();
+    return 0;
+}
+" ;
+    WriteFile $(main.cpp) ;
+    MakeLocate $(main.cpp) : $(LOCATE_SOURCE) ;
+    C.Clean test : $(main.cpp) ;
+
+    CONTENTS on $(foo.cpp) = "#include <stdio.h>
+
+void foo()
+{
+    printf(\"Hello, everyone!\n\");
+}
+" ;
+    WriteFile $(foo.cpp) ;
+    MakeLocate $(foo.cpp) : $(LOCATE_TARGET) ;
+    C.Clean test : $(foo.cpp) ;
+    Depends $(main.cpp) : $(foo.h) ;
+    ForceCare $(foo.h) ;
+
+	C.IncludeDirectories : . ;
+    C.Application test : main.cpp foo.cpp ;
+
+    QueueJamfile $(JAMFILE) ;
+    PASS_NUM = 2 ;
+}
+else if $(PASS_NUM) = 2
+{
+    Echo Pass 2 ;
+
+    CONTENTS on $(foo.h) = "extern void foo();" ;
+    WriteFile $(foo.h) ;
+    C.Clean test : $(foo.h) ;
+
+    QueueJamfile $(JAMFILE) ;
+    PASS_NUM = 3 ;
+}
+else
+{
+    Echo Pass 3 ;
+	C.Clean test : $(foo.cpp) $(foo.h) ;
+
+#    Depends Foo.cpp : Foo.h ;
+
+#    CopyRule Foo.o : Foo.cpp ;
+}

@@ -1,0 +1,5 @@
+SubDir TOP slib-b ;
+
+C.OutputPath slib-b : ../image ;
+C.LinkLibraries slib-b : lib-c ;
+C.Library slib-b : slib-b.c : shared ;

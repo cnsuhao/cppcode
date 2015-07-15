@@ -1,0 +1,9 @@
+Echo All - [ ListSort [ Glob ../copydirectory : * ] : 0 ] ;
+Echo Dirs Only - [ ListSort [ Glob ../copydirectory : */ ] : 0 ] ;
+Echo Files Only - [ ListSort [ Glob ../copydirectory : *[^/] ] : 0 ] ;
+
+Echo ----------------------- No prepend ;
+Echo All - [ ListSort [ Glob ../copydirectory : * : 0 ] : 0 ] ;
+Echo Dirs Only - [ ListSort [ Glob ../copydirectory : */ : 0 ] : 0 ] ;
+Echo Files Only - [ ListSort [ Glob ../copydirectory : *[^/] : 0 ] : 0 ] ;
+

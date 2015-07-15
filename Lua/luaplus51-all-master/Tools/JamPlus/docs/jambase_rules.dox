@@ -1,0 +1,453 @@
+/*! \page jambase_rules Jambase Rules
+
+\section cmd_intro Introduction
+
+In the <tt>Jambase.jam</tt> that ships with JamPlus, the default build configuration is Release.
+
+The <tt>Jambase.jam</tt> rules attempt to detect the compiler on the machine.  It can successfully detect and run Visual C++ 6, Visual Studio 2003, Visual Studio 2005, Visual Studio 2008, Visual Studio 2010, Visual Studio 2012, Xcode 4, GCC, and Clang.
+
+If [square] brackets are used the argument is optional.
+
+Here is an alphabetically sorted list of all commands with references to their
+documentation:
+\secreflist
+\refitem rule_ActiveProject ActiveProject
+\refitem rule_AutoSourceGroup AutoSourceGroup
+\refitem rule_Clean Clean
+\refitem rule_CleanTree CleanTree
+\refitem rule_FGristDirectories FGristDirectories
+\refitem rule_GroupByVar GroupByVar
+\refitem rule_IncludeModule IncludeModule
+\refitem rule_MakeLocate MakeLocate
+\refitem rule_MkDir MkDir
+\refitem rule_NoWorkspace NoWorkspace
+\refitem rule_Project Project
+\refitem rule_ProjectGroup ProjectGroup
+\refitem rule_RmTemps RmTemps
+\refitem rule_SearchSource SearchSource
+\refitem rule_SourceGroup SourceGroup
+\refitem rule_SubDir SubDir
+\refitem rule_SubInclude SubInclude
+\refitem rule_SubIncludeRelative SubIncludeRelative
+\refitem rule_Workspace Workspace
+\refitem rule_WriteFile WriteFile
+\endsecreflist
+
+The following is a list of rules available in <tt>bin/Jambase.jam</tt>.
+
+<hr>
+\section rule_ActiveProject rule ActiveProject PROJECT
+\addindex rule_ActiveProject
+
+Set the default project target to use when the target isn't specified.  This works with a good number of the Jambase commands.
+
+\param PROJECT The default target name to use for upcoming rules.
+
+
+
+
+
+
+
+<hr>
+\section rule_AutoSourceGroup rule AutoSourceGroup TARGET : SOURCES
+\addindex rule_AutoSourceGroup
+
+For workspace projects that support grouping of files into folders, the \c AutoSourceGroup rule is used to tell the <b>jam --workspace</b> generator to create folders within a project based on the relative paths of the \c SOURCES.
+
+\param TARGET The project to which the folders will be created.
+\param SOURCES The list of files to derive folder names from.
+
+\code
+    # Put helloworld.cpp and .h in the top-level project folder.
+    # Put filename.cpp and .h in a project folder caled platform\\directory (in SourceGroup syntax).
+    SRCS =
+            helloworld.cpp
+            helloworld.h
+            platform/directory/filename.cpp
+            platform/directory/filename.h
+    ;
+
+    AutoSourceGroup MyProject : $(SRCS) ;
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_Clean rule Clean TARGETS : FILES
+\addindex rule_Clean
+
+When executing actions for \c TARGETS, the specified list of \c FILES are removed from the disk, and any empty directories resulting from the file deletions are removed, too.
+
+\param TARGETS A list of one or more targets.  Generally, the target name is \c clean or <tt>clean:SOMETARGET</tt>.
+\param FILES A list of files to be deleted.
+
+\code
+    Clean clean : <mytarget>myfile.txt $(TEMP)/anotherfile.txt ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_CleanTree rule CleanTree TARGETS : DIRECTORIES
+\addindex rule_CleanTree
+
+When executing actions for \c TARGETS, the specified list of \c DIRECTORIES are removed from the disk.
+
+\param TARGETS A list of one or more targets.  Generally, the target name is \c clean or <tt>clean:SOMETARGET</tt>.
+\param DIRECTORIES A list of directories to be deleted.
+
+\code
+    CleanTree clean : $(TEMP)/a/directory ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_FGristDirectories rule FGristDirectories DIRECTORIES
+\addindex rule_FGristDirectories
+
+Given a list of \c DIRECTORIES, a gristed version of each is returned.  Currently, this means the directories are returned in the form: <tt>&lt;!dir!&gt;directory/name</tt>
+
+\param DIRECTORIES The directories to grist.
+\return Returns the gristed version of each directory.
+
+\code
+    Echo [ FGristDirectories $(TEMP)/stuff ] ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_GroupByVar rule GroupByVar TARGETS_VARIABLE : VARIABLE_NAME [ : MAX_PER_GROUP ]
+\addindex rule_GroupByVar
+
+Returns a list of targets with identical settings as specified by \c VARIABLE_NAME using the first target specified in \c TARGETS_VARIABLE.
+
+Example: The C/C++ compilation puts a variety of compilation flags in a variable declared per target called \c MFLAGS.  For compilers that support batching of files using the same build flags, GroupByVar returns each set of matching files one after another to send to the compiler.
+
+\param TARGETS_VARIABLE The variable containing the targets to return matching groups from.  The first target in the variable is used as the target to match against.  \c TARGETS_VARIABLE is updated with the remaining list of targets after the current found group has been identified.
+\param VARIABLE_NAME The settings variable used to obtain matches from.
+\param MAX_PER_GROUP The maximum number of files to return in the group.  If not specified, there is no upper limit.
+\return Returns a list of 1 or more \c TARGETS matching the string list in \c VARIABLE_NAME.
+
+\code
+    # Prints:
+    #
+    # Together - targeta targetc targete targetf
+    # Together - targetb
+    # Together - targetd
+    # (2 max) - targeta targetc
+    # (2 max) - targetb
+    # (2 max) - targetd
+    # (2 max) - targete targetf
+    files = targeta targetb targetc targetd targete targetf ;
+    FLAGS on targeta = a b c ;
+    FLAGS on targetb = a b c d ;
+    FLAGS on targetc = a b c ;
+    FLAGS on targetd = a b c e ;
+    FLAGS on targete = a b c ;
+    FLAGS on targetf = a b c ;
+
+    while $(files) {
+        local together = [ GroupByVar files : FLAGS ] ;
+        Echo Together - $(together) ;
+    }
+
+
+    files = targeta targetb targetc targetd targete targetf ;
+    while $(files) {
+        local together = [ GroupByVar files : FLAGS : 2 ] ;
+        Echo (2 max) - $(together) ;
+    }
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_IncludeModule rule IncludeModule MODULE_NAME
+\addindex rule_IncludeModule
+
+Loads a Jam module.  It searches in the following manner:
+
+<ul>
+  <li>The current <tt>\$(SUBDIR)</tt></li>
+  <li>The current working directory <tt>\$(CWD)</tt></li>
+  <li><tt>\$(JAM_MODULES_USER_PATH)</tt></li>
+  <li><tt>\$(JAM_MODULES_PATH)</tt> which includes the <tt>bin/modules/</tt> directory</li>
+</ul>
+
+When \c IncludeModule is specified more than once for the same \c MODULE_NAME, the module is only loaded once.
+
+\param MODULE_NAME The name of the module, which is the filename without an extension.
+\return Returns the module name if successful.  If the \c MODULE_NAME was not found, nothing is returned.
+
+\code
+    # Make the C.UseDirectX rule available.
+    IncludeModule c/directx ;
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_MakeLocate rule MakeLocate TARGETS : DIRECTORY
+\addindex rule_MakeLocate
+
+Creates \c DIRECTORY and causes \c TARGETS to be built into the directory.  It does so by setting the special Jam variable \c LOCATE on each of the \c TARGETS and then arranges with \ref rule_MkDir to create the target directory.
+
+\param TARGETS The targets to set the output directory on.
+\param DIRECTORY The output directory to build the targets into.
+
+\code
+    # Set the output location of the given target to be the TEMP directory.
+    MakeLocate junkfile.txt : $(TEMP) ;
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_MkDir rule MkDir DIRECTORY
+\addindex rule_MkDir
+
+Creates \c DIRECTORY and its parent directories.
+
+If using \c MkDir separately from \ref rule_MakeLocate, it is necessary to set dependencies using the properly gristed directory name obtained through \ref rule_FGristDirectories.
+
+\param DIRECTORY The output directory to create.
+
+\code
+    # Create a directory in the TEMP directory called stuff/.
+    MkDir $(TEMP)/stuff ;
+
+    # Link it into the dependency graph.
+    Depends sometarget : [ FGristDirectories $(TEMP)/stuff ] ;
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_NoWorkspace rule NoWorkspace WORKSPACE_NAME
+\addindex rule_NoWorkspace
+
+Workspaces are automatically generated for any executable processed while reading in the Jamfiles.  To prevent a workspace from automatically exporting, this rule is used.
+
+\param WORKSPACE_NAME The name of the new workspace to suppress the export of.
+
+\code
+	NoWorkspace lua ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_Project rule Project PROJECT_NAME : SOURCES
+\addindex rule_Project
+
+When generating a workspace, projects are automatically made of each executable or library processed while reading in the Jamfiles.  When a project isn't an executable or library, such as one containing data files, the \c Project rule can be used to generate a project containing those files.
+
+\param PROJECT_NAME The name of the new project to generate.
+\param SOURCES The list of files representing the contents of the new project.
+
+\code
+    Project Data : $(DATA_FILES) ;
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_ProjectGroup rule ProjectGroup TARGET : FOLDERNAME : PROJECTS
+\addindex rule_ProjectGroup
+
+For workspaces that support grouping of projects into folders, the \c ProjectGroup rule is used to tell <b>JamToWorkspace</b> which projects go into which folders.
+
+\param TARGET The workspace to which the project folders will be created.
+\param FOLDERNAME The backslash separated folder name to which \c PROJECTS will be inserted into.
+\param PROJECTS The list of projects to put into the folder.
+
+\code
+    ProjectGroup MyApp : "Plugins\\Data Generators" : DataGeneratorA DataGeneratorB ;
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_RmTemps rule RmTemps TARGETS : SOURCES
+\addindex rule_RmTemps
+
+Marks \c SOURCES as temporary with the \c Temporary rule and deletes \c SOURCES once \c TARGETS are built.  \c RmTemps must be the last rule invoked on \c TARGETS.  Used internally.
+
+
+
+
+
+
+
+<hr>
+\section rule_SearchSource rule SearchSource SOURCES
+\addindex rule_SearchSource
+
+Applies \$(SEARCH_SOURCE) to all \c SOURCES that do not already have a \c SEARCH applied.  Generally, \c SEARCH_SOURCE is applied through rules just as \c Application or \c Library.
+
+\param SOURCES The list of sources to apply \$(SEARCH_SOURCE) to.
+
+\code
+	SearchSource $(SRCS) ;
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_SourceGroup rule SourceGroup TARGET : FOLDERNAME : SOURCES
+\addindex rule_SourceGroup
+
+For workspace projects that support grouping of files into folders, the \c SourceGroup rule is used to tell <b>JamToWorkspace</b> which files are to be placed into which folders within a project.
+
+\param TARGET The project to which the folders will be created.
+\param FOLDERNAME The backslash separated folder name to which \c SOURCES will be inserted.
+\param SOURCES The list of files to put into the folder.
+
+\code
+	SourceGroup Misc : "zlib" : $(ZLIB_SRCS) ;
+	SourceGroup Misc : "string\\trio" : $(TRIO_SRCS) ;
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_SubDir rule SubDir TOP d1...dn : SUBNAME
+\addindex rule_SubDir
+
+Sets up housekeeping for the source files located in <tt>$(TOP)/d1/.../dn</tt>:
+
+<ul>
+<li>Reads in rules file associated with \c TOP, if it hasn't already been read.</li>
+<li>Initializes subdirectory specific variables for search paths, output directories, compiler flags, and grist, using <tt>d1...dn</tt> tokens.
+</ul>
+
+\c TOP is the name of a variable; \c d1 thru \c dn are elements of a directory path.
+
+
+
+
+
+
+
+<hr>
+\section rule_SubInclude rule SubInclude VAR d1...dn : FILETITLE
+\addindex rule_SubInclude
+
+Reads the Jamfile in <tt>$(VAR)/d1/.../dn/</tt>.  Assumes a default Jamfile name of <tt>Jamfile.jam</tt>.  If \c FILETITLE is specified, <tt>$(FILETITLE).jam</tt> is read instead of <tt>Jamfile.jam</tt>.
+
+A given Jamfile is only ever read in once, even if multiple \c SubInclude calls are made with the same arguments.
+
+\param VAR A previously specified \c TOP variable created with \ref rule_SubDir.
+\param d1...dn Additional directory components from $(VAR) making up the total path of <tt>$(VAR)/d1/.../dn/</tt>.
+\param FILETITLE (optional) If specified, a Jamfile called <tt>$(FILETITLE).jam</tt> is read instead of the default <tt>Jamfile.jam</tt>.
+
+
+
+
+
+
+<hr>
+\section rule_SubIncludeRelative rule SubIncludeRelative RELATIVE_PATH : FILETITLE
+\addindex rule_SubIncludeRelative
+
+After a \c SubDir rule has been called, \c SubIncludeRelative can be used to move within the \c SubDir structure.  Currently, it only works traversing into child directories.  It cannot be used with a <tt>..</tt> to move to a parent directory.
+
+Further information may be found in \ref rule_SubInclude "SubInclude".
+
+\param RELATIVE_PATH The relative child directory to move into.
+\param FILETITLE (optional) If specified, a Jamfile called <tt>$(FILETITLE).jam</tt> is read instead of the default <tt>Jamfile.jam</tt>.
+
+\code
+    SubDir TOP ;
+
+    # ...
+
+    SubIncludeRelative MyProject ;  # The same as: SubInclude TOP MyProject
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_Workspace rule Workspace WORKSPACE_NAME : TARGETS
+\addindex rule_Workspace
+
+Workspaces are automatically generated for any executable processed while reading in the Jamfiles.  To create additional workspaces, such as one that combines all executables into one workspace, the \c Workspace rule is used.
+
+\param WORKSPACE_NAME The name of the new workspace to generate.
+\param TARGETS The list of targets representing the projects of the new workspace.
+
+\code
+	Workspace Project-all : AppA AppB AppC ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_WriteFile rule WriteFile WORKSPACE_NAME : TARGETS
+\addindex rule_WriteFile
+
+
+
+
+
+
+
+<hr>
+*/
+

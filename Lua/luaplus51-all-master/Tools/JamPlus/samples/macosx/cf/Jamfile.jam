@@ -1,0 +1,5 @@
+SubDir TOP ;
+
+C.macosx.LinkFrameworks cf : CoreFoundation ;
+
+C.Application cf : main.c ;
