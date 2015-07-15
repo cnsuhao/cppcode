@@ -1,0 +1,21 @@
+SubDir TOP ;
+
+if [ C.Qt.Found ] {
+
+C.Qt mainwindow : core gui : link ;
+
+local SRCS =
+		colorswatch.cpp
+		colorswatch.h
+		main.cpp
+		mainwindow.cpp
+		mainwindow.h
+		toolbar.cpp
+		toolbar.h
+		[ C.Qt.Rcc mainwindow : mainwindow.qrc : mainwindow ]
+		[ C.Qt.Moc mainwindow : colorswatch.cpp colorswatch.h mainwindow.h toolbar.h ]
+;
+
+C.Application mainwindow : $(SRCS) ;
+
+} # $(QT_FOUND)

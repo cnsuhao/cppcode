@@ -1,0 +1,7 @@
+/*! \page bugs Bugs, Limitations
+
+For parallel building to be successful, the dependencies among files must be properly spelled out, as targets tend to get built in a quickest-first ordering.  Also, beware of un-parallelizable commands that drop fixed-named files into the current directory, like <b>yacc</b>(1) does.
+
+A poorly set <tt>\$(JAMSHELL)</tt> is likely to result in silent failure.
+
+*/

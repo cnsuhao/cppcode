@@ -1,0 +1,241 @@
+/*! \page builtin_variables Built-in Variables
+
+\section builtin_variables_intro Introduction
+
+This section discusses variables that have special meaning to \b Jam.
+
+\section built_in_variables_binding_binding_search_locate BINDING, SEARCH, and LOCATE Variables
+
+These variables control the binding of file target names to locations in the file system.  Generally, \$(SEARCH) is used to find existing sources while \$(LOCATE) is used to fix the location for built targets.
+
+Rooted (absolute path) file targets are bound as is.  Unrooted file target names are also normally bound as is, and thus relative to the current directory, but the settings of \$(LOCATE) and \$(SEARCH) alter this:
+
+<ul>
+  <li> If \$(LOCATE) is set then the target is bound relative to the first directory in $(LOCATE).  Only the first element is used for binding.
+  <li> If \$(SEARCH) is set then the target is bound to the first directory in \$(SEARCH) where the target file already exists.
+  <li> If the \$(SEARCH) search fails, the target is bound relative to the current directory anyhow.
+</ul>
+
+Both \$(SEARCH) and \$(LOCATE) should be set target-specific and not globally.  If they were set globally,  <b>jam</b> would use the same paths for all file binding, which is not likely to produce sane results.  When writing your own rules,  especially ones not built upon those in Jambase, you may need to set \$(SEARCH) or \$(LOCATE) directly.  Almost all of the rules defined in Jambase set \$(SEARCH) and \$(LOCATE) to sensible values for sources they are looking for and targets they create, respectively.
+
+
+
+
+
+
+
+\section built_in_variables_hdrscan Header Scanning Variables
+
+The \c HDRSCAN and \c HDRPATTERN variables control the default header file scanning.  HDRSCAN is an <b>egrep</b>(1) pattern, with ()'s surrounding the file name, used to find file inclusion statements in source files.  Jambase uses <tt>\$(HDRPATTERN)</tt> as the pattern for \c HDRSCAN.  \c HDRRULE is the name of a rule to invoke with the results of the scan: the scanned file is the target, the found files are the sources, the bound name of the target is in the third argument.  \c HDRRULE is run under the influence of the scanned file's target-specific variables.  It defaults to the Jambase \c HdrRule.
+
+Both \c HDRSCAN and \c HDRRULE must be set for header file scanning to take place, and they should be set target-specific and not globally.  If they were set globally, all files, including executables and libraries, would be scanned for header file include statements.
+
+The scanning for header file inclusions is not exact, but it is at least dynamic, so there is no need to run something like <b>makedepend</b>(GNU) to create a static dependency file. The scanning mechanism errs on the side of inclusion (i.e., it is more likely to return filenames that are not actually used by the compiler than to miss include files) because it can't tell if \#include lines are inside \#ifdefs or other conditional logic.  In Jambase, HdrRule applies the \ref rule_NoCare "NoCare" rule to each header file found during scanning so that if the file isn't present yet doesn't cause the compilation to fail, \b Jam won't care.
+
+Also, scanning for regular expressions only works where the included file name is literally in the source file.  It can't handle languages that allow including files using variable names (as the Jam language itself does).
+
+On Windows, header filenames are, by default, converted to lowercase.  This can be prevented by setting a target's \c HDRDOWNSHIFT variable to \c false.
+
+\subsection built_in_variables_hdrfilter Filtering Unwanted Dependencies
+
+When \c HDRFILTER is set on a target, the rule bearing the name specified in the contents of \c HDRFILTER is executed with the following signature.
+
+\code
+    rule DoHeaderFilter TARGET_NAME : DEPENDENCIES : TARGET_BOUNDNAME
+    {
+        # Filter any unwanted dependencies.
+        DEPENDENCIES -= bob fred ;
+        return $(DEPENDENCIES) ;
+    }
+\endcode
+
+\c HDRFILTER can also be used to translate dependency names:
+
+\code
+    # Reading our special file format, DEPENDENCIES may come in as $(environment_variable)/filename.
+    # Translate it.
+    rule DoHeaderFilter TARGET_NAME : DEPENDENCIES : TARGET_BOUNDNAME
+    {
+        # Filter any unwanted dependencies.
+        DEPENDENCIES = $(DEPENDENCIES:A) ;
+        return $(DEPENDENCIES) ;
+    }
+\endcode
+
+
+\subsection built_in_variables_hdrpipe Shelling Processes for Dependencies
+
+When \c HDRPIPE is set on a target, during the dependency scan for headers, the process command line specified by \c HDRPIPE is run.  Any dependencies written by the process to stdout are run through the normal \c HDRSCAN regular expression mechanism.
+
+If \c HDRPIPEFILE is set on the target, the filename specified by \c HDRPIPEFILE is opened and parsed for dependencies after the \c HDRPIPE process exits.
+
+
+
+
+\section built_in_variables_semaphore Semaphores
+
+At times, it is necessary to synchronize access in a multiprocessor build.  The \c SEMAPHORE variable, when set on a target to be built, does just that.  When the given \c SEMAPHORE value is in use by another target, any targets with the same \c SEMAPHORE will block until the currently building target is finished and releases the \c SEMAPHORE lock.
+
+Example: The Visual C++ compiler accesses the same .pdb and .idb files.  To prevent that, a \c SEMAPHORE is used:
+
+\code
+    SEMAPHORE on $(objects) = $(LOCATE_TARGET)/$(_VCPDB).pdb ;
+\endcode
+
+
+
+
+
+\section built_in_variables_platform Platform Identifier Variables
+
+A number of Jam built-in variables can be used to identify runtime platform:
+
+<table width=75% align=center>
+  <tr><td>OS<td>OS identifier string
+  <tr><td>OSPLAT<td>Underlying architecture, when applicable
+  <tr><td>MAC<td>true on MAC platform
+  <tr><td>NT<td>true on NT platform
+  <tr><td>OS2<td>true on OS2 platform
+  <tr><td>UNIX<td>true on Unix platforms
+  <tr><td>VMS<td>true on VMS platform
+</table>
+
+
+
+
+
+
+
+\section language_built_in_variables_version Jam Version Variables
+
+<table width=75% align=center>
+  <tr><td>JAMDATE<td>Time and date at <b>jam</b> start-up.
+  <tr><td>JAMUNAME<td>Ouput of <b>uname</b>(1) command (Unix only)
+  <tr><td>JAMVERSION<td><b>jam</b> version, as reported by jam -v.
+</table>
+
+
+
+
+
+
+
+\section language_built_in_variables_misc Miscellaneous Variables
+
+<table width=75% align=center>
+  <tr><td>CWD<td>The current working directory.
+  <tr><td>JAM_COMMAND_LINE_TARGETS<td>The list of all targets passed into Jam on the command line.  If no targets were passed, \c JAM_COMMAND_LINE_TARGETS defaults to \b all.
+  <tr><td>JAM_PROCESS_PATH<td>The path where the Jam executable resides.
+  <tr><td>PATHDELIM_OLDSTYLE<td>In JamPlus, the default path separator is a forward slash.  If \c PATHDELIM_OLDSTYLE is set to 1, the default path separator is OS-specific, and the behavior mirrors the original Perforce Jam.
+</table>
+
+
+
+
+
+
+
+\section built_in_variables_jamshell JAMSHELL Variable
+
+When <b>jam</b> executes a rule's action block, it forks and execs a shell, passing the action block as an argument to the shell.   The invocation of the shell can be controlled by \$(JAMSHELL).  The default on Unix is, for example:
+
+<code>JAMSHELL = /bin/sh -c % ;</code>
+
+The % is replaced with the text of the action block.
+
+<b>Jam</b>  does not directly support building in parallel across multiple hosts, since that is heavily dependent on the local environment.   To build in parallel across multiple hosts, you need to write your own shell that provides access to the multiple hosts.  You then reset $(JAMSHELL) to reference it.
+
+Just as <b>jam</b> expands a % to be the text of the rule's action block, it expands a ! to be the multi-process slot number.  The slot number varies between 1 and the number of concurrent jobs permitted by the -j flag given on the command line.  Armed with this, it is possible to write a multiple host shell.  For example:
+
+\code
+    #!/bin/sh
+
+    # This sample JAMSHELL uses the SunOS on(1) command to execute a
+    # command string with an identical environment on another host.
+
+    # Set JAMSHELL = jamshell ! %
+    #
+    # where jamshell is the name of this shell file.
+    #
+    # This version handles up to -j6; after that they get executed
+    # locally.
+
+    case $1 in
+    1|4) on winken sh -c "$2";;
+    2|5) on blinken sh -c "$2";;
+    3|6) on nod sh -c "$2";;
+    *)   eval "$2";;
+    esac
+\endcode
+
+<hr>
+
+
+
+
+
+
+\section language_built_in_variables_clean_globs Clean up of extra files and directories
+
+After a build has completed, files and directories may be left in the build's destination directories that came from a previous build and are no longer being built.  JamPlus' clean up facility can be used to remove the extra files and directories at the end of the build process.
+
+Three variables are used to control the clean up:
+
+<table width=75% align=center>
+  <tr><td>CLEAN.VERBOSE</td><td>Prints out file removals during the clean up phase.
+  <tr><td>CLEAN.ROOTS</td><td>The list of root paths denoted by wildcards to check for extra files to clean up.
+  <tr><td>CLEAN.KEEP_WILDCARDS</td><td>Extra wildcards to prevent from being cleaned up.
+  <tr><td>CLEAN.KEEP_TARGETS</td><td>Extra targets to prevent from being cleaned up.
+  <tr><td>CLEAN.NOOP</td><td>Do not actually perform the removal.  Useful with \c CLEAN.VERBOSE to report what would be cleaned up.
+</table>
+
+To begin a clean-up, the <b>CLEAN.ROOTS</b> variable must contain one or more wildcard entries specifying the directory locations to be scanned for extra file entries during the clean-up.  Wildcards must conform to the format in the <b>:W</b> modifier documentation.
+
+\code
+    # This ensures subdira/ and subdirb/ are recursively checked for
+    # extra files that were not generated as part of this build.
+    CLEAN.ROOTS = subdira/** subdirb/** ;
+
+    # Check subdira/ recursively for extra files, but ignore any
+    # references to junk.txt within the hierarchy.  Also check subdirb/
+    # recursively.
+    CLEAN.ROOTS = subdira/**@-**/junk.txt subdirb/** ;
+\endcode
+
+All targets that are in the dependency graph for this build are automatically preserved within the \c CLEAN.ROOTS directories.
+
+If additional files or targets should be preserved and are not specified within the dependency graph, the \c CLEAN.KEEP_WILDCARDS or \c CLEAN.KEEP_TARGETS variables should be used.
+
+\c CLEAN.KEEP_WILDCARDS is a list of wildcard entries specifying inclusions (and even exclusions) of files to be preserved during the clean up process.  As with \c CLEAN.ROOTS, it conforms to the format described in the <b>:W=</b> modifier documentation.
+
+\code
+    # In the case where Jam itself does not know about generated *.txt
+    # files within the subdira/ directory structure, preserve any found
+    # *.txt file for later usage.
+    CLEAN.KEEP_WILDCARDS += subdira/**.txt ;
+\endcode
+
+\c CLEAN.KEEP_TARGETS is a list of Jam targets that were not processed as part of the dependency graph for this build.
+
+\code
+    # junk.txt is a target residing in subdirb, but it has no build
+    # instructions.  We want to preserve it during the clean up, so we add
+    # it to the CLEAN.KEEP_TARGETS list.
+    SEARCH on junk.txt = subdirb ;
+    CLEAN.KEEP_TARGETS += junk.txt ;
+\endcode
+
+By default, directory and file removals happen silently at the end of the build.  Set the \c CLEAN.VERBOSE variable to \c 1 to print out the removals.
+
+\code
+    CLEAN.VERBOSE = 1 ;
+\endcode
+
+Set the \c CLEAN.NOOP variable to \c 1 to calculate what would be removed during the clean up but not actually perform the clean up.
+
+\code
+    CLEAN.NOOP = 1 ;
+\endcode
+
+*/
+

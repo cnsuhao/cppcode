@@ -1,0 +1,6 @@
+Echo Building configuration $(C.CONFIG)... ;
+
+SubDir TOP ;
+
+C.Application helloworld : helloworld.c ;
+

@@ -1,0 +1,3 @@
+SubDir TOP common ;
+
+C.Library common : print.cpp print.h ;

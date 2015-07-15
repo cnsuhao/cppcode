@@ -1,0 +1,12 @@
+How to build from scratch.  From a shell prompt do this stuff...
+
+1. Edit the Makefile and make sure the right compiler is uncommented
+   for your platform.  This is usually not necessary, so skip this the
+   first time.  NOTE: Under windows, the jmake scripts described below
+   use Makefile.Windows.
+
+2. Windows: run jmake.cmd
+   Unix: run jmake.sh
+
+   Note: windows folks may have to remove a #include <values.h> from
+   jamgram.c -- sorry.

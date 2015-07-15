@@ -1,0 +1,35 @@
+SubDir TOP ;
+
+SRCS =
+		ChildFrm.cpp
+		ChildFrm.h
+		MainFrm.cpp
+		MainFrm.h
+		Resource.h
+		SimpleMFC.cpp
+		SimpleMFC.h
+		SimpleMFC.rc
+		SimpleMFCDoc.cpp
+		SimpleMFCDoc.h
+		SimpleMFCView.cpp
+		SimpleMFCView.h
+		stdafx.cpp
+		stdafx.h
+;
+
+ActiveTarget SimpleMFC ;
+
+C.MFC : link shared ;
+
+C.Lump : SRCS : SimpleMFCLump : stdafx.cpp stdafx.h 1 ;
+
+SRCS += [ C.ResourceCompiler : SimpleMFC.rc ] ;
+
+C.PrecompiledHeader : stdafx : $(SRCS) ;
+
+switch $(CONFIG) {
+	case debug : C.OutputPostfix : .debug ;
+	case release : C.OutputPostfix : .release ;
+}
+
+C.Application : $(SRCS) : windows ;

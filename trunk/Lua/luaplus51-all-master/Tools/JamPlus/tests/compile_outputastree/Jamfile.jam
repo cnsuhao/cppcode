@@ -1,0 +1,5 @@
+SubDir TOP ;
+
+SubInclude TOP liba ;
+SubInclude TOP libb ;
+SubInclude TOP libc ;

@@ -1,0 +1,979 @@
+/*! \page builtin_rules Built-in Rules
+
+\section builtin_rules_intro Introduction
+
+\b Jam has a number built-in rules, all of which are pure procedure rules without updating actions. They are in three groups: the first builds the dependency graph; the second modifies it; and the third are just utility rules.
+
+<br>
+
+\htmlonly <center> \endhtmlonly
+\section language_built_in_rules_dependency_building Dependency Building
+\htmlonly </center> \endhtmlonly
+
+\secreflist
+\refitem rule_Depends Depends
+\refitem rule_Includes Includes
+\refitem rule_Needs Needs
+\endsecreflist
+
+<hr>
+\section rule_Depends rule Depends targets1 : targets2 [ : target3 ... targets9 ] ;
+\addindex rule_Depends
+
+Builds a direct dependency: makes each of <i>targets1</i> depend on each of <i>targets2</i>.  Generally, <i>targets1</i> will be rebuilt if <i>targets2</i> are themselves rebuilt are or are newer than <i>targets1</i>.
+
+As a simplification when specifying multi-level dependencies, <i>targets2</i> depend on the optional <i>targets3</i>, and so on.</td>
+
+<hr>
+\section rule_Includes rule Includes <i>targets1</i> : <i>targets2</i> [ : <i>target3</i> ... <i>targets9</i> ] ;
+\addindex rule_Includes
+
+Builds a sibling dependency: makes any target that depends on any of <i>targets1</i> also depend on each of <i>targets2</i>. This reflects the dependencies that arise when one source file includes another:  the object built from the source file depends both on the original and included source file,  but the two sources files don't depend on each other.  For example:
+
+\code
+    Depends foo.o : foo.c ;
+    Includes foo.c : foo.h ;
+\endcode
+
+"foo.o" depends on "foo.c" and "foo.h" in this example.
+
+As a simplification when specifying multi-level dependencies, <i>targets2</i> depend on the optional <i>targets3</i>, and so on.
+
+<hr>
+\section rule_Needs rule Needs <i>targets1</i> : <i>targets2</i> [ : <i>target3</i> ... <i>targets9</i> ] ;
+\addindex rule_Depends
+
+Needs is very similar to \ref rule_Depends.  Like Depends, <i>targets1</i> are dependent on <i>targets2</i> having been built first.  Unlike Depends, if <i>targets2</i> are updated, <i>targets1</i> do not build.
+
+As a simplification when specifying multi-level dependencies, <i>targets2</i> depend on the optional <i>targets3</i>, and so on.
+
+
+
+
+<br>
+\htmlonly <center> \endhtmlonly
+\section language_built_in_rules_modifying_binding Modifying Binding
+\htmlonly </center> \endhtmlonly
+
+The rules \ref rule_Always "Always", \ref rule_ForceCare "ForceCare", \ref rule_Leaves "Leaves", \ref rule_MightNotUpdate "MightNotUpdate", \ref rule_NoCare "NoCare", \ref rule_NotFile "NotFile", \ref rule_NoUpdate "NoUpdate", and \ref rule_Temporary "Temporary" modify the dependency graph so that \b Jam treats the targets differently during its target binding phase.  See \ref operation_binding above.  Normally, \b Jam updates a target if it is missing, if its filesystem modification time is older than any of its dependencies (recursively), or if any of its dependencies are being updated.  This basic behavior can be changed by invoking the following rules:
+
+\secreflist
+\refitem rule_Always Always
+\refitem rule_ForceCare ForceCare
+\refitem rule_Leaves Leaves
+\refitem rule_MightNotUpdate MightNotUpdate
+\refitem rule_NoCare NoCare
+\refitem rule_NotFile NotFile
+\refitem rule_NoUpdate NoUpdate
+\refitem rule_ScanContents ScanContents
+\refitem rule_Temporary Temporary
+\refitem rule_UseCommandLine UseCommandLine
+\endsecreflist
+
+<hr>
+\section rule_Always rule Always targets ;
+\addindex rule_Always
+
+Causes <i>targets</i> to be rebuilt regardless of whether they are up-to-date (they must still be in the dependency graph).  This is used for the clean and uninstall targets, as they have no dependencies and would otherwise appear never to need building.  It is best applied to targets that are also NotFile targets, but it can also be used to force a real file to be updated as well.
+
+
+
+
+
+
+
+<hr>
+\section rule_ForceCare rule ForceCare targets ;
+\addindex rule_ForceCare
+
+Causes \b Jam to care again about <i>targets</i> that neither can be found nor have updating actions to build them.  Standard \b Jam behavior applies here, a warning will be issues and other targets depending on the missing targets will be skipped.
+
+ForceCare is needed to override a NoCare flag applied to a target.  Note that once ForceCare has been applied to a given target, that target can never be a NoCare target again.
+
+
+
+
+
+
+
+
+<hr>
+\section rule_Leaves rule Leaves targets ;
+\addindex rule_Leaves
+
+Makes each of <i>targets</i> depend only on its leaf sources, and not on any intermediate targets.  This makes it immune to its dependencies being updated, as the "leaf" dependencies are those without their own dependencies and without updating actions. This allows a target to be updated only if original source files change.
+
+
+
+
+
+
+
+<hr>
+\section rule_MightNotUpdate rule MightNotUpdate targets ;
+\addindex rule_MightNotUpdate
+
+Some targets may or may not update when their action is executed, such as export libraries for a Windows DLL.  In order for \b Jam to process this behavior appropriately, the <i>targets</i> must be marked so their timestamps will be evaluated at the latest possible time during the \ref operation_updating.
+
+Be aware that the \c MightNotUpdate calculation happens during the \ref operation_updating.  This results in \b Jam possibly reporting target counts improperly.
+
+
+
+
+
+
+
+<hr>
+\section rule_NoCare rule NoCare targets ;
+\addindex rule_NoCare
+
+Causes \b Jam to ignore <i>targets</i> that neither can be found nor have updating actions to build them.  Normally for such targets \b Jam issues a warning and then skips other targets that depend on these missing targets.  The HdrRule in Jambase uses NoCare on the header file names found during header file scanning, to let \b Jam know that the included files may not exist.   For example,  if a \#include is within an \#ifdef, the included file may not actually be around.
+
+
+
+
+
+
+
+<hr>
+\section rule_NotFile rule NotFile targets ;
+\addindex rule_NotFile
+
+Marks <i>targets</i> as pseudotargets and not real files. No timestamp is checked, and so the actions on such a target are only executed if the target's dependencies are updated, or if the target is also marked with Always.  The default \b Jam target "all" is a pseudotarget. In Jambase, NotFile is used to define several addition convenient pseudotargets.
+
+
+
+
+
+
+
+<hr>
+\section rule_NoUpdate rule NoUpdate targets ;
+\addindex rule_NoUpdate
+
+Causes the timestamps on <i>targets</i> to be ignored. This has two effects:  first,  once the target has been created it will never be updated; second, manually updating target will not cause other targets to be updated.  In Jambase, for example, this rule is applied to directories by the MkDir rule, because \ref rule_MkDir only cares that the target directory exists, not when it has last been updated.
+
+
+
+
+
+
+
+<hr>
+\section rule_ScanContents rule ScanContents targets ;
+\addindex rule_ScanContents
+
+\note In order to use \c ScanContents, the dependency cache must be enabled.
+
+Causes the file's contents to be scanned for differences on timestamp change.  There are times when a file's timestamp changes, but its contents do not.  Normally, a timestamp change will cause all dependent targets to be rebuilt.  When \c ScanContents is applied to <i>targets</i> and one of those targets has a timestamp that changes, Jam will compare the contents of the target against the last build's contents, whose md5sum is stored in the dependency cache.  If they are the same, no dependent targets are built.  If they differ, the dependent target build occurs as it would have on just a timestamp change.
+
+Be aware that the \c ScanContents calculation happens during the \ref operation_updating.  This results in Jam possibly reporting target counts improperly.
+
+<i>Example:</i> A build action generates a C++ header.  There are three scenarios to make note of here:
+
+- Scenario #1: The build action always writes the header, even when the header does not change.  Every C++ file \#including that header rebuilds.
+- Scenario #2: The build action only writes the header file when a change will occur.  The timestamp does not update, so the C++ files \#including that header do not build.  Unfortunately, on the next \b Jam run, the header is detected as needing to be built, as it has an older timestamp than the child that triggered the build in the first place.  Every subsequent run of \b Jam will attempt to build the header.
+- Scenario #3: The build action always writes the header, even when the header does not change.  \c ScanContents is applied to the generated header.  When Jam builds the header, it checks the contents of the file against the previous build and realizes nothing has changed.  \b Jam will short circuit the build of dependent targets, those that rely on the generated header, as the generated header did not change.
+
+\code
+    ScanContents my_generated_header.h ;
+\endcode
+
+
+
+
+
+<hr>
+\section rule_Temporary rule Temporary targets ;
+\addindex rule_Temporary
+
+Marks <i>targets</i> as temporary, allowing them to be removed after other targets that depend upon them have been updated.  If a Temporary target is missing, \b Jam uses the timestamp of the target's parent.  Jambase uses Temporary to mark object files that are archived in a library after they are built, so that they can be deleted after they are archived.
+
+
+
+
+
+
+<hr>
+\section rule_UseCommandLine rule UseCommandLine TARGETS : COMMANDLINE;
+\addindex rule_UseCommandLine
+
+The "command line" of a target, not necessarily the command line sent to a target's action, is compared against the previous build's command line for the same target.  If it differs, regardless of timestamps being equal, the target is rebuilt.
+
+\param TARGETS One or more targets to set the \c COMMANDLINE string to.
+\param COMMANDLINE A unique string to be compared against the last build.  When different, the target is rebuilt.
+
+<i>Example 1:</i> During the last build, the \#defines for <tt>somefile.cpp</tt> were -DMYDEFINE -DSOMEDEFINE.  The user then alters the defines for <tt>somefile.cpp</tt> to be -DMYDEFINE -DYOURDEFINE.  <tt>somefile.cpp</tt> file will be rebuilt, even if the timestamp hasn't changed.
+
+\code
+UseCommandLine somefile.cpp : -DMYDEFINE -DYOURDEFINE ;
+\endcode
+
+<i>Example 2:</i> The file format for <b>.model</b> files changes. It is desirable to cause the .model files to be rebuilt on the next build. This can be done by altering the 'command line' to be <tt>version2</tt>.
+
+\code
+UseCommandLine $(TARGETS) : version2 ;
+\endcode
+
+
+
+
+
+
+
+
+
+
+
+<br>
+\htmlonly <center> \endhtmlonly
+\section language_built_in_rules_utility_rules Utility Rules
+\htmlonly </center> \endhtmlonly
+
+The remaining rules are utility rules.
+
+\secreflist
+\refitem rule_DependsList DependsList
+\refitem rule_Echo Echo
+\refitem rule_Exit Exit
+\refitem rule_ExpandFileList ExpandFileList
+\refitem rule_Glob Glob
+\refitem rule_GroupByVar GroupByVar
+\refitem rule_ListSort ListSort
+\refitem rule_Match Match
+\refitem rule_Math Math
+\refitem rule_MD5 MD5
+\refitem rule_MD5File MD5File
+\refitem rule_OptionalFileCache OptionalFileCache
+\refitem rule_RuleExists RuleExists
+\refitem rule_QueueJamfile QueueJamfile
+\refitem rule_QuickSettingsLookup QuickSettingsLookup
+\refitem rule_Shell Shell
+\refitem rule_Split Split
+\refitem rule_Subst Subst
+\refitem rule_SubstLiteralize SubstLiteralize
+\refitem rule_UseDepCache UseDepCache
+\refitem rule_UseFileCache UseFileCache
+\refitem rule_UseMD5Callback UseMD5Callback
+\refitem rule_W32_GETREG W32_GETREG
+\endsecreflist
+
+<hr>
+\section rule_DependsList rule DependsList PARENT_TARGETS ;
+\addindex rule_DependsList
+
+\c DependsList takes the list of \c PARENT_TARGETS and returns all of the direct child dependency target names.
+
+\param PARENT_TARGETS A list of parent targets to derive child dependencies from.  There is generally only one parent in this list.
+\return Returns the child dependencies.
+
+\code
+    Depends all : abc def ghi ;
+	Echo [ DependsList all ] ;
+	# abc def ghi
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_Echo rule Echo ARGS ;
+\addindex rule_Echo
+
+Prints out the message \c ARGS to stdout.
+
+
+
+
+
+
+
+<hr>
+\section rule_Exit rule Exit ARGS ;
+\addindex rule_Exit
+
+Prints out the message \c ARGS to stdout and then exits with a failure status.
+
+
+
+
+
+
+<hr>
+\section rule_ExpandFileList rule ExpandFileList WILDCARDS ;
+\addindex rule_ExpandFileList
+
+\c ExpandFileList takes a list of files or including glob-capable wildcards and expands them.  The result of the expansion is returned to the user.
+
+If \c SEARCH_SOURCE is defined (generally through the \c SubDir rule), then it is removed from the beginning of each expansion.
+
+\param WILDCARDS A list of files or \ref rule_Glob "Glob"-capable wildcards.
+\return Returns the wildcard expanded file list.
+
+\code
+	Echo [ ExpandFileList myfile.cpp **.cpp **.h ] ;
+	# myfile.cpp
+	# All *.cpp files recursively
+	# All *.h files recursively
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_Glob rule Glob DIRECTORIES : PATTERNS [ : PREPEND ] ;
+\addindex rule_Glob
+
+Scans \c DIRECTORIES for files matching \c PATTERNS, returning the list of matching files (with directory prepended, unless the optional \c PREPEND is set to \c 0 or \c false).  \c PATTERNS uses the same syntax as in the \ref statements_switch "switch" statement.  Only useful within the <tt>[ ]</tt> construct, to change the result into a list.
+
+On Windows, the glob matching is performed in a case insensitive manner.
+
+\param DIRECTORIES The list of directories to perform the glob scan within.
+\param PATTERNS The list of patterns to scan.
+\param PREPEND (optional) If 1 (default), prepend the directory name.  If 0, do not.
+
+\code
+    # Returns all files and directories.  Directories have a / appended.
+    # Directories . and .. are not returned.
+    Glob bin : * ;
+
+    # Returns just directories.
+    Glob bin : */ ;
+
+    # Returns just files without bin/ prepended.
+    Glob bin : *[^/] : 0;
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_GroupByVar rule GroupByVar TARGETLIST_VARIABLE_NAME : COMPARISON_SETTINGS_NAME [ : MAX_PER_GROUP ] ;
+\addindex rule_GroupByVar
+
+Given a list of targets determined by the \c TARGETLIST_VARIABLE_NAME, those targets whose \c COMPARISON_SETTINGS_NAME contents match one another are grouped together and returned to the caller.  The remaining targets are assigned back to \c TARGETLIST_VARIABLE_NAME.
+
+The matched grouping is limited to the maximum number of targets specified via \c MAX_PER_GROUP.
+
+\param TARGETLIST_VARIABLE_NAME The name of the variable containing the target list to obtain matching groups of targets from.  It is <i>not</i> the actual list of targets.
+\param COMPARISON_SETTINGS_NAME The setting used to obtain matches from \c COMPARISON_SETTINGS_NAME.
+\param MAX_PER_GROUP (optional) The maximum number of targets to include in the group.  If unspecified, there is no limit.
+\return Returns the remaining elements to be grouped.  When all elements have been grouped, the return value is an empty list.
+
+\code
+    files = targeta targetb targetc targetd targete targetf ;
+    FLAGS on targeta = a b c ;
+    FLAGS on targetb = a b c d ;
+    FLAGS on targetc = a b c ;
+    FLAGS on targetd = a b c e ;
+    FLAGS on targete = a b c ;
+    FLAGS on targetf = a b c ;
+
+    # Together - targeta targetc targete targetf    <- because all FLAGS are: a b c
+    Echo Together - [ GroupByVar files : FLAGS ] ;
+
+    # Together - targetb                            <- only targetb has FLAGS: a b c d
+    Echo Together - [ GroupByVar files : FLAGS ] ;
+
+    # Together - targetd                            <- only targetd has FLAGS: a b c e
+    Echo Together - [ GroupByVar files : FLAGS ] ;
+
+    # files is empty at this point.
+
+    files = targeta targetb targetc targetd targete targetf ;
+
+    # (2 max) - targeta targetc
+    Echo (2 max) - [ GroupByVar files : FLAGS : 2 ] ;
+
+    # (2 max) - targetb
+    Echo (2 max) - [ GroupByVar files : FLAGS : 2 ] ;
+
+    # (2 max) - targetd
+    Echo (2 max) - [ GroupByVar files : FLAGS : 2 ] ;
+
+    # (2 max) - targete targetf
+    Echo (2 max) - [ GroupByVar files : FLAGS : 2 ] ;
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_ListSort rule ListSort LIST : CASE_INSENSITVE ;
+\addindex rule_ListSort
+
+Sorts the provided \c LIST in either a case sensitive or case insensitive fashion.
+
+\param LIST The list of strings to be sorted.
+\param CASE_INSENSITIVE 0 for case insensitive, 1 for case sensitive.  Case sensitive is the default.
+\return Returns a sorted list of strings.
+
+\code
+    FILES = xyz.cpp abc.cpp qrs.cpp ;
+    Echo [ ListSort $(FILES) ] ;
+	# abc.cpp qrs.cpp xyz.cpp
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_Match rule Match REGEXPS : LIST ;
+\addindex rule_Match
+
+Matches the <b>egrep</b>(1) style regular expressions \c REGEXPS against the strings in \c LIST.  The result is the concatenation of matching <tt>()</tt> subexpressions for each string in \c LIST, and for each regular expression in \c REGEXPS.  Only useful within the <tt>[ ]</tt> construct, to change the result into a list.
+
+
+
+
+
+
+
+<hr>
+\section rule_Math rule Math LEFT OPERATOR RIGHT ;
+\addindex rule_Math
+
+Calculates the result of the simple math equation of the form \c LEFT \c OPERATOR \c RIGHT.  Useful only within the <tt>[ ]</tt> construct, to change the result into a list.
+
+\param LEFT An integer for the left side of the equation.
+\param OPERATOR <tt>+</tt> for addition, <tt>-</tt> for subtraction, <tt>*</tt> for multiplication, <tt>/</tt> for division, and <tt>%</tt> for modulus.
+\param RIGHT An integer for the right side of the equation.
+\return Returns the result of the equation.
+
+
+
+
+
+
+
+<hr>
+\section rule_MD5 rule MD5 LIST [ : LIST2 ... ] ;
+\addindex rule_MD5
+
+Calculates the md5sum of all lists and their respective list elements.  Each list element is separated with one NUL character, so that <tt>[ MD5 a b ]</tt> is different than <tt>[ MD5 ab ]</tt>.  Each list is separated with two NUL characters so that <tt>[ MD5 a : b ]</tt> is different than <tt>[ MD5 a b ]</tt>.  Only useful within the <tt>[ ]</tt> construct, to change the resultant md5sum into a list.
+
+\code
+	# Prints d41d8cd98f00b204e9800998ecf8427e.
+    Echo [ MD5 "" ] ;
+
+	# Returns c3fcd3d76192e4007dfb496cca67e13b.
+    Echo [ MD5 "abcdefghijklmnopqrstuvwxyz" ] ;
+\endcode
+
+
+
+
+
+
+
+<hr>
+\section rule_MD5File rule MD5File FILENAME_LIST [ : FILENAME_LIST2 ... ] ;
+\addindex rule_MD5File
+
+Calculates the md5sum of all listed files.  Only useful within the <tt>[ ]</tt> construct, to change the resultant md5sum into a list.
+
+\code
+    Echo [ MD5File "myfile.txt" ] ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_OptionalFileCache rule OptionalFileCache TARGETS [ : CACHE_NAME ] ;
+\addindex rule_OptionalFileCache
+
+If the given generated \c TARGETS are already built and stored within the file cache \c CACHE_NAME, they are retrieved via a simple file copy, and no further build steps are initiated.  If the \c TARGETS are not in the file cache, they are first generated locally via the prescribed build steps and then copied to the cache to be used in a future build.  If the given target is not actually generated by a build step, it isn't copied to the file cache, and no error occurs.
+
+\param TARGETS One or more targets to use the file cache for.
+\param CACHE_NAME (optional) If not specified, defaults to \c generic.
+
+\code
+    # Assign image.tga to the 'generic' file cache.
+    OptionalFileCache image.tga ;
+
+    # Assign image2.tga to the 'weapons' file cache.
+    OptionalFileCache image2.tga : weapons ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_QuickSettingsLookup rule QuickSettingsLookup TARGET : SYMBOL ;
+\addindex rule_QuickSettingsLookup
+
+Quickly looks up a single setting from from a \c TARGET.  This is generally much faster than using the syntax:
+
+\code
+    on $(TARGET) var = $(SYMBOL) ;
+\endcode
+
+QuickSettingsLookup can also be achieved by using the expansion modifier <tt>:Z=</tt>.
+
+\param TARGET The target to look up the \c SYMBOL within.
+\param SYMBOL The name of the symbol to lookup within \c TARGET.
+\return Returns the symbol's value if the symbol was found, otherwise an empty list.
+
+\code
+    MY_SYMBOL on MyTarget = Hello ;
+
+	local var ;
+	on $(TARGET) var = $(MY_SYMBOL) ;
+	Echo $(var) ;
+    # Hello
+
+	local var2 = [ QuickSettingsLookup MyTarget : MY_SYMBOL ] ;
+	Echo $(var2) ;
+    # Hello
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_QueueJamfile rule QueueJamfile JAMFILE_LIST [ : PRIORITY ] ;
+\addindex rule_QueueJamfile
+
+When \c QueueJamfile is called, another pass on the Jam dependency graph is initiated after the \ref operation_updating.  Further documentation on this can be found on the \ref multiple_passes page.
+
+Queued Jamfiles are processed in the order they are queued.  There may be cases where the queued order does not allow for proper processing of the Jamfiles.  In the event the Jamfile order matters for the upcoming pass, \c PRIORITY may be applied.  When a priority isn't given, the default priority is 0.  A queued Jamfile with priority of 100 will be parsed before a Jamfile with a priority of 0.  Likewise, a queued Jamfile with a priority of -50 will be parsed after a Jamfile with a priority of 0.
+
+\param JAMFILE_LIST A list of one or more Jamfiles to queue for the next pass.
+\param PRIORITY (optional) A numeric priority.  If not specified, the default is 0.
+
+\code
+    # Queue Pass2.jam for the second pass.
+    QueueJamfile Pass2.jam ;
+
+    # Queue me_first.jam with a higher priority than me_second.jam.
+    QueueJamfile me_second.jam ;  # Priority of 0.
+    QueueJamfile me_first.jam : 1000 ;  # Parse me_first.jam and then me_second.jam.
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_RuleExists rule RuleExists RULE_NAME ;
+\addindex rule_RuleExists
+
+Determines whether \c RULE_NAME exists.
+
+\param RULE_NAME The name of the rule whose existence is to be determined.
+\return Returns \c true if the rule exists, an empty list otherwise.
+
+\code
+    if ! [ RuleExists HiBob ] {
+        rule HiBob {
+            Echo HiBob ;
+        }
+    }
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_Shell rule Shell COMMANDS ;
+\addindex rule_Shell
+
+The \c Shell rule is used to execute one or more \c COMMANDS and return the output to the user.  Each command specified in the \c COMMANDS list is executed immediately, one after another.  The results of a command execution are returned to the caller.
+
+\param COMMANDS A list of one or more commands, each executed serially.
+
+\code
+    # Copy file1.txt to file2.txt, ignoring output.
+    Shell "copy file1.txt file2.txt" ;
+
+    # Grab a directory listing.
+    dir_listing = [ Shell dir ] ;
+
+    # Grab two directory listings.
+    dir_listings = [ Shell "dir *.tga" "dir *.png" ]
+    Echo dir *.tga - $(dir_listings[1]) ;
+    Echo dir *.png - $(dir_listings[2]) ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_Split rule Split STRINGS : SPLIT_CHARACTERS
+\addindex rule_Split
+
+Splits each of the \c STRINGS at \c SPLIT_CHARACTERS.  All splits are returned as a string list.
+
+\param STRINGS The list of strings to split at the points specified by \c SPLIT_CHARACTERS.
+\param SPLIT_CHARACTERS One or more characters to split the list of \c STRINGS at.
+\return Returns a list of strings split at the points specified by \c SPLIT_CHARACTERS.
+
+\code
+    # Prints:
+    #
+    # **I** **like** **peas.**
+    # No splits here
+    local list = [ Split I like peas. : " " ] ;
+    Echo **$(list)** ;
+
+    Echo [ Split No splits here : "|" ] ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_Subst rule Subst LIST : PATTERN [ : REPL [ : MAXN ] ] ;
+\addindex rule_Subst
+
+\note The Subst rule comes from the Lua code base's implementation of string.gsub.  The documentation below is near verbatim from the Lua manual.
+
+Returns a copy of \c LIST in which all occurrences of the \c PATTERN have been replaced by a replacement string specified by \c REPL.  Only useful within the <tt>[ ]</tt> construct, to change the result into a list.
+
+The character <tt>%</tt> works as an escape character: any sequence in repl of the form <tt>%n</tt>, with <tt>n</tt> between 1 and 9, stands for the value of the n-th captured substring (see below).  The sequence <tt>%0</tt> stands for the whole match. The sequence <tt>%%</tt> stands for a single <tt>%</tt>.
+
+The optional last parameter n limits the maximum number of substitutions to occur. For instance, when n is 1 only the first occurrence of pattern is replaced.
+
+\param LIST The list of strings to apply the regular expression substitution algorithm to.
+\param PATTERN The regular expression pattern to search for within \c LIST.  If the pattern is found, it is replaced with \c REPL.
+\param REPL (optional) If specified, any patterns matched with \c PATTERN are replaced with the contents of \c REPL.  If not specified, the replacement string is empty.
+\param MAXN (optional) The maximum number of substitutions to occur.
+
+\code
+# __/__/dir/__/dir2
+Echo [ Subst ../../dir/../dir2 : %.%. : __ ] ;
+
+# hello hello world world
+Echo [ Subst "hello world" : "(%w+)" : "%1 %1" ] ;
+
+# hello hello world
+Echo [ Subst "hello world" : "%w+" : "%0 %0" : 1 ] ;
+
+# world hello Lua from
+Echo [ Subst "hello world from Lua" : "(%w+)%s*(%w+)" : "%2 %1" ] ;
+\endcode
+
+
+\subsection rule_Subst_Patterns Patterns
+
+
+<h4>Character Class:</h4><p>
+A <em>character class</em> is used to represent a set of characters.
+The following combinations are allowed in describing a character class:
+
+<ul>
+
+<li><b><em>x</em>:</b>
+(where <em>x</em> is not one of the <em>magic characters</em>
+
+<code>^$()%.[]*+-?</code>)
+represents the character <em>x</em> itself.
+</li>
+
+<li><b><code>.</code>:</b> (a dot) represents all characters.</li>
+
+<li><b><code>%a</code>:</b> represents all letters.</li>
+
+<li><b><code>%c</code>:</b> represents all control characters.</li>
+
+<li><b><code>%d</code>:</b> represents all digits.</li>
+
+<li><b><code>%l</code>:</b> represents all lowercase letters.</li>
+
+<li><b><code>%p</code>:</b> represents all punctuation characters.</li>
+
+<li><b><code>%s</code>:</b> represents all space characters.</li>
+
+<li><b><code>%u</code>:</b> represents all uppercase letters.</li>
+
+<li><b><code>%w</code>:</b> represents all alphanumeric characters.</li>
+
+<li><b><code>%x</code>:</b> represents all hexadecimal digits.</li>
+
+<li><b><code>%z</code>:</b> represents the character with representation 0.</li>
+
+<li><b><code>%<em>x</em></code>:</b> (where <em>x</em> is any non-alphanumeric character)
+represents the character <em>x</em>.
+This is the standard way to escape the magic characters.
+Any punctuation character (even the non magic)
+can be preceded by a '<code>%</code>'
+when used to represent itself in a pattern.
+</li>
+
+<li><b><code>[<em>set</em>]</code>:</b>
+
+represents the class which is the union of all
+characters in <em>set</em>.
+A range of characters may be specified by
+separating the end characters of the range with a '<code>-</code>'.
+All classes <code>%</code><em>x</em> described above may also be used as
+components in <em>set</em>.
+All other characters in <em>set</em> represent themselves.
+For example, <code>[%w_]</code> (or <code>[_%w]</code>)
+represents all alphanumeric characters plus the underscore,
+
+<code>[0-7]</code> represents the octal digits,
+and <code>[0-7%l%-]</code> represents the octal digits plus
+the lowercase letters plus the '<code>-</code>' character.
+
+
+<p>
+The interaction between ranges and classes is not defined.
+Therefore, patterns like <code>[%a-z]</code> or <code>[a-%%]</code>
+have no meaning.
+</li>
+
+<li><b><code>[^<em>set</em>]</code>:</b>
+represents the complement of <em>set</em>,
+where <em>set</em> is interpreted as above.
+</li>
+
+</ul><p>
+For all classes represented by single letters (<code>%a</code>, <code>%c</code>, etc.),
+the corresponding uppercase letter represents the complement of the class.
+For instance, <code>%S</code> represents all non-space characters.
+
+
+
+<p>
+The definitions of letter, space, and other character groups
+depend on the current locale.
+In particular, the class <code>[a-z]</code> may not be equivalent to <code>%l</code>.
+
+
+
+
+
+<h4>Pattern Item:</h4><p>
+A <em>pattern item</em> may be
+
+<ul>
+
+<li>
+a single character class,
+which matches any single character in the class;
+
+</li>
+
+<li>
+a single character class followed by '<code>*</code>',
+which matches 0 or more repetitions of characters in the class.
+These repetition items will always match the longest possible sequence;
+</li>
+
+<li>
+a single character class followed by '<code>+</code>',
+which matches 1 or more repetitions of characters in the class.
+These repetition items will always match the longest possible sequence;
+</li>
+
+<li>
+a single character class followed by '<code>-</code>',
+which also matches 0 or more repetitions of characters in the class.
+Unlike '<code>*</code>',
+these repetition items will always match the <em>shortest</em> possible sequence;
+
+</li>
+
+<li>
+a single character class followed by '<code>?</code>',
+which matches 0 or 1 occurrence of a character in the class;
+</li>
+
+<li>
+<code>%<em>n</em></code>, for <em>n</em> between 1 and 9;
+such item matches a substring equal to the <em>n</em>-th captured string
+(see below);
+
+</li>
+
+<li>
+<code>%b<em>xy</em></code>, where <em>x</em> and <em>y</em> are two distinct characters;
+such item matches strings that start with&nbsp;<em>x</em>, end with&nbsp;<em>y</em>,
+and where the <em>x</em> and <em>y</em> are <em>balanced</em>.
+This means that, if one reads the string from left to right,
+counting <em>+1</em> for an <em>x</em> and <em>-1</em> for a <em>y</em>,
+the ending <em>y</em> is the first <em>y</em> where the count reaches 0.
+For instance, the item <code>%b()</code> matches expressions with
+balanced parentheses.
+
+</li>
+
+</ul>
+
+
+
+
+<h4>Pattern:</h4><p>
+A <em>pattern</em> is a sequence of pattern items.
+A '<code>^</code>' at the beginning of a pattern anchors the match at the
+beginning of the subject string.
+A '<code>$</code>' at the end of a pattern anchors the match at the
+end of the subject string.
+At other positions,
+'<code>^</code>' and '<code>$</code>' have no special meaning and represent themselves.
+
+
+
+
+
+
+<h4>Captures:</h4><p>
+A pattern may contain sub-patterns enclosed in parentheses;
+they describe <em>captures</em>.
+When a match succeeds, the substrings of the subject string
+that match captures are stored (<em>captured</em>) for future use.
+Captures are numbered according to their left parentheses.
+For instance, in the pattern <code>"(a*(.)%w(%s*))"</code>,
+the part of the string matching <code>"a*(.)%w(%s*)"</code> is
+stored as the first capture (and therefore has number&nbsp;1);
+the character matching "<code>.</code>" is captured with number&nbsp;2,
+and the part matching "<code>%s*</code>" has number&nbsp;3.
+
+
+
+<p>
+As a special case, the empty capture <code>()</code> captures
+the current string position (a number).
+For instance, if we apply the pattern <code>"()aa()"</code> on the
+string <code>"flaaap"</code>, there will be two captures: 3&nbsp;and&nbsp;5.
+
+
+<p>
+A pattern cannot contain embedded zeros.  Use <code>%z</code> instead.
+
+
+
+
+
+<hr>
+\section rule_SubstLiteralize rule SubstLiteralize LITERAL_PATTERN ;
+\addindex rule_SubstLiteralize
+
+Returns an escaped version of \c LITERAL_PATTERN that is suitable to be passed to the \ref rule_Subst "Subst" rule.  That is, any special character used for matching in the Subst rule is escaped with a percent sign.
+
+\code
+Echo [ SubstLiteralize "Hello [world].  How (are) you?" ] ;
+# Hello %[world%].  How %(are%) you%?
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_UseDepCache rule UseDepCache TARGETS [ : CACHE_NAME ] ;
+\addindex rule_UseDepCache
+
+Change the active dependency cache for the \c TARGETS.  See \ref dependency_cache_usage for more information.
+
+\param TARGETS One or more targets to change the active dependency cache on.
+\param CACHE_NAME (optional) If not specified, the active dependency cache for the target reverts back to the global DEPCACHE.  If specified, the \c TARGETS use \c CACHE_NAME as their new dependency cache.
+
+\code
+    # Use the platform dependency cache.
+    UseDepCache $(TARGETS) : platform ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_UseFileCache rule UseFileCache TARGETS [ : CACHE_NAME ] ;
+\addindex rule_UseFileCache
+
+If the given generated \c TARGETS are already built and stored within the file cache \c CACHE_NAME, they are retrieved via a simple file copy, and no further build steps are initiated.  If the \c TARGETS are not in the file cache, they are first generated locally via the prescribed build steps and then copied to the cache to be used in a future build.
+
+\param TARGETS One or more targets to use the file cache for.
+\param CACHE_NAME (optional) If not specified, defaults to \c generic.
+
+\code
+    # Assign image.tga to the 'generic' file cache.
+    UseFileCache image.tga ;
+
+    # Assign image2.tga to the 'weapons' file cache.
+    UseFileCache image2.tga : weapons ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_UseMD5Callback rule UseMD5Callback TARGETS [ : MD5_CALLBACK ] ;
+\addindex rule_UseMD5Callback
+
+When a callback is assigned to \c TARGETS, a Lua function of the name specified in the parameter \c MD5_CALLBACK is called.  It calculates the MD5 of the target and returns it.
+
+\param TARGETS One or more targets to assign an MD5 callback to.
+\param MD5_CALLBACK The name of a Lua function accepting a single parameter, the bound name of the target, and returning the md5sum.
+
+\code
+    # Use the Lua function md5png to calculate the md5 for file1.png.
+    UseMD5Callback file1.png : md5png ;
+\endcode
+
+
+
+
+
+
+<hr>
+\section rule_W32_GETREG rule W32_GETREG KEYS ;
+\addindex rule_W32_GETREG
+
+Returns a registry entry, given a list of \c KEYS.
+
+\param KEYS A list of keys to look up in the registry.  The first key may be one of the following:
+
+- HKEY_LOCAL_MACHINE
+- HKEY_CURRENT_USER
+- HKEY_CLASSES_ROOT
+
+\return Returns the found registry entry.  If no registry entry was found, an empty list is returned.
+
+\code
+    local key = HKEY_LOCAL_MACHINE SOFTWARE Microsoft VisualStudio 9.0 InstallDir ;
+    MSVCNT = [ W32_GETREG $(key) ] ;
+\endcode
+
+
+
+
+
+
+<hr>
+*/
+

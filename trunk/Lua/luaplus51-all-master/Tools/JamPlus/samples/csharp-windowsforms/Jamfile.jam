@@ -1,0 +1,36 @@
+IncludeModule csharp ;
+
+PROPERTIES_SRCS =
+		Properties/AssemblyInfo.cs
+		Properties/Resources.Designer.cs
+		Properties/Settings.Designer.cs
+;
+
+
+SRCS =
+		Form1.cs
+		Form1.Designer.cs
+		Program.cs
+		$(PROPERTIES_SRCS)
+;
+
+
+SourceGroup WindowsFormsApplication : Properties : $(PROPERTIES_SRCS) ;
+
+
+CSharp.CscDefines WindowsFormsApplication : OUCH ;
+
+
+CSharp.ReferenceAssemblies WindowsFormsApplication :
+		System.Core.dll
+		System.Data.DataSetExtensions.dll
+		System.Data.dll
+		System.dll
+		System.Drawing.dll
+		System.Windows.Forms.dll
+		System.Xml.dll
+		System.Xml.Linq.dll
+;
+
+
+CSharp.Application WindowsFormsApplication : $(SRCS) : windows ;

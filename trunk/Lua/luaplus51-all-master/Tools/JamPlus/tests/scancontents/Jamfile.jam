@@ -1,0 +1,25 @@
+if ! $(JAM_NO_DEP_CACHE) {
+	DEPCACHE.standard = .jamcache ;
+	DEPCACHE = standard ;
+}
+
+SubDir TOP ;
+
+GENERATED_VERSION ?= v2 ;
+
+C.ActiveTarget test ;
+
+local generated.h = [ C.GristFiles : generated.h ] ;
+CONTENTS on $(generated.h) = "extern void Print(const char*);
+" ;
+WriteFile $(generated.h) ;
+Always $(generated.h) ;
+MakeLocate $(generated.h) : . ;
+UseCommandLine $(generated.h) : $(GENERATED_VERSION) ;
+ScanContents $(generated.h) ;
+
+Depends [ C.GristFiles : main.c ] : $(generated.h) ;
+
+C.Clean : $(generated.h) ;
+
+C.Application : main.c test.c ;

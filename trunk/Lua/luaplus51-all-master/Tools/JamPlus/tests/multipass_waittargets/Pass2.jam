@@ -1,0 +1,15 @@
+Echo Pass 2 ;
+
+actions WriteFile
+{
+	^^($(1)|$(CONTENTS)) ;
+}
+
+CONTENTS on originalfile.txt = "originalfile.txt written..." ;
+WriteFile originalfile.txt ;
+
+#Always originalfile.txt ;
+Clean clean : originalfile.txt ;
+
+# Generate the copiedfile.txt from originalfile.txt.
+Copy copiedfile.txt : originalfile.txt ;

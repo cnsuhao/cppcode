@@ -1,0 +1,31 @@
+DEPCACHE.standard ?= .jamcache ;
+DEPCACHE ?= standard ;
+
+SubDir TOP ;
+
+C.ActiveTarget platform ;
+
+SRCS =
+		platform.c
+;
+
+switch $(PLATFORM) {
+	case win32 :
+		C.Defines : USING_WIN32 ;
+		SRCS += win32.c ;
+	case macosx32 :
+		C.Defines : USING_MACOSX ;
+		SRCS += macosx.c ;
+	case linux32 :
+		C.Defines : USING_LINUX ;
+		SRCS += linux.c ;
+}
+
+switch $(CONFIG) {
+	case debug :
+		SRCS += filedebug.c ;
+	case release :
+		SRCS += filerelease.c ;
+}
+
+C.Application : $(SRCS) ;

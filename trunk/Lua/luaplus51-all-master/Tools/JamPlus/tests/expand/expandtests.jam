@@ -1,0 +1,212 @@
+NotFile all ;
+
+numTests = 0 ;
+numTestsPassed = 0 ;
+
+rule TestExpansion LEFT : RIGHT
+{
+	numTests = [ Math $(numTests) + 1 ] ;
+	if $(LEFT) = $(RIGHT)
+	{
+#		Echo pass: $(LEFT) ;
+		numTestsPassed = [ Math $(numTestsPassed) + 1 ] ;
+	}
+	else
+	{
+		Echo "fail: $(LEFT) \!\= $(RIGHT)" ;
+	}
+}
+
+NEWLINE = "
+" ;
+
+rule TestWildcard ACTUAL : EXPECTED
+{
+	local _expected ;
+	for _expected in $(EXPECTED)
+	{
+		if ! ( $(_expected) in $(ACTUAL) )
+		{
+			Echo "fail: $(ACTUAL) \!\= $(EXPECTED)"$(NEWLINE) ;
+			return ;
+		}
+	}
+#	Echo pass: $(ACTUAL) ;
+}
+
+
+#------------------------------------------------------------------------------
+var = ab cd ef gh ij kl ;
+TestExpansion $(var) : ab cd ef gh ij kl ;
+TestExpansion $(var[0]) : ab ;
+TestExpansion $(var[1]) : ab ;
+TestExpansion $(var[2]) : cd ;
+TestExpansion $(var[6]) : kl ;
+TestExpansion $(var[7]) : ;
+
+TestExpansion $(var[1-]) : ab cd ef gh ij kl ;
+TestExpansion $(var[2-]) : cd ef gh ij kl ;
+TestExpansion $(var[6-]) : kl ;
+TestExpansion $(var[7-]) : ;
+
+TestExpansion $(var[1-7]) : ab cd ef gh ij kl ;
+TestExpansion $(var[2-6]) : cd ef gh ij kl ;
+TestExpansion $(var[3-5]) : ef gh ij ;
+TestExpansion $(var[6-4]) : kl ;
+
+#------------------------------------------------------------------------------
+TestExpansion $(VAR:E=**empty**) : **empty** ;
+
+EMPTY_TEXT = some empty text ;
+TestExpansion $(VAR:E=$(EMPTY_TEXT)) : some empty text ;
+TestExpansion $(VAR[2]:E=$(EMPTY_TEXT)) : some empty text ;
+
+TestExpansion $(VAR:E=empty:US=.txt) : EMPTY.TXT ;
+
+#------------------------------------------------------------------------------
+list = list of characters to put stuff in between ;
+local var1 = $ ;
+local var2 = (list) ;
+local var1_var2 = $(var1)$(var2) ;
+TestExpansion $(var1_var2) : $(var1)$(var2) ;
+TestExpansion $(var1_var2:A) : $(list) ;
+TestExpansion @($(var1)$(var2):A) : $(list) ;
+
+#------------------------------------------------------------------------------
+FILE = somefile.txt ;
+TestExpansion $(FILE:T) : somefile.txt ;
+
+FILE2 = somefile2.txt ;
+LOCATE on $(FILE2) = /somewhere/on/the/hard/drive ;
+TestExpansion $(FILE2:T) : /somewhere/on/the/hard/drive/somefile2.txt ;
+
+FILE3 = somefile3.txt ;
+BINDING on $(FILE3) = newname.txt ;
+LOCATE on $(FILE3) = /somewhere/on/the/hard/drive ;
+TestExpansion $(FILE3:T) : /somewhere/on/the/hard/drive/newname.txt ;
+
+FILE4 = somefile4.txt ;
+SEARCH on $(FILE4) = data ;
+LOCATE on $(FILE4) = /somewhere/on/the/hard/drive ;
+TestExpansion $(FILE4:T) : /somewhere/on/the/hard/drive/somefile4.txt ;
+
+FILE5 = somefile5.txt ;
+SEARCH on $(FILE5) = data ;
+TestExpansion $(FILE5:T) : data/somefile5.txt ;
+
+#------------------------------------------------------------------------------
+FILENAME = <thegrist>c:/some/directory/filename.txt ;
+TestExpansion $(FILENAME:B) : filename ;
+TestExpansion $(FILENAME:B=anothername) : <thegrist>c:/some/directory/anothername.txt ;
+TestExpansion $(FILENAME:S) : .txt ;
+TestExpansion $(FILENAME:S=.dat) : <thegrist>c:/some/directory/filename.dat ;
+TestExpansion $(FILENAME:BS) : filename.txt ;
+TestExpansion $(FILENAME:B=anothername:S=.dat) : <thegrist>c:/some/directory/anothername.dat ;
+TestExpansion $(FILENAME:M) : ;
+TestExpansion @(archive(member):M) : (member) ;
+TestExpansion @(archive(member):M=anothermember) : archive(anothermember) ;
+TestExpansion $(FILENAME:D) : c:/some/directory ;
+TestExpansion $(FILENAME:D=/usr/local/bin) : <thegrist>/usr/local/bin/filename.txt ;
+TestExpansion $(FILENAME:P) : <thegrist>c:/some/directory ;
+TestExpansion @($(FILENAME:P):P) : <thegrist>c:/some ;
+
+TestExpansion $(FILENAME:G) : <thegrist> ;
+TestExpansion $(FILENAME:G=anothergrist) : <anothergrist>c:/some/directory/filename.txt ;
+
+NEW_ROOT = d:/root/directory ;
+if $(OS) = NT
+{
+	TestExpansion $(FILENAME:R="d:/root/directory") : <thegrist>c:/some/directory/filename.txt ;
+}
+TestExpansion @(filename.txt:R=$(NEW_ROOT)) : d:/root/directory/filename.txt ;
+
+TestExpansion @(lowercase_now_uppercase:U) : LOWERCASE_NOW_UPPERCASE ;
+TestExpansion @(UPPERCASE_NOW_LOWERCASE:L) : uppercase_now_lowercase ;
+
+TestExpansion @(backslash\\path\\:/) : backslash/path/ ;
+TestExpansion $(FILENAME:\\) : <thegrist>c:\\some\\directory\\filename.txt ;
+
+TestExpansion $(FILENAME:DBS) : c:/some/directory/filename.txt ;
+
+VAR = /home/stuff/file.txt ;
+TestExpansion $(VAR:DB:U) : /HOME/STUFF/FILE ;
+
+#------------------------------------------------------------------------------
+TestWildcard @(../sharedlib/app/*:WBS) : Jamfile.jam main.c ;
+TestWildcard @(@(../sharedlib/app/*:W):BS) : Jamfile.jam main.c ;
+
+TestWildcard @(../sharedlib/app/**:WB=more\\dir\\file:\\) :
+		..\\sharedlib\\app\\more\\dir\\file.jam
+		..\\sharedlib\\app\\more\\dir\\file.c
+;
+
+TestWildcard @(../sharedlib/app/**:W=../sharedlib/:B=more\\dir\\file:\\) :
+		app\\more\\dir\\file.jam
+		app\\more\\dir\\file.c
+;
+
+#------------------------------------------------------------------------------
+top = AppRoot ;
+jamfile = Jamfile.jam ;
+TestExpansion included_$(top:J=_)_$(jamfile) : included_AppRoot_Jamfile.jam ;
+
+#------------------------------------------------------------------------------
+top = AppRoot With Directories ;
+jamfile = SomeFile.jam ;
+TestExpansion included_$(top:J=_)_$(jamfile) : included_AppRoot_With_Directories_SomeFile.jam ;
+
+#------------------------------------------------------------------------------
+TestExpansion $(list:J=!) : list!of!characters!to!put!stuff!in!between ;
+
+#------------------------------------------------------------------------------
+FILES = file1.c file2.c file3.c file1.h file2.h file3.h file1.obj file2.obj file3.obj ;
+TestExpansion $(FILES:I=\\.c$) : file1.c file2.c file3.c ;
+
+TestExpansion $(FILES:I=\\.c$:I=\\.obj:X="^file1") :
+		file2.c file3.c file2.obj file3.obj ;
+
+TestExpansion $(FILES:I=\\.c$:I=\\.obj:X="^file1":X=\\.c$:I=\\.c$) :
+		file1.c file2.c file3.c file2.obj file3.obj ;
+
+TestExpansion $(FILES:I=\\.c$:I=\\.obj:X="^file1":X=\\.c$) :
+		file2.obj file3.obj ;
+
+TestExpansion $(FILES:X="^file1":X=\\.obj$:I=\\.h$) :
+		file1.h file2.h file3.h ;
+
+TEST = a b c d ;
+TestExpansion $(TEST:I=a) : a ;
+TestExpansion $(TEST:X=a) : b c d ;
+TestExpansion $(TEST:X=a:I=.*) : a b c d ;
+TestExpansion $(TEST:I=.*:X=a) : b c d ;
+
+#------------------------------------------------------------------------------
+if $(NT) {
+	local filename = this/will/have/quotes ;
+	TestExpansion $(filename:C) : \"this/will/have/quotes\" ;
+
+	TestExpansion @(HelloWorld.txt:C) : HelloWorld.txt ;
+	TestExpansion @(Hello\ World.txt:C) : "\"Hello World.txt\"" ;
+
+	local flags = "/FIHello world" ;
+	TestExpansion "-include $(flags:C)" : "-include \"/FIHello world\"" ;
+} else {
+	local filename = this/will/not/have/quotes ;
+	TestExpansion $(filename:C) : this/will/not/have/quotes ;
+
+	filename = this\\will\\have\\backslashes ;
+	TestExpansion $(filename:C) : this\\\\will\\\\have\\\\backslashes ;
+
+	TestExpansion @(HelloWorld.txt:C) : HelloWorld.txt ;
+	TestExpansion "@(Hello World.txt:C)" : "Hello\\ World.txt" ;
+
+	filename = "this filename has (parentheses)" ;
+	TestExpansion $(filename:C) : "this\\ filename\\ has\\ \\(parentheses\\)" ;
+
+	local flags = "/FIHello world" ;
+	TestExpansion "-include $(flags:C)" : "-include /FIHello\\ world" ;
+}
+
+
+#------------------------------------------------------------------------------
+Echo "Tests passed: $(numTestsPassed)/$(numTests)" ;
