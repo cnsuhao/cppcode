@@ -18,6 +18,6 @@ int main(void)
 // Function to increment a variable by 10
 int incr10(int num)            // Using the same name might help...
 {
-   num += 10;                  // Increment the caller argument – hopefully
+   num += 10;                  // Increment the caller argument ?hopefully
    return num;                 // Return the incremented value
 }
