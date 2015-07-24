@@ -32,7 +32,7 @@ CStack::~CStack()
 
 void CStack::push(int i)
 {
-   if (next < 99)
+   if (next < size)
       pList[next++] = i;
 }
 

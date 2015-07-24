@@ -1,8 +1,6 @@
 // Ex8_07.cpp : main project file.
 // A ref class with the same functionality as the Ex8_11 example in Chapter 8.
 
-#include "stdafx.h"
-
 using namespace System;
 
 ref class Box
@@ -81,6 +79,10 @@ public:
         return gcnew Box(lngth, wdth, n*hght);           // n odd
     }
 
+    // CBox multiply operator n*aBox
+    static Box^ operator*(int n, Box^ box)
+    { return box*n; }
+
     // Operator to return the free volume in a packed Box
     double operator%(Box^ box)
     { return Volume() - (this/box)*box->Volume(); }
@@ -89,13 +91,25 @@ public:
     bool operator>=(double value)
     { return value <= this; }
 
+    // Function for testing if a constant is <= a Box object
+    static bool operator<=(double value, Box^ box)
+    { return value <= box->Volume(); }
+
     // Function for testing if a Box object is <= a constant
     bool operator<=(double value)
     { return value >= this; }
 
+    // Function for testing if a constant is >= a Box object
+    static bool operator>=(double value, Box^ box)
+    { return value >= box->Volume(); }
+
     // Function for testing if a constant is > a Box object
     static bool operator>(double value, Box^ box)
     { return value > box->Volume(); }
+
+    // Function for testing if a Box object is < a constant
+    static bool operator<(Box^ box, double value)
+    { return value > box; }
 
     // Function for testing if a constant is < Box object
     static bool operator<(double value, Box^ box)
@@ -105,18 +119,6 @@ public:
     static bool operator>(Box^ box, double value)
     { return value < box; }
 
-    // Function for testing if a Box object is < a constant
-    static bool operator<(Box^ box, double value)
-    { return value > box; }
-
-    // Function for testing if a constant is >= a Box object
-    static bool operator>=(double value, Box^ box)
-    { return value >= box->Volume(); }
-
-    // Function for testing if a constant is <= a Box object
-    static bool operator<=(double value, Box^ box)
-    { return value <= box->Volume(); }
-
     // Function for testing if a constant is == Box object
     static bool operator==(double value, Box^ box)
     { return value == box->Volume(); }
@@ -124,10 +126,6 @@ public:
     // Function for testing if Box object is == a constant
     static bool operator==(Box^ box, double value)
     { return value == box; }
-
-    // CBox multiply operator n*aBox
-    static Box^ operator*(int n, Box^ box)
-    { return box*n; }
 
 private:
    
