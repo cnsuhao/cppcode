@@ -1,7 +1,6 @@
 // Ex8_16.cpp : main project file.
 // Defining and using overloaded operator
 
-#include "stdafx.h"
 using namespace System;
 
 ref class Length
