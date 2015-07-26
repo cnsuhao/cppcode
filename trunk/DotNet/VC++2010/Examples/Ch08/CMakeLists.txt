@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6.2)
 
-include(../../../clr.cmake)
 project(Ch08)
+include(../../../clr.cmake)
 
 add_executable_clr(Ex8_01 Ex8_01.cpp)
 add_executable_clr(Ex8_02 Ex8_02.cpp)
