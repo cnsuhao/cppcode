@@ -88,46 +88,46 @@ public:
 ref class Person
 {
 private:
-  Height ht;
-  Weight wt;
+  Height^ ht;
+  Weight^ wt;
 
 public:
   property String^ Name;                         // Trivial scalar property
-  Person(String^ name, Height h, Weight w) : ht(h), wt(w)
+  Person(String^ name, Height^ h, Weight^ w) : ht(h), wt(w)
   {
     Name = name;
   }
 
-  property Height height
+  property Height^ height
   {
-    Height get(){ return ht;  }
+    Height^ get(){ return ht;  }
   }
 
-  property Weight weight
+  property Weight^ weight
   {
-    Weight get(){ return wt;  }
+    Weight^ get(){ return wt;  }
   }
 };
 
 int main(array<System::String ^> ^args)
 {
-  Weight hisWeight(185, 7);
-  Height hisHeight(6, 3);
+  Weight^ hisWeight = gcnew Weight(185, 7);
+  Height^ hisHeight = gcnew Height(6, 3);
   Person^ him(gcnew Person(L"Fred", hisHeight, hisWeight));
 
-  Weight herWeight(Weight(105, 3));
-  Height herHeight(Height(5, 2));
+  Weight^ herWeight(Weight(105, 3));
+  Height^ herHeight(Height(5, 2));
   Person^ her(gcnew Person(L"Freda", herHeight, herWeight));
 
   Console::WriteLine(L"She is {0}", her->Name);
   Console::WriteLine(L"Her weight is {0:F2} kilograms.",
-                                                    her->weight.kilograms);
+                                                    her->weight->kilograms);
   Console::WriteLine(L"Her height is {0} which is {1:F2} meters.",
-                                      her->height,her->height.meters);
+                                      her->height,her->height->meters);
 
   Console::WriteLine(L"He is {0}", him->Name);
   Console::WriteLine(L"His weight is {0}.", him->weight);
   Console::WriteLine(L"His height is {0} which is {1:F2} meters.",
-                                       him->height,him->height.meters);
+                                       him->height,him->height->meters);
   return 0;
 }
