@@ -58,20 +58,25 @@ int main() {
       // We have to check that the characters before and after the word found
       // are not alphabetic, but we need to take care not to use index values
       // that are illegal - hence all the ifs.
-      if(position==0)
-      { // We are at the beginning of the text
-        if(position+wordcopy.length()==text.length())             // Check for 1 past the word being the end of the text
-          text.replace(position, wordcopy.length(), asterisks);   // Replace word
-        else if (!isalpha(textcopy[position+wordcopy.length()]))  // Check for 1 past the word not being alphabetic
-          text.replace(position, wordcopy.length(), asterisks);   // Replace word
-      }
-      else if(!isalpha(textcopy[position-1])) 
-      {
-        if(position+wordcopy.length()==text.length())             // Check for 1 past the word being the end of the text
-          text.replace(position, wordcopy.length(), asterisks);   // Replace word
-        else if (!isalpha(textcopy[position+wordcopy.length()]))  // Check for 1 past the word not being alphabetic
-          text.replace(position, wordcopy.length(), asterisks);   // Replace word
-      }
+      //if(position==0)
+      //{ // We are at the beginning of the text
+      //  if(position+wordcopy.length()==text.length())             // Check for 1 past the word being the end of the text
+      //    text.replace(position, wordcopy.length(), asterisks);   // Replace word
+      //  else if (!isalpha(textcopy[position+wordcopy.length()]))  // Check for 1 past the word not being alphabetic
+      //    text.replace(position, wordcopy.length(), asterisks);   // Replace word
+      //}
+      //else if(!isalpha(textcopy[position-1])) 
+      //{
+      //  if(position+wordcopy.length()==text.length())             // Check for 1 past the word being the end of the text
+      //    text.replace(position, wordcopy.length(), asterisks);   // Replace word
+      //  else if (!isalpha(textcopy[position+wordcopy.length()]))  // Check for 1 past the word not being alphabetic
+      //    text.replace(position, wordcopy.length(), asterisks);   // Replace word
+      //}
+        if(position==0 || !isalpha(textcopy[position-1]))
+        { // We are at the beginning of the text
+            if(position+wordcopy.length()==text.length() || !isalpha(textcopy[position+wordcopy.length()]))
+                text.replace(position, wordcopy.length(), asterisks);
+        }
       position += wordcopy.length();
     }
  
