@@ -90,22 +90,21 @@ int main()
        << "In ascending sequence, the words in the text are:"
        << endl;
 
-  size_t count(0);                               // Count of duplicate words
   // Output words and number of occurrences
-  for(size_t i = 0 ; i<nwords ; i++)
+  for(size_t i = 0 ; i<nwords ; )
   {
-    if(0 == count)
-      count = 1;
-    if(i < nwords-2 && words[i] == words[i+1])
-    {
-      ++count;
-      continue;
-    }
+      size_t count(1);                               // Count of duplicate words
+      size_t j = i + 1;
+      while (words[j] == words[i])
+      {
+          count++;
+          j++;
+      }
     cout << setiosflags(ios::left)               // Output word left-justified
          << setw(maxwidth+2) << words[i];
     cout << resetiosflags(ios::right)            // and word count right-justified
          << setw(5) << count << endl;
-    count = 0;
+    i = j;
   }
   cout << endl;
   return 0;
