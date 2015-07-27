@@ -51,6 +51,6 @@ int main()
   pM->ShowIt();              // Display 2nd message
   cout << endl;
 
-  // delete pM;              // Manually delete object created with new
+   delete pM;              // Manually delete object created with new
    return 0;
 }
