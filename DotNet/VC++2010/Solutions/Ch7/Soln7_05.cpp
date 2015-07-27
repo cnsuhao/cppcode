@@ -20,7 +20,7 @@ private:
 // Push a value on to the stack
 void CStack::push(int i)
 {
-   if (next < 99)
+   if (next < 100)
       list[next++] = i;
 }
 

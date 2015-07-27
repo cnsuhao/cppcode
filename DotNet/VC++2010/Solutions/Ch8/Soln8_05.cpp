@@ -95,8 +95,10 @@ CSimpleString CSimpleString::operator+(const CSimpleString& s)
    char* tmp = new char[length];
    strcpy_s(tmp, length, buff);
    strcat_s(tmp, length, s.buff);
+   CSimpleString hehe(tmp);
+   delete[] tmp;
 
-   return CSimpleString(tmp);
+   return hehe;
 }
 
 // Addition operator: CSimpleString object + string constant
