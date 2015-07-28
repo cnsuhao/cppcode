@@ -6,7 +6,7 @@
 template <class T> class is_negative: public std::unary_function<T, bool>
 {
   public:
-  result_type operator()(T& value)
+  result_type operator()(const T& value) const
   {
     return value<0;
   }

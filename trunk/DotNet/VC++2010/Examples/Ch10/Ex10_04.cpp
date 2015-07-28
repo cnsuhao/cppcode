@@ -28,14 +28,14 @@ int main()
 
   // Output the data using an iterator
   cout << endl << "The values you entered are:" << endl;
-  for(iter = data.begin() ; iter != data.end() ; iter++)
-    cout << *iter << "  ";
+  for(riter = data.rbegin() ; riter != data.rend() ; riter++)
+    cout << *riter << "  ";
   cout << endl;
 
   // Output the data using a reverse iterator
   cout << endl << "In reverse order the values you entered are:" << endl;
-  for(riter = data.rbegin() ; riter != data.rend() ; riter++)
-    cout << *riter << "  ";
+  for(iter = data.begin() ; iter != data.end() ; iter++)
+    cout << *iter << "  ";
 
   // Sort the data in descending sequence
   cout << endl;
