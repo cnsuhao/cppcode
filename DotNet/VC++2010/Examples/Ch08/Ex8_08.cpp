@@ -106,6 +106,7 @@ int main()
   cout << " Done!! " << endl << endl;
   cout << "motto3 contains - ";
    motto3.ShowIt();
+   CMessage motto4(std::move(motto1 + motto2));
   cout << endl;
   return 0;
 }

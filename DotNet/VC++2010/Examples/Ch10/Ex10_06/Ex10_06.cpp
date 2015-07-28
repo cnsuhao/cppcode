@@ -39,7 +39,7 @@ int main()
   loadlist(numbers);
   cout << "The list contains:" << endl;
   listlist(numbers);
-  numbers.remove_if(is_negative<int>()); 
+  numbers.remove_if(std::not1(is_negative<int>())); 
   cout << "After applying the remove_if() function the list contains:" 
        << endl;
   listlist(numbers);
@@ -64,7 +64,7 @@ int main()
   loadlist(morevalues);
   cout << "The list contains:" << endl;
   listlist(morevalues);
-  values.remove_if(is_negative<double>());        
+  morevalues.remove_if(is_negative<double>());        
   cout << "After applying the remove_if() function the list contains:" << endl;
   listlist(morevalues);
 

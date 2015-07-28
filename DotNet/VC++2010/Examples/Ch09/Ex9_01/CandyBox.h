@@ -5,6 +5,7 @@ class CCandyBox: CBox
 {
   public:
     char* m_Contents;
+    int hehe;
 
     CCandyBox(char* str = "Candy")               // Constructor
     {
