@@ -10,7 +10,6 @@
   from the input as a code value of type int. When Ctrl+Z is entered this signifies 
   end-of-file on the input stream and the function returns -1.
 */
-#include "stdafx.h"
 #include "cliext/queue"
 #include "cliext/vector"
 #include "cliext/iterator"
