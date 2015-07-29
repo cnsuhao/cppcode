@@ -4,7 +4,7 @@ generic <typename T>
 ref class List
 {
    public:
-      T Add(T t) { /* ... */ }
+      T Add(T t) { return T(); }
       void Remove(T t) { /* ...*/ }
       // other methods
 };
