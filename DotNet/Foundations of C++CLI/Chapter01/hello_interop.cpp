@@ -18,7 +18,7 @@ class HelloNative
      void Greeting()
      {
         // The C++ basic_string class contains a method that returns a
-        // “C string” of type “const char *” for the C runtime function printf.
+        // “C string?of type “const char *?for the C runtime function printf.
         printf("%s\n", s->c_str());
      }
      ~HelloNative()
