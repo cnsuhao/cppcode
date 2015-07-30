@@ -14,12 +14,14 @@ namespace NativeLib
 
     // static NativeClass* NativeClass::CreateObject();
     [DllImport( "nativeclasslib.dll", EntryPoint=
-                "?CreateObject@NativeClass@@SAPAV1@XZ" )]
+                "?CreateObject@NativeClass@@SAPAV1@XZ" ,
+    CallingConvention=CallingConvention::Cdecl )]
     extern IntPtr CreateObject();
 
     // static void NativeClass::DeleteClass( NativeClass* p )
     [ DllImport( "nativeclasslib.dll", EntryPoint=
-                 "?DeleteObject@NativeClass@@SAXPAV1@@Z" )]
+        "?DeleteObject@NativeClass@@SAXPAV1@@Z" ,
+        CallingConvention=CallingConvention::Cdecl )]
     extern void DeleteObject( IntPtr p ); 
 }
 
