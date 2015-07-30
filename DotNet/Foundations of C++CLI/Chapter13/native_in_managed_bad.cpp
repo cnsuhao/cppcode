@@ -6,12 +6,12 @@ ref class R {};
 
 class N
 {  
-   R^ r;  // illegal
+   //R^ r;  // illegal
 
    public:
       N()
       {
-          r = gcnew R();
+          //r = gcnew R();
       }
       
 }; 
