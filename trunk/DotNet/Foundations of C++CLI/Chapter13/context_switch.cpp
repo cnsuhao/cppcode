@@ -5,7 +5,7 @@
 #include <math.h>
 #include <string.h>
 
-#pragma unmanaged
+#pragma managed
 int native_function(wchar_t* str1, wchar_t* str2 )
 {
     int i = 0;
@@ -13,7 +13,7 @@ int native_function(wchar_t* str1, wchar_t* str2 )
     return i;
 }
 
-#pragma managed
+#pragma unmanaged
 
 wchar_t* random_string(wchar_t* wcs, int n)
 {
@@ -24,7 +24,7 @@ wchar_t* random_string(wchar_t* wcs, int n)
    return wcs;
 }
 // try commenting out the pragma above random_string and uncomment this:
-// #pragma managed
+ #pragma managed
 
 int main()
 {

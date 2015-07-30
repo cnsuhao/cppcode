@@ -54,7 +54,7 @@ public ref class MessageBoxWrapper
        {
            wchar_t* caption = MarshalString(s, maxSize);
            nativeMessageBox->SetCaption( caption );
-           delete caption;
+           delete caption; 
        }
    }
    property String^ Message
@@ -66,7 +66,7 @@ public ref class MessageBoxWrapper
        void set(String^ s)
        {
            wchar_t* msg = MarshalString(s, maxSize);
-           nativeMessageBox->SetMessage( MarshalString(s, maxSize) );
+           nativeMessageBox->SetMessage( msg );
            delete msg;
        }
    }
