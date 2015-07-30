@@ -34,13 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Test\message_box_wrapper_marshaling\message_box_wrapper_marshaling.vcxproj">
-      <Project>{EBE68179-5D10-4D76-A9A8-57DBD7F7D493}</Project>
-      <Name>message_box_wrapper_marshaling</Name>
-    </ProjectReference>
+    <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Reference Include="message_box_wrapper">
+      <HintPath>..\VS2010\Debug\message_box_wrapper.exe</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
