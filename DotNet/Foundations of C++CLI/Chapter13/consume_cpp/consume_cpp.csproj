@@ -34,13 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Test\global_function\global_function.vcxproj">
-      <Project>{AA8ECCDE-A77A-4460-8CBE-F52D55AFACAF}</Project>
-      <Name>global_function</Name>
-    </ProjectReference>
+    <Compile Include="consume_cpp.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="consume_cpp.cs" />
+    <Reference Include="global_function">
+      <HintPath>..\VS2010\Debug\global_function.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
