@@ -37,9 +37,10 @@
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="message_box_wrapper">
-      <HintPath>..\VS2010\Debug\message_box_wrapper.exe</HintPath>
-    </Reference>
+    <ProjectReference Include="..\message_box_wrapper\message_box_wrapper.vcxproj">
+      <Project>{B8716293-C208-4040-95A4-7B6FA2A20BD5}</Project>
+      <Name>message_box_wrapper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
