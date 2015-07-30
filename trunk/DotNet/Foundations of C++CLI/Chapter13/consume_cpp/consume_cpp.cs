@@ -9,5 +9,5 @@ class C
    {
       // FGlobal();    // error: global functions not available in C#
       R.FMember();     // OK
-   }  
+   } 
 };
