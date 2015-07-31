@@ -4,6 +4,6 @@ using namespace System;
 
 int main()
 {
-   String s = "test"; // error
-   array<int> a;  // error
+   String^ s = "test"; // error
+   array<int>^ a;  // error
 }

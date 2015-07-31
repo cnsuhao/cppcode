@@ -11,5 +11,5 @@ int main()
 {
   int i = f<int>();  // OK
   String^ s = f<String^>();  // OK
-  double d = f(); // Error! Can't deduce type.
+  //double d = f(); // Error! Can't deduce type.
 }

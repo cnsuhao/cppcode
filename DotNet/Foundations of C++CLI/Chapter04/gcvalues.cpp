@@ -29,7 +29,7 @@ int main()
     int& i3 = i;  // native reference: an lvalue
     int% i4 = i;  // tracking reference: lvalues can be assigned gc-rvalues
     int& i5 = v.i; // OK: v.i is a stack-based object
-    int& i6 = r.m_v.i; // Illegal: r is a managed heap-based object
+    //int& i6 = r.m_v.i; // Illegal: r is a managed heap-based object
     i4 = v.i;  // OK: i4 is a gc-lvalue
 
     R^ r1, ^r2;    // r1 and r2 are gc-lvalues

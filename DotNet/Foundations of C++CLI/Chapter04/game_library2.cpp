@@ -1,8 +1,8 @@
 // game_library.cpp
-ref class GameObject
+public ref class GameObject
 {
    public:
-      void Initialize();
+      void Initialize() {}
       virtual void Read() { /* read data from file */ }
       virtual void Write() { /* write data to file */ }
 };

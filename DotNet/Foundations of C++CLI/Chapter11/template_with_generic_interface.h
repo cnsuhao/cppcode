@@ -1,6 +1,6 @@
 // template_with_generic_interface.h
 
-#using "generic_interface.dll"
+//#using "generic_interface.dll"
 
 template <typename T>
 ref class CTemplate : IGInterface<T>
