@@ -37,7 +37,8 @@ ref class TreeSpecies
      {
          String^ botanicalName = gcnew String(genus + " " + species);
 
-         const wchar_t* str = marshal_as<const wchar_t*>(botanicalName);
+         marshal_context context;
+         const wchar_t* str = context.marshal_as<const wchar_t*>(botanicalName);
          treedata = new PlantData(str);
 
      }

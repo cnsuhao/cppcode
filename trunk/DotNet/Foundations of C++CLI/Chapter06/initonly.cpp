@@ -14,7 +14,7 @@ ref class R
 
    void Print()
    {
-       name = "Bob Jones";        // error!
+       //name = "Bob Jones";        // error!
        Console::WriteLine(name);  // OK
    }
 };

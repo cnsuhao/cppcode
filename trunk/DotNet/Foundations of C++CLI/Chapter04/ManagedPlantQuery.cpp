@@ -16,6 +16,7 @@ ref class DBConnection
           // query the database, generate recordset
           // and return handle to recordset
           // ...
+          return nullptr;
       }
       ~DBConnection()
       {

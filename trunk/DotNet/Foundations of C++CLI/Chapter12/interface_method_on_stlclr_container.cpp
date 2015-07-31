@@ -10,7 +10,7 @@ int main()
    {
        (*v)[i] = i;
    }
-   v->Add(11);  // Error: candidate function not accessible
+   //v->Add(11);  // Error: candidate function not accessible
    for each (int i in v)
    {
         Console::Write("{0} ", i);

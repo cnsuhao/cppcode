@@ -1,8 +1,8 @@
 // stl_simple2.cpp
 
-#include <list>
+#include <cliext/list>
 
-using namespace std;
+using namespace cliext;
 using namespace System;
 
 typedef list<String^> StringList;

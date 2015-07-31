@@ -11,4 +11,5 @@ value class ElementType
 double ElementType::AtomicWeight::get()
 {
    // same implementation as before
+    return 0;
 }

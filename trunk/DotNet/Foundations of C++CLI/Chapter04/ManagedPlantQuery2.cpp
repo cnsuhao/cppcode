@@ -1,7 +1,11 @@
 // ManagedPlantQuery2.cpp
 using namespace System;
 
-ref class Recordset;
+ref class Recordset
+{
+public:
+    Recordset() {}
+};
 
 ref class DBConnection
 {
