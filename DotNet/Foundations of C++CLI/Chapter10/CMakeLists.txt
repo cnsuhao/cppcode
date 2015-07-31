@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 2.6.2)
+
+project(Ch10)
+
+include(../../clr.cmake)
+
+add_executable_clr(appdomain_execute_assembly appdomain_execute_assembly.cpp)
+add_library_clr(custom_attribute custom_attribute.cpp)
+add_executable_clr(custom_attributes2 custom_attributes2.cpp)
+add_executable_clr(exception exception.cpp)
+add_executable_clr(exceptions_ctor exceptions_ctor.cpp)
+add_executable_clr(exceptions_custom exceptions_custom.cpp)
+add_executable_clr(exception_properties exception_properties.cpp)
+add_executable_clr(finally_block finally_block.cpp)
+add_executable_clr(multiple_finally_blocks multiple_finally_blocks.cpp)
+add_executable_clr(obsolete obsolete.cpp)
+add_library_clr(outattribute outattribute.cpp)
+add_executable_clr(reflection2 reflection2.cpp)
+add_executable_clr(reflection_general reflection_general.cpp)
+add_library_clr(return_value_attribute return_value_attribute.cpp)
+add_executable_clr(serialization serialization.cpp)
+add_executable_clr(throw_string throw_string.cpp)
