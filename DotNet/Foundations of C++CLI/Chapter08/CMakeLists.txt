@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 2.6.2)
+
+project(Ch08)
+
+include(../../clr.cmake)
+
+add_library_clr(game_library game_library.cpp)
+add_library_clr(virtual_properties virtual_properties.cpp)
+add_library_clr(sealed sealed.cpp)
+add_library_clr(abstract_classes abstract_classes.cpp)
+add_executable_clr(abstract_sealed abstract_sealed.cpp)
+add_executable_clr(checking_casts checking_casts.cpp)
+add_library_clr(client_game client_game.cpp)
+add_reference(client_game game_library)
+add_executable_clr(constructor_inheritance constructor_inheritance.cpp)
+add_executable_clr(constructor_order constructor_order.cpp)
+add_executable_clr(destructors_and_inheritance destructors_and_inheritance.cpp)
+add_executable_clr(explicit_override explicit_override.cpp)
+add_executable_clr(finalizers_and_inheritance finalizers_and_inheritance.cpp)
+add_executable_clr(native_managed_virtual native_managed_virtual.cpp)
+add_executable_clr(new_method new_method.cpp)
+add_executable_clr(override override.cpp)
+add_executable_clr(virtual_properties2 virtual_properties2.cpp)
