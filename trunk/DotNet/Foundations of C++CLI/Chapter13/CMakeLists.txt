@@ -4,7 +4,6 @@ project(Ch13)
 
 include(../../clr.cmake)
 
-add_executable_clr(auto_gcroot auto_gcroot.cpp)
 add_executable_clr(context_switch context_switch.cpp)
 add_executable_clr(gc_hole gc_hole.cpp)
 add_executable_clr(getlasterror getlasterror.cpp)
@@ -22,8 +21,12 @@ add_executable_clr(pinvoke_thiscall pinvoke_thiscall.cpp)
 add_dependencies(pinvoke_thiscall nativeclasslib)
 add_executable_clr(try_except try_except.cpp)
 
+add_library_clr(auto_gcroot auto_gcroot.h auto_gcroot.cpp)
 add_library(nativeclasslib SHARED nativeclasslib.cpp)
 add_library_clr(global_function global_function.cpp)
 add_library_clr(interface_example interface_example.cpp)
 add_library_clr(interior_ptr interior_ptr.cpp)
 add_library_clr(native_in_managed_bad native_in_managed_bad.cpp)
+
+add_executable(nativecallmanage nativecallmanage.cpp)
+target_link_libraries(nativecallmanage auto_gcroot)
