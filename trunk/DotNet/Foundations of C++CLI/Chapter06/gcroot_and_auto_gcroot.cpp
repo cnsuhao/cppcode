@@ -44,7 +44,9 @@ class N
 
 int main()
 {
-   N n;
-   // when n goes out of scope, the destructor for the auto_gcroot object
-   // will be executed, but not the gcroot object
+    {
+       N n;
+       // will be executed, but not the gcroot object
+       // when n goes out of scope, the destructor for the auto_gcroot object
+    }
 }

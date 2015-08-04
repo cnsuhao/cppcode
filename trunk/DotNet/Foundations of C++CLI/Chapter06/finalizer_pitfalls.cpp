@@ -15,7 +15,7 @@ ref class DataConnection
    {
       conn = gcnew SqlConnection(
              "Server=(local);Uid=sa;Pwd=****;Initial Catalog=master");
-      conn->Open();
+      //conn->Open();
    }
 
    // ... more code ...
