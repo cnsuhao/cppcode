@@ -19,7 +19,11 @@ ref class Events
       {
           Exit(this, gcnew EventArgs());
       }
+};
 
+ref class Receiver
+{
+public:
       // event handler for Start event
       void OnStart(Object^ sender, EventArgs^ args)
       {
@@ -48,14 +52,14 @@ int main()
 {
 
     Events^ events = gcnew Events();
-
+    Receiver^ receiver = gcnew Receiver();
     // add the event handlers for Start and Exit
-    events->Start += gcnew EventHandler(events, &Events::OnStart);
-    events->Exit += gcnew EventHandler(events, &Events::OnExit);
+    events->Start += gcnew EventHandler(receiver, &Receiver::OnStart);
+    events->Exit += gcnew EventHandler(receiver, &Receiver::OnExit);
 
     f(events);
 
     // remove the event handlers
-    events->Start -= gcnew EventHandler(events, &Events::OnStart);
-    events->Exit -= gcnew EventHandler(events, &Events::OnExit);
+    events->Start -= gcnew EventHandler(receiver, &Receiver::OnStart);
+    events->Exit -= gcnew EventHandler(receiver, &Receiver::OnExit);
 }
