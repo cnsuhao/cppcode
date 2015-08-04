@@ -22,6 +22,7 @@ class FileNative
       if (err)
       {
          printf("Error opening file %s. Error code %d.\n", filename, err);
+         exit(-1);
       }
    }
 
