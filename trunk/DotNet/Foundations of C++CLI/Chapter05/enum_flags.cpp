@@ -53,5 +53,6 @@ int main()
    Display::SetFont(gcnew Font("Helvetica"),
         FontFormat::ITALIC | FontFormat::FLASHING );
 
+   Console::WriteLine(FontFormat::ITALIC);
    Console::WriteLine(FontFormat::ITALIC | FontFormat::FLASHING);
 }

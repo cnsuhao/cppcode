@@ -6,6 +6,9 @@ int main()
 {
 
    String^ filename = "textfile.txt";
+   StreamWriter writer = File::OpenWrite(filename);
+   writer.WriteLine("hehe");
+   writer.Close();
    try
    {
       // Another way of creating a StreamReader class is with
