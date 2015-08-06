@@ -9,7 +9,7 @@ ref class Derived : Base {} ;
 int main()
 {
 
-Base^ b = gcnew Derived();
+Base^ b = gcnew Base();
 Derived^ d = gcnew Derived();
 // using safe_cast
 try
