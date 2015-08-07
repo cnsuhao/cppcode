@@ -1,7 +1,7 @@
 // enum_flags.cpp
 using namespace System;
 
-// [ Flags ]
+ [ Flags ]
 enum class FontFormat
 {
     None = 0,  // No flags set.
