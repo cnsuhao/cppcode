@@ -115,6 +115,7 @@ ref class FileConverter
    !FileConverter()
    {
       fileNative->Close();
+      delete fileNative;
    }
 
 };
