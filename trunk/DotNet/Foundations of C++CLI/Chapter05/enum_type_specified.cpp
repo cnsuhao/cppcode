@@ -12,6 +12,6 @@ int main()
 {
    char c1 = 13;
    char c2 = 156;
-   Ordinal ord1 = safe_cast<Ordinal>(c1);
+   Ordinal ord1 = safe_cast<Ordinal>(c2);
    Console::WriteLine(ord1.ToString());
 }

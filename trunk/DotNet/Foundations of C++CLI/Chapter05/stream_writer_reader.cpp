@@ -21,5 +21,8 @@ int main()
    while ((line = sr->ReadLine()) != nullptr)
    {
       Console::WriteLine(line);
+      sw2->WriteLine(line);
    }
+   sw2->Flush();
+   sw2->Close();
 }
