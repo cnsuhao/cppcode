@@ -52,14 +52,15 @@ void try_except(bool bThrowUnhandledAV)
 
 #pragma managed
 
+enum class Params
+{
+    NET, SEH, AV
+};
 int main(array<String^>^ args)
 {
-   if (args->Length < 1)
-   {
-     Console::WriteLine("Usage: try_except [NET|SEH|AV]");
-     return -1;
-   }
-   if (args[0] == "NET") // Demonstrate catching SEH as a .NET Exception
+    Params hehe = Params::AV;
+   
+   if (hehe == Params::NET) // Demonstrate catching SEH as a .NET Exception
    {
       try
       {
@@ -70,13 +71,13 @@ int main(array<String^>^ args)
          Console::WriteLine(e->ToString());
       }
    }
-   else if (args[0] == "SEH")  // Demonstrate handling SEH exception natively
+   else if (hehe == Params::SEH)  // Demonstrate handling SEH exception natively
    {
       // call native function with try/except block
       // and filters out division by zero exceptions
       try_except(false);
    }
-   else if (args[0] == "AV")  // Demonstrate filtering of what exceptions to handle
+   else if (hehe == Params::AV)  // Demonstrate filtering of what exceptions to handle
                               // natively and what to allow through
    {
      try 
