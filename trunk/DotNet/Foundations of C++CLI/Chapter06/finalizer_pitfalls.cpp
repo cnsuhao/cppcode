@@ -22,6 +22,7 @@ ref class DataConnection
 
    ~DataConnection()
    {
+       Console::WriteLine("DataConnection destructor...");
       this->!DataConnection();
    }
 
@@ -52,4 +53,5 @@ int main()
    UseData();
    // Force a garbage collection, to illustrate a point
    GC::Collect();
+   GC::WaitForPendingFinalizers();
 }

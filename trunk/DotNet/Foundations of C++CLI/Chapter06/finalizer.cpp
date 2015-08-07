@@ -24,9 +24,10 @@ void MakeObjects()
 
 int main()
 {
-   MakeObjects();
-   // Normally, you should avoid calling GC::Collect and forcing garbage
-   // collection rather than letting the garbage collection thread determine
-   // the best time to collect; I do it here to illustrate a point
-   GC::Collect();
+    MakeObjects();
+    // Normally, you should avoid calling GC::Collect and forcing garbage
+    // collection rather than letting the garbage collection thread determine
+    // the best time to collect; I do it here to illustrate a point
+    GC::Collect();
+    GC::WaitForPendingFinalizers();
 }
