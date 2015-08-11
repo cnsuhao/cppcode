@@ -48,14 +48,15 @@ ref class A
 
 int main()
 {
-   //try
-   //{
+   try
+   {
       A a;
       a.F();  // never reached
-   //}
-   //catch( Exception^ e)
-   //{
-   //   Console::WriteLine("In catch block.");
-   //}
-
+   }
+   catch( Exception^ e)
+   {
+      Console::WriteLine("In catch block.");
+   }
+   GC::Collect();
+   GC::WaitForPendingFinalizers();
 }
