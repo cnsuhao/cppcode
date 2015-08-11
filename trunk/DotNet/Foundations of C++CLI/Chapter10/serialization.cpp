@@ -6,10 +6,10 @@ using namespace System::IO;
 using namespace System::Xml::Serialization;
 
 // To participate in serialization, types must be public.
-[Serializable]
+//[Serializable]
 public enum class SunEnum { FullSun, PartShade, Shade };
 
-[Serializable]
+//[Serializable]
 public enum class WaterEnum { Moist, Medium, Dry };
 
 [ Serializable]
@@ -41,7 +41,7 @@ public ref class Plant
    Plant(String^ genus, String^ species, String^ commonName,
          String^ cultivar, SunEnum sun, WaterEnum water, int zone)
    {
-       Genus = genus; Species = species; Cultivar = cultivar;
+       Genus = genus; Species = species; CommonName = commonName; Cultivar = cultivar;
        Sun = sun; Water = water; Zone = zone;
        InstanceID = counter++;
    }
