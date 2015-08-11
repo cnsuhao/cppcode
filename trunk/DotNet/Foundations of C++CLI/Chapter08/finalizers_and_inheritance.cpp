@@ -42,4 +42,5 @@ int main()
    // Force a collection of dh: finalizer only, not
    // the destructor.
    GC::Collect();
+   GC::WaitForPendingFinalizers();
 }
