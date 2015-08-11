@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D06957EB-C0F8-48D5-817A-A4BF20FDD474}</ProjectGuid>
+    <ProjectGuid>{D207B97A-2F48-49C0-844C-6947A5C8AD18}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>custom_attributes</RootNamespace>
-    <AssemblyName>custom_attributes</AssemblyName>
+    <RootNamespace>consume_outattr</RootNamespace>
+    <AssemblyName>consume_outattr</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -34,23 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="consume_outattr.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\outattribute\outattribute.vcxproj">
-      <Project>{C1B59FC5-0C30-4236-A37E-1FC5C286C6A4}</Project>
-      <Name>outattribute</Name>
-    </ProjectReference>
+    <Reference Include="outattribute">
+      <HintPath>..\..\VS2010\Debug\outattribute.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

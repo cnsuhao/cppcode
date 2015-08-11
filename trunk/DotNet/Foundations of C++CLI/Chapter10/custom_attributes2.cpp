@@ -14,6 +14,11 @@ public ref class OwnerAttribute : Attribute
 
       OwnerAttribute() { }
 
+      virtual String^ ToString() override
+      {
+          return DevOwner + " " + TestOwner;
+      }
+
 };
 
 // Using named parameters
