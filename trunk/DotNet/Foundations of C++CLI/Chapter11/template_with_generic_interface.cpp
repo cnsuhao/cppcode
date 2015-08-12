@@ -1,7 +1,5 @@
 // template_with_generic_interface.cpp
 
-#include "template_with_generic_interface.h"
-
 using namespace System;
 
 public ref class CBridge
