@@ -22,6 +22,7 @@ void main ()
     (*ip) = 5;
 
 //  incr( ip );            // invalid 
+    Console::WriteLine ( test->i );
 
     pin_ptr<int> i = ip;   // i is a pinned int pointer
 
