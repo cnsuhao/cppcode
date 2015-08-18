@@ -56,7 +56,7 @@ void main ()
     Console::WriteLine ( vtest->i );
 
 
-    array<Byte>^ arr = gcnew array<Byte> {'M', 'C', '+', '+'};
+    array<Byte>^ arr = gcnew array<Byte> {'M', 'C', '+', '+', '\0'};
 
     pin_ptr<Byte> p = &arr[1];  // ENTIRE array is pinned
     unsigned char *cp = p;
