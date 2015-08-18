@@ -40,4 +40,6 @@ void main()
     printf("Unmanaged Print %d\n", umc->mclass->x);
 
     delete umc;
+    GC::Collect();
+    GC::WaitForPendingFinalizers();
 }
