@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 2.6.2)
+
+project(Ch04)
+
+include(../../clr.cmake)
+set(deb_info_temp ../../VisualStudioUserFile.vcxproj.user.in)
+
+add_library_clr(Cards Cards/Card.cpp Cards/Card.h Cards/Deck.cpp Cards/Deck.h)
+add_executable_clr(CatchAll ${deb_info_temp} CatchAll.cpp)
+add_executable_clr(CatchException ${deb_info_temp} CatchException.cpp)
+add_executable_clr(Defined ${deb_info_temp} Defined.cpp)
+add_executable_clr(Delegates ${deb_info_temp} Delegates.cpp)
+add_executable_clr(Events ${deb_info_temp} Events.cpp)
+add_executable_clr(Finally ${deb_info_temp} Finally.cpp)
+add_executable_clr(Generics ${deb_info_temp} Generics.cpp)
+add_executable_clr(MultiException ${deb_info_temp} MultiException.cpp)
+add_executable_clr(PlayCards ${deb_info_temp} PlayCards.cpp)
+add_reference(PlayCards Cards)
+add_executable_clr(RethrowException ${deb_info_temp} RethrowException.cpp)
+add_executable_clr(Templates ${deb_info_temp} Templates.cpp)
+add_executable_clr(ThrowDerived ${deb_info_temp} ThrowDerived.cpp)
