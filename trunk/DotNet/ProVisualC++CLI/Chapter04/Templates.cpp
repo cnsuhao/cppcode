@@ -80,7 +80,7 @@ void main()
     String^ d = "Hi";
 
     Console::WriteLine("The min of {0} and {1} is {2}", a, b, min(a,b));
-    Console::WriteLine("The min of {0} and {1} is {2}", a, d, min(a,d));
+    //Console::WriteLine("The min of {0} and {1} is {2}", a, d, min(a,d));
     Console::WriteLine("The min of {0} and {1} is {2}", a, c, min<double>(a,c));
 
     Console::WriteLine("----------------------------");

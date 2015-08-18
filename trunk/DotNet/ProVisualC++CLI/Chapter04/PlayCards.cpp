@@ -1,5 +1,3 @@
-#using <cards.dll> 
-
 using namespace System;
 using namespace Cards;
 
