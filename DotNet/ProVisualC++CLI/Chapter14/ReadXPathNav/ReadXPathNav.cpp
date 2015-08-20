@@ -40,7 +40,7 @@ void main()
     XmlDocument ^doc = gcnew XmlDocument();
     try
     {
-        doc->Load("..\\Monsters.xml");
+        doc->Load("..\\..\\Monsters.xml");
         XPathNavigator ^nav = doc->CreateNavigator();
         nav->MoveToRoot();
         Navigate(nav, 0);

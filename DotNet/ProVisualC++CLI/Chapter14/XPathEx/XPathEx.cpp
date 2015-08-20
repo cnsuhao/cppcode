@@ -77,7 +77,7 @@ void main()
 
     try
     {
-        doc->Load("..\\Monsters.xml");
+        doc->Load("..\\..\\Monsters.xml");
         XPathNavigator ^nav = doc->CreateNavigator();
         nav->MoveToRoot();
 
