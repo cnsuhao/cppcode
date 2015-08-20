@@ -38,6 +38,8 @@ void main()
 
     Console::WriteLine("Count is: {0}", alist->Count.ToString());
 
+    alist->Sort();
+
     IComparer^ myComparer = gcnew myReverserClass;
     alist->Sort(myComparer);
     
