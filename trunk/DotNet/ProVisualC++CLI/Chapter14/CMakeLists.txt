@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 2.6.2)
+
+project(Ch14)
+
+include(../../clr.cmake)
+set(deb_info_temp ../../VisualStudioUserFile.vcxproj.user.in)
+
+add_executable_clr(ADONET ${deb_info_temp} ADONET/ADONET.cpp ADONET/app.config)
+add_reference(ADONET "System.Configuration")
+add_custom_command(TARGET ADONET POST_BUILD COMMAND copy "..\\ADONET\\app.config" \"$(TargetPath).config\")
+add_executable_clr(ReadXML ${deb_info_temp} ReadXML/ReadXML.cpp)
+add_executable_clr(ReadXMLDOM ${deb_info_temp} ReadXMLDOM/ReadXMLDOM.cpp)
+add_executable_clr(ReadXPathNav ${deb_info_temp} ReadXPathNav/ReadXPathNav.cpp)
+add_executable_clr(UpdateXML ${deb_info_temp} UpdateXML/UpdateXML.cpp)
+add_executable_clr(UpdateXMLDOM ${deb_info_temp} UpdateXMLDOM/UpdateXMLDOM.cpp)
+add_executable_clr(ValidateXML_DTD ${deb_info_temp} ValidateXML_DTD/ValidateXML.cpp)
+add_executable_clr(ValidateXML_XSD ${deb_info_temp} ValidateXML_XSD/Monsters.h ValidateXML_XSD/ValidateXML.cpp)
+add_executable_clr(WriteXML ${deb_info_temp} WriteXML/WriteXML.cpp)
+add_executable_clr(WriteXMLDOM ${deb_info_temp} WriteXMLDOM/WriteXMLDOM.cpp)
+add_executable_clr(XPathEx ${deb_info_temp} XPathEx/XPathEx.cpp)
