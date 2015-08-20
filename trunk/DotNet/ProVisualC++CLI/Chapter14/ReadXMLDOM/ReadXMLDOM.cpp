@@ -36,7 +36,7 @@ void main()
 
     try
     {
-        XmlReader ^reader = XmlReader::Create("..\\Monsters.xml");
+        XmlReader ^reader = XmlReader::Create("..\\..\\Monsters.xml");
         doc->Load(reader);
         reader->Close();
 

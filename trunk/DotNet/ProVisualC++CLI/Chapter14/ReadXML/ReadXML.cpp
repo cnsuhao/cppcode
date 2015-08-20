@@ -16,7 +16,7 @@ void main()
     
     try
     {
-        reader = XmlReader::Create("..\\Monsters.xml");
+        reader = XmlReader::Create("..\\..\\Monsters.xml");
  
         while (reader->Read())
         {

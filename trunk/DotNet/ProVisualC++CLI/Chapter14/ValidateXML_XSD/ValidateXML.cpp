@@ -46,5 +46,5 @@ void main()
 
 	Console::WriteLine("\nGood Monsters file");
 	Console::WriteLine("------------------");
-    gcnew ValidateXML("..\\Monsters.xml");
+    gcnew ValidateXML("..\\..\\Monsters.xml");
 }

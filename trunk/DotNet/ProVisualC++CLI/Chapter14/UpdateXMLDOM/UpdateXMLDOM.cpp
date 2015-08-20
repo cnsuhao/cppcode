@@ -27,7 +27,7 @@ void main()
 
     try
     {
-        doc->Load("..\\Monsters.xml");
+        doc->Load("..\\..\\Monsters.xml");
         XmlNode ^root = doc->DocumentElement; 
 
 

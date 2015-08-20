@@ -9,7 +9,7 @@ void main()
     XmlWriter ^writer;
     try
     {
-        reader = XmlReader::Create("..\\Monsters.xml");
+        reader = XmlReader::Create("..\\..\\Monsters.xml");
 
         XmlWriterSettings ^settings = gcnew XmlWriterSettings();
         settings->Indent = true;
