@@ -1,0 +1,6 @@
+add_executable(cpC cpC.c)
+add_executable(cpCF cpCF.c)
+# add_executable(cpU cpU.c)
+add_executable(cpUC cpUC.c)
+add_executable(cpW cpW.c)
+add_executable(cpwFA cpwFA.c)
