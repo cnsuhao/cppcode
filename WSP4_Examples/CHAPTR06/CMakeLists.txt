@@ -1,0 +1,7 @@
+# WSP4_AddExecute(CATHA CATHA.C)
+WSP4_AddExecute(GREP GREP.C)
+WSP4_AddExecute(GREPMP GREPMP.C)
+WSP4_AddExecute(JobObjectShell JobObjectShell.c JOBMGT.C)
+WSP4_AddExecute(JobShell JobShell.c JOBMGT.C)
+WSP4_AddExecute(TIMEP TIMEP.C)
+WSP4_AddExecute(version version.c)
