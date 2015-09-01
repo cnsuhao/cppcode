@@ -1,0 +1,6 @@
+WSP4_AddDLL(cci_fFA cci_fFA.C)
+WSP4_AddExecute(Cat Cat.c)
+WSP4_AddExecute(cci cci.C cci_f.C)
+WSP4_AddExecute(CD CD.C)
+WSP4_AddExecute(PWD PWD.C)
+WSP4_AddExecute(PWDA PWDA.C)

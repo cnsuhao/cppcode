@@ -1,11 +1,3 @@
-cmake_minimum_required(VERSION 2.6.2)
-
-project(CHAPTR05 C)
-
-include_directories(../Include)
-add_subdirectory(../UTILITY ./UTILITY)
-include(../CommonFunc.cmake)
-
 WSP4_AddDLL(cci_fmmDll cci_fmmDll.c)
 WSP4_AddDLL(cci_fDll cci_fDll.c)
 WSP4_AddDLL(cci_fmm cci_fmm.c)
