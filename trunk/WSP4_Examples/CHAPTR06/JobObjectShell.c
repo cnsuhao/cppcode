@@ -20,7 +20,7 @@ static int Jobs  (int, LPTSTR *, LPTSTR);
 static int Kill  (int, LPTSTR *, LPTSTR);
 HANDLE hJobObject = NULL;
 
-JOBOBJECT_BASIC_LIMIT_INFORMATION basicLimits = {0, 0, JOB_OBJECT_LIMIT_PROCESS_TIME};
+JOBOBJECT_BASIC_LIMIT_INFORMATION basicLimits;
 
 int _tmain (int argc, LPTSTR argv[])
 {
@@ -37,6 +37,7 @@ int _tmain (int argc, LPTSTR argv[])
 	hJobObject = NULL;
 	processTimeLimit.QuadPart = 0;
 	if (argc >= 2) processTimeLimit.QuadPart = _ttoi(argv[1]);
+    basicLimits.LimitFlags = JOB_OBJECT_LIMIT_PROCESS_TIME;
 	basicLimits.PerProcessUserTimeLimit.QuadPart = processTimeLimit.QuadPart * MILLION;
 
 	hJobObject = CreateJobObject(NULL, NULL);
@@ -140,6 +141,10 @@ int Jobbg (int argc, LPTSTR argv[], LPTSTR command)
 			CloseHandle (processInfo.hProcess);
 			return 4;
 		}
+        else
+        {
+            _tprintf (_T("assigned success.\n"));
+        }
 	}
 
 		/* Create a job number and enter the process Id and handle
