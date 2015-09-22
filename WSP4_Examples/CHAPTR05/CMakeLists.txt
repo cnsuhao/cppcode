@@ -1,7 +1,7 @@
 WSP4_AddDLL(cci_fmmDll cci_fmmDll.c)
 WSP4_AddDLL(cci_fDll cci_fDll.c)
-WSP4_AddDLL(cci_fmm cci_fmm.c)
 
+WSP4_AddExecute(cci_fmm ../CHAPTR02/cci.c cci_fmm.c)
 WSP4_AddExecute(cciEL cciEL.C)
 WSP4_AddExecute(CLEAR CLEAR.C)
 WSP4_AddExecute(HEAPNOSR HEAPNOSR.C)

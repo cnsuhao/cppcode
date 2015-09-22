@@ -63,7 +63,7 @@ int _tmain (int argc, LPTSTR argv[])
 
 	_tprintf (_T("Producer and Consumer threads have terminated\n"));
 	_tprintf (_T("Messages Produced: %d, Consumed: %d, Lost: %d.\n"),
-		mBlock.mSequence, mBlock.nCons, mBlock.mSequence - mBlock.nCons);
+		mBlock.mSequence, mBlock.nCons, mBlock.nLost);
 	return 0;
 }
 
@@ -85,6 +85,7 @@ DWORD WINAPI Produce (void *arg)
 				MessageFill (&mBlock);
 				mBlock.fReady = 1;
 				InterlockedIncrement (&mBlock.mSequence);
+                mBlock.nLost = mBlock.mSequence - mBlock.nCons;
 			}
 		} 
 		__finally { LeaveCriticalSection (&mBlock.mGuard); }
@@ -104,15 +105,15 @@ DWORD WINAPI Consume (void *arg)
 			 * The Producer will see the new value after the Consumer returns */
 			mBlock.fStop = 1;
 		} else if (command == _T('c')) { /* Get a new buffer to Consume */
-			EnterCriticalSection (&mBlock.mGuard);
 			__try {
+			    EnterCriticalSection (&mBlock.mGuard);
 				if (mBlock.fReady == 0) 
 					_tprintf (_T("No new messages. Try again later\n"));
 				else {
 					MessageDisplay (&mBlock);
-					mBlock.nLost = mBlock.mSequence - mBlock.nCons + 1;
 					mBlock.fReady = 0; /* No new messages are ready */
 					InterlockedIncrement(&mBlock.nCons);
+					mBlock.nLost = mBlock.mSequence - mBlock.nCons;
 				}
 			} 
 			__finally { LeaveCriticalSection (&mBlock.mGuard); }

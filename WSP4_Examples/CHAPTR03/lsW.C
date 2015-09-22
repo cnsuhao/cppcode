@@ -98,6 +98,7 @@ static BOOL TraverseDirectory(LPTSTR parentPath, LPTSTR searchPattern, DWORD num
 		_tcscat (parentPath, _T("\\"));
 	}
 
+    _tprintf(_T("\n%s:"), parentPath);
 
 	/* Open up the directory search handle and get the
 		first file name to satisfy the path name. Make two passes.
@@ -123,7 +124,7 @@ static BOOL TraverseDirectory(LPTSTR parentPath, LPTSTR searchPattern, DWORD num
 			lenParentPath = (DWORD)_tcslen(parentPath);
 			/* Traverse the subdirectory on the second pass. */
 			if (fType == TYPE_DIR && iPass == 2 && recursive) {
-				_tprintf(_T("\n%s%s:"), parentPath, findData.cFileName);
+				//_tprintf(_T("\n%s%s:"), parentPath, findData.cFileName);
 				SetCurrentDirectory(findData.cFileName);
 				if (_tcslen(parentPath) + _tcslen(findData.cFileName) >= MAX_PATH_LONG-1) {
 					ReportError(_T("Path Name is too long"), 10, FALSE);
