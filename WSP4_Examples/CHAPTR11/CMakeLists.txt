@@ -1,0 +1,5 @@
+WSP4_AddExecute(clientNP clientNP.C LOCSRVER.C)
+WSP4_AddExecute(Redirect Redirect.c)
+WSP4_AddExecute(serverNP serverNP.C)
+WSP4_AddExecute(SRVRBCST SRVRBCST.C)
+WSP4_AddExecute(WC WC.C)
