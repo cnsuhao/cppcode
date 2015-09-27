@@ -1,0 +1,8 @@
+WSP4_AddDLL(SendReceiveSKST SendReceiveSKST.c)
+WSP4_AddDLL(SendReceiveSKHA SendReceiveSKHA.c)
+WSP4_AddExecute(clientSK clientSK.c)
+WSP4_AddExecute(clientSKST clientSKST.c SendReceiveSKST)
+WSP4_AddExecute(serverSK serverSK.c)
+WSP4_AddExecute(serverSKHA serverSKHA.c SendReceiveSKHA)
+WSP4_AddExecute(serverSKST serverSKST.c SendReceiveSKST)
+WSP4_AddDLL(command command.c)
