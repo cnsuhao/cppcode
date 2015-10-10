@@ -2,13 +2,15 @@
 #include "Item.h"
 #include "QUEUE.h"
 typedef struct QUEUEnode* link;
-struct QUEUEnode {
+struct QUEUEnode
+{
     Item item;
     link next;
 };
 static link head, tail;
 link NEW(Item item, link next)
-{   link x = (link)malloc(sizeof *x);
+{
+    link x = (link)malloc(sizeof * x);
     x->item = item;
     x->next = next;
     return x;
@@ -28,11 +30,13 @@ void QUEUEput(Item item)
         head = (tail = NEW(item, head));
         return;
     }
+
     tail->next = NEW(item, tail->next);
     tail = tail->next;
 }
 Item QUEUEget()
-{   Item item = head->item;
+{
+    Item item = head->item;
     link t = head->next;
     free(head);
     head = t;
