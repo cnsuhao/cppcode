@@ -2,14 +2,18 @@
 #include "list.h"
 link freelist;
 void initNodes(int N)
-{   int i;
-    freelist = (link)malloc((N+1)*(sizeof *freelist));
-    for (i = 0; i < N+1; i++)
-        freelist[i].next = &freelist[i+1];
+{
+    int i;
+    freelist = (link)malloc((N + 1) * (sizeof * freelist));
+
+    for (i = 0; i < N + 1; i++)
+        freelist[i].next = &freelist[i + 1];
+
     freelist[N].next = NULL;
 }
 link newNode(int i)
-{   link x = deleteNext(freelist);
+{
+    link x = deleteNext(freelist);
     x->item = i;
     x->next = x;
     return x;
