@@ -1,13 +1,15 @@
 #include <stdlib.h>
 #include "Item.h"
 typedef struct STACKnode* link;
-struct STACKnode {
+struct STACKnode
+{
     Item item;
     link next;
 };
 static link head;
 link NEW(Item item, link next)
-{   link x = (link)malloc(sizeof *x);
+{
+    link x = (link)malloc(sizeof * x);
     x->item = item;
     x->next = next;
     return x;
@@ -25,7 +27,8 @@ void STACKpush(Item item)
     head = NEW(item, head);
 }
 Item STACKpop()
-{   Item item = head->item;
+{
+    Item item = head->item;
     link t = head->next;
     free(head);
     head = t;

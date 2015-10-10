@@ -1,10 +1,11 @@
 #include <stdlib.h>
 #include "Item.h"
-static Item *q;
+static Item* q;
 static int N, head, tail;
 void QUEUEinit(int maxN)
-{   q = (Item *)malloc((maxN+1)*sizeof(Item));
-    N = maxN+1;
+{
+    q = (Item*)malloc((maxN + 1) * sizeof(Item));
+    N = maxN + 1;
     head = N;
     tail = 0;
 }

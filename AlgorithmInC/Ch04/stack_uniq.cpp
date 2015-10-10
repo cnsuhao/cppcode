@@ -1,11 +1,12 @@
 #include <stdlib.h>
 static int *s, *t;
 static int N;
+#define MAX_VALUE 10000
 void STACKinit(int maxN)
 {   int i;
     s = (int *)malloc(maxN*sizeof(int));
-    t = (int *)malloc(maxN*sizeof(int));
-    for (i = 0; i < maxN; i++) t[i] = 0;
+    t = (int *)malloc(MAX_VALUE*sizeof(int));
+    for (i = 0; i < MAX_VALUE; i++) t[i] = 0;
     N = 0;
 }
 int STACKempty()
