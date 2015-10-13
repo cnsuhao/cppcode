@@ -43,7 +43,7 @@ int main(unsigned int argc, char * argv[])
 		printf ("Output file: %s, create failed.\n", argv[3]);
 		return 2;
 	}
-	for (int i = 0; i < atoi(argv[1]); ++i) {
+	for (int i = 0; i < ndata; ++i) {
 		unsigned int irec = rimes_rand(rand()*i*i, filesize);
 		if (argv[4][0] == 'w') {
             fprintf (file, "w %d\n", irec);
