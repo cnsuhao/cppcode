@@ -64,10 +64,10 @@ void ReportSpace (LPCTSTR Message)
 		ReportError (_T("Cannot get free space"), 1, TRUE);
 	/* Note: Windows NT 5.0 and greater (including 2000) - This measures
 	space available to the user, accounting for disc quotas */
-	_tprintf (_T("%35s.\nTotal: %16x; Free on disk: %16x; Avail to user: %16x\n"), Message,
+	_tprintf (_T("%35s.\nTotal: %16llx; Free on disk: %16llx; Avail to user: %16lld\n"), Message,
 		TotalBytes.QuadPart, NumFreeBytes.QuadPart, FreeBytes.QuadPart);
 
-}
+} 
 
 
  

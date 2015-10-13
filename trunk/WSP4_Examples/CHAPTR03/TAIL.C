@@ -31,7 +31,7 @@ int _tmain (int argc, LPTSTR argv [])
 	HANDLE hStdOut = GetStdHandle (STD_OUTPUT_HANDLE);
 	LARGE_INTEGER FileSize, CurPtr, FPos;
 	LARGE_INTEGER LinePos[NUM_LINES];
-	DWORD LastLine, FirstLine, LineCount, nRead;
+	DWORD NextLine, FirstLine, LineCount, nRead;
 	TCHAR buffer[MAX_CHAR + 1], c;
 
 	if (argc != 2)
@@ -64,7 +64,7 @@ int _tmain (int argc, LPTSTR argv [])
 
 	LinePos [0].QuadPart = CurPtr.QuadPart;
 	LineCount = 1;
-	LastLine = 1;
+	NextLine = 1;
 	while (TRUE) {
 		while (ReadFile (hInFile, &c, sizeof(TCHAR), &nRead, NULL)
 				&& nRead > 0 && c != CR) ; /* Empty loop body */
@@ -78,12 +78,12 @@ int _tmain (int argc, LPTSTR argv [])
 		if (!SetFilePointerEx (hInFile, CurPtr, &CurPtr, FILE_CURRENT))
 			ReportError (_T("tail Error: Set Pointer to get current position."), 5, TRUE);
 				/* Retain the start-of-line position */
-		LinePos[LastLine].QuadPart = CurPtr.QuadPart;
+		LinePos[NextLine].QuadPart = CurPtr.QuadPart;
 		LineCount++;
-		LastLine = LineCount % NUM_LINES;
+		NextLine = LineCount % NUM_LINES;
 	}
 	
-	FirstLine = LastLine % NUM_LINES;
+	FirstLine = NextLine % NUM_LINES;
 	if (LineCount < NUM_LINES) FirstLine = 0;
 	CurPtr.QuadPart = LinePos[FirstLine].QuadPart;
 
