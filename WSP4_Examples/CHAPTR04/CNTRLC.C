@@ -15,7 +15,7 @@ int _tmain(int argc, LPTSTR argv[])
 		ReportError(_T("Error setting event handler"), 1, TRUE);
 	
 	while (!exitFlag) { /* This flag is detected right after a beep, before a handler exits */
-		Sleep(4750); /* Beep every 5 seconds; allowing 250 ms of beep time. */
+		Sleep(50); /* Beep every 5 seconds; allowing 250 ms of beep time. */
 		Beep(1000 /* Frequency */, 250 /* Duration */);
 	}
 	_tprintf(_T("Stopping the main program as requested.\n"));
