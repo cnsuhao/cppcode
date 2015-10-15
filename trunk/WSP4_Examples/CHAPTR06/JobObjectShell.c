@@ -14,7 +14,7 @@ job management commands:
 #include "Everything.h"
 #include "JobManagement.h"
 
-#define MILLION 1000000
+#define MILLION 10000000
 static int Jobbg (int, LPTSTR *, LPTSTR);
 static int Jobs  (int, LPTSTR *, LPTSTR);
 static int Kill  (int, LPTSTR *, LPTSTR);
