@@ -14,6 +14,7 @@
 #include <stdio.h>
 
 #define BUF_SIZE 0x200
+#define CRLF "\n\r"
 
 static VOID CatFile (HANDLE, HANDLE);
 int _tmain (int argc, LPTSTR argv [])
