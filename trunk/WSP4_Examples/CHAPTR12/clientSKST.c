@@ -35,7 +35,6 @@ int _tmain (int argc, LPTSTR argv [])
 	TCHAR quitMsg [] = _T("$quit"); /* request to shut down client */
 	TCHAR shutMsg [] = _T("$ShutDownServer"); /* Stop all threads */
 	CHAR defaultIPAddr[] = "127.0.0.1";
-    HINSTANCE hDll;
 
 	/*	Initialize the WS library. Ver 2.0 */
 	if (WSAStartup (MAKEWORD (2, 0), &WSStartData) != 0)
@@ -58,7 +57,7 @@ int _tmain (int argc, LPTSTR argv [])
 
 	conVal = connect (clientSock, (struct sockaddr *)&clientSAddr, sizeof(clientSAddr));
 	if (conVal == SOCKET_ERROR) ReportError (_T("Failed client connect() call"), 3, TRUE);
-    hDll = LoadLibrary("SendReceiveSKST.dll");
+
 	/*  Main loop to prompt user, send request, receive response */
 	while (!quit) {
 		_tprintf (_T("%s"), promptMsg); 
@@ -89,7 +88,7 @@ BOOL ReceiveResponseMessage (RESPONSE *pResponse, SOCKET sd)
 	/*  Messages use 8-bit characters */
 		
 	while (!lastRecord) {
-		disconnect = !ReceiveCSMessage (pResponse, sd);
+		disconnect = ReceiveCSMessage (pResponse, sd);
 		/* Detect an end message message - 8-bit characters */
 		/* Arbitrarily defined as "$$$$$$$" */
 		lastRecord = (strcmp (pResponse->record, "$$$$$$$") == 0);

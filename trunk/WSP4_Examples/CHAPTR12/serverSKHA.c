@@ -194,7 +194,7 @@ static DWORD WINAPI Server (SERVER_ARG * pThArg)
 
 	while (!done && !shutFlag) { 	/* Main Command Loop. */
 
-		disconnect = !ReceiveCSMessage (&request, sh);
+		disconnect = ReceiveCSMessage (&request, sh);
 		done = disconnect || (strcmp (request.record, "$Quit") == 0);
 		if (done) continue;	
 		/* Stop this thread on "$Quit" or "$ShutDownServer" command. */

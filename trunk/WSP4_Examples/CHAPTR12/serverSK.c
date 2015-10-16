@@ -252,12 +252,6 @@ static DWORD WINAPI Server (PVOID pArg)
 		done = done || (strcmp (request.record, "$Quit") == 0) || shutFlag;
 		if (done) continue;	
 
-		/* Open the temporary results file. */
-		hTmpFile = CreateFile (tempFile, GENERIC_READ | GENERIC_WRITE,
-				FILE_SHARE_READ | FILE_SHARE_WRITE, &tempSA,
-				CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-		if (hTmpFile == INVALID_HANDLE_VALUE)
-			ReportError (_T("Cannot create temp file"), 1, TRUE);
 
 		/* Check for a shared library command. For simplicity, shared 	*/
 		/* library commands take precedence over process commands 	*/
@@ -280,6 +274,14 @@ static DWORD WINAPI Server (PVOID pArg)
 		}
 
 		if (dl_addr == NULL) { /* No inprocess support */
+
+            /* Open the temporary results file. */
+            hTmpFile = CreateFile (tempFile, GENERIC_READ | GENERIC_WRITE,
+                FILE_SHARE_READ | FILE_SHARE_WRITE, &tempSA,
+                CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+            if (hTmpFile == INVALID_HANDLE_VALUE)
+                ReportError (_T("Cannot create temp file"), 1, TRUE);
+
 			/* Create a process to carry out the command. */
 			startInfoCh.hStdOutput = hTmpFile;
 			startInfoCh.hStdError = hTmpFile;
@@ -291,7 +293,7 @@ static DWORD WINAPI Server (PVOID pArg)
 				PrintMsg (hTmpFile, _T("ERR: Cannot create process."));
 				procInfo.hProcess = NULL;
 			}
-			CloseHandle (hTmpFile);
+		    CloseHandle (hTmpFile);
 			if (procInfo.hProcess != NULL ) {
 				CloseHandle (procInfo.hThread);
 				WaitForSingleObject (procInfo.hProcess, INFINITE);
