@@ -105,7 +105,7 @@ BOOL ReceiveCSMessage (MESSAGE *pMsg, PSOCKET_HANDLE psh)
 			psh->staticBuffLen = nXfer -k - 1;
 		}
 	}
-	return !disconnect;	
+	return disconnect;	
 }
 
 

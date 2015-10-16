@@ -187,7 +187,7 @@ static DWORD WINAPI Server (SERVER_ARG * pThArg)
 
 	while (!done && !ShutFlag) { 	/* Main Command Loop. */
 
-		disconnect = !ReceiveCSMessage (&request, connectSocket);
+		disconnect = ReceiveCSMessage (&request, connectSocket);
 		_tprintf (_T("**serverSKST server Thread: %d. Command: %s.\n"),
 			pThArg->number, request.record);
 		done = disconnect || (strcmp (request.record, "$Quit") == 0)
@@ -256,7 +256,6 @@ static DWORD WINAPI Server (SERVER_ARG * pThArg)
 			response.rsLen = MAX_RQRS_LEN;
 			while ((fgets (response.record, MAX_RQRS_LEN, fp) != NULL)) {
 				SendCSMessage (&response, connectSocket);
-                _tprintf (response.record);
 			}
 			_tprintf (_T("**Last response message sent.\n"));
 
@@ -275,8 +274,8 @@ static DWORD WINAPI Server (SERVER_ARG * pThArg)
 	/* End of command processing loop. Free resources and exit from the thread. */
 
 	_tprintf (_T ("Shuting down server thread number %d\n"), pThArg->number);
-	shutdown (connectSocket, 2);
 	closesocket (connectSocket);
+	shutdown (connectSocket, 2);
 	pThArg->status = 1;
 	if (strcmp (request.record, "$ShutDownServer") == 0)	{
 		pThArg->status = 3;

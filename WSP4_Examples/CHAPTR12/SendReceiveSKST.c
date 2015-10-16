@@ -89,10 +89,6 @@ BOOL ReceiveCSMessage (MESSAGE *pMsg, SOCKET sd)
 	STATIC_BUF *pBuff;
 
 	if (pMsg == NULL) return FALSE;
-    if (tlsIndex == TLS_OUT_OF_INDEXES)
-    {
-        tlsIndex = TlsAlloc();
-    }
 	pBuff = (STATIC_BUF *) TlsGetValue (tlsIndex);
 	if (pBuff == NULL) { /* First time initialization. */
 		/* Only threads that need this storage will allocate it */
@@ -143,7 +139,7 @@ BOOL ReceiveCSMessage (MESSAGE *pMsg, SOCKET sd)
 			pBuff->staticBufLen = nXfer -k - 1;
 		}
 	}
-	return !disconnect;	
+	return disconnect;	
 }
 
 
