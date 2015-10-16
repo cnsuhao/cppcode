@@ -51,9 +51,9 @@ int main (int argc, char * argv[])
 	/* Create a worker thread for each file on the command line */
 	for (ithrd = 0; ithrd < (DWORD)argc - 1; ithrd++) {
 		/* Create a worker thread to process the file */
-		tref[ithrd] = (HANDLE)_beginthreadex (NULL, 0, wcfunc, (PVOID)targ[ithrd],
-			0, &tid);
 		targ[ithrd].filename = argv[ithrd+1];
+		tref[ithrd] = (HANDLE)_beginthreadex (NULL, 0, wcfunc, (PVOID)&targ[ithrd],
+			0, &tid);
 	}
 	
 	/* Worker threads are all running. Wait for them 	*/
@@ -77,13 +77,13 @@ int main (int argc, char * argv[])
 	return 0;
 }
 
-static int ch, c, nl, nw, nc;
 
 DWORD WINAPI wcfunc (void * arg)
 /* Count the number of characters, works, and lines in		*/
 /* the file targ->filename					*/
 /* NOTE: Simple version; results may differ from wc utility	*/
 {
+    int ch, c, nl, nw, nc;
 	FILE * fin;
 	THREAD_ARG * targ;
 	
