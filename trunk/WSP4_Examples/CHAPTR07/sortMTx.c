@@ -52,7 +52,7 @@ int _tmain (int argc, LPTSTR argv[])
 	PTHREADARG ThArg;
 	LPTSTR StringEnd;
 
-	if (argc <= 3) 
+	if (argc < 3) 
 		ReportError (_T ("Usage: sortMTx [options] nTh files."), 1, FALSE);
 
 	iNP = Options (argc, argv, _T ("n"), &NoPrint, NULL);
@@ -94,10 +94,10 @@ int _tmain (int argc, LPTSTR argv[])
 	for (iTh = 0; iTh < NPr; iTh++) {
 		ThArg [iTh].iTh = iTh;
 		ThArg [iTh].LowRec = pRecords + LowRecNo;
+		ThArg [iTh].HighRec = pRecords + (LowRecNo + nRecTh);
 		LowRecNo += nRecTh;
 		ThreadHandle [iTh] = (HANDLE)_beginthreadex (
 				NULL, 0, ThSort, &ThArg [iTh], 0, &ThId);
-		ThArg [iTh].HighRec = pRecords + (LowRecNo + nRecTh);
 	}
 
 	/* Resume all the initially suspened threads. */
@@ -105,6 +105,7 @@ int _tmain (int argc, LPTSTR argv[])
 	for (iTh = 0; iTh < NPr; iTh++)
 		ResumeThread (ThreadHandle [iTh]);
 
+    WaitForSingleObject (ThreadHandle[0], INFINITE);
 	for (iTh = 0; iTh < NPr; iTh++)
 		CloseHandle (ThreadHandle [iTh]);
 
