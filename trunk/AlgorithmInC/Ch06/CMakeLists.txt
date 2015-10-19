@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 2.6.2)
+
+project(CH06)
+
+add_executable(sort_client_bubble sort_client.cpp bubble.cpp Array.cpp Array.h Item_Double/Item.cpp Item_Double/Item.h)
+set_target_properties(sort_client_bubble PROPERTIES INCLUDE_DIRECTORIES "${CH06_SOURCE_DIR}/Item_Double")
+add_executable(sort_client_insertion sort_client.cpp insertion.cpp Array.cpp Array.h Item_Double/Item.cpp Item_Double/Item.h)
+set_target_properties(sort_client_insertion PROPERTIES INCLUDE_DIRECTORIES "${CH06_SOURCE_DIR}/Item_Double") 
+add_executable(sort_client_insertion_basic sort_client.cpp insertion_basic.cpp Array.cpp Array.h Item_Double/Item.cpp Item_Double/Item.h)
+set_target_properties(sort_client_insertion_basic PROPERTIES INCLUDE_DIRECTORIES "${CH06_SOURCE_DIR}/Item_Double") 
+add_executable(sort_client_selection sort_client.cpp selection.cpp Array.cpp Array.h Item_Double/Item.cpp Item_Double/Item.h)
+set_target_properties(sort_client_selection PROPERTIES INCLUDE_DIRECTORIES "${CH06_SOURCE_DIR}/Item_Double") 
+add_executable(sort_client_shellsort sort_client.cpp shellsort.cpp Array.cpp Array.h Item_Double/Item.cpp Item_Double/Item.h)
+set_target_properties(sort_client_shellsort PROPERTIES INCLUDE_DIRECTORIES "${CH06_SOURCE_DIR}/Item_Double") 
+
+include_directories("Item_Int")
+add_executable(sort_example_bubble sort_example.cpp bubble.cpp)
+add_executable(sort_example_insertion sort_example.cpp insertion.cpp)
+add_executable(sort_example_insertion_basic sort_example.cpp insertion_basic.cpp)
+add_executable(sort_example_selection sort_example.cpp selection.cpp)
+add_executable(sort_example_shellsort sort_example.cpp shellsort.cpp)
+
+add_library(List List.cpp)
+add_library(insitu insitu.cpp)
+add_library(Item_String Item_String/Item.cpp)
+set_target_properties(Item_String PROPERTIES INCLUDE_DIRECTORIES "${CH06_SOURCE_DIR}/Item_String") 
+add_library(Item_Struct Item_Struct/Item.cpp)
+set_target_properties(Item_Struct PROPERTIES INCLUDE_DIRECTORIES "${CH06_SOURCE_DIR}/Item_Struct") 
