@@ -10,8 +10,8 @@ void quicksort(Item a[], int l, int r)
     v = a[r];
     i = l - 1;
     j = r;
-    p = l - 1;
-    q = r;
+    p = l;
+    q = r-1;
 
     for (;;)
     {
@@ -25,14 +25,14 @@ void quicksort(Item a[], int l, int r)
 
         if (eq(a[i], v))
         {
-            p++;
             exch(a[p], a[i]);
+            p++;
         }
 
         if (eq(v, a[j]))
         {
-            q--;
             exch(a[q], a[j]);
+            q--;
         }
     }
 

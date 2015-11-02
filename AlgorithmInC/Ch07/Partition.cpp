@@ -1,14 +1,18 @@
 #include "Item.h"
 int partition(Item a[], int l, int r)
 {
-    int i = l - 1, j = r;
+    int i = l, j = r - 1;
     Item v = a[r];
 
     for (;;)
     {
-        while (less(a[++i], v)) ;
+        while (less(a[i], v)) i++;
 
-        while (less(v, a[--j])) if (j == l) break;
+        while (less(v, a[j]))
+        {
+            if (j == l) break;
+            j--;
+        }
 
         if (i >= j) break;
 
