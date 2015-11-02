@@ -21,5 +21,5 @@ int main(int argc, char* argv[])
         freeNode(deleteNext(x));
     }
 
-    printf("%d\n", Item(x));
+    printf("%d\n", GetItem(x));
 }

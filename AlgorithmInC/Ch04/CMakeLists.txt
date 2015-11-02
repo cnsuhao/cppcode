@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.6.2)
 
 project(CH04)
 
+include_directories("Item_Int")
+include_directories("Queue_Int")
 add_executable(Complex_adt_client Complex_adt_client.cpp complex_adt.cpp)
 add_executable(Complex_client Complex_client.cpp complex.cpp)
 add_executable(poly_adt_client poly_adt_client.cpp poly_adt.cpp )

@@ -11,4 +11,4 @@ void freeNode(link);
 void insertNext(link, link);
 link deleteNext(link);
 link Next(link);
-int Item(link);
+int GetItem(link);
