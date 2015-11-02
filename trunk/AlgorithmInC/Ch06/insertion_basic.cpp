@@ -1,5 +1,5 @@
 #include "Item.h"
-void sort(Item a[], int l, int r)
+void insertion_sort(Item a[], int l, int r)
 {
     int i, j;
 

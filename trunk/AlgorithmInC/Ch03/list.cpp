@@ -37,7 +37,7 @@ link Next(link x)
 {
     return x->next;
 }
-int Item(link x)
+int GetItem(link x)
 {
     return x->item;
 }
