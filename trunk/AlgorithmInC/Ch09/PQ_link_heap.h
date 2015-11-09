@@ -1,5 +1,5 @@
-#ifndef PQ_link_h__
-#define PQ_link_h__
+#ifndef PQ_link_heap_h__
+#define PQ_link_heap_h__
 
 #include "Item.h"
 
@@ -15,4 +15,4 @@ struct pq
     PQlink* bq;
 };
 
-#endif // PQ_link_h__
+#endif // PQ_link_heap_h__

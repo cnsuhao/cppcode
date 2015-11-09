@@ -29,7 +29,7 @@ void BQjoin(PQlink* a, PQlink* b)
 
     for (i = 0; i < maxBQsize; i++)
         switch (test(c != NULL, b[i] != NULL, a[i] != NULL))
-    {
+        {
         case 2:
             a[i] = b[i];
             break;
@@ -53,7 +53,7 @@ void BQjoin(PQlink* a, PQlink* b)
         case 7:
             c = pair(c, b[i]);
             break;
-    }
+        }
 }
 
 void PQjoin(PQ a, PQ b)
