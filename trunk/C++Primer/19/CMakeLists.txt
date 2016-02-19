@@ -1,0 +1,11 @@
+INCLUDE_DIRECTORIES(../14)
+
+add_executable(Ch19_bitfields bitfields.cpp)
+add_executable(Ch19_calc calc.cpp)
+add_executable(Ch19_dyn_cast dyn_cast.cpp)
+add_executable(Ch19_enum-match enum-match.cpp)
+add_executable(Ch19_enum enum.cpp)
+add_executable(Ch19_memFN-bind memFN-bind.cpp)
+# add_executable(Ch19_tok2 tok2.cpp)
+add_executable(Ch19_typeid typeid.cpp)
+add_executable(Ch19_useScreen useScreen.cpp Screen.cpp)

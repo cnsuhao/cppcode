@@ -1,0 +1,16 @@
+INCLUDE_DIRECTORIES(../12)
+INCLUDE_DIRECTORIES(../6)
+
+add_executable(Ch15_andQueryTest andQueryTest.cpp Query.cpp ../12/TextQuery.cpp get_print.cpp)
+add_executable(Ch15_and_orQueryTest and_orQueryTest.cpp Query.cpp ../12/TextQuery.cpp get_print.cpp)
+add_executable(Ch15_Basket_main Basket.cpp Basket_main.cpp Quote.cpp)
+add_executable(Ch15_sample sample.cpp Quote.cpp)
+add_executable(Ch15_scope scope.cpp)
+add_executable(Ch15_useQuote useQuote.cpp Quote.cpp)
+add_executable(Ch15_vecBasket Basket.cpp vecBasket.cpp Quote.cpp)
+add_executable(Ch15_virtualsNscope virtualsNscope.cpp)
+add_executable(Ch15_wordQueryTest wordQueryTest.cpp Query.cpp ../12/TextQuery.cpp get_print.cpp)
+
+Config_DebugInfo(Ch15_andQueryTest "data/storyDataFile &lt; data/two")
+Config_DebugInfo(Ch15_and_orQueryTest "data/storyDataFile &lt; data/three")
+Config_DebugInfo(Ch15_wordQueryTest "data/storyDataFile &lt; data/querymain")

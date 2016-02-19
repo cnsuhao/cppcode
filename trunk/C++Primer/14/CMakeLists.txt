@@ -1,0 +1,17 @@
+INCLUDE_DIRECTORIES(../1)
+INCLUDE_DIRECTORIES(../6)
+
+add_executable(Ch14_absInt absInt.cpp)
+add_executable(Ch14_add add.cpp Sales_data.cpp)
+add_executable(Ch14_calc calc.cpp)
+add_executable(Ch14_directcall directcall.cpp Sales_data.cpp)
+add_executable(Ch14_fcnobj fcnobj.cpp)
+add_executable(Ch14_newcount newcount-size.cpp)
+add_executable(Ch14_readStr readStr.cpp)
+
+Config_DebugInfo(Ch14_absInt "&lt; data/absInt")
+Config_DebugInfo(Ch14_add "&lt; data/add_item")
+Config_DebugInfo(Ch14_fcnobj "&lt; data/count-size")
+Config_DebugInfo(Ch14_directcall "&lt; data/add_item")
+Config_DebugInfo(Ch14_newcount.exe "&lt; data/count-size")
+Config_DebugInfo(Ch14_readStr "&lt; data/word_echo")

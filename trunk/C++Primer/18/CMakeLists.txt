@@ -1,0 +1,15 @@
+INCLUDE_DIRECTORIES(../14)
+
+add_executable(Ch18_Animal Animal.cpp)
+add_executable(Ch18_book book.cpp ../14/Sales_data.cpp)
+add_executable(Ch18_class class.cpp)
+add_executable(Ch18_ex-over ex-over.cpp)
+add_executable(Ch18_inherit inherit.cpp)
+add_executable(Ch18_mi-scope mi-scope.cpp)
+add_executable(Ch18_over over.cpp)
+add_executable(Ch18_over2 over2.cpp)
+# add_executable(Ch18_Sales_data Sales_data.cpp)
+add_executable(Ch18_usingDirective usingDirective.cpp)
+add_executable(Ch18_virt-inherit virt-inherit.cpp)
+
+Config_DebugInfo(Ch18_book "&lt; data/book_sales")
