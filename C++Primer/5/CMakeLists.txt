@@ -1,0 +1,16 @@
+include_directories(../1)
+
+add_executable(Ch05_add_item2 add_item2.cpp)
+add_executable(Ch05_doWhile doWhile.cpp)
+add_executable(Ch05_guess guess.cpp)
+add_executable(Ch05_ifgrades ifgrades.cpp)
+add_executable(Ch05_othercnt othercnt.cpp)
+add_executable(Ch05_rangefor rangefor.cpp)
+add_executable(Ch05_vowels vowels.cpp)
+
+Config_DebugInfo(Ch05_add_item2 "&lt; data/add_item_data")
+Config_DebugInfo(Ch05_guess "&lt; data/guesses")
+Config_DebugInfo(Ch05_ifgrades "&lt; data/grades")
+Config_DebugInfo(Ch05_othercnt "&lt; data/readme")
+Config_DebugInfo(Ch05_vowels "&lt; data/readme")
+Config_DebugInfo(Ch05_doWhile "&lt; data/doWhile")

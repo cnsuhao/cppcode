@@ -1,0 +1,13 @@
+include_directories(../7)
+add_executable(Ch09_capacity capacity.cpp)
+add_executable(Ch09_erase1 erase1.cpp)
+add_executable(Ch09_erase2 erase2.cpp)
+add_executable(Ch09_find find-str.cpp)
+add_executable(Ch09_find_ops find_ops.cpp)
+add_executable(Ch09_refreshIter refreshIter.cpp)
+add_executable(Ch09_stack stack.cpp)
+add_executable(Ch09_str_assignOps str_assignOps.cpp)
+add_executable(Ch09_substr substr.cpp)
+add_executable(Ch09_useConvs useConvs.cpp)
+
+Config_DebugInfo(Ch09_erase1 "&lt; data/erase")
