@@ -10,3 +10,5 @@ add_executable(Ch13_serial serial.cpp)
 add_executable(Ch13_StrFolderMain StrFolderMain.cpp StrFolder.cpp String.cpp)
 add_executable(Ch13_substr substr.cpp)
 add_executable(Ch13_useStrVec useStrVec.cpp StrVec.cpp)
+
+Config_DebugInfo(Ch13_useStrVec "")

@@ -122,11 +122,12 @@ int main()
 
 	cout << "capacity: " << vf.capacity() << endl;
 	vf.push_back(Folder());
+    cout << "capacity: " << vf.capacity() << endl;
 
 	Folder f3;
 	f3.save(m6);
-	cout << "capacity: " << vf.capacity() << endl;
 	vf.push_back(f3);
+	cout << "capacity: " << vf.capacity() << endl;
 
 
 	return 0;

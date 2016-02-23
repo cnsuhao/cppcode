@@ -6,4 +6,7 @@ add_executable(Ch08_clearIO clearIO.cpp)
 add_executable(Ch08_fileIO fileIO.cpp)
 add_executable(Ch08_sstream sstream.cpp)
 
-Config_DebugInfo(Ch08_cond "&lt; data/vecSubs")
+Config_DebugInfo(Ch08_add_item "&lt; data/add_item")
+Config_DebugInfo(Ch08_add_itemV2 "&lt; data/add_item")
+Config_DebugInfo(Ch08_fileIO "data/add_item data/sstream")
+Config_DebugInfo(Ch08_sstream "&lt; data/sstream")
