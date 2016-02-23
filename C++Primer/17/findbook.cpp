@@ -137,6 +137,6 @@ int main(int argc, char **argv)
 	for (int cnt = 1; cnt != argc; ++cnt)
 		files.push_back(build_store(argv[cnt]));
 
-	ifstream in("../data/findbook.in");  // ISBNs to search for
+	ifstream in("data/findbook.in");  // ISBNs to search for
 	reportResults(in, cout, files);
 }

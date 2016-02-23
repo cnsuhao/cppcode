@@ -81,13 +81,17 @@ int main()
 	
 	unsigned i = 0;
 	if (bitvec.test(i))
+    {
 	     // bitvec[i] is on
-	        ;
+	        int a = 1;
+    }
 	
 	//equivalent test using subscript
 	if (bitvec[i])
-	     // bitvec[i] is on
-	        ;
+    {
+        // bitvec[i] is on
+        int a = 1;
+    }
 	
 	cout << "bitvec: positions turned on:\n\t";
 	for (int index = 0; index != 32; ++index)

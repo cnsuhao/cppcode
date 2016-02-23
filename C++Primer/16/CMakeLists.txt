@@ -8,12 +8,12 @@ add_executable(Ch16_compareSpec compareSpec.cpp)
 add_executable(Ch16_debug debug.cpp)
 add_executable(Ch16_overloaded debug.cpp)
 set_target_properties(Ch16_overloaded PROPERTIES 
-                      COMPILE_DEFINITIONS="OVERCHAR"
-                      COMPILE_FLAGS="/Feoverloaded")
+                      COMPILE_DEFINITIONS "OVERCHAR"
+                      COMPILE_FLAGS "/Feoverloaded")
 add_executable(Ch16_specialized debug.cpp)
 set_target_properties(Ch16_specialized PROPERTIES 
-                      COMPILE_DEFINITIONS="SPECIALIZED"
-                      COMPILE_FLAGS="/Fespecialized")
+                      COMPILE_DEFINITIONS "SPECIALIZED"
+                      COMPILE_FLAGS "/Fespecialized")
 add_executable(Ch16_multiset multiset.cpp Sales_data.cpp)
 add_executable(Ch16_overSpec overSpec.cpp)
 add_executable(Ch16_qm qm.cpp build.cpp )
@@ -25,3 +25,4 @@ add_executable(Ch16_Vecmain Vecmain.cpp)
 
 Config_DebugInfo(Ch16_Vecmain "&lt; data/Vecmain")
 Config_DebugInfo(Ch16_compareDef "&lt; data/book_sales")
+Config_DebugInfo(Ch16_multiset "&lt; data/book_trans")

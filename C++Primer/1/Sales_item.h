@@ -75,7 +75,7 @@ private:
 // used in chapter 10
 inline
 bool compareIsbn(const Sales_item &lhs, const Sales_item &rhs) 
-{ return lhs.isbn() == rhs.isbn(); }
+{ return lhs.isbn() < rhs.isbn(); }
 
 // nonmember binary operator: must declare a parameter for each operand
 Sales_item operator+(const Sales_item&, const Sales_item&);

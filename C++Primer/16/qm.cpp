@@ -46,7 +46,9 @@ int main() {
 	// Blob<int> and its default constructor 
 	// are instantiated in this file
 	Blob<int> a1;
+    a1.push_back(1);
 	Blob<int> a2(a1);  // copy constructor instantiated in this file
+
 
 	int i = compare(a1[0], a2[0]); // instantiation will appear elsewhere
 
