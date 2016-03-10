@@ -54,14 +54,14 @@ else()
 endif(WIN32)
 
 set(CHAPTERS
-    1.getting_started
-    2.lighting
-    3.model_loading
-    4.advanced_opengl
-    5.advanced_lighting
+    1
+    2
+    3
+    4
+    5
 )
 
-set(1.getting_started   
+set(1   
     1.hello_window
     2.hello_triangle
     3.shaders
@@ -71,7 +71,7 @@ set(1.getting_started
     7.camera
 )
 
-set(2.lighting
+set(2
     1.colors
     2.basic_lighting
     3.materials
@@ -80,11 +80,11 @@ set(2.lighting
     6.multiple_lights
 )
 
-set(3.model_loading
+set(3
     1.model_loading
 )
 
-set(4.advanced_opengl
+set(4
     1.depth_testing
     2.stencil_testing
     3.1.blending_discard
@@ -97,7 +97,7 @@ set(4.advanced_opengl
     11.anti_aliasing
 )
 
-set(5.advanced_lighting
+set(5
     1.advanced_lighting
     2.gamma_correction
     3.1.shadow_mapping
@@ -121,12 +121,13 @@ foreach(CHAPTER ${CHAPTERS})
             "src/${CHAPTER}/${DEMO}/*.h"
             "src/${CHAPTER}/${DEMO}/*.cpp"
         )
-        add_executable(${DEMO} ${SOURCE})
-        target_link_libraries(${DEMO} ${LIBS})
+        set(Target_Name "${CHAPTER}_${DEMO}")
+        add_executable(${Target_Name} ${SOURCE})
+        target_link_libraries(${Target_Name} ${LIBS})
     if(WIN32)
-          set_target_properties(${DEMO} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${CHAPTER}")
+          set_target_properties(${Target_Name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${CHAPTER}")
     elseif(UNIX)
-      set_target_properties(${DEMO} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin/${CHAPTER}")
+      set_target_properties(${Target_Name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin/${CHAPTER}")
     endif(WIN32)
         # copy shader files to build directory
         file(GLOB SHADERS 
@@ -137,8 +138,8 @@ foreach(CHAPTER ${CHAPTERS})
         foreach(SHADER ${SHADERS})
       if(WIN32)
               # configure_file(${SHADER} "test")
-              add_custom_command(TARGET ${DEMO} PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${SHADER} $<TARGET_FILE_DIR:${DEMO}>)
-              add_custom_command(TARGET ${DEMO} PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/dlls/assimp.dll $<TARGET_FILE_DIR:${DEMO}>)
+              add_custom_command(TARGET ${Target_Name} PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${SHADER} $<TARGET_FILE_DIR:${Target_Name}>)
+              add_custom_command(TARGET ${Target_Name} PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/dlls/assimp.dll $<TARGET_FILE_DIR:${Target_Name}>)
       elseif(UNIX)
 				file(COPY ${SHADER} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/bin/${CHAPTER})			
 			endif(WIN32)
@@ -146,7 +147,7 @@ foreach(CHAPTER ${CHAPTERS})
         endforeach(SHADER)
       # if compiling for visual studio, also use configure file for each project (specifically to set up working directory)
       if(MSVC)
-          configure_file(${CMAKE_SOURCE_DIR}/configuration/visualstudio.vcxproj.user.in ${CMAKE_CURRENT_BINARY_DIR}/${DEMO}.vcxproj.user @ONLY)
+          configure_file(${CMAKE_SOURCE_DIR}/configuration/visualstudio.vcxproj.user.in ${CMAKE_CURRENT_BINARY_DIR}/${Target_Name}.vcxproj.user @ONLY)
       endif(MSVC)
     endforeach(DEMO)
 endforeach(CHAPTER)
