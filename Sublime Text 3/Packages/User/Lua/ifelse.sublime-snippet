@@ -1,0 +1,11 @@
+<snippet>
+    <content><![CDATA[
+if (${1:==}) then
+    ${2:return}
+else
+    ${0:return}
+end]]></content>
+    <tabTrigger>if</tabTrigger>
+    <scope>source.lua</scope>
+    <description>if else</description>
+</snippet>
