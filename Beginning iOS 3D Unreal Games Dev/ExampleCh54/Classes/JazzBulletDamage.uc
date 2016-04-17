@@ -1,4 +1,9 @@
-class JazzBulletDamage extends Projectile; 
+class JazzBulletDamage extends Projectile;
+simulated singular event Touch(Actor Other, PrimitiveComponent OtherComp, vector 
+HitLocation, vector HitNormal) 
+{ 
+    Other.TakeDamage(33, InstigatorController, HitLocation, -HitNormal, None); 
+} 
 simulated function Explode(vector HitLocation, vector HitNormal) 
 { 
 } 
@@ -8,7 +13,8 @@ function Init( Vector Direction )
     NewDir = Normal(Vector(InstigatorController.Pawn.Rotation)); 
     Velocity = Speed * NewDir;  
 } 
-defaultproperties  {  
+defaultproperties  
+{  
     Begin Object Class=StaticMeshComponent Name=Bullet  
         StaticMesh=StaticMesh'EngineMeshes.Sphere'  
         Scale3D=(X=0.050000,Y=0.050000,Z=0.05000) 
@@ -20,4 +26,4 @@ defaultproperties  {
     Components.Add(BulletTrail)
     MaxSpeed=+05000.000000 
     Speed=+05000.000000 
-} 
+}
