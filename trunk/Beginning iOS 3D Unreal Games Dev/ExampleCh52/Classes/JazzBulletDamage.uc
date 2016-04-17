@@ -9,7 +9,8 @@ function Init( Vector Direction )
     Velocity = Speed * NewDir;  
 } 
 defaultproperties  {  
-    Begin Object Class=StaticMeshComponent Name=Bullet  StaticMesh=StaticMesh'EngineMeshes.Sphere'  
+    Begin Object Class=StaticMeshComponent Name=Bullet  
+        StaticMesh=StaticMesh'EngineMeshes.Sphere'  
         Scale3D=(X=0.050000,Y=0.050000,Z=0.05000) 
     End Object 
     Components.Add(Bullet) 
